@@ -220,6 +220,12 @@ untitled-ontology-9:procedencia rdf:type owl:DatatypeProperty ,
                                 rdfs:range xsd:string .
 
 
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#restriccions-alergen
+untitled-ontology-9:restriccions-alergen rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain untitled-ontology-9:Comensal ;
+                                         rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#sabor
 untitled-ontology-9:sabor rdf:type owl:DatatypeProperty ;
                           rdfs:domain untitled-ontology-9:Ingredient ;

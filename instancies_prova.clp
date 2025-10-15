@@ -1,31 +1,57 @@
-(definstances instancies-prova
-  ([primer] of Ordre)
-  ([principal] of Ordre)
-  ([postre] of Ordre)
+(definstances beguda-instances
+  (vi-blanc of Beguda
+    (nom "Vi blanc jove")
+    (preu_venta 10.0)
+    (preu_cost 4.2)
+    (alcohol si)                
+    (formalitat "formal")
+    (procedencia "Penedès")
+  )
+)
 
-  ([vi-negre] of Beguda
-    (nom "Vi negre criança")
-    (preu_venta 12.0))
+(definstances comensal-instances
+  (maria-comensal of Comensal
+    (nom "Maria")
+    (edat 25)
+    (restriccions-alergen gluten lactosa)
+  )
+)
 
-  ([plat-escalivada] of Plat
+(definstances ingredient-instances
+  (pastanaga of Ingredient
+    (nom "Pastanaga")
+    (alergens)                  
+    (preu_cost 0.25)
+    (sabor "dolç" "terros")
+    (alternativa_restriccio "carbassó")
+  )
+)
+
+(definstances ordre-instances
+  (ordre-primer of Ordre)
+  (ordre-segon  of Ordre)
+  (ordre-postres of Ordre)
+)
+  
+(definstances menu-instances
+  (menu-formal-1 of Menu
+    (nom "Menú Formal 1")
+    (preu_venta 34.9)
+    (tipus_cuina "mediterrània")
+  )
+)
+
+(definstances plat-instances
+  (plat-escalivada of Plat
     (nom "Escalivada")
     (preu_venta 9.0)
-    (formalitat "Tradicional")
+    (formalitat "formal")
     (temperatura "Fred")
-    (te_ordre [primer]))
-
-  ([plat-fricando] of Plat
-    (nom "Fricandó de vedella")
-    (preu_venta 20.0)
-    (formalitat "Formal")
-    (temperatura "Calent")
-    (te_ordre [principal])
-    (marida_amb [vi-negre]))
-
-  ([plat-crema-catalana] of Plat
-    (nom "Crema catalana")
-    (preu_venta 14.0)
-    (formalitat "Familiar")
-    (temperatura "Fred")
-    (te_ordre [postre]))
+    (alergens lactosa)           
+    (complexitat baixa)
+    (mida_racio mitja)
+    (procedencia "Catalunya")
+  )
 )
+
+

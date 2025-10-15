@@ -1,201 +1,261 @@
-; =========================
-; PETICIO (interactiu)
-; =========================
+(defmodule MAIN(export ?ALL))
+
+;; VALIDADORS DE RESPOSTES -------------------------------------------------
+(deffunction valida-boolea "Valida una resposta booleana (sí/no)"
+  (?prompt)
+  (bind ?resp_valida FALSE)
+  (bind ?resp nil)
+
+  (while (not ?resp_valida)
+    (printout t ?prompt " (sí/no): " crlf)
+    (bind ?resp_usuari (readline))
+    (bind ?resp (lowcase ?resp_usuari))  
+    (if (or (eq ?resp "sí") (eq ?resp "si") (eq ?resp "s") (eq ?resp "n") (eq ?resp "no")) then
+        (bind ?resp_valida TRUE)
+    else
+        (printout t "Si us plau respon amb 'sí' o 'no'." crlf)
+    )
+  )
+  ?resp ; retorna la resposta validada
+) 
+
+(deffunction valida-num "Valida una resposta numèrica dins d'un rang"
+  (?prompt ?min ?max)
+  (bind ?resp_valida FALSE)
+  (bind ?resp nil)
+
+  (while (not ?resp_valida)
+    (printout t ?prompt " (" ?min "-" ?max "): " crlf)
+    (bind ?resp (read))
+    (if (numberp ?resp) then
+        (if (and (>= ?resp ?min) (<= ?resp ?max)) then ; resposta dins del rang 
+            (bind ?resp_valida TRUE)
+        else
+            (printout t "Si us plau introdueix un valor dins del rang ("?min " - "?max ")."  crlf)
+        )
+    else
+        (printout t "Si us plau introdueix un valor numèric." crlf)
+    )
+  )
+  ?resp ; retorna la resposta validada  
+)
+
+(deffunction valida-opcio (?pregunta $?opcions)
+  (bind ?resp_valida FALSE)
+  (bind ?resp nil)
+
+  (while (not ?resp_valida)
+    (printout t ?pregunta crlf)
+    (bind ?input (lowcase (readline)))
+
+    ; comprova si l’entrada és una de les opcions vàlides
+    (if (member$ ?input ?opcions) then
+        (bind ?resp_valida TRUE)
+        (bind ?resp ?input)
+     else
+        (printout t "La resposta que has introduït no és vàlida. Si us plau, tria una de les següents: " ?opcions crlf))
+  )
+  ?resp
+)
+
+
+;; MÒDULS DE CONTROL I CLASSIFICACIÓ HEURÍSTICA-------------------------------
+(defmodule ControlFlux (import MAIN ?ALL))
+(defrule ControlFlux::arrencada
+  (declare (salience 1000) (auto-focus TRUE))
+  (initial-fact)
+  =>
+  (focus RefinamentHeuristica)
+  (focus AssociacioHeuristica)
+  (focus AbstraccioHeuristica)
+  (focus PreferenciesMenu)
+)
+
+;; PAS 1: RECOLLIR PREFERÈNCIES -------------------------------
+(defmodule PreferenciesMenu (import MAIN ?ALL) (export ?ALL))
+; ??????????????
+
 (deftemplate peticio
-  (slot formalitat (type STRING))
-  (slot pressupost_per_cap (type NUMBER))   ; accepta 60 o 60.0
-  (slot num_comensals (type INTEGER))
-  (slot beguda_general (type SYMBOL) (default si)) ; si/no
-  (multislot restriccions-alergen (type SYMBOL))
+  (slot tipus-esdeveniment)               ; SYMBOL (nil al principi)
+  (slot data)                             ; SYMBOL
+  (slot torn)                             ; SYMBOL
+  (slot espai)                            ; SYMBOL
+  (slot num-comensals (type INTEGER SYMBOL)) ; permet nil al principi
+  (slot infantil-senior (type SYMBOL) (default no)) ; "si"/"no" en minúscules
+  (slot pressupost (type NUMBER SYMBOL))  ; permet nil al principi
+  (slot formalitat)                       ; SYMBOL: informal/formal
+  (slot beguda-mode)                      ; SYMBOL: general/per-plat
+  (slot alcohol)                          ; SYMBOL: si/no
+  (slot menu-mode)                        ; SYMBOL: unic/alternatiu
+  (slot alergies-si (type SYMBOL) (default no)) ; si/no
+  (slot alergens)                         ; TEXT/SYMBOL
 )
 
-; =========================
-; INPUT HELPERS + PREGUNTES
-; =========================
-(deffunction ask-default (?prompt ?default)
-  (printout t ?prompt " [" ?default "]: ")
-  (bind ?in (readline))
-  (if (eq ?in "") then (return ?default) else (return ?in))
-)
 
-(deffunction ask-number-default (?prompt ?default)
-  (printout t ?prompt " [" ?default "]: ")
-  (bind ?in (readline))
-  (if (eq ?in "") then (return ?default)
-   else
-     (bind ?x (string-to-field ?in))
-     (if (numberp ?x) then (return ?x) else (return ?default)))
-)
-
-(deffunction ask-yn-default (?prompt ?defaultSym)
-  (printout t ?prompt " [" ?defaultSym "]: ")
-  (bind ?in (lowcase (readline)))
-  (if (or (eq ?in "") (eq ?in "s") (eq ?in "si") (eq ?in "sí")) then (return si))
-  (if (or (eq ?in "n") (eq ?in "no")) then (return no))
-  (return ?defaultSym)
-)
-
-(defrule ask-peticio
+(defrule PreferenciesMenu::iniciar-peticio
+  (declare (salience 1000))
   (not (peticio))
+  (not (iniciat))
   =>
-  (bind ?f  (ask-default        "Formalitat (informal/familiar/tradicional/formal)" "familiar"))
-  (bind ?pp (ask-number-default "Pressupost per cap (€)" 35.0))
-  (bind ?nc (ask-number-default "Nombre de comensals" 20))
-  (bind ?bg (ask-yn-default     "Beguda general per a tot el menú? (s/n)" si))
-  (printout t "Alergens a evitar (separa amb espais, ENTER si cap): ")
-  (bind ?aline (readline))
-  (bind $?als (if (eq ?aline "") then (create$) else (explode$ (lowcase ?aline))))
-  (assert (peticio
-            (formalitat (str-cat ?f))
-            (pressupost_per_cap ?pp)
-            (num_comensals (if (integerp ?nc) then ?nc else (round ?nc)))
-            (beguda_general ?bg)
-            (restriccions-alergen $?als)))
-  (printout t crlf)
+  (printout t "Benvingut/da al recomanador de menús RicoRico!" crlf)
+  (printout t "Si us plau respon a les preguntes següents per personalitzar les propostes." crlf)
+  (assert (peticio))
+  (assert (iniciat))
+  (focus PreferenciesMenu)
 )
 
-; =========================
-; ABSTRACCIO
-; =========================
-(deftemplate tag-formalitat (slot val))
-(deftemplate llindars (slot preu_min) (slot preu_max))
-
-(deffunction norm-str->sym (?s)
-  (if (stringp ?s) then (return (string-to-field (lowcase ?s))) else (return ?s))
+; PREGUNTES DE CONTEXT GENERAL DE L'ESDEVENIMENT
+(defrule PreferenciesMenu::preguntar-tipus-esdeveniment
+  ?p <- (peticio (tipus-esdeveniment ?te&nil))
+  (not (preguntat-tipus))
+=>
+  (bind ?res (valida-opcio 
+              "Quin tipus d’esdeveniment estàs organitzant? (casament/ aniversari/ comunió/ congrés/ empresa/ altres)"
+              casament aniversari comunio congres empresa altres)
+  
+  )
+  (modify ?p (tipus-esdeveniment ?res))
+  (assert (preguntat-tipus))
 )
 
-(defrule deriva-formalitat
-  (peticio (formalitat ?f))
-  =>
-  (assert (tag-formalitat (val (norm-str->sym ?f))))
+; AMPLIAR PER A QUE ACCEPTI DATA CONCRETA!!!!!!!
+(defrule PreferenciesMenu::preguntar-data
+  ?p <- (peticio (data ?e&nil))
+  (preguntat-tipus)
+  (not (preguntat-data))
+=>
+  (bind ?r (valida-opcio
+              "Quina època de l’any? (primavera/ estiu/ tardor/ hivern)"
+              primavera estiu tardor hivern))
+  (modify ?p (data ?r))
+  (assert (preguntat-data))
 )
 
-(defrule deriva-llindars
-  (peticio (pressupost_per_cap ?pp))
-  =>
-  ; MVP: reparteix tot el per-cap entre 3 plats
-  (bind ?pplat (/ ?pp 3.0))
-  (assert (llindars (preu_min 0.0) (preu_max ?pplat)))
+(defrule PreferenciesMenu::preguntar-dinar-sopar 
+  ?p <- (peticio (torn ?t&nil))
+  (preguntat-data)
+  (not (preguntat-dinar-sopar))
+=>
+  (bind ?r (valida-opcio "Serà dinar o sopar?" dinar sopar))
+  (modify ?p (torn ?r))
+  (assert (preguntat-dinar-sopar))
 )
 
-; =========================
-; ASSOCIACIO
-; =========================
-(deftemplate candidat-plat
-  (slot plat)              ; instance-name Plat
-  (slot ordre)             ; instance-name Ordre
-  (slot preu (type NUMBER))
-  (slot formalitat (type SYMBOL))
-  (slot temperatura (type SYMBOL))
-  (multislot alergens (type SYMBOL))
-  (slot score (type NUMBER))
+(defrule PreferenciesMenu::preguntar-interior-exterior
+  ?p <- (peticio (espai ?s&nil))
+  (preguntat-dinar-sopar)
+  (not (preguntat-interior-exterior))
+=>
+  (bind ?r (valida-opcio "Es farà en interior o exterior?" interior exterior))
+  (modify ?p (espai ?r))
+  (assert (preguntat-interior-exterior))
 )
 
-(defrule genera-candidat-basic
-  (object (is-a Plat)
-          (name ?plat)
-          (preu_venta ?pv)
-          (formalitat ?fstr)
-          (temperatura ?tstr)
-          (alergens $?als)
-          (te_ordre $?ords))
-  (llindars (preu_min ?mn) (preu_max ?mx))
-  (test (and (numberp ?pv) (>= ?pv ?mn) (<= ?pv ?mx)))
-  =>
-  (bind ?f (norm-str->sym ?fstr))
-  (bind ?t (norm-str->sym ?tstr))
-  (progn$ (?o $?ords)
-    (assert (candidat-plat
-              (plat ?plat)
-              (ordre ?o)
-              (preu ?pv)
-              (formalitat ?f)
-              (temperatura ?t)
-              (alergens $?als)
-              (score 0))))
+; (defrule PreferenciesMenu::preguntar-adreca
+;   (exists (preguntat-interior-exterior))
+;   (not (exists (preguntat-adreca)))
+;   =>
+  
+;   (assert (preguntat-adreca))
+; )
+
+; MODIFICAR LÍMIT MÀXIM
+(defrule PreferenciesMenu::preguntar-num-comensals
+  ?p <- (peticio (num-comensals ?n&nil))
+  (preguntat-interior-exterior)
+  (not (preguntat-num-comensals))
+=>
+  (bind ?r (valida-num "Quants comensals assistiran aproximadament?" 1 5000))
+  (modify ?p (num-comensals ?r))
+  (assert (preguntat-num-comensals))
 )
 
-(defrule bonus-formalitat
-  ?c <- (candidat-plat (formalitat ?fp) (score ?s))
-  (tag-formalitat (val ?fe))
-  (test (or (eq ?fp ?fe) (eq ?fp tradicional)))
-  =>
-  (modify ?c (score (+ (if (numberp ?s) then ?s else 0) 10)))
+(defrule PreferenciesMenu::preguntar-infantil-senior
+  ?p <- (peticio (infantil-senior ?x&nil))
+  (preguntat-num-comensals)
+  (not (preguntat-infantil-senior))
+=>
+  (bind ?r (valida-boolea "Cal una opció infantil o suau per gent gran? (sí/no)"))
+  (modify ?p (infantil-senior ?r))
+  (assert (preguntat-infantil-senior))
 )
 
-(defrule penalitza-alergen
-  ?c <- (candidat-plat (alergens $?als) (score ?s))
-  (peticio (restriccions-alergen $?rs))
-  (test (intersection$ $?als $?rs))
-  =>
-  (modify ?c (score (- (if (numberp ?s) then ?s else 0) 100)))
+; MODIFICAR LÍMIT MÀXIM
+(defrule PreferenciesMenu::preguntar-pressupost
+  ?p <- (peticio (pressupost ?pp&nil))
+  (preguntat-infantil-senior)
+  (not (preguntat-pressupost))
+=>
+  (bind ?r (valida-num "Quin és el pressupost per persona aproximat?" 1 1000))
+  (modify ?p (pressupost ?r))
+  (assert (preguntat-pressupost))
 )
 
-(defrule bonus-temperatura
-  ?c <- (candidat-plat (temperatura ?t) (score ?s))
-  (test (or (eq ?t fred) (eq ?t tebi) (eq ?t calent)))
-  =>
-  (modify ?c (score (+ (if (numberp ?s) then ?s else 0) 2)))
+(defrule PreferenciesMenu::preguntar-formalitat
+  ?p <- (peticio (formalitat ?f&nil))
+  (preguntat-pressupost)
+  (not (preguntat-formalitat))
+=>
+  (bind ?r (valida-opcio "Quin grau de formalitat vols? (formal/ informal)" 
+            informal formal))
+  (modify ?p (formalitat ?r))
+  (assert (preguntat-formalitat))
 )
 
-; =========================
-; REFINAMENT
-; =========================
-(deftemplate seleccio
-  (slot primer)
-  (slot principal)
-  (slot postre)
-  (slot beguda)
-  (slot preu_total (type NUMBER))
+(defrule PreferenciesMenu::preguntar-beguda-general
+  ?p <- (peticio (beguda-mode ?bm&nil))
+  (preguntat-formalitat)
+  (not (preguntat-beguda-general))
+=>
+  (bind ?r (valida-opcio "Beguda per a tot el menú o per a cada plat? (general/per-plat)" general per-plat))
+  (modify ?p (beguda-mode ?r))
+  (assert (preguntat-beguda-general))
 )
 
-; Tria el millor primer/principal/postre
-(deffunction finalize-menu ()
-  (bind ?bestPr nil) (bind ?sPr -1.0e9)
-  (bind ?bestPg nil) (bind ?sPg -1.0e9)
-  (bind ?bestPo nil) (bind ?sPo -1.0e9)
-  (do-for-all-facts ((?c candidat-plat)) TRUE
-    (bind ?oname (instance-name ?c:ordre))
-    (if (eq ?oname [primer]) then
-      (if (> ?c:score ?sPr) then (bind ?sPr ?c:score) (bind ?bestPr ?c)))
-    (if (eq ?oname [principal]) then
-      (if (> ?c:score ?sPg) then (bind ?sPg ?c:score) (bind ?bestPg ?c)))
-    (if (eq ?oname [postre]) then
-      (if (> ?c:score ?sPo) then (bind ?sPo ?c:score) (bind ?bestPo ?c))))
-  (if (and ?bestPr ?bestPg ?bestPo) then
-    (bind ?p1 (fact-slot-value ?bestPr plat))
-    (bind ?p2 (fact-slot-value ?bestPg plat))
-    (bind ?p3 (fact-slot-value ?bestPo plat))
-    (bind ?preuTot (+ (fact-slot-value ?bestPr preu)
-                      (fact-slot-value ?bestPg preu)
-                      (fact-slot-value ?bestPo preu)))
-    (assert (seleccio (primer ?p1) (principal ?p2) (postre ?p3) (preu_total ?preuTot)))
-   else
-    (printout t "No hi ha candidats suficients per a primer/principal/postre (revisa llindars o dades)." crlf))
+(defrule PreferenciesMenu::preguntar-alcohol
+  ?p <- (peticio (alcohol ?a&nil))
+  (preguntat-beguda-general)
+  (not (preguntat-alcohol))
+=>
+  (bind ?r (valida-boolea "Prefereixes que el menú inclogui begudes alcohòliques? (sí/no)"))
+  (modify ?p (alcohol ?r))
+  (assert (preguntat-alcohol))
 )
 
-(defrule try-build-menu
-  (declare (salience -10))
-  (exists (candidat-plat))
-  =>
-  (finalize-menu)
+(defrule PreferenciesMenu::preguntar-menu-unic
+  ?p <- (peticio (menu-mode ?mm&nil))
+  (preguntat-alcohol)
+  (not (preguntat-menu-unic))
+=>
+  (bind ?r (valida-opcio "Vols un menú únic per a tothom o opcions alternatives? (unic/alternatiu)" unic alternatiu))
+  (modify ?p (menu-mode ?r))
+  (assert (preguntat-menu-unic))
 )
 
-; Beguda del plat principal si hi ha maridatge
-(defrule assigna-beguda
-  ?s <- (seleccio (principal ?p2) (beguda ?b&nil))
-  (object (is-a Plat) (name ?p2) (marida_amb $?bgs))
-  (test (> (length$ $?bgs) 0))
-  =>
-  (modify ?s (beguda (nth$ 1 $?bgs)))
+(defrule PreferenciesMenu::preguntar-alergens-prohibits
+  ?p <- (peticio (alergies-si ?as&nil))
+  (preguntat-menu-unic)
+  (not (preguntat-alergens-prohibits))
+=>
+  (bind ?r (valida-boolea "Hi ha al·lèrgies o ingredients prohibits que s'han d'evitar? (sí/no)"))
+  (modify ?p (alergies-si ?r))
+  (assert (preguntat-alergens-prohibits))
 )
+; (defrule PreferenciesMenu::detallar-alergens
+;   ?p <- (peticio (alergies-si ?r&:(or (eq ?r "si") (eq ?r "sí"))) (alergens ?al&nil))
+;   (preguntat-alergens-prohibits)
+;   (not (alergens-detalats))
+; =>
+;   (printout t "Indica'ls separats per espais (ex: gluten marisc lactosa): " crlf)
+;   (bind ?txt (lowcase (readline)))
+;   (modify ?p (alergens ?txt))
+;   (assert (alergens-detalats))
+; )
+;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
+(defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 
-(defrule mostrar
-  (seleccio (primer ?p1) (principal ?p2) (postre ?p3) (beguda ?b) (preu_total ?pt))
-  =>
-  (printout t crlf "*** MENU PROPOSAT ***" crlf)
-  (printout t "Primer:    " ?p1 crlf)
-  (printout t "Principal: " ?p2 crlf)
-  (printout t "Postres:   " ?p3 crlf)
-  (if ?b then (printout t "Beguda:    " ?b crlf))
-  (printout t "Preu 3 plats (sense beguda): " ?pt crlf crlf))
+;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
+(defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
+
+;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
+(defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
