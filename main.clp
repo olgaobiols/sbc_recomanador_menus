@@ -1,4 +1,49 @@
-(defmodule MAIN(export ?ALL))
+(defmodule MAIN (export ?ALL))
+
+(deftemplate MAIN::peticio
+  (slot tipus-esdeveniment)               ; SYMBOL (nil al principi)
+  (slot data)                             ; SYMBOL
+  (slot torn)                             ; SYMBOL
+  (slot espai)                            ; SYMBOL
+  (slot num-comensals (type INTEGER SYMBOL)) ; permet nil al principi
+  (slot infantil-senior (type SYMBOL)) ; "si"/"no" en minúscules
+  (slot pressupost (type NUMBER SYMBOL))  ; permet nil al principi
+  (slot formalitat)                       ; SYMBOL: informal/formal
+  (slot beguda-mode )                      ; SYMBOL: general/per-plat
+  (slot alcohol )                          ; SYMBOL: si/no
+  (slot menu-mode )                        ; SYMBOL: unic/alternatiu
+  (slot alergies-si (type SYMBOL)) ; si/no
+  (slot alergens)                         ; TEXT/SYMBOL
+)
+
+(defrule MAIN::boot
+  (declare (salience 10000) (auto-focus TRUE)) 
+  (initial-fact)
+  =>
+  (printout t "Benvingut! Iniciant flux de preguntes..." crlf)
+  (assert (peticio))
+  (focus PreferenciesMenu))
+
+
+;; COMENTARIS GENERALS ---------------------------------------------------
+; definir usa-ingredient ??
+; DEFINIR QUANTITAT INGREDIENT ??
+; CORREGIR ALCOHOL NO --> MILLOR FALSE PER PODER FER NOT??
+
+;; ------------------------------------------------------------------
+
+; HELPERS
+(deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
+  (/ (float (round (* ?x 100))) 100.0))
+
+(deffunction factor-complexitat (?c) "Factor de complexitat segons la classificació baixa/mitjana/alta"
+  (if (eq ?c baixa) then 1.10
+   else (if (eq ?c mitjana) then 1.25
+   else (if (eq ?c alta) then 1.50 else 1.20))))
+
+(deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
+  (if (eq ?f formal) then 1.15 else 1.00))
+
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
 (deffunction valida-boolea "Valida una resposta booleana (sí/no)"
@@ -58,7 +103,6 @@
   ?resp
 )
 
-
 ;; MÒDULS DE CONTROL I CLASSIFICACIÓ HEURÍSTICA-------------------------------
 (defmodule ControlFlux (import MAIN ?ALL))
 (defrule ControlFlux::arrencada
@@ -75,25 +119,10 @@
 (defmodule PreferenciesMenu (import MAIN ?ALL) (export ?ALL))
 ; ??????????????
 
-(deftemplate peticio
-  (slot tipus-esdeveniment)               ; SYMBOL (nil al principi)
-  (slot data)                             ; SYMBOL
-  (slot torn)                             ; SYMBOL
-  (slot espai)                            ; SYMBOL
-  (slot num-comensals (type INTEGER SYMBOL)) ; permet nil al principi
-  (slot infantil-senior (type SYMBOL) (default no)) ; "si"/"no" en minúscules
-  (slot pressupost (type NUMBER SYMBOL))  ; permet nil al principi
-  (slot formalitat)                       ; SYMBOL: informal/formal
-  (slot beguda-mode)                      ; SYMBOL: general/per-plat
-  (slot alcohol)                          ; SYMBOL: si/no
-  (slot menu-mode)                        ; SYMBOL: unic/alternatiu
-  (slot alergies-si (type SYMBOL) (default no)) ; si/no
-  (slot alergens)                         ; TEXT/SYMBOL
-)
-
-
+; AFEGIR PREU MIN I PREU MAX --> REVISAR ENUNCIAT PROBLEMA !!!!!
+; AFEGIR TYPES ? O NO CAL SI JA ESTAN A ONTOLOGIA ????
 (defrule PreferenciesMenu::iniciar-peticio
-  (declare (salience 1000))
+  (declare (auto-focus TRUE))
   (not (peticio))
   (not (iniciat))
   =>
@@ -106,6 +135,7 @@
 
 ; PREGUNTES DE CONTEXT GENERAL DE L'ESDEVENIMENT
 (defrule PreferenciesMenu::preguntar-tipus-esdeveniment
+  (declare (auto-focus TRUE))
   ?p <- (peticio (tipus-esdeveniment ?te&nil))
   (not (preguntat-tipus))
 =>
@@ -256,6 +286,47 @@
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
+; (defrule genera-candidat-basic-plat
+; )
+
+
+
+
+
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
+
+; VEURE A QUIN MODUL IMPORTAR-HO
+(defmodule ComposicioMenus (import MAIN ?ALL)(export ?ALL))
+
+; (defrule ComposicioMenus::calcula-preu-venta-plat "Calcula el preu de venda d'un plat segons els ingredients que el componen i altres factors rellevants"
+;   (plat (nom ?np)(complexitat ?cx)(racio ?r)(formalitat ?ff)) ; AJUSTAR FORMULA SEGONS NOSTRE CRITERI / EXPERT
+;   (not (plat-preu (plat ?np)))
+;   =>
+;   (bind ?cost-base
+;     (accumulate 
+;       (bind ?sum 0.0)
+;       (and (usa-ingredient (plat ?np)(ingredient ?ni)(quantitat ?q))
+;            (ingredient (nom ?ni)(cost-unitari ?cu)))
+;       (+ ?sum (* ?q ?cu))))
+
+;   (bind ?fcomp (factor-complexitat ?cx))
+;   (bind ?frac  (if (> ?r 1.0) then ?r else 1.0)) ; AJUSTAR SEGONS MIDES RACIONS BASE DE DADES
+;   (bind ?fform (factor-formalitat ?ff))
+;   (bind ?marge 1.35) ; marge global de venda --> AJUSTAR SEGONS BENEFICI DESITJAT
+
+;   (bind ?preu-venta (round2 (* ?cost-base ?fcomp ?frac ?fform ?marge))) 
+;   (assert (plat-preu (plat ?np)(preu-venta ?preu-venta)))
+; )
+
+; (defrule ComposicioMenus::calcula-preu-venta-beguda
+; ; atributs beguda que es poden tenir en compte: alcohol, formalitat, preu_cost, ?
+; ; tenir en compte si beguda per plat o general del menu
+;   ?b <- ()
+; )
+; AFEGIR ID MENU A ONTOLOGIA EN COMPTES DE NOM I GENERAR NOM EN FUNCIO ATRIBUTS
+; (defrule ComposicioMenus::calcula-preu-venta-menu
+
+; )
+
