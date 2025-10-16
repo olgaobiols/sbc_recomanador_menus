@@ -91,7 +91,7 @@
 
   (while (not ?resp_valida)
     (printout t ?pregunta crlf)
-    (bind ?input (lowcase (readline)))
+    (bind ?input (sym-cat (nth$ 1 (explode$ (lowcase (readline))))))
 
     ; comprova si l’entrada és una de les opcions vàlides
     (if (member$ ?input ?opcions) then
