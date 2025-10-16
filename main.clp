@@ -22,6 +22,7 @@
 ; CORREGIR ALCOHOL NO --> MILLOR FALSE PER PODER FER NOT??
 ; MODIFICAR LÍMIT MÀXIM i MÍNIM  MENU??? --> VEURE ENUNCIAT -> NO PREU APROXIMAT PER CAP
 ; AFEGIR ID MENU A ONTOLOGIA EN COMPTES DE NOM I GENERAR NOM EN FUNCIO ATRIBUTS ???
+; AFEGIR POSSIBILITAT PER PART DE L USUARI  DE DIR QUE LI ES IGUAL EL FILTRE
 ;; ------------------------------------------------------------------
 
 ; HELPERS
@@ -264,30 +265,73 @@
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits))
 )
-; (defrule PreferenciesMenu::detallar-alergens
-;   ?p <- (peticio (alergies-si ?r&:(or (eq ?r "si") (eq ?r "sí"))) (alergens ?al&nil))
-;   (preguntat-alergens-prohibits)
-;   (not (alergens-detalats))
-; =>
-;   (printout t "Indica'ls separats per espais (ex: gluten marisc lactosa): " crlf)
-;   (bind ?txt (lowcase (readline)))
-;   (modify ?p (alergens ?txt))
-;   (assert (alergens-detalats))
-; )
+(defrule PreferenciesMenu::detallar-alergens
+  ?p <- (peticio (alergies-si ?r&:(or (eq ?r "si") (eq ?r "sí"))) (alergens ?al&nil))
+  (preguntat-alergens-prohibits)
+  (not (alergens-detalats))
+=>
+  (printout t "Indica'ls separats per espais (ex: gluten marisc lactosa): " crlf)
+  (bind ?txt (lowcase (readline)))
+  (modify ?p (alergens ?txt))
+  (assert (alergens-detalats))
+)
 
 
 ;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+(deftemplate AbstraccioHeuristica::perfil-usuari
+  (slot temporada)        ; primavera/estiu/tardor/hivern
+  (slot torn)             ; dinar/sopar
+  (slot espai)            ; interior/exterior
+  (slot formalitat)       ; informal/formal
+  (slot alcohol)          ; si/no
+  (slot infantil-senior)  ; si/no
+  (slot num-comensals (type INTEGER))
+  (multislot alergens-prohibits)
+
+  ; AJUSTAR SEGONS CRITERIS !!!!!!!!!
+  ;; pesos per al matching (ajustables)
+  (slot pes-formalitat (type FLOAT) (default 1.0))
+  (slot pes-temporada  (type FLOAT) (default 0.8))
+  (slot pes-beguda     (type FLOAT) (default 0.5))
+  (slot pes-alergies   (type FLOAT) (default 2.0))
+  (slot pes-torn       (type FLOAT) (default 0.5))
+  (slot pes-espai      (type FLOAT) (default 0.5))
+)
+
+(defrule AbstraccioHeuristica::construir-perfil
+  ?p <- (peticio (data ?temp&nil) (torn ?t&~nil)
+                 (espai ?e&~nil) (formalitat ?f&~nil)
+                 (alcohol ?al&~nil) (infantil-senior ?infsen&~nil)
+                 (num-comensals ?n&~nil) (pressupost ?pp&~nil)
+                 (alergies-si ?asi&~nil) (alergens ?als)
+        )
+  (not (perfil-usuari))
+  =>
+  ;(...) falta afegir logica tractament alergens ?? ?al-list?? 
+  (assert (perfil-usuari
+            (temporada ?temp) (torn ?t) (espai ?e) (formalitat ?f)
+            (alcohol ?al) (infantil-senior ?infsen) (num-comensals ?n)
+            ;(alergens-prohibits ?al-list)
+            ) ; falta alergens i pressupost ??
+  )
+)
+
+; (defrule AbstraccioHeuristica::temperatura-espai-temporada
+;   ; defineix la temperatura que ha de tenir un plat segons 
+;   ; l'espai (interior/exterior) i la temporada (estiu/hivern/primavera/tardor)
+
+; )
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
-; (defrule genera-candidat-basic-plat
-; )
-
-
-
-
-
+(deftemplate AssociacioHeuristica::candidat-menu
+  (slot id-menu)
+  (slot franja-preu) ; barat/mitjà/car
+  (slot puntuacio (type FLOAT))
+  (multislot motius)
+)
+; (deffunction AssociacioHeuristica::afegir-motiu (?))
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))

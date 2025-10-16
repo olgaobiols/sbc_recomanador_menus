@@ -61,18 +61,18 @@
     (multislot disposa_de
         (type INSTANCE)
         (create-accessor read-write))
-    (slot adreça
-        (type STRING)
-        (create-accessor read-write))
+    ; (slot adreca
+    ;     (type STRING)
+    ;     (create-accessor read-write))
     (slot data
         (type SYMBOL)
         (create-accessor read-write))
     (slot formalitat
         (type STRING)
         (create-accessor read-write))
-    (slot hora
-        (type SYMBOL)
-        (create-accessor read-write))
+    ; (slot hora
+    ;     (type SYMBOL)
+    ;     (create-accessor read-write))
     (slot interior
         (type SYMBOL)
         (create-accessor read-write))
@@ -152,7 +152,7 @@
     (multislot te_ordre
         (type INSTANCE)
         (create-accessor read-write))
-        
+
     (multislot alergens
         (type SYMBOL)
         (create-accessor read-write))
