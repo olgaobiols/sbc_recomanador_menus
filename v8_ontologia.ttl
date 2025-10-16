@@ -128,6 +128,11 @@ untitled-ontology-9:data rdf:type owl:DatatypeProperty ,
                          rdfs:range xsd:dateTime .
 
 
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#disponibilitat
+untitled-ontology-9:disponibilitat rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain untitled-ontology-9:Ingredient .
+
+
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#edat
 untitled-ontology-9:edat rdf:type owl:DatatypeProperty ,
                                   owl:FunctionalProperty ;
@@ -201,15 +206,6 @@ untitled-ontology-9:preu_cost rdf:type owl:DatatypeProperty ,
                               rdfs:range xsd:double .
 
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_venta
-untitled-ontology-9:preu_venta rdf:type owl:DatatypeProperty ,
-                                        owl:FunctionalProperty ;
-                               rdfs:domain untitled-ontology-9:Beguda ,
-                                           untitled-ontology-9:Menu ,
-                                           untitled-ontology-9:Plat ;
-                               rdfs:range xsd:double .
-
-
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#procedencia
 untitled-ontology-9:procedencia rdf:type owl:DatatypeProperty ,
                                          owl:FunctionalProperty ;
@@ -221,12 +217,6 @@ untitled-ontology-9:procedencia rdf:type owl:DatatypeProperty ,
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#restriccions-alergen
 untitled-ontology-9:restriccions-alergen rdf:type owl:DatatypeProperty ;
                                          rdfs:domain untitled-ontology-9:Comensal .
-
-
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#sabor
-untitled-ontology-9:sabor rdf:type owl:DatatypeProperty ;
-                          rdfs:domain untitled-ontology-9:Ingredient ;
-                          rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#temperatura

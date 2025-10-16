@@ -1,8 +1,8 @@
 ;;; ---------------------------------------------------------
-;;; v7_ontologia.clp
+;;; v8_ontologia.clp
 ;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology v7_ontologia.ttl
-;;; :Date 15/10/2025 13:46:58
+;;; Translated to CLIPS from ontology v8_ontologia.ttl
+;;; :Date 16/10/2025 10:26:37
 
 (defclass Beguda
     (is-a USER)
@@ -24,9 +24,6 @@
         (type STRING)
         (create-accessor read-write))
     (slot preu_cost
-        (type FLOAT)
-        (create-accessor read-write))
-    (slot preu_venta
         (type FLOAT)
         (create-accessor read-write))
     (slot procedencia
@@ -104,14 +101,14 @@
     (multislot alternativa_restriccio
         (type STRING)
         (create-accessor read-write))
+    (multislot disponibilitat
+        (type SYMBOL)
+        (create-accessor read-write))
     (slot nom
         (type STRING)
         (create-accessor read-write))
     (slot preu_cost
         (type FLOAT)
-        (create-accessor read-write))
-    (multislot sabor
-        (type STRING)
         (create-accessor read-write))
 )
 
@@ -124,9 +121,6 @@
         (create-accessor read-write))
     (slot nom
         (type STRING)
-        (create-accessor read-write))
-    (slot preu_venta
-        (type FLOAT)
         (create-accessor read-write))
     (multislot tipus_cuina
         (type STRING)
@@ -169,9 +163,6 @@
         (create-accessor read-write))
     (slot nom
         (type STRING)
-        (create-accessor read-write))
-    (slot preu_venta
-        (type FLOAT)
         (create-accessor read-write))
     (slot procedencia
         (type STRING)
