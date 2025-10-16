@@ -14,6 +14,7 @@
     (multislot part_de
         (type INSTANCE)
         (create-accessor read-write))
+
     (slot alcohol
         (type SYMBOL)
         (create-accessor read-write))
@@ -41,6 +42,7 @@
     (multislot imposa
         (type INSTANCE)
         (create-accessor read-write))
+
     (slot edat
         (type INTEGER)
         (create-accessor read-write))
@@ -95,6 +97,7 @@
     (multislot part_de
         (type INSTANCE)
         (create-accessor read-write))
+
     (multislot alergens
         (type SYMBOL)
         (create-accessor read-write))
@@ -149,6 +152,7 @@
     (multislot te_ordre
         (type INSTANCE)
         (create-accessor read-write))
+        
     (multislot alergens
         (type SYMBOL)
         (create-accessor read-write))
