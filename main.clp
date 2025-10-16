@@ -16,20 +16,12 @@
   (slot alergens)                         ; TEXT/SYMBOL
 )
 
-(defrule MAIN::boot
-  (declare (salience 10000) (auto-focus TRUE)) 
-  (initial-fact)
-  =>
-  (printout t "Benvingut! Iniciant flux de preguntes..." crlf)
-  (assert (peticio))
-  (focus PreferenciesMenu))
-
-
 ;; COMENTARIS GENERALS ---------------------------------------------------
 ; definir usa-ingredient ??
 ; DEFINIR QUANTITAT INGREDIENT ??
 ; CORREGIR ALCOHOL NO --> MILLOR FALSE PER PODER FER NOT??
-
+; MODIFICAR LÍMIT MÀXIM i MÍNIM  MENU??? --> VEURE ENUNCIAT -> NO PREU APROXIMAT PER CAP
+; AFEGIR ID MENU A ONTOLOGIA EN COMPTES DE NOM I GENERAR NOM EN FUNCIO ATRIBUTS ???
 ;; ------------------------------------------------------------------
 
 ; HELPERS
@@ -53,16 +45,17 @@
 
   (while (not ?resp_valida)
     (printout t ?prompt " (sí/no): " crlf)
-    (bind ?resp_usuari (readline))
-    (bind ?resp (lowcase ?resp_usuari))  
-    (if (or (eq ?resp "sí") (eq ?resp "si") (eq ?resp "s") (eq ?resp "n") (eq ?resp "no")) then
-        (bind ?resp_valida TRUE)
+    (bind ?x (lowcase (readline)))
+    (if (or (eq ?x "sí") (eq ?x "si") (eq ?x "s") (eq ?x "y") (eq ?x "yes")) then
+        (bind ?resp_valida TRUE) (bind ?resp si)
     else
-        (printout t "Si us plau respon amb 'sí' o 'no'." crlf)
-    )
-  )
-  ?resp ; retorna la resposta validada
-) 
+    (if (or (eq ?x "no") (eq ?x "n")) then
+        (bind ?resp_valida TRUE) (bind ?resp no)
+    else
+        (printout t "Si us plau, respon 'sí' o 'no'." crlf))))
+  ?resp
+)
+
 
 (deffunction valida-num "Valida una resposta numèrica dins d'un rang"
   (?prompt ?min ?max)
@@ -91,7 +84,7 @@
 
   (while (not ?resp_valida)
     (printout t ?pregunta crlf)
-    (bind ?input (sym-cat (nth$ 1 (explode$ (lowcase (readline))))))
+    (bind ?input (string-to-field (lowcase (readline)))) 
 
     ; comprova si l’entrada és una de les opcions vàlides
     (if (member$ ?input ?opcions) then
@@ -106,7 +99,7 @@
 ;; MÒDULS DE CONTROL I CLASSIFICACIÓ HEURÍSTICA-------------------------------
 (defmodule ControlFlux (import MAIN ?ALL))
 (defrule ControlFlux::arrencada
-  (declare (salience 1000) (auto-focus TRUE))
+  (declare (auto-focus TRUE))
   (initial-fact)
   =>
   (focus RefinamentHeuristica)
@@ -210,7 +203,7 @@
   (assert (preguntat-infantil-senior))
 )
 
-; MODIFICAR LÍMIT MÀXIM
+
 (defrule PreferenciesMenu::preguntar-pressupost
   ?p <- (peticio (pressupost ?pp&nil))
   (preguntat-infantil-senior)
@@ -281,6 +274,8 @@
 ;   (modify ?p (alergens ?txt))
 ;   (assert (alergens-detalats))
 ; )
+
+
 ;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 
@@ -325,8 +320,7 @@
 ; ; tenir en compte si beguda per plat o general del menu
 ;   ?b <- ()
 ; )
-; AFEGIR ID MENU A ONTOLOGIA EN COMPTES DE NOM I GENERAR NOM EN FUNCIO ATRIBUTS
+
 ; (defrule ComposicioMenus::calcula-preu-venta-menu
 
 ; )
-
