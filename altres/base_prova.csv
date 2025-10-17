@@ -1,6 +1,0 @@
-nom,ordre,formalitat,temperatura,procedencia,complexitat,preu_cost,preu_venta,alergens,ingredients,temporades,marida_amb
-Crema catalana,postre,familiar,fred,catalana,baixa,,14.0,lactosa|ou,leche|piel-medio-limon|rama-canela|yemas-huevo|azucar|maicena,hivern|tardor,vi-dolc
-Calçots al forn,primer,familiar,calent,catalana,baixa,,17.0,,calcots|salsa-romesco,hivern|primavera,vi-blanc-sec|cava-brut
-Fricandó de vedella,principal,formal,calent,catalana,mitjana,,20.0,fruits-secs|gluten,vedella|ceba|bolets|vi-negre,tardor|hivern,vi-negre-crianza
-Pa amb tomàquet,primer,familiar,fred,catalana,baixa,,6.0,gluten,pa|tomàquet|oli|sal,estiu|tardor,vi-negre-jove
-Escalivada,primer,tradicional,fred,catalana,baixa,,9.0,,pebrot|alberginia|ceba|oli|sal,estiu,vi-blanc-sec|cava-brut
