@@ -1,27 +1,5 @@
 (defmodule MAIN (export ?ALL))
 
-
-
-
-; HELPERS --------------------------------------------------------------
-(deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
-  (/ (float (round (* ?x 100))) 100.0))
-
-(deffunction factor-complexitat (?c) "Factor de complexitat segons la classificació baixa/mitjana/alta"
-  (if (eq ?c baixa) then 1.10
-   else (if (eq ?c mitjana) then 1.25
-   else (if (eq ?c alta) then 1.50 else 1.20))))
-
-(deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
-  (if (eq ?f formal) then 1.15 else 1.00))
-
-; Templates de control de flux
-(deftemplate respostes-completes
-  (slot estat (default TRUE)))
-
-(deftemplate menus-presentats
-  (slot estat (default TRUE)))
-
 (deftemplate peticio
   (slot tipus-esdeveniment (type SYMBOL) (default nil))
   (slot data (type SYMBOL) (default nil))
@@ -107,12 +85,10 @@
 (defrule PreferenciesMenu::iniciar-peticio
   (declare (auto-focus TRUE))
   (not (peticio))
-;   (not (iniciat))
   =>
   (printout t "Benvingut/da al recomanador de menús RicoRico!" crlf)
   (printout t "Si us plau respon a les preguntes següents per personalitzar les propostes." crlf)
   (assert (peticio))
-;   (assert (iniciat))
   (focus PreferenciesMenu))
 
 ; PREGUNTES DE CONTEXT GENERAL DE L'ESDEVENIMENT
@@ -124,7 +100,6 @@
   (bind ?res (valida-opcio 
               "Quin tipus d’esdeveniment estàs organitzant? (casament/ aniversari/ comunió/ congrés/ empresa/ altres)"
               casament aniversari comunio congres empresa altres)
-  
   )
   (modify ?p (tipus-esdeveniment ?res))
   (assert (preguntat-tipus)))
@@ -285,6 +260,17 @@
       (printout t "  Principal: " (send ?segon get-nom) crlf)
       (printout t "  Postres: " (send ?postre get-nom) crlf)))
   (assert (menus-presentats)))
+
+; (deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
+;   (/ (float (round (* ?x 100))) 100.0))
+
+; (deffunction factor-complexitat (?c) "Factor de complexitat segons la classificació baixa/mitjana/alta"
+;   (if (eq ?c baixa) then 1.10
+;    else (if (eq ?c mitjana) then 1.25
+;    else (if (eq ?c alta) then 1.50 else 1.20))))
+
+; (deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
+;   (if (eq ?f formal) then 1.15 else 1.00))
 
 ; (defrule ComposicioMenus::calcula-preu-venta-plat "Calcula el preu de venda d'un plat segons els ingredients que el componen i altres factors rellevants"
 ;   (plat (nom ?np)(complexitat ?cx)(racio ?r)(formalitat ?ff)) ; AJUSTAR FORMULA SEGONS NOSTRE CRITERI / EXPERT
