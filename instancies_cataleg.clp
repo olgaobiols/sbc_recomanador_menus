@@ -24,7 +24,7 @@
   (plat-amanida-mongetes-tendres-patata of Plat
     (nom "Amanida de mongetes tendres i patata")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -34,7 +34,7 @@
   (plat-cigrons-espinacs-entrant of Plat
     (nom "Cigrons amb espinacs (entrant)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -44,7 +44,7 @@
   (plat-sopa-farigola-ou of Plat
     (nom "Sopa de farigola amb ou")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -54,7 +54,7 @@
   (plat-amanida-bacalla-taronja of Plat
     (nom "Amanida de bacallà i taronja")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -64,7 +64,7 @@
   (plat-timbal-patata-tonyina-pebrot-escalivat of Plat
     (nom "Timbal de patata, tonyina i pebrot escalivat")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -114,7 +114,7 @@
   (plat-sopa-peix-fideus of Plat
     (nom "Sopa de peix amb fideus")
     (procedencia "Catalunya")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -153,7 +153,7 @@
   ; origen: segons_varietat.csv
   (plat-filet-vedella-al-pebre-verd of Plat
     (nom "Filet de vedella al pebre verd")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -180,7 +180,7 @@
   ; origen: segons_varietat.csv
   (plat-mandonguilles-salsa-d-ametlla of Plat
     (nom "Mandonguilles amb salsa d’ametlla")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -198,7 +198,7 @@
   ; origen: segons_varietat.csv
   (plat-secreto-iberic-planxa-chimichurri-suau of Plat
     (nom "Secreto ibèric a la planxa amb chimichurri suau")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -216,7 +216,7 @@
   ; origen: segons_varietat.csv
   (plat-costelles-porc-baixa-temperatura-glassejades of Plat
     (nom "Costelles de porc a baixa temperatura (glassejades)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -243,7 +243,7 @@
   ; origen: segons_varietat.csv
   (plat-corder-al-chilindron of Plat
     (nom "Corder al chilindrón")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -270,7 +270,7 @@
   ; origen: segons_varietat.csv
   (plat-pollastre-al-curri-suau-arros of Plat
     (nom "Pollastre al curri suau amb arròs")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -290,7 +290,7 @@
   (plat-esqueixada-alvocat of Plat
     (nom "Esqueixada amb alvocat")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -300,7 +300,7 @@
   (plat-calcots-romesco-rac-entrada of Plat
     (nom "Calçots amb romesco (rac. entrada)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -330,7 +330,7 @@
   (plat-arros-negre of Plat
     (nom "Arròs negre")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -350,7 +350,7 @@
   (plat-coca-recapte-porcio of Plat
     (nom "Coca de recapte (porció)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -360,7 +360,7 @@
   (plat-esparrecs-brasa-romesco of Plat
     (nom "Esparrecs a la brasa amb romesco")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -370,7 +370,7 @@
   (plat-amanida-favetes-pernil of Plat
     (nom "Amanida de favetes amb pernil")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -380,7 +380,7 @@
   (plat-faves-catalana-racio-primer of Plat
     (nom "Faves a la catalana (ració primer)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -390,7 +390,7 @@
   (plat-cargols-llauna-racio-primer of Plat
     (nom "Cargols a la llauna (ració primer)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -400,7 +400,7 @@
   (plat-brandada-bacalla-cassoleta of Plat
     (nom "Brandada de bacallà (cassoleta)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -410,7 +410,7 @@
   (plat-trinxat-cerdanya-racio-primer of Plat
     (nom "Trinxat de la Cerdanya (ració primer)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -420,7 +420,7 @@
   (plat-amanida-formatge-cabra-fruits-secs of Plat
     (nom "Amanida de formatge de cabra amb fruits secs")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -450,7 +450,7 @@
   (plat-crema-bolets of Plat
     (nom "Crema de bolets")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -460,7 +460,7 @@
   (plat-amanida-mongetes-ganxet-bacalla of Plat
     (nom "Amanida de mongetes del ganxet amb bacallà")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -470,7 +470,7 @@
   (plat-esqueixada-mongeta-tendra of Plat
     (nom "Esqueixada amb mongeta tendra")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -480,7 +480,7 @@
   (plat-amanida-d-arros-racio-primer of Plat
     (nom "Amanida d’arròs (ració primer)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -490,7 +490,7 @@
   (plat-entremesos-freds-plat-combinat of Plat
     (nom "Entremesos freds (plat combinat)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -500,7 +500,7 @@
   (plat-sardines-planxa-entrant of Plat
     (nom "Sardines a la planxa (entrant)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -510,7 +510,7 @@
   (plat-calamares-romana-entrant of Plat
     (nom "Calamares a la romana (entrant)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -520,7 +520,7 @@
   (plat-musclos-al-vapor-entrant of Plat
     (nom "Musclos al vapor (entrant)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -530,7 +530,7 @@
   (plat-amanida-tomaquet-ceba-figueres of Plat
     (nom "Amanida de tomàquet i ceba de Figueres")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -540,7 +540,7 @@
   (plat-graellada-carn of Plat
     (nom "Graellada de carn")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -550,7 +550,7 @@
   (plat-coca-salada-escalivada-tonyina of Plat
     (nom "Coca salada amb escalivada i tonyina")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -570,7 +570,7 @@
   (plat-sopa-ceba-gratinada of Plat
     (nom "Sopa de ceba gratinada")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -580,7 +580,7 @@
   (plat-dorada-planxa-verduretes of Plat
     (nom "Dorada a la planxa amb verduretes")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -590,7 +590,7 @@
   (plat-remenat-d-ous-esparrecs-pernil of Plat
     (nom "Remenat d’ous amb espàrrecs i pernil")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -618,7 +618,7 @@
   (plat-sopa-d-all-pa of Plat
     (nom "Sopa d’all i pa")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -628,7 +628,7 @@
   (plat-cap-pota of Plat
     (nom "Cap i pota")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -678,7 +678,7 @@
   (plat-arros-cassola of Plat
     (nom "Arròs a la cassola")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -748,7 +748,7 @@
   (plat-peus-porc-cargols of Plat
     (nom "Peus de porc amb cargols")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -758,7 +758,7 @@
   (plat-botifarra-mongetes of Plat
     (nom "Botifarra amb mongetes")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -768,7 +768,7 @@
   (plat-graellada-peix-emplatada of Plat
     (nom "Graellada de peix (emplatada)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -778,7 +778,7 @@
   (plat-arrossejat of Plat
     (nom "Arrossejat")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -798,7 +798,7 @@
   (plat-mandonguilles-sipia of Plat
     (nom "Mandonguilles amb sípia")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -808,7 +808,7 @@
   (plat-conill-cargols of Plat
     (nom "Conill amb cargols")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -818,7 +818,7 @@
   (plat-conill-cassola-allioli-negat of Plat
     (nom "Conill a la cassola amb allioli negat")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -848,7 +848,7 @@
   (plat-carn-d-olla-plat-principal of Plat
     (nom "Carn d’olla (plat principal)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -858,7 +858,7 @@
   (plat-llom-bacalla-sanfaina of Plat
     (nom "Llom de bacallà amb sanfaina")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -868,7 +868,7 @@
   (plat-ternasco-catalana-adaptat of Plat
     (nom "Ternasco a la catalana (adaptat)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -888,7 +888,7 @@
   (plat-civet-porc-senglar of Plat
     (nom "Civet de porc senglar")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -906,7 +906,7 @@
   ; origen: segons_varietat.csv
   (plat-secreto-iberic-planxa-chimichurri-suau-versio-banquet-versio-banquet of Plat
     (nom "Secreto ibèric a la planxa amb chimichurri suau (versió banquet) (versió banquet)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -915,7 +915,7 @@
   ; origen: segons_varietat.csv
   (plat-ratatouille-ou-poche-versio-banquet of Plat
     (nom "Ratatouille amb ou poché (versió banquet)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio gran)
@@ -960,7 +960,7 @@
   ; origen: segons_varietat.csv
   (plat-arros-negre-allioli of Plat
     (nom "Arròs negre amb allioli")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -987,7 +987,7 @@
   ; origen: segons_varietat.csv
   (plat-rabo-toro-estofat of Plat
     (nom "Rabo de toro estofat")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -996,7 +996,7 @@
   ; origen: segons_varietat.csv
   (plat-callos-madrilenya of Plat
     (nom "Callos a la madrilenya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -1005,7 +1005,7 @@
   ; origen: segons_varietat.csv
   (plat-ossobuco-milanesa of Plat
     (nom "Ossobuco a la milanesa")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -1023,7 +1023,7 @@
   ; origen: segons_varietat.csv
   (plat-lasanya-verdures of Plat
     (nom "Lasanya de verdures")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1032,7 +1032,7 @@
   ; origen: segons_varietat.csv
   (plat-cigrons-estofats-espinacs of Plat
     (nom "Cigrons estofats amb espinacs")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -1041,7 +1041,7 @@
   ; origen: segons_varietat.csv
   (plat-risotto-bolets-com-principal of Plat
     (nom "Risotto de bolets (com a principal)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -1050,7 +1050,7 @@
   ; origen: segons_varietat.csv
   (plat-marmitako of Plat
     (nom "Marmitako")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1077,7 +1077,7 @@
   ; origen: segons_varietat.csv
   (plat-pollastre-cervesa of Plat
     (nom "Pollastre a la cervesa")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1095,7 +1095,7 @@
   ; origen: segons_varietat.csv
   (plat-hamburguesa-gourmet-emplatada of Plat
     (nom "Hamburguesa gourmet (emplatada)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1114,7 +1114,7 @@
   (plat-sopa-peix-costa-catalana of Plat
     (nom "Sopa de peix (costa catalana)")
     (procedencia "Catalunya")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1134,7 +1134,7 @@
   (plat-tonyina-samfaina of Plat
     (nom "Tonyina amb samfaina")
     (procedencia "Catalunya")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1144,7 +1144,7 @@
   (plat-panellets-variats of Plat
     (nom "Panellets variats")
     (procedencia "Catalunya")
-    (formalitat "informal")
+    (formalitat "formal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1184,7 +1184,7 @@
   (plat-carquinyolis of Plat
     (nom "Carquinyolis")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -1224,7 +1224,7 @@
   (plat-xuixos-crema of Plat
     (nom "Xuixos de crema")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat alta)
     (mida_racio petita)
@@ -1234,7 +1234,7 @@
   (plat-bunyols-vent of Plat
     (nom "Bunyols de vent")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1244,7 +1244,7 @@
   (plat-coca-llardons of Plat
     (nom "Coca de llardons")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1254,7 +1254,7 @@
   (plat-coca-forner-pinyons of Plat
     (nom "Coca de forner amb pinyons")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1294,7 +1294,7 @@
   (plat-coca-llavaneres of Plat
     (nom "Coca de Llavaneres")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio mitja)
@@ -1323,7 +1323,7 @@
   ; origen: postres_varietat.csv
   (plat-gelat-vainilla-crumble-salsa-toffee of Plat
     (nom "Gelat de vainilla amb crumble i salsa toffee")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -1361,7 +1361,7 @@
   ; origen: postres_varietat.csv
   (plat-crumble-fruits-vermells of Plat
     (nom "Crumble de fruits vermells")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio petita)
@@ -1430,7 +1430,7 @@
   (plat-bescuit-nous-mel of Plat
     (nom "Bescuit amb nous i mel")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1440,7 +1440,7 @@
   (plat-crespells-dolcos-adaptacio of Plat
     (nom "Crespells dolços (adaptació)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1480,7 +1480,7 @@
   (plat-coca-d-ametlla-fina of Plat
     (nom "Coca d’ametlla fina")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1490,7 +1490,7 @@
   (plat-bunyols-quaresma of Plat
     (nom "Bunyols de Quaresma")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio petita)
@@ -1530,7 +1530,7 @@
   (plat-pastisset-cabell-d-angel of Plat
     (nom "Pastisset de cabell d’àngel")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1540,7 +1540,7 @@
   (plat-carquinyolis-xocolata of Plat
     (nom "Carquinyolis de xocolata")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -1550,7 +1550,7 @@
   (plat-bescuit-d-ametlla-tortell-fi of Plat
     (nom "Bescuit d’ametlla (tortell fi)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1580,7 +1580,7 @@
   (plat-bescuit-borracho-rovellat of Plat
     (nom "Bescuit borracho (rovellat)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1590,7 +1590,7 @@
   (plat-pijama-versio-moderna of Plat
     (nom "Pijama (versió moderna)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1600,7 +1600,7 @@
   (plat-coca-montserrat of Plat
     (nom "Coca de Montserrat")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1610,7 +1610,7 @@
   (plat-coca-vidre of Plat
     (nom "Coca de vidre")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1640,7 +1640,7 @@
   (plat-bescuit-iogurt-xocolata of Plat
     (nom "Bescuit de iogurt amb xocolata")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1650,7 +1650,7 @@
   (plat-coca-sant-joan of Plat
     (nom "Coca de Sant Joan")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1748,7 +1748,7 @@
   ; origen: primers_varietat.csv
   (plat-esparrecs-verds-brasa-romesco of Plat
     (nom "Espàrrecs verds a la brasa amb romesco")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1805,7 +1805,7 @@
   ; origen: primers_varietat.csv
   (plat-crema-porro-poma-verda of Plat
     (nom "Crema de porro i poma verda")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1815,7 +1815,7 @@
   (plat-conill-brasa-all-julivert of Plat
     (nom "Conill a la brasa amb all i julivert")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -1834,7 +1834,7 @@
   ; origen: primers_varietat.csv
   (plat-amanida-llenties-vinagreta of Plat
     (nom "Amanida de llenties amb vinagreta")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1864,7 +1864,7 @@
   (plat-escalopa-vedella-llimona of Plat
     (nom "Escalopa de vedella amb llimona")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -1874,7 +1874,7 @@
   (plat-peus-porc-brasa of Plat
     (nom "Peus de porc a la brasa")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio gran)
@@ -1883,7 +1883,7 @@
   ; origen: primers_varietat.csv
   (plat-ceps-saltejats-all-julivert of Plat
     (nom "Ceps saltejats amb all i julivert")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1922,7 +1922,7 @@
   ; origen: primers_varietat.csv
   (plat-mini-falafel-tahina-servei-alternatiu of Plat
     (nom "Mini falàfel amb tahina (servei alternatiu)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -1932,7 +1932,7 @@
   (plat-conill-samfaina of Plat
     (nom "Conill amb samfaina")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1952,7 +1952,7 @@
   (plat-xato of Plat
     (nom "Xató")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2001,7 +2001,7 @@
   ; origen: primers_varietat.csv
   (plat-hummus-crudites of Plat
     (nom "Hummus amb crudités")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2010,7 +2010,7 @@
   ; origen: primers_varietat.csv
   (plat-amanida-grega of Plat
     (nom "Amanida grega")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2019,7 +2019,7 @@
   ; origen: primers_varietat.csv
   (plat-ensaladilla-russa-fina of Plat
     (nom "Ensaladilla russa fina")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2068,7 +2068,7 @@
   ; origen: postres_varietat.csv
   (plat-gelat-artesa-assortit of Plat
     (nom "Gelat artesà (assortit)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2087,7 +2087,7 @@
   ; origen: primers_varietat.csv
   (plat-quiche-lorraine-porcio of Plat
     (nom "Quiche lorraine (porció)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2106,7 +2106,7 @@
   ; origen: primers_varietat.csv
   (plat-timbal-d-escalivada-formatge-cabra of Plat
     (nom "Timbal d’escalivada amb formatge de cabra")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2135,7 +2135,7 @@
   ; origen: primers_varietat.csv
   (plat-musclos-marinera of Plat
     (nom "Musclos a la marinera")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2154,7 +2154,7 @@
   ; origen: primers_varietat.csv
   (plat-pop-gallega-racio of Plat
     (nom "Pop a la gallega (ració)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2173,7 +2173,7 @@
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-copa-fruites-iogurt-mel of Plat
     (nom "Copa de fruites amb iogurt i mel")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2183,7 +2183,7 @@
   (plat-torro-cremos-cullera of Plat
     (nom "Torró cremós (cullera)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -2193,7 +2193,7 @@
   (plat-mousse-mato-mel-copa of Plat
     (nom "Mousse de mató i mel (copa)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2202,7 +2202,7 @@
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-vaset-llimona-mousse of Plat
     (nom "Vaset de llimona (mousse)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2211,7 +2211,7 @@
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-pastis-iogurt-llimona-vaset of Plat
     (nom "Pastís de iogurt i llimona (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2221,7 +2221,7 @@
   (plat-copa-tiramisu-mini of Plat
     (nom "Copa tiramisú (mini)")
     (procedencia "Itàlia")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -2230,7 +2230,7 @@
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-vaset-xocolata-gerds of Plat
     (nom "Vaset de xocolata i gerds")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2239,7 +2239,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-tartar-tonyina-soja of Plat
     (nom "Cullereta de tartar de tonyina i soja")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
     (mida_racio pica-pica)
@@ -2248,7 +2248,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-mini-tartar-salmo-alvocat of Plat
     (nom "Mini tàrtar de salmó amb alvocat")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2257,7 +2257,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-clotxines-al-vapor-llimona of Plat
     (nom "Clotxines al vapor amb llimona")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2266,7 +2266,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-ratatouille-tasta of Plat
     (nom "Ratatouille (tasta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2275,7 +2275,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-salmorejo-vaset of Plat
     (nom "Salmorejo (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2284,7 +2284,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-esqueixada-bacalla of Plat
     (nom "Esqueixada de bacallà")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2293,7 +2293,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-vitello-tonnato-laminats of Plat
     (nom "Vitello tonnato (laminats)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2302,7 +2302,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-amanida-caprese of Plat
     (nom "Amanida caprese")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2311,7 +2311,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-carpaccio-vedella-parmesa of Plat
     (nom "Carpaccio de vedella amb parmesà")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2320,7 +2320,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-ceviche-corvina-vaset of Plat
     (nom "Ceviche de corvina (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
     (mida_racio pica-pica)
@@ -2329,7 +2329,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-tartar-tonyina-soja-sesam of Plat
     (nom "Tàrtar de tonyina amb soja i sèsam")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2338,7 +2338,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-vichyssoise-vaset of Plat
     (nom "Vichyssoise (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2347,7 +2347,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-crema-carbassa-vaset of Plat
     (nom "Crema de carbassa (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2356,7 +2356,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-canelo-fred-tonyina-mos of Plat
     (nom "Caneló fred de tonyina (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2365,7 +2365,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-ou-guatlla-pate-torradeta of Plat
     (nom "Ou de guatlla amb paté (torradeta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2375,7 +2375,7 @@
   (plat-sopa-freda-tomaquet-sindria of Plat
     (nom "Sopa freda de tomàquet i síndria")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -2384,7 +2384,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-tartar-gambes-cullereta of Plat
     (nom "Tàrtar de gambes (cullereta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
     (mida_racio pica-pica)
@@ -2393,7 +2393,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-verdures-planxa-romesco-vaset of Plat
     (nom "Verdures a la planxa amb romesco (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2402,7 +2402,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-bastons-pastanaga-rostida-iogurt of Plat
     (nom "Bastons de pastanaga rostida amb iogurt")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2411,7 +2411,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-timbal-d-escalivada-formatge of Plat
     (nom "Timbal d’escalivada amb formatge")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2420,7 +2420,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-brandada-bacalla-freda of Plat
     (nom "Cullereta de brandada de bacallà freda")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2429,7 +2429,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-amanida-caprese-en-bastonet of Plat
     (nom "Amanida caprese en bastonet")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2438,7 +2438,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-canape-salmo-fumat-crema-agra of Plat
     (nom "Canapè de salmó fumat i crema agra")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2447,7 +2447,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-endivia-crema-roquefort-nous of Plat
     (nom "Endívia amb crema de roquefort i nous")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2456,7 +2456,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-remolatxa-formatge-fresc of Plat
     (nom "Cullereta de remolatxa i formatge fresc")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2465,7 +2465,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-ceviche-blanc-vaset of Plat
     (nom "Ceviche blanc (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
     (mida_racio pica-pica)
@@ -2474,7 +2474,7 @@
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-carpaccio-vedella-en-mos of Plat
     (nom "Carpaccio de vedella en mos")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2483,7 +2483,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-cullereta-brandada-bacalla of Plat
     (nom "Cullereta de brandada de bacallà")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2492,7 +2492,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-viera-gratinada-unitat of Plat
     (nom "Viera gratinada (unitat)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio pica-pica)
@@ -2502,7 +2502,7 @@
   (plat-carpaccio-bacalla of Plat
     (nom "Carpaccio de bacallà")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -2511,7 +2511,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-gazpacho-classic-vaset of Plat
     (nom "Gazpacho clàssic (vaset)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2520,7 +2520,7 @@
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-tartar-remolatxa-formatge-fresc of Plat
     (nom "Tàrtar de remolatxa i formatge fresc")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2529,7 +2529,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-xistorra-sidra-mos of Plat
     (nom "Xistorra a la sidra (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2538,7 +2538,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-calamars-romana of Plat
     (nom "Calamars a la romana")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2547,7 +2547,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bunyols-bacalla of Plat
     (nom "Bunyols de bacallà")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2556,7 +2556,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-bolets of Plat
     (nom "Croquetes de bolets")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2565,7 +2565,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-pollastre-rostit of Plat
     (nom "Croquetes de pollastre rostit")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2574,7 +2574,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-pernil of Plat
     (nom "Croquetes de pernil")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2583,7 +2583,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bastons-pollastre-cruixent of Plat
     (nom "Bastons de pollastre cruixent")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2592,7 +2592,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-broqueta-gamba-sipia of Plat
     (nom "Broqueta de gamba i sípia")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2601,7 +2601,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-gamba-l-all-cassola of Plat
     (nom "Gamba a l’all (cassola)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2610,7 +2610,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-samoses-vegetals-mini of Plat
     (nom "Samoses vegetals (mini)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2619,7 +2619,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-fingers-lluc-arrebossats of Plat
     (nom "Fingers de lluç arrebossats")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2628,7 +2628,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-mandonguilles-salsa-tomaquet of Plat
     (nom "Mini mandonguilles amb salsa de tomàquet")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2637,7 +2637,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-hot-dog-gourmet of Plat
     (nom "Mini hot-dog gourmet")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2646,7 +2646,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-burger-vedella of Plat
     (nom "Mini burger de vedella")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2655,7 +2655,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-alitas-pollastre-especiades of Plat
     (nom "Alitas de pollastre especiades")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2664,7 +2664,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-patates-braves of Plat
     (nom "Patates braves")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2673,7 +2673,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-coca-d-escalivada-tonyina of Plat
     (nom "Coca d’escalivada amb tonyina")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2682,7 +2682,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-focaccia-herbes-olives of Plat
     (nom "Focaccia amb herbes i olives")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2692,7 +2692,7 @@
   (plat-embotits-pais-platet of Plat
     (nom "Embotits del país (platet)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2702,7 +2702,7 @@
   (plat-formatges-catalans-platet of Plat
     (nom "Formatges catalans (platet)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2711,7 +2711,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-gilda-classica of Plat
     (nom "Gilda clàssica")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2720,7 +2720,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-broqueta-tomaquet-cherry-mozzarella of Plat
     (nom "Broqueta de tomàquet cherry i mozzarella")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2730,7 +2730,7 @@
   (plat-allioli-codony-morro-tripa-tast of Plat
     (nom "Allioli de codony amb morro i tripa (tast)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2739,7 +2739,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-tartaleta-pollastre-al-curri of Plat
     (nom "Mini tartaleta de pollastre al curri")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2749,7 +2749,7 @@
   (plat-torrada-escalivada-formatge of Plat
     (nom "Torrada amb escalivada i formatge")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2758,7 +2758,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-guacamole-nachos-mini-bowl of Plat
     (nom "Guacamole amb nachos (mini bowl)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2767,7 +2767,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-wrap-gall-dindi-enciam of Plat
     (nom "Mini wrap de gall dindi i enciam")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2776,7 +2776,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-torrada-d-escalivada-anxova of Plat
     (nom "Torrada d’escalivada i anxova")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2785,7 +2785,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-quiche-lorraine of Plat
     (nom "Mini quiche lorraine")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2794,7 +2794,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-provolone-al-forn-tomaquet of Plat
     (nom "Provolone al forn amb tomàquet")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2803,7 +2803,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-remenat-bolets-mos of Plat
     (nom "Remenat de bolets (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2812,7 +2812,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-empanadilles-verdures of Plat
     (nom "Empanadilles de verdures")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2821,7 +2821,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-truita-patata-pinxo of Plat
     (nom "Mini truita de patata (pinxo)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2830,7 +2830,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-patates-al-caliu-allioli of Plat
     (nom "Patates al caliu amb allioli")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2839,7 +2839,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bolets-saltejats-en-mos of Plat
     (nom "Bolets saltejats en mos")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2848,7 +2848,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-xips-carbasso-arrebossats of Plat
     (nom "Xips de carbassó arrebossats")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2857,7 +2857,7 @@
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-carrot-cake of Plat
     (nom "Mini carrot cake")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio petita)
@@ -2866,7 +2866,7 @@
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-trufes-xocolata-mos of Plat
     (nom "Trufes de xocolata (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -2875,7 +2875,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-entrepa-vegetal of Plat
     (nom "Mini entrepà vegetal")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2884,7 +2884,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-montadito-pernil-pebrots of Plat
     (nom "Montadito de pernil i pebrots")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2893,7 +2893,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-couscous-verdures-tasta of Plat
     (nom "Couscous de verdures (tasta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2902,7 +2902,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-cullereta-arros-negre-all-oli of Plat
     (nom "Cullereta de arròs negre amb all i oli")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2911,7 +2911,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-taula-formatges-artesans-mosos of Plat
     (nom "Taula de formatges artesans (mosos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2920,7 +2920,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-assortit-d-olives-encurtits of Plat
     (nom "Assortit d’olives i encurtits")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2929,7 +2929,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-taula-d-embotits-coctel of Plat
     (nom "Taula d’embotits (còctel)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2938,7 +2938,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-fideus-cassola-tasta of Plat
     (nom "Fideus a la cassola (tasta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2947,7 +2947,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-arros-negre-cullereta of Plat
     (nom "Arròs negre (cullereta)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2956,7 +2956,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-broqueta-pollastre-yakitori of Plat
     (nom "Broqueta de pollastre yakitori")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2965,7 +2965,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-fingers-pollastre-cruixents of Plat
     (nom "Fingers de pollastre cruixents")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -2974,7 +2974,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-seito-fregit-cruixent of Plat
     (nom "Seitó fregit cruixent")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -2983,7 +2983,7 @@
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-brownie-nous of Plat
     (nom "Mini brownie amb nous")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio petita)
@@ -2992,7 +2992,7 @@
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-lemon-pie of Plat
     (nom "Mini lemon pie")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -3001,7 +3001,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-taco-vegetal of Plat
     (nom "Mini taco vegetal")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3010,7 +3010,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-entrepa-rostit-mostassa of Plat
     (nom "Mini entrepà de rostit amb mostassa")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3019,7 +3019,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-mandonguilles-tomaquet of Plat
     (nom "Mini mandonguilles amb tomàquet")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -3028,7 +3028,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-formatge-al-forn-herbes of Plat
     (nom "Formatge al forn amb herbes")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3037,7 +3037,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-tires-bacalla-arrebossat of Plat
     (nom "Tires de bacallà arrebossat")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3046,7 +3046,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-truita-patata-ceba of Plat
     (nom "Mini truita de patata amb ceba")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3055,7 +3055,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-broqueta-pop-patata of Plat
     (nom "Mini broqueta de pop i patata")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -3064,7 +3064,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-taco-peix of Plat
     (nom "Mini taco de peix")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -3073,7 +3073,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-pernil-iberic-tall-fi-mos of Plat
     (nom "Pernil ibèric tall fi (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3082,7 +3082,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-daus-truita-botifarra of Plat
     (nom "Daus de truita i botifarra")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3091,7 +3091,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mandonguilla-thai-mos of Plat
     (nom "Mandonguilla thai (mos)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -3100,7 +3100,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-fondue-formatge-pa-torrat of Plat
     (nom "Mini fondue de formatge (pa torrat)")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio pica-pica)
@@ -3109,7 +3109,7 @@
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-empanadilles-tonyina of Plat
     (nom "Empanadilles de tonyina")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3118,7 +3118,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-provolone-al-forn-herbes of Plat
     (nom "Provolone al forn amb herbes")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
@@ -3127,7 +3127,7 @@
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bastonet-brie-arrebossat of Plat
     (nom "Bastonet de brie arrebossat")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio pica-pica)
