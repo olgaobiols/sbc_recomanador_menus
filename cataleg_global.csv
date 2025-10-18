@@ -6,15 +6,15 @@ Cigrons amb espinacs (entrant),primer,mitjana,formal,mitjà,calent,"['cigrons cu
 Sopa de farigola amb ou,primer,baixa,formal,mitjà,calent,"['farigola', 'aigua/brou', 'pa', 'ou', 'oli', 'sal']",Catalunya,—,primers_catalunya.csv
 Amanida de bacallà i taronja,primer,baixa,formal,mitjà,fred,"['bacallà dessalat', 'taronja', 'olives negres', 'oli', 'ceba suau']",Catalunya,—,primers_catalunya.csv
 "Timbal de patata, tonyina i pebrot escalivat",primer,baixa,formal,mitjà,tebi,"['patata', 'tunyina', 'pebrot escalivat', 'ou dur', 'oli']",Catalunya,—,primers_catalunya.csv
-Sopa de verdures (banquet),primer,baixa,formal,mitjà,calent,"['brou de verdures', 'pastanaga', 'porro', 'api', 'carbassó', 'patata']",Catalunya,—,primers_catalunya.csv
-Crema de carbassó,primer,baixa,formal,mitjà,calent,"['carbassó', 'ceba', 'patata', 'brou de verdures', 'oli', 'sal']",Catalunya,—,primers_catalunya.csv
-Xató de Vilanova (variant tonyina/anxova),primer,mitjana,formal,mitjà,fred,"['escarola', 'tunyina', 'anxoves', 'olives arbequines', 'romesco']",Catalunya,—,primers_catalunya.csv
-Carxofes confitades amb pernil,primer,mitjana,formal,mitjà,tebi,"['carxofes', 'oli d’oliva', 'pernil', 'sal']",Catalunya,—,primers_catalunya.csv
-Sopa de peix amb fideus,primer,mitjana,formal,mitjà,calent,"['brou de peix', 'fideus', 'tomàquet', 'all', 'oli', 'sal']",Catalunya,—,primers_catalunya.csv
-Mongetes tendres saltejades amb pernil,primer,baixa,formal,mitjà,tebi,"['mongetes tendres', 'pernil', 'all', 'oli']",Catalunya,—,primers_catalunya.csv
-Amanida de llegums (cigrons/mongeta),primer,baixa,formal,mitjà,fred,"['cigrons o mongeta', 'tomàquet', 'ceba', 'pebrot', 'oli', 'vinagre']",Catalunya,—,primers_catalunya.csv
-Cargols a la cassola (principal),segon,mitjana,formal,gran,calent,"['cargols', 'cansalada', 'all', 'julivert', 'pebre', 'tomàquet', 'brou']",Catalunya,—,segons_catalunya.csv
-Filet de vedella al pebre verd,segon,mitjana,formal,gran,calent,"['filet de vedella', 'nata', 'pebre verd', 'conyac', 'mantega', 'sal']",—,—,segons_varietat.csv
+Sopa de verdures (banquet),primer,baixa,informal,mitjà,calent,"['brou de verdures', 'pastanaga', 'porro', 'api', 'carbassó', 'patata']",Catalunya,—,primers_catalunya.csv
+Crema de carbassó,primer,baixa,informal,mitjà,calent,"['carbassó', 'ceba', 'patata', 'brou de verdures', 'oli', 'sal']",Catalunya,—,primers_catalunya.csv
+Xató de Vilanova (variant tonyina/anxova),primer,mitjana,informal,mitjà,fred,"['escarola', 'tunyina', 'anxoves', 'olives arbequines', 'romesco']",Catalunya,—,primers_catalunya.csv
+Carxofes confitades amb pernil,primer,mitjana,informal,mitjà,tebi,"['carxofes', 'oli d’oliva', 'pernil', 'sal']",Catalunya,—,primers_catalunya.csv
+Sopa de peix amb fideus,primer,mitjana,informal,mitjà,calent,"['brou de peix', 'fideus', 'tomàquet', 'all', 'oli', 'sal']",Catalunya,—,primers_catalunya.csv
+Mongetes tendres saltejades amb pernil,primer,baixa,informal,mitjà,tebi,"['mongetes tendres', 'pernil', 'all', 'oli']",Catalunya,—,primers_catalunya.csv
+Amanida de llegums (cigrons/mongeta),primer,baixa,informal,mitjà,fred,"['cigrons o mongeta', 'tomàquet', 'ceba', 'pebrot', 'oli', 'vinagre']",Catalunya,—,primers_catalunya.csv
+Cargols a la cassola (principal),segon,mitjana,informal,gran,calent,"['cargols', 'cansalada', 'all', 'julivert', 'pebre', 'tomàquet', 'brou']",Catalunya,—,segons_catalunya.csv
+Filet de vedella al pebre verd,segon,mitjana,informal,gran,calent,"['filet de vedella', 'nata', 'pebre verd', 'conyac', 'mantega', 'sal']",—,—,segons_varietat.csv
 Rap a la marinera,segon,mitjana,formal,gran,calent,"['rap', 'all', 'ceba', 'tomàquet', 'vi blanc', 'fumet de peix', 'oli', 'julivert']",—,—,segons_varietat.csv
 Rostit de vedella amb bolets,segon,alta,formal,gran,calent,"['tall rodó de vedella', 'ceba', 'pastanaga', 'tomàquet', 'bolets', 'vi negre', 'brou']",—,—,segons_varietat.csv
 Mandonguilles amb salsa d’ametlla,segon,mitjana,formal,mitjà,calent,"['carn picada mixta', 'pa remullat', 'ou', 'all', 'julivert', 'ametlla mòlta', 'ceba', 'tomàquet']",—,—,segons_varietat.csv
@@ -102,8 +102,8 @@ Arròs al forn,segon,mitjana,formal,gran,calent,"['arròs', 'costella', 'botifar
 Fideuà clàssica,segon,mitjana,formal,gran,calent,"['fideus', 'sípia', 'gamba', 'calamar', 'fumet', 'allioli']",—,—,segons_varietat.csv
 Rabo de toro estofat,segon,alta,formal,gran,calent,"['cua de vedella', 'vi negre', 'ceba', 'pastanaga', 'api', 'tomàquet', 'brou']",—,—,segons_varietat.csv
 Callos a la madrilenya,segon,alta,formal,gran,calent,"['tripa de vedella', 'xoriço', 'pernil', 'pebre vermell', 'tomàquet', 'cigrons (opcional)']",—,—,segons_varietat.csv
-Ossobuco a la milanesa,segon,alta,formal,gran,calent,"['ossobuco de vedella', 'vi blanc', 'tomàquet', 'api', 'pastanaga', 'ceba', 'brou', 'gremolata']",—,—,segons_varietat.csv
-Parmigiana di melanzane,segon,mitjana,formal,gran,calent,"['albergínia', 'tomàquet', 'mozzarella', 'parmesà', 'alfàbrega', 'oli']",—,—,segons_varietat.csv
+Ossobuco a la milanesa,segon,alta,informal,gran,calent,"['ossobuco de vedella', 'vi blanc', 'tomàquet', 'api', 'pastanaga', 'ceba', 'brou', 'gremolata']",—,—,segons_varietat.csv
+Parmigiana di melanzane,segon,mitjana,informal,gran,calent,"['albergínia', 'tomàquet', 'mozzarella', 'parmesà', 'alfàbrega', 'oli']",—,—,segons_varietat.csv
 Lasanya de verdures,segon,mitjana,formal,gran,calent,"['plaques de lasanya', 'carbassó', 'albergínia', 'espinacs', 'tomàquet', 'beixamel', 'formatge']",—,—,segons_varietat.csv
 Cigrons estofats amb espinacs,segon,baixa,formal,gran,calent,"['cigrons cuits', 'espinacs', 'all', 'pebre vermell', 'tomàquet', 'oli']",—,—,segons_varietat.csv
 Risotto de bolets (com a principal),segon,alta,formal,gran,calent,"['arròs arborio', 'bolets', 'brou', 'vi blanc', 'ceba', 'mantega', 'parmesà']",—,—,segons_varietat.csv
@@ -114,12 +114,12 @@ Pollastre a la cervesa,segon,mitjana,formal,gran,calent,"['pollastre tallat', 'c
 Corder amb bolets,segon,alta,formal,gran,calent,"['corder', 'bolets', 'vi negre', 'ceba', 'brou', 'farigola']",—,—,segons_varietat.csv
 Hamburguesa gourmet (emplatada),segon,mitjana,formal,gran,calent,"['vedella picada', 'pa artesà', 'formatge', 'ceba confitada', 'enciams', 'salsa suau']",—,—,segons_varietat.csv
 Perniló de gall dindi rostít,segon,mitjana,formal,gran,calent,"['gall dindi', 'mantega', 'herbes', 'llimona', 'sal', 'pebre']",—,—,segons_varietat.csv
-Sopa de peix (costa catalana),primer,mitjana,formal,mitjà,calent,"['peix blanc', 'brou de peix', 'tomàquet', 'ceba', 'all', 'oli', 'pa']",Catalunya,—,primers_catalunya.csv
-Escalivada amb anxoves,primer,baixa,formal,mitjà,tebi,"['albergínia', 'pebrot', 'ceba', 'anxoves', 'oli d’oliva']",Catalunya,—,primers_catalunya.csv
-Tonyina amb samfaina,segon,mitjana,formal,gran,calent,"['llom de tonyina', 'sanfaina', 'oli', 'sal']",Catalunya,—,segons_catalunya.csv
-Panellets variats,postre,mitjana,formal,petit,fred,"['ametlla mòlta', 'sucre', 'patata/moniato', 'pinyons', 'coco', 'xocolata']",Catalunya,—,postres_catalunya.csv
-Coca de iogurt (llimona),postre,baixa,formal,mitjà,tebi,"['iogurt', 'farina', 'sucre', 'ous', 'oli', 'llimona']",Catalunya,—,postres_catalunya.csv
-Galetes de mantega,postre,baixa,formal,petit,fred,"['farina', 'mantega', 'sucre', 'ous']",Catalunya,—,postres_catalunya.csv
+Sopa de peix (costa catalana),primer,mitjana,informal,mitjà,calent,"['peix blanc', 'brou de peix', 'tomàquet', 'ceba', 'all', 'oli', 'pa']",Catalunya,—,primers_catalunya.csv
+Escalivada amb anxoves,primer,baixa,informal,mitjà,tebi,"['albergínia', 'pebrot', 'ceba', 'anxoves', 'oli d’oliva']",Catalunya,—,primers_catalunya.csv
+Tonyina amb samfaina,segon,mitjana,informal,gran,calent,"['llom de tonyina', 'sanfaina', 'oli', 'sal']",Catalunya,—,segons_catalunya.csv
+Panellets variats,postre,mitjana,informal,petit,fred,"['ametlla mòlta', 'sucre', 'patata/moniato', 'pinyons', 'coco', 'xocolata']",Catalunya,—,postres_catalunya.csv
+Coca de iogurt (llimona),postre,baixa,informal,mitjà,tebi,"['iogurt', 'farina', 'sucre', 'ous', 'oli', 'llimona']",Catalunya,—,postres_catalunya.csv
+Galetes de mantega,postre,baixa,informal,petit,fred,"['farina', 'mantega', 'sucre', 'ous']",Catalunya,—,postres_catalunya.csv
 Teules d’ametlla,postre,baixa,formal,petit,fred,"['ametlla laminada', 'sucre', 'clara d’ou']",Catalunya,—,postres_catalunya.csv
 Carquinyolis,postre,baixa,formal,petit,fred,"['ametlla', 'farina', 'sucre', 'ous', 'llimona']",Catalunya,—,postres_catalunya.csv
 Braç de gitano de trufa,postre,mitjana,formal,petit,fred,"['bescuit', 'trufa de xocolata', 'sucre']",Catalunya,—,postres_catalunya.csv
@@ -137,7 +137,7 @@ Mel i mató,postre,baixa,formal,petit,fred,"['mató', 'mel']",Catalunya,—,post
 Crema catalana,postre,mitjana,formal,petit,fred,"['llet', 'ou', 'sucre', 'llimona', 'canyella']",Catalunya,—,postres_catalunya.csv
 Gelat de vainilla amb crumble i salsa toffee,postre,baixa,formal,petit,fred,"['gelat de vainilla', 'sucre', 'nata', 'mantega', 'galeta']",—,—,postres_varietat.csv
 Panna cotta de xocolata blanca,postre,baixa,formal,petit,fred,"['nata', 'xocolata blanca', 'gelatina', 'sucre']",Itàlia,—,postres_varietat.csv
-Amanida catalana,primer,baixa,formal,mitjà,fred,"['enciam', 'tomàquet', 'olives', 'pernil', 'llonganissa', 'oli']",Catalunya,—,primers_catalunya.csv
+Amanida catalana,primer,baixa,informal,mitjà,fred,"['enciam', 'tomàquet', 'olives', 'pernil', 'llonganissa', 'oli']",Catalunya,—,primers_catalunya.csv
 Pastís de formatge fred (NY style light),postre,mitjana,formal,petit,fred,"['formatge crema', 'nata', 'sucre', 'galeta', 'mantega', 'gelatina (opcional)']",—,—,postres_varietat.csv
 Crumble de fruits vermells,postre,baixa,formal,petit,tebi,"['fruits vermells', 'farina', 'sucre', 'mantega']",—,—,postres_varietat.csv
 Gelatina de cava amb fruites,postre,mitjana,formal,petit,fred,"['cava', 'gelatina', 'sucre', 'fruites']",—,—,postres_varietat.csv

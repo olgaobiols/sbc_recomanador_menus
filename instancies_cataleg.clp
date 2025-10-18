@@ -74,7 +74,7 @@
   (plat-sopa-verdures-banquet of Plat
     (nom "Sopa de verdures (banquet)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -84,7 +84,7 @@
   (plat-crema-carbasso of Plat
     (nom "Crema de carbassó")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
     (mida_racio mitja)
@@ -94,7 +94,7 @@
   (plat-xato-vilanova-variant-tonyina-anxova of Plat
     (nom "Xató de Vilanova (variant tonyina/anxova)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -104,7 +104,7 @@
   (plat-carxofes-confitades-pernil of Plat
     (nom "Carxofes confitades amb pernil")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -114,7 +114,7 @@
   (plat-sopa-peix-fideus of Plat
     (nom "Sopa de peix amb fideus")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -124,7 +124,7 @@
   (plat-mongetes-tendres-saltejades-pernil of Plat
     (nom "Mongetes tendres saltejades amb pernil")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -134,7 +134,7 @@
   (plat-amanida-llegums-cigrons-mongeta of Plat
     (nom "Amanida de llegums (cigrons/mongeta)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)
@@ -144,7 +144,7 @@
   (plat-cargols-cassola-principal of Plat
     (nom "Cargols a la cassola (principal)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -153,7 +153,7 @@
   ; origen: segons_varietat.csv
   (plat-filet-vedella-al-pebre-verd of Plat
     (nom "Filet de vedella al pebre verd")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1005,7 +1005,7 @@
   ; origen: segons_varietat.csv
   (plat-ossobuco-milanesa of Plat
     (nom "Ossobuco a la milanesa")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
     (mida_racio gran)
@@ -1014,7 +1014,7 @@
   ; origen: segons_varietat.csv
   (plat-parmigiana-di-melanzane of Plat
     (nom "Parmigiana di melanzane")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1114,7 +1114,7 @@
   (plat-sopa-peix-costa-catalana of Plat
     (nom "Sopa de peix (costa catalana)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio mitja)
@@ -1124,7 +1124,7 @@
   (plat-escalivada-anxoves of Plat
     (nom "Escalivada amb anxoves")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1134,7 +1134,7 @@
   (plat-tonyina-samfaina of Plat
     (nom "Tonyina amb samfaina")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
     (mida_racio gran)
@@ -1144,7 +1144,7 @@
   (plat-panellets-variats of Plat
     (nom "Panellets variats")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
     (mida_racio petita)
@@ -1154,7 +1154,7 @@
   (plat-coca-iogurt-llimona of Plat
     (nom "Coca de iogurt (llimona)")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio mitja)
@@ -1164,7 +1164,7 @@
   (plat-galetes-mantega of Plat
     (nom "Galetes de mantega")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio petita)
@@ -1343,7 +1343,7 @@
   (plat-amanida-catalana of Plat
     (nom "Amanida catalana")
     (procedencia "Catalunya")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
     (mida_racio mitja)

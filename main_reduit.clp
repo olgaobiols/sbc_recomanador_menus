@@ -314,19 +314,24 @@
 ; VEURE A QUIN MODUL IMPORTAR-HO
 (defmodule ComposicioMenus (import MAIN ?ALL)(import PreferenciesMenu ?ALL)(export ?ALL))
 
-(defrule ComposicioMenus::mostrar-menus-inicials
+(defrule ComposicioMenus::triar-menus
   (declare (auto-focus TRUE))
   (respostes-completes)
   (not (menus-presentats))
+
+   ; Condició per formalitat
+   ?pet <- (peticio (formalitat ?formal&~nil))
 =>
-  (bind ?primers (find-all-instances ((?p Plat)) (member$ ordre-primer (send ?p get-te_ordre))))
-  (bind ?segons (find-all-instances ((?p Plat)) (member$ ordre-segon (send ?p get-te_ordre))))
-  (bind ?postres (find-all-instances ((?p Plat)) (member$ ordre-postres (send ?p get-te_ordre))))
+  (bind ?formal-pref (lowcase (str-cat ?formal)))
+  (bind ?primers (find-all-instances ((?p Plat)) (and (member$ ordre-primer (send ?p get-te_ordre)) (= (str-compare (lowcase (send ?p get-formalitat)) ?formal-pref) 0))))
+  (bind ?segons (find-all-instances ((?p Plat)) (and (member$ ordre-segon (send ?p get-te_ordre)) (= (str-compare (lowcase (send ?p get-formalitat)) ?formal-pref) 0))))
+  (bind ?postres (find-all-instances ((?p Plat)) (and (member$ ordre-postres (send ?p get-te_ordre)) (= (str-compare (lowcase (send ?p get-formalitat)) ?formal-pref) 0))))
+  
   (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
   (if (<= ?limit 0) then
     (printout t crlf "*** No s'han trobat menus per mostrar. ***" crlf)
    else
-    (printout t crlf "Et proposem " ?limit " menus inicials:" crlf)
+    (printout t crlf "Et proposem " ?limit " menus:" crlf)
     (loop-for-count (?i 1 ?limit)
       (bind ?primer (nth$ ?i ?primers))
       (bind ?segon (nth$ ?i ?segons))
