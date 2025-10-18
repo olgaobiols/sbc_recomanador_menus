@@ -34,14 +34,6 @@
    (slot procedencia)
 )
 
-
-
-
-
-
-
-
-
 ; HELPERS
 (deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
   (/ (float (round (* ?x 100))) 100.0))
@@ -53,7 +45,6 @@
 
 (deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
   (if (eq ?f formal) then 1.15 else 1.00))
-
 
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
@@ -114,11 +105,6 @@
   )
   ?resp
 )
-
-
-(deffunction separa-paraules (?txt) "Separa un text en paraules individuals"
-  (if (or (eq ?txt nil) (eq ?txt "")) then (create$) else (explode$ ?txt)))
-
 
 (deffunction valida-llista-numeros (?input ?min ?max)
   "Valida una llista de números separats per espais dins d’un rang concret.
@@ -309,6 +295,9 @@
   (modify ?p (alcohol ?r))
   (assert (preguntat-alcohol))
 )
+
+
+
 
 (defrule PreferenciesMenu::preguntar-alergens-prohibits
   ?p <- (peticio (alergies-si ?as&nil))

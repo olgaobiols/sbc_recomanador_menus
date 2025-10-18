@@ -11,9 +11,9 @@
   (slot formalitat (type SYMBOL STRING) (default nil))
   (slot beguda-mode (type SYMBOL) (default nil))
   (slot alcohol (type SYMBOL STRING) (default nil))
-  (slot menu-mode (type SYMBOL) (default nil))
+;   (slot menu-mode (type SYMBOL) (default nil))
   (slot alergies-si (type SYMBOL STRING) (default nil))
-  (slot alergens (type SYMBOL STRING) (default nil)))
+  (multislot alergens (type STRING SYMBOL)))
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
 (deffunction valida-boolea "Valida una resposta booleana (sí/no)"
@@ -66,6 +66,54 @@
      else
         (printout t "La resposta que has introduït no és vàlida. Si us plau, tria una de les següents: " ?opcions crlf))
   ) ?resp
+)
+
+(deffunction valida-llista-numeros (?input ?min ?max) "Valida una llista de números separats per espais dins d'un rang concret. Retorna la llista com a multislot si és vàlida, sinó retorna nil."
+    (bind ?resp_valida TRUE)
+    (bind ?nums_input (explode$ ?input))
+    (bind ?llista_validada (create$))
+    (foreach ?x ?nums_input
+        (if (numberp ?x) then
+            (if (and (>= ?x ?min) (<= ?x ?max)) then
+                (bind ?llista_validada (insert$ ?llista_validada (+ (length$ ?llista_validada) 1) ?x))
+            else
+                (bind ?resp_valida FALSE)
+                (printout t "El valor " ?x " està fora del rang (" ?min " - " ?max ")." crlf)
+            )
+        else
+            (bind ?resp_valida FALSE)
+            (printout t "El valor '" ?x "' no és un número vàlid." crlf)
+        )
+    )
+    
+    (if ?resp_valida then
+        (return ?llista_validada)
+    else
+        (return nil)
+    )
+)
+
+(deffunction mapa-alergens (?nums)
+    (bind ?result (create$))
+    (foreach ?n ?nums
+        (bind ?val (integer ?n))
+        (bind ?nom
+        (if (eq ?val 1) then "Gluten"
+        else (if (eq ?val 2) then "Lactosa"
+        else (if (eq ?val 3) then "Fruits secs"
+        else (if (eq ?val 4) then "Marisc"
+        else (if (eq ?val 5) then "Ous"
+        else (if (eq ?val 6) then "Soja"
+        else (if (eq ?val 7) then "Peix"
+        else (if (eq ?val 8) then "Vegetarià"
+        else (if (eq ?val 9) then "Vegà"
+        else (if (eq ?val 10) then "Halal"
+        else nil)))))))))))
+        (if (neq ?nom nil) then
+        (bind ?result (create$ $?result ?nom))
+        )
+    )
+  ?result
 )
 
 ;; MÒDULS DE CONTROL I CLASSIFICACIÓ HEURÍSTICA-------------------------------
@@ -191,33 +239,61 @@
   (modify ?p (alcohol ?r))
   (assert (preguntat-alcohol)))
 
-(defrule PreferenciesMenu::preguntar-menu-unic
-  ?p <- (peticio (menu-mode ?mm&nil))
-  (preguntat-alcohol)
-  (not (preguntat-menu-unic))
-=>
-  (bind ?r (valida-opcio "Vols un menú únic per a tothom o opcions alternatives? (unic/alternatiu)" unic alternatiu))
-  (modify ?p (menu-mode ?r))
-  (assert (preguntat-menu-unic)))
+; (defrule PreferenciesMenu::preguntar-menu-unic
+;   ?p <- (peticio (menu-mode ?mm&nil))
+;   (preguntat-alcohol)
+;   (not (preguntat-menu-unic))
+; =>
+;   (bind ?r (valida-opcio "Vols un menú únic per a tothom o opcions alternatives? (unic/alternatiu)" unic alternatiu))
+;   (modify ?p (menu-mode ?r))
+;   (assert (preguntat-menu-unic)))
 
 (defrule PreferenciesMenu::preguntar-alergens-prohibits
   ?p <- (peticio (alergies-si ?as&nil))
-  (preguntat-menu-unic)
-  (not (preguntat-alergens-prohibits))
-=>
-  (bind ?r (valida-boolea "Hi ha al·lèrgies o ingredients prohibits? (sí/no)"))
+;   (preguntat-menu-unic)
+    (preguntat-alcohol)
+    (not (preguntat-alergens-prohibits))
+  =>
+  (bind ?r (valida-boolea "Hi ha alguna condició alimentària general? (al·lèrgies, dietes especials o ingredients prohibits)? (sí/no)"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits)))
 
 (defrule PreferenciesMenu::detallar-alergens
-  ?p <- (peticio (alergies-si ?r&:(or (eq ?r "si") (eq ?r "sí"))) (alergens ?al&nil))
+  ?p <- (peticio (alergies-si si))  
   (preguntat-alergens-prohibits)
-  (not (alergens-detalats))
+  (not (alergens-detallats))
 =>
-  (printout t "Indica'ls separats per espais (ex: gluten marisc lactosa): " crlf)
-  (bind ?txt (lowcase (readline)))
-  (modify ?p (alergens ?txt))
-  (assert (alergens-detalats)))
+  (printout t crlf "Llista d’al·lèrgens o ingredients prohibits habituals:" crlf)
+  (printout t "--------------------------------------" crlf)
+  (printout t "Al·lèrgens:" crlf)
+  (printout t "1. Gluten" crlf)
+  (printout t "2. Lactosa" crlf)
+  (printout t "3. Fruits secs" crlf)
+  (printout t "4. Marisc" crlf)
+  (printout t "5. Ous" crlf)
+  (printout t "6. Soja" crlf)
+  (printout t "7. Peix" crlf crlf)
+  (printout t "Dietes especials:" crlf)
+  (printout t "8. Vegetarià" crlf)
+  (printout t "9. Vegà" crlf)
+  (printout t "10. Halal" crlf)
+
+  (bind ?validat FALSE)
+  (while (not ?validat)
+    (printout t "Indica els números corresponents separats per espais (ex: 1 3 8): " crlf)
+    (bind ?input (readline))
+    (bind ?nums (valida-llista-numeros ?input 1 10))
+    (if (neq ?nums nil) then
+      (bind ?validat TRUE)
+      (bind ?noms (mapa-alergens ?nums))
+      (modify ?p (alergens ?noms))
+      (assert (alergens-detallats))
+      (printout t "Has indicat: " ?noms crlf)
+    else
+      (printout t " Si us plau introdueix només números entre 1 i 10 separats per espais." crlf)
+    )
+  )
+)
 
 (defrule PreferenciesMenu::finalitzar-preguntes
   (not (respostes-completes))
