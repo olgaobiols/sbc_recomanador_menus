@@ -1,5 +1,8 @@
 (defmodule MAIN (export ?ALL))
 
+
+
+
 ; HELPERS --------------------------------------------------------------
 (deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
   (/ (float (round (* ?x 100))) 100.0))
@@ -11,6 +14,28 @@
 
 (deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
   (if (eq ?f formal) then 1.15 else 1.00))
+
+; Templates de control de flux
+(deftemplate respostes-completes
+  (slot estat (default TRUE)))
+
+(deftemplate menus-presentats
+  (slot estat (default TRUE)))
+
+(deftemplate peticio
+  (slot tipus-esdeveniment (type SYMBOL) (default nil))
+  (slot data (type SYMBOL) (default nil))
+  (slot torn (type SYMBOL) (default nil))
+  (slot espai (type SYMBOL) (default nil))
+  (slot num-comensals (type SYMBOL INTEGER) (default nil))
+  (slot pressupost-min (type SYMBOL NUMBER) (default nil))
+  (slot pressupost-max (type SYMBOL NUMBER) (default nil))
+  (slot formalitat (type SYMBOL STRING) (default nil))
+  (slot beguda-mode (type SYMBOL) (default nil))
+  (slot alcohol (type SYMBOL STRING) (default nil))
+  (slot menu-mode (type SYMBOL) (default nil))
+  (slot alergies-si (type SYMBOL STRING) (default nil))
+  (slot alergens (type SYMBOL STRING) (default nil)))
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
 (deffunction valida-boolea "Valida una resposta booleana (sí/no)"
@@ -71,6 +96,7 @@
   (declare (auto-focus TRUE))
   (initial-fact)
   =>
+  (focus ComposicioMenus)
   (focus RefinamentHeuristica)
   (focus AssociacioHeuristica)
   (focus AbstraccioHeuristica)
@@ -145,7 +171,7 @@
 
 (defrule PreferenciesMenu::preguntar-pressupost-min
   ?p <- (peticio (pressupost-min ?ppmin&nil))
-  (preguntat-infantil-senior)
+  (preguntat-num-comensals)
   (not (preguntat-pressupost))
 =>
   (bind ?min (valida-num "Quin és el pressupost mínim per persona?" 1 1000))
@@ -164,7 +190,7 @@
 
 (defrule PreferenciesMenu::preguntar-formalitat
   ?p <- (peticio (formalitat ?f&nil))
-  (preguntat-pressupost)
+  (preguntat-pressupost-max)
   (not (preguntat-formalitat))
 =>
   (bind ?r (valida-opcio "Quin grau de formalitat vols? (formal/ informal)" 
@@ -207,6 +233,7 @@
   (bind ?r (valida-boolea "Hi ha al·lèrgies o ingredients prohibits? (sí/no)"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits)))
+
 (defrule PreferenciesMenu::detallar-alergens
   ?p <- (peticio (alergies-si ?r&:(or (eq ?r "si") (eq ?r "sí"))) (alergens ?al&nil))
   (preguntat-alergens-prohibits)
@@ -216,6 +243,13 @@
   (bind ?txt (lowcase (readline)))
   (modify ?p (alergens ?txt))
   (assert (alergens-detalats)))
+
+(defrule PreferenciesMenu::finalitzar-preguntes
+  (not (respostes-completes))
+  (preguntat-alergens-prohibits)
+  ?p <- (peticio (alergies-si ?r&~nil))
+=>
+  (assert (respostes-completes)))
 
 ;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
@@ -227,7 +261,30 @@
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
 
 ; VEURE A QUIN MODUL IMPORTAR-HO
-(defmodule ComposicioMenus (import MAIN ?ALL)(export ?ALL))
+(defmodule ComposicioMenus (import MAIN ?ALL)(import PreferenciesMenu ?ALL)(export ?ALL))
+
+(defrule ComposicioMenus::mostrar-menus-inicials
+  (declare (auto-focus TRUE))
+  (respostes-completes)
+  (not (menus-presentats))
+=>
+  (bind ?primers (find-all-instances ((?p Plat)) (member$ ordre-primer (send ?p get-te_ordre))))
+  (bind ?segons (find-all-instances ((?p Plat)) (member$ ordre-segon (send ?p get-te_ordre))))
+  (bind ?postres (find-all-instances ((?p Plat)) (member$ ordre-postres (send ?p get-te_ordre))))
+  (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
+  (if (<= ?limit 0) then
+    (printout t crlf "*** No s'han trobat menus per mostrar. ***" crlf)
+   else
+    (printout t crlf "Et proposem " ?limit " menus inicials:" crlf)
+    (loop-for-count (?i 1 ?limit)
+      (bind ?primer (nth$ ?i ?primers))
+      (bind ?segon (nth$ ?i ?segons))
+      (bind ?postre (nth$ ?i ?postres))
+      (printout t crlf "*** Menu " ?i " ***" crlf)
+      (printout t "  Entrant: " (send ?primer get-nom) crlf)
+      (printout t "  Principal: " (send ?segon get-nom) crlf)
+      (printout t "  Postres: " (send ?postre get-nom) crlf)))
+  (assert (menus-presentats)))
 
 ; (defrule ComposicioMenus::calcula-preu-venta-plat "Calcula el preu de venda d'un plat segons els ingredients que el componen i altres factors rellevants"
 ;   (plat (nom ?np)(complexitat ?cx)(racio ?r)(formalitat ?ff)) ; AJUSTAR FORMULA SEGONS NOSTRE CRITERI / EXPERT
@@ -255,6 +312,4 @@
 ;   ?b <- ()
 ; )
 
-; (defrule ComposicioMenus::calcula-preu-venta-menu
-
-; )
+; (defrule ComposicioMenus::calcula-preu-venta-menu)
