@@ -4,7 +4,7 @@
 (definstances plats-cataleg
   ; origen: segons_varietat.csv
   (plat-llobarro-al-forn-patata-panadera of Plat
-    (nom "Llobarro al forn amb patata panadera")
+    (nom "Llobarro al Forn amb Patata Panadera")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -13,7 +13,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-entrecot-brasa-guarnicio of Plat
-    (nom "Entrecot a la brasa amb guarnició")
+    (nom "Entrecot a la Brasa amb Guarnició")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -22,7 +22,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-mongetes-tendres-patata of Plat
-    (nom "Amanida de mongetes tendres i patata")
+    (nom "Amanida de Mongetes Tendres i Patata")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -31,8 +31,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-cigrons-espinacs-entrant of Plat
-    (nom "Cigrons amb espinacs (entrant)")
+  (plat-cigrons-espinacs of Plat
+    (nom "Cigrons amb Espinacs")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -42,7 +42,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-sopa-farigola-ou of Plat
-    (nom "Sopa de farigola amb ou")
+    (nom "Sopa de Farigola amb Ou")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -52,7 +52,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-bacalla-taronja of Plat
-    (nom "Amanida de bacallà i taronja")
+    (nom "Amanida de Bacallà i Taronja")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -62,7 +62,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-timbal-patata-tonyina-pebrot-escalivat of Plat
-    (nom "Timbal de patata, tonyina i pebrot escalivat")
+    (nom "Timbal de Patata, Tonyina i Pebrot Escalivat")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -71,8 +71,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-sopa-verdures-banquet of Plat
-    (nom "Sopa de verdures (banquet)")
+  (plat-sopa-verdures of Plat
+    (nom "Sopa de Verdures")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -82,7 +82,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-crema-carbasso of Plat
-    (nom "Crema de carbassó")
+    (nom "Crema de Carbassó")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -91,8 +91,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-xato-vilanova-variant-tonyina-anxova of Plat
-    (nom "Xató de Vilanova (variant tonyina/anxova)")
+  (plat-xato-vilanova of Plat
+    (nom "Xató de Vilanova")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -102,7 +102,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-carxofes-confitades-pernil of Plat
-    (nom "Carxofes confitades amb pernil")
+    (nom "Carxofes Confitades amb Pernil")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -112,7 +112,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-sopa-peix-fideus of Plat
-    (nom "Sopa de peix amb fideus")
+    (nom "Sopa de Peix amb Fideus")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -122,7 +122,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-mongetes-tendres-saltejades-pernil of Plat
-    (nom "Mongetes tendres saltejades amb pernil")
+    (nom "Mongetes Tendres Saltejades amb Pernil")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -131,8 +131,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-amanida-llegums-cigrons-mongeta of Plat
-    (nom "Amanida de llegums (cigrons/mongeta)")
+  (plat-amanida-llegums of Plat
+    (nom "Amanida de Llegums")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -141,8 +141,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: segons_catalunya.csv
-  (plat-cargols-cassola-principal of Plat
-    (nom "Cargols a la cassola (principal)")
+  (plat-cargols-cassola of Plat
+    (nom "Cargols a la Cassola")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -152,7 +152,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-filet-vedella-al-pebre-verd of Plat
-    (nom "Filet de vedella al pebre verd")
+    (nom "Filet de Vedella al Pebre Verd")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -161,7 +161,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-rap-marinera of Plat
-    (nom "Rap a la marinera")
+    (nom "Rap a la Marinera")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -170,7 +170,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-rostit-vedella-bolets of Plat
-    (nom "Rostit de vedella amb bolets")
+    (nom "Rostit de Vedella amb Bolets")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -179,7 +179,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-mandonguilles-salsa-d-ametlla of Plat
-    (nom "Mandonguilles amb salsa d’ametlla")
+    (nom "Mandonguilles amb Salsa d’ametlla")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -188,7 +188,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-fricando-vedella of Plat
-    (nom "Fricandó de vedella")
+    (nom "Fricandó de Vedella")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -197,7 +197,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-secreto-iberic-planxa-chimichurri-suau of Plat
-    (nom "Secreto ibèric a la planxa amb chimichurri suau")
+    (nom "Secreto Ibèric a la Planxa amb Chimichurri Suau")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -206,7 +206,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-presa-iberica-salsa-mostassa-antiga of Plat
-    (nom "Presa ibèrica amb salsa de mostassa antiga")
+    (nom "Presa Ibèrica amb Salsa de Mostassa Antiga")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -214,8 +214,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-costelles-porc-baixa-temperatura-glassejades of Plat
-    (nom "Costelles de porc a baixa temperatura (glassejades)")
+  (plat-costelles-porc-baixa-temperatura of Plat
+    (nom "Costelles de Porc a Baixa Temperatura")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
@@ -224,7 +224,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-garro-porc-al-forn-patates of Plat
-    (nom "Garró de porc al forn amb patates")
+    (nom "Garró de Porc al Forn amb Patates")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -233,7 +233,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-xai-al-forn-herbes of Plat
-    (nom "Xai al forn amb herbes")
+    (nom "Xai al Forn amb Herbes")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -242,7 +242,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-corder-al-chilindron of Plat
-    (nom "Corder al chilindrón")
+    (nom "Corder al Chilindrón")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -251,7 +251,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-pollastre-rostit-prunes-pinyons of Plat
-    (nom "Pollastre rostit amb prunes i pinyons")
+    (nom "Pollastre Rostit amb Prunes i Pinyons")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -260,7 +260,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-magret-d-anec-reduccio-vi of Plat
-    (nom "Magret d’ànec amb reducció de vi")
+    (nom "Magret d’ànec amb Reducció de Vi")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -269,7 +269,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-pollastre-al-curri-suau-arros of Plat
-    (nom "Pollastre al curri suau amb arròs")
+    (nom "Pollastre al Curri Suau amb Arròs")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -278,7 +278,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-confit-d-anec-poma of Plat
-    (nom "Confit d’ànec amb poma")
+    (nom "Confit d’ànec amb Poma")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -288,7 +288,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-esqueixada-alvocat of Plat
-    (nom "Esqueixada amb alvocat")
+    (nom "Esqueixada amb Alvocat")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -297,8 +297,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-calcots-romesco-rac-entrada of Plat
-    (nom "Calçots amb romesco (rac. entrada)")
+  (plat-calcots-romesco of Plat
+    (nom "Calçots amb Romesco")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -308,7 +308,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-pollastre-cassola-bolets of Plat
-    (nom "Pollastre a la cassola amb bolets")
+    (nom "Pollastre a la Cassola amb Bolets")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -317,8 +317,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-llobarro-donostiarra-adaptat of Plat
-    (nom "Llobarro a la donostiarra (adaptat)")
+  (plat-llobarro-donostiarra of Plat
+    (nom "Llobarro a la Donostiarra")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -328,7 +328,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-arros-negre of Plat
-    (nom "Arròs negre")
+    (nom "Arròs Negre")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -338,7 +338,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-arros-caldos-peix of Plat
-    (nom "Arròs caldós de peix")
+    (nom "Arròs Caldós de Peix")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -347,8 +347,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: primers_catalunya.csv
-  (plat-coca-recapte-porcio of Plat
-    (nom "Coca de recapte (porció)")
+  (plat-coca-recapte of Plat
+    (nom "Coca de Recapte")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -358,7 +358,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-esparrecs-brasa-romesco of Plat
-    (nom "Esparrecs a la brasa amb romesco")
+    (nom "Espàrrecs a la Brasa amb Romesco")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -368,7 +368,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-favetes-pernil of Plat
-    (nom "Amanida de favetes amb pernil")
+    (nom "Amanida de Favetes amb Pernil")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -377,8 +377,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-faves-catalana-racio-primer of Plat
-    (nom "Faves a la catalana (ració primer)")
+  (plat-faves-catalana of Plat
+    (nom "Faves a la Catalana")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -387,8 +387,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-cargols-llauna-racio-primer of Plat
-    (nom "Cargols a la llauna (ració primer)")
+  (plat-cargols-llauna of Plat
+    (nom "Cargols a la Llauna")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -397,8 +397,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-brandada-bacalla-cassoleta of Plat
-    (nom "Brandada de bacallà (cassoleta)")
+  (plat-brandada-bacalla of Plat
+    (nom "Brandada de Bacallà")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -407,8 +407,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-trinxat-cerdanya-racio-primer of Plat
-    (nom "Trinxat de la Cerdanya (ració primer)")
+  (plat-trinxat-cerdanya of Plat
+    (nom "Trinxat de la Cerdanya")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -418,7 +418,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-formatge-cabra-fruits-secs of Plat
-    (nom "Amanida de formatge de cabra amb fruits secs")
+    (nom "Amanida de Formatge de Cabra amb Fruits Secs")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -427,8 +427,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-escudella-nadal-tassa of Plat
-    (nom "Escudella de Nadal (tassa)")
+  (plat-escudella-nadal of Plat
+    (nom "Escudella de Nadal")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -437,8 +437,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-sopa-galets-banquet of Plat
-    (nom "Sopa de galets (banquet)")
+  (plat-sopa-galets of Plat
+    (nom "Sopa de Galets")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -448,7 +448,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-crema-bolets of Plat
-    (nom "Crema de bolets")
+    (nom "Crema de Bolets")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -458,7 +458,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-mongetes-ganxet-bacalla of Plat
-    (nom "Amanida de mongetes del ganxet amb bacallà")
+    (nom "Amanida de Mongetes del Ganxet amb Bacallà")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -468,7 +468,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-esqueixada-mongeta-tendra of Plat
-    (nom "Esqueixada amb mongeta tendra")
+    (nom "Esqueixada amb Mongeta Tendra")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -477,8 +477,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-amanida-d-arros-racio-primer of Plat
-    (nom "Amanida d’arròs (ració primer)")
+  (plat-amanida-d-arros of Plat
+    (nom "Amanida d’arròs")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -487,8 +487,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-entremesos-freds-plat-combinat of Plat
-    (nom "Entremesos freds (plat combinat)")
+  (plat-entremesos-freds of Plat
+    (nom "Entremesos Freds")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -497,8 +497,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-sardines-planxa-entrant of Plat
-    (nom "Sardines a la planxa (entrant)")
+  (plat-sardines-planxa of Plat
+    (nom "Sardines a la Planxa")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -507,8 +507,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-calamares-romana-entrant of Plat
-    (nom "Calamares a la romana (entrant)")
+  (plat-calamars-romana of Plat
+    (nom "Calamars a la romana")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -517,8 +517,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-musclos-al-vapor-entrant of Plat
-    (nom "Musclos al vapor (entrant)")
+  (plat-musclos-al-vapor of Plat
+    (nom "Musclos al Vapor")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -528,7 +528,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-tomaquet-ceba-figueres of Plat
-    (nom "Amanida de tomàquet i ceba de Figueres")
+    (nom "Amanida de Tomàquet i Ceba de Figueres")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -538,7 +538,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-graellada-carn of Plat
-    (nom "Graellada de carn")
+    (nom "Graellada de Carn")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -548,7 +548,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-coca-salada-escalivada-tonyina of Plat
-    (nom "Coca salada amb escalivada i tonyina")
+    (nom "Coca Salada amb Escalivada i Tonyina")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -557,8 +557,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: primers_catalunya.csv
-  (plat-llenguado-meuniere-entrant of Plat
-    (nom "Llenguado a la meunière (entrant)")
+  (plat-llenguado-meuniere of Plat
+    (nom "Llenguado a la Meunière")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -568,7 +568,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-sopa-ceba-gratinada of Plat
-    (nom "Sopa de ceba gratinada")
+    (nom "Sopa de Ceba Gratinada")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -577,8 +577,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: segons_catalunya.csv
-  (plat-dorada-planxa-verduretes of Plat
-    (nom "Dorada a la planxa amb verduretes")
+  (plat-daurada-planxa-verduretes of Plat
+    (nom "Daurada a la Planxa amb Verduretes")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -588,7 +588,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-remenat-d-ous-esparrecs-pernil of Plat
-    (nom "Remenat d’ous amb espàrrecs i pernil")
+    (nom "Remenat d’ous amb Espàrrecs i Pernil")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -597,8 +597,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: segons_varietat.csv
-  (plat-daurada-sal-racio-banquet of Plat
-    (nom "Daurada a la sal (ració banquet)")
+  (plat-daurada-sal of Plat
+    (nom "Daurada a la Sal")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -607,7 +607,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-tonyina-planxa-sesam of Plat
-    (nom "Tonyina a la planxa amb sèsam")
+    (nom "Tonyina a la Planxa amb Sèsam")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -616,7 +616,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-sopa-d-all-pa of Plat
-    (nom "Sopa d’all i pa")
+    (nom "Sopa d’all i Pa")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -626,7 +626,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-cap-pota of Plat
-    (nom "Cap i pota")
+    (nom "Cap i Pota")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -636,7 +636,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-canelons-rostit of Plat
-    (nom "Canelons de rostit")
+    (nom "Canelons de Rostit")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -646,7 +646,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-fricando-moixernons of Plat
-    (nom "Fricandó amb moixernons")
+    (nom "Fricandó amb Moixernons")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -656,7 +656,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-suquet-peix of Plat
-    (nom "Suquet de peix")
+    (nom "Suquet de Peix")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -666,7 +666,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-bacalla-llauna of Plat
-    (nom "Bacallà a la llauna")
+    (nom "Bacallà a la Llauna")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -676,7 +676,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-arros-cassola of Plat
-    (nom "Arròs a la cassola")
+    (nom "Arròs a la Cassola")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -686,7 +686,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-fideua-marisc of Plat
-    (nom "Fideuà de marisc")
+    (nom "Fideuà de Marisc")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -696,7 +696,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-anec-peres of Plat
-    (nom "Ànec amb peres")
+    (nom "Ànec amb Peres")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -706,7 +706,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-sarsuela-peix-marisc of Plat
-    (nom "Sarsuela de peix i marisc")
+    (nom "Sarsuela de Peix i Marisc")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -716,7 +716,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-rap-l-all-cremat of Plat
-    (nom "Rap a l’all cremat")
+    (nom "Rap a l’all Cremat")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -726,7 +726,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-calamars-farcits-catalana of Plat
-    (nom "Calamars farcits a la catalana")
+    (nom "Calamars Farcits a la Catalana")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -735,8 +735,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-mar-muntanya-mandonguilles-sipia of Plat
-    (nom "Mar i muntanya (mandonguilles amb sípia)")
+  (plat-mar-muntanya of Plat
+    (nom "Mar i Muntanya")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -746,7 +746,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-peus-porc-cargols of Plat
-    (nom "Peus de porc amb cargols")
+    (nom "Peus de Porc amb Cargols")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -756,7 +756,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-botifarra-mongetes of Plat
-    (nom "Botifarra amb mongetes")
+    (nom "Botifarra amb Mongetes")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -765,8 +765,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-graellada-peix-emplatada of Plat
-    (nom "Graellada de peix (emplatada)")
+  (plat-graellada-peix of Plat
+    (nom "Graellada de Peix")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -786,7 +786,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-pollastre-escamarlans of Plat
-    (nom "Pollastre amb escamarlans")
+    (nom "Pollastre amb Escamarlans")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -796,7 +796,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-mandonguilles-sipia of Plat
-    (nom "Mandonguilles amb sípia")
+    (nom "Mandonguilles amb Sípia")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -806,7 +806,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-conill-cargols of Plat
-    (nom "Conill amb cargols")
+    (nom "Conill amb Cargols")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -816,7 +816,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-conill-cassola-allioli-negat of Plat
-    (nom "Conill a la cassola amb allioli negat")
+    (nom "Conill a la Cassola amb Allioli Negat")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -826,7 +826,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-xai-al-forn-patates of Plat
-    (nom "Xai al forn amb patates")
+    (nom "Xai al Forn amb Patates")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -836,7 +836,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-filet-porc-salsa-prunes of Plat
-    (nom "Filet de porc amb salsa de prunes")
+    (nom "Filet de Porc amb Salsa de Prunes")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -845,8 +845,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-carn-d-olla-plat-principal of Plat
-    (nom "Carn d’olla (plat principal)")
+  (plat-carn-d-olla of Plat
+    (nom "Carn d’olla")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -856,7 +856,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-llom-bacalla-sanfaina of Plat
-    (nom "Llom de bacallà amb sanfaina")
+    (nom "Llom de Bacallà amb Sanfaina")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -865,8 +865,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-ternasco-catalana-adaptat of Plat
-    (nom "Ternasco a la catalana (adaptat)")
+  (plat-ternasco-catalana of Plat
+    (nom "Ternasco a la Catalana")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -876,7 +876,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-gall-rostit-escamarlans of Plat
-    (nom "Gall rostit amb escamarlans")
+    (nom "Gall Rostit amb Escamarlans")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -886,7 +886,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-civet-porc-senglar of Plat
-    (nom "Civet de porc senglar")
+    (nom "Civet de Porc Senglar")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -895,8 +895,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-ossobuco-milanesa-versio-banquet-versio-banquet of Plat
-    (nom "Ossobuco a la milanesa (versió banquet) (versió banquet)")
+  (plat-ossobuco-milanesa of Plat
+    (nom "Ossobuco a la Milanesa")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -904,17 +904,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-secreto-iberic-planxa-chimichurri-suau-versio-banquet-versio-banquet of Plat
-    (nom "Secreto ibèric a la planxa amb chimichurri suau (versió banquet) (versió banquet)")
-    (formalitat "informal")
-    (temperatura "Calent")
-    (complexitat baixa)
-    (mida_racio gran)
-    (te_ordre ordre-segon)
-  )
-  ; origen: segons_varietat.csv
-  (plat-ratatouille-ou-poche-versio-banquet of Plat
-    (nom "Ratatouille amb ou poché (versió banquet)")
+  (plat-ratatouille-ou-poche of Plat
+    (nom "Ratatouille amb Ou Poché")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -923,7 +914,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-bacalla-al-pil-pil of Plat
-    (nom "Bacallà al pil-pil")
+    (nom "Bacallà al Pil-pil")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -931,8 +922,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-merluca-koskera-salsa-verda of Plat
-    (nom "Merluça a la koskera (salsa verda)")
+  (plat-lluc-koskera of Plat
+    (nom "Lluç a la Koskera")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -941,7 +932,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-calamars-farcits-salsa of Plat
-    (nom "Calamars farcits amb salsa")
+    (nom "Calamars Farcits amb Salsa")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -950,7 +941,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-paella-marisc of Plat
-    (nom "Paella de marisc")
+    (nom "Paella de Marisc")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -959,7 +950,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-arros-negre-allioli of Plat
-    (nom "Arròs negre amb allioli")
+    (nom "Arròs Negre amb Allioli")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -968,7 +959,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-arros-al-forn of Plat
-    (nom "Arròs al forn")
+    (nom "Arròs al Forn")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -977,7 +968,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-fideua-classica of Plat
-    (nom "Fideuà clàssica")
+    (nom "Fideuà Clàssica")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -986,7 +977,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-rabo-toro-estofat of Plat
-    (nom "Rabo de toro estofat")
+    (nom "Rabo de Toro Estofat")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
@@ -995,7 +986,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-callos-madrilenya of Plat
-    (nom "Callos a la madrilenya")
+    (nom "Callos a la Madrilenya")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
@@ -1003,17 +994,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-ossobuco-milanesa of Plat
-    (nom "Ossobuco a la milanesa")
-    (formalitat "formal")
-    (temperatura "Calent")
-    (complexitat alta)
-    (mida_racio gran)
-    (te_ordre ordre-segon)
-  )
-  ; origen: segons_varietat.csv
   (plat-parmigiana-di-melanzane of Plat
-    (nom "Parmigiana di melanzane")
+    (nom "Parmigiana di Melanzane")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1022,7 +1004,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-lasanya-verdures of Plat
-    (nom "Lasanya de verdures")
+    (nom "Lasanya de Verdures")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1031,7 +1013,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-cigrons-estofats-espinacs of Plat
-    (nom "Cigrons estofats amb espinacs")
+    (nom "Cigrons Estofats amb Espinacs")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -1039,8 +1021,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-risotto-bolets-com-principal of Plat
-    (nom "Risotto de bolets (com a principal)")
+  (plat-risotto-bolets of Plat
+    (nom "Risotto de Bolets")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
@@ -1058,7 +1040,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-caldereta-marisc of Plat
-    (nom "Caldereta de marisc")
+    (nom "Caldereta de Marisc")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -1067,7 +1049,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-daurada-al-forn-verdures of Plat
-    (nom "Daurada al forn amb verdures")
+    (nom "Daurada al Forn amb Verdures")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -1076,7 +1058,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-pollastre-cervesa of Plat
-    (nom "Pollastre a la cervesa")
+    (nom "Pollastre a la Cervesa")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1085,7 +1067,7 @@
   )
   ; origen: segons_varietat.csv
   (plat-corder-bolets of Plat
-    (nom "Corder amb bolets")
+    (nom "Corder amb Bolets")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -1093,8 +1075,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-hamburguesa-gourmet-emplatada of Plat
-    (nom "Hamburguesa gourmet (emplatada)")
+  (plat-hamburguesa-gourmet of Plat
+    (nom "Hamburguesa Gourmet")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1102,8 +1084,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_varietat.csv
-  (plat-pernilo-gall-dindi-rostit of Plat
-    (nom "Perniló de gall dindi rostít")
+  (plat-pernil-gall-dindi-rostit of Plat
+    (nom "Pernil de gall dindi rostit")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1111,8 +1093,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: primers_catalunya.csv
-  (plat-sopa-peix-costa-catalana of Plat
-    (nom "Sopa de peix (costa catalana)")
+  (plat-sopa-peix of Plat
+    (nom "Sopa de Peix")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1122,7 +1104,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-escalivada-anxoves of Plat
-    (nom "Escalivada amb anxoves")
+    (nom "Escalivada amb Anxoves")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1132,7 +1114,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-tonyina-samfaina of Plat
-    (nom "Tonyina amb samfaina")
+    (nom "Tonyina amb Samfaina")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1142,7 +1124,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-panellets-variats of Plat
-    (nom "Panellets variats")
+    (nom "Panellets Variats")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1151,8 +1133,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-coca-iogurt-llimona of Plat
-    (nom "Coca de iogurt (llimona)")
+  (plat-coca-iogurt of Plat
+    (nom "Coca de Iogurt")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1162,7 +1144,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-galetes-mantega of Plat
-    (nom "Galetes de mantega")
+    (nom "Galetes de Mantega")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -1192,7 +1174,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-brac-gitano-trufa of Plat
-    (nom "Braç de gitano de trufa")
+    (nom "Braç de Gitano de Trufa")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1202,7 +1184,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-brac-gitano-nata of Plat
-    (nom "Braç de gitano de nata")
+    (nom "Braç de Gitano de Nata")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1212,7 +1194,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-melindros-xocolata-desfeta of Plat
-    (nom "Melindros amb xocolata desfeta")
+    (nom "Melindros amb Xocolata Desfeta")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1222,7 +1204,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-xuixos-crema of Plat
-    (nom "Xuixos de crema")
+    (nom "Xuixos de Crema")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1232,7 +1214,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-bunyols-vent of Plat
-    (nom "Bunyols de vent")
+    (nom "Bunyols de Vent")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1242,7 +1224,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-coca-llardons of Plat
-    (nom "Coca de llardons")
+    (nom "Coca de Llardons")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1252,7 +1234,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-coca-forner-pinyons of Plat
-    (nom "Coca de forner amb pinyons")
+    (nom "Coca de Forner amb Pinyons")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -1261,8 +1243,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-menjar-blanc-reus of Plat
-    (nom "Menjar blanc (Reus)")
+  (plat-menjar-blanc of Plat
+    (nom "Menjar Blanc")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1272,7 +1254,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-creme-brulee of Plat
-    (nom "Crème brûlée")
+    (nom "Crème Brûlée")
     (procedencia "França")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1302,7 +1284,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-mel-mato of Plat
-    (nom "Mel i mató")
+    (nom "Mel i Mató")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1312,7 +1294,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-crema-catalana of Plat
-    (nom "Crema catalana")
+    (nom "Crema Catalana")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1322,7 +1304,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-gelat-vainilla-crumble-salsa-toffee of Plat
-    (nom "Gelat de vainilla amb crumble i salsa toffee")
+    (nom "Gelat de Vainilla amb Crumble i Salsa Toffee")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -1331,7 +1313,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-panna-cotta-xocolata-blanca of Plat
-    (nom "Panna cotta de xocolata blanca")
+    (nom "Panna Cotta de Xocolata Blanca")
     (procedencia "Itàlia")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1341,7 +1323,7 @@
   )
   ; origen: primers_catalunya.csv
   (plat-amanida-catalana of Plat
-    (nom "Amanida catalana")
+    (nom "Amanida Catalana")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -1350,8 +1332,8 @@
     (te_ordre ordre-primer)
   )
   ; origen: postres_varietat.csv
-  (plat-pastis-formatge-fred-ny-style-light of Plat
-    (nom "Pastís de formatge fred (NY style light)")
+  (plat-pastis-formatge-fred of Plat
+    (nom "Pastís de Formatge Fred")
     (formalitat "formal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -1360,7 +1342,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-crumble-fruits-vermells of Plat
-    (nom "Crumble de fruits vermells")
+    (nom "Crumble de Fruits Vermells")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -1369,7 +1351,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-gelatina-cava-fruites of Plat
-    (nom "Gelatina de cava amb fruites")
+    (nom "Gelatina de Cava amb Fruites")
     (formalitat "formal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -1387,8 +1369,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-farigola-mel-postre-rustic of Plat
-    (nom "Farigola amb mel (postre rústic)")
+  (plat-farigola-mel of Plat
+    (nom "Farigola amb Mel")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1397,8 +1379,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-peres-al-vi-empordaneses of Plat
-    (nom "Peres al vi (empordaneses)")
+  (plat-peres-al-vi of Plat
+    (nom "Peres al Vi")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -1408,7 +1390,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-poma-al-forn-canyella of Plat
-    (nom "Poma al forn amb canyella")
+    (nom "Poma al Forn amb Canyella")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -1418,7 +1400,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-music-moscatell of Plat
-    (nom "Músic amb moscatell")
+    (nom "Músic amb Moscatell")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1428,7 +1410,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-bescuit-nous-mel of Plat
-    (nom "Bescuit amb nous i mel")
+    (nom "Bescuit amb Nous i Mel")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1437,8 +1419,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-crespells-dolcos-adaptacio of Plat
-    (nom "Crespells dolços (adaptació)")
+  (plat-crespells-dolcos of Plat
+    (nom "Crespells Dolços")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1447,8 +1429,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-pastis-castanya-pirineu of Plat
-    (nom "Pastís de castanya (Pirineu)")
+  (plat-pastis-castanya of Plat
+    (nom "Pastís de Castanya")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -1458,7 +1440,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-peres-xocolata of Plat
-    (nom "Peres amb xocolata")
+    (nom "Peres amb Xocolata")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -1468,7 +1450,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-flam-mato of Plat
-    (nom "Flam de mató")
+    (nom "Flam de Mató")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1478,7 +1460,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-coca-d-ametlla-fina of Plat
-    (nom "Coca d’ametlla fina")
+    (nom "Coca d’ametlla Fina")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1498,7 +1480,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-crema-llimona-merenga of Plat
-    (nom "Crema de llimona amb merenga")
+    (nom "Crema de Llimona amb Merenga")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1508,7 +1490,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-panellets-xocolata of Plat
-    (nom "Panellets de xocolata")
+    (nom "Panellets de Xocolata")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1518,7 +1500,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-panellets-coco of Plat
-    (nom "Panellets de coco")
+    (nom "Panellets de Coco")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1528,7 +1510,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-pastisset-cabell-d-angel of Plat
-    (nom "Pastisset de cabell d’àngel")
+    (nom "Pastisset de Cabell d’àngel")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1538,7 +1520,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-carquinyolis-xocolata of Plat
-    (nom "Carquinyolis de xocolata")
+    (nom "Carquinyolis de Xocolata")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -1547,8 +1529,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-bescuit-d-ametlla-tortell-fi of Plat
-    (nom "Bescuit d’ametlla (tortell fi)")
+  (plat-bescuit-d-ametlla of Plat
+    (nom "Bescuit d’ametlla")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -1558,7 +1540,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-mato-codonyat of Plat
-    (nom "Mató amb codonyat")
+    (nom "Mató amb Codonyat")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1577,8 +1559,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-bescuit-borracho-rovellat of Plat
-    (nom "Bescuit borracho (rovellat)")
+  (plat-bescuit-emborratxat of Plat
+    (nom "Bescuit emborratxat")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1587,8 +1569,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_catalunya.csv
-  (plat-pijama-versio-moderna of Plat
-    (nom "Pijama (versió moderna)")
+  (plat-pijama of Plat
+    (nom "Pijama")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -1608,7 +1590,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-coca-vidre of Plat
-    (nom "Coca de vidre")
+    (nom "Coca de Vidre")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1618,7 +1600,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-melo-al-moscatell of Plat
-    (nom "Meló al moscatell")
+    (nom "Meló al Moscatell")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1638,7 +1620,7 @@
   )
   ; origen: postres_catalunya.csv
   (plat-bescuit-iogurt-xocolata of Plat
-    (nom "Bescuit de iogurt amb xocolata")
+    (nom "Bescuit de Iogurt amb Xocolata")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -1668,7 +1650,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-lluc-cloisses-salsa-verda of Plat
-    (nom "Lluç amb cloïsses i salsa verda")
+    (nom "Lluç amb Cloïsses i Salsa Verda")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1678,7 +1660,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-profiteroles-xocolata of Plat
-    (nom "Profiteroles amb xocolata")
+    (nom "Profiteroles amb Xocolata")
     (procedencia "França")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1698,7 +1680,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-mousse-llimona of Plat
-    (nom "Mousse de llimona")
+    (nom "Mousse de Llimona")
     (formalitat "formal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -1707,7 +1689,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-mousse-xocolata of Plat
-    (nom "Mousse de xocolata")
+    (nom "Mousse de Xocolata")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1717,7 +1699,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-fruita-temporada-tallada of Plat
-    (nom "Fruita de temporada tallada")
+    (nom "Fruita de Temporada Tallada")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1727,7 +1709,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-leche-frita of Plat
-    (nom "Leche frita")
+    (nom "Leche Frita")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -1747,7 +1729,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-esparrecs-verds-brasa-romesco of Plat
-    (nom "Espàrrecs verds a la brasa amb romesco")
+    (nom "Espàrrecs Verds a la Brasa amb Romesco")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -1756,22 +1738,13 @@
   )
   ; origen: postres_varietat.csv
   (plat-arros-llet of Plat
-    (nom "Arròs amb llet")
+    (nom "Arròs amb Llet")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Tebi")
     (complexitat baixa)
     (mida_racio petita)
     (te_ordre ordre-postres)
-  )
-  ; origen: primers_varietat.csv
-  (plat-rissotto-bolets-rac-primer of Plat
-    (nom "Rissotto de bolets (rac. primer)")
-    (formalitat "formal")
-    (temperatura "Calent")
-    (complexitat alta)
-    (mida_racio mitja)
-    (te_ordre ordre-primer)
   )
   ; origen: postres_varietat.csv
   (plat-natilles of Plat
@@ -1785,7 +1758,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-flam-d-ou-casola of Plat
-    (nom "Flam d’ou casolà")
+    (nom "Flam d’ou Casolà")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1795,7 +1768,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-ravioli-carbassa-mantega-salvia of Plat
-    (nom "Ravioli de carbassa i mantega de sàlvia")
+    (nom "Ravioli de Carbassa i Mantega de Sàlvia")
     (formalitat "formal")
     (temperatura "Calent")
     (complexitat alta)
@@ -1804,7 +1777,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-crema-porro-poma-verda of Plat
-    (nom "Crema de porro i poma verda")
+    (nom "Crema de Porro i Poma Verda")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -1813,7 +1786,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-conill-brasa-all-julivert of Plat
-    (nom "Conill a la brasa amb all i julivert")
+    (nom "Conill a la Brasa amb All i Julivert")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -1823,7 +1796,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-lluc-al-forn-patata of Plat
-    (nom "Lluç al forn amb patata")
+    (nom "Lluç al Forn amb Patata")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1833,7 +1806,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-amanida-llenties-vinagreta of Plat
-    (nom "Amanida de llenties amb vinagreta")
+    (nom "Amanida de Llenties amb Vinagreta")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -1842,7 +1815,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-tonyina-brasa-samfaina of Plat
-    (nom "Tonyina a la brasa amb samfaina")
+    (nom "Tonyina a la Brasa amb Samfaina")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1852,7 +1825,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-filet-porc-poma-caramel-litzada of Plat
-    (nom "Filet de porc amb poma caramel·litzada")
+    (nom "Filet de Porc amb Poma Caramel·litzada")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1862,7 +1835,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-escalopa-vedella-llimona of Plat
-    (nom "Escalopa de vedella amb llimona")
+    (nom "Escalopa de Vedella amb Llimona")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -1872,7 +1845,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-peus-porc-brasa of Plat
-    (nom "Peus de porc a la brasa")
+    (nom "Peus de Porc a la Brasa")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -1882,7 +1855,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-ceps-saltejats-all-julivert of Plat
-    (nom "Ceps saltejats amb all i julivert")
+    (nom "Ceps Saltejats amb All i Julivert")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -1891,7 +1864,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-gall-sant-pere-planxa of Plat
-    (nom "Gall de Sant Pere a la planxa")
+    (nom "Gall de Sant Pere a la Planxa")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1901,7 +1874,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-rap-cloisses-gambes of Plat
-    (nom "Rap amb cloïsses i gambes")
+    (nom "Rap amb Cloïsses i Gambes")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1910,8 +1883,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: segons_catalunya.csv
-  (plat-caldereta-llagosta-banquet of Plat
-    (nom "Caldereta de llagosta (banquet)")
+  (plat-caldereta-llagosta of Plat
+    (nom "Caldereta de Llagosta")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1920,8 +1893,8 @@
     (te_ordre ordre-segon)
   )
   ; origen: primers_varietat.csv
-  (plat-mini-falafel-tahina-servei-alternatiu of Plat
-    (nom "Mini falàfel amb tahina (servei alternatiu)")
+  (plat-mini-falafel-tahina of Plat
+    (nom "Mini Falàfel amb Tahina")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -1930,7 +1903,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-conill-samfaina of Plat
-    (nom "Conill amb samfaina")
+    (nom "Conill amb Samfaina")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Calent")
@@ -1940,7 +1913,7 @@
   )
   ; origen: segons_catalunya.csv
   (plat-bacalla-allioli-gratinat of Plat
-    (nom "Bacallà amb allioli gratinat")
+    (nom "Bacallà amb Allioli Gratinat")
     (procedencia "Catalunya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -1960,7 +1933,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-pastis-formatge-al-forn of Plat
-    (nom "Pastís de formatge al forn")
+    (nom "Pastís de Formatge al Forn")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -1970,7 +1943,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-coulant-xocolata of Plat
-    (nom "Coulant de xocolata")
+    (nom "Coulant de Xocolata")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Calent")
@@ -2000,7 +1973,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-hummus-crudites of Plat
-    (nom "Hummus amb crudités")
+    (nom "Hummus amb Crudités")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2009,7 +1982,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-amanida-grega of Plat
-    (nom "Amanida grega")
+    (nom "Amanida Grega")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2018,7 +1991,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-ensaladilla-russa-fina of Plat
-    (nom "Ensaladilla russa fina")
+    (nom "Ensaladilla Russa Fina")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2036,8 +2009,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_varietat.csv
-  (plat-fartons-orxata-postre of Plat
-    (nom "Fartons amb orxata (postre)")
+  (plat-fartons-orxata of Plat
+    (nom "Fartons amb Orxata")
     (procedencia "País Valencià")
     (formalitat "formal")
     (temperatura "Fred")
@@ -2056,8 +2029,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_varietat.csv
-  (plat-pastis-llimona-tarte-au-citron of Plat
-    (nom "Pastís de llimona (tarte au citron)")
+  (plat-pastis-llimona of Plat
+    (nom "Pastís de Llimona")
     (procedencia "França (Mediterrània)")
     (formalitat "formal")
     (temperatura "Fred")
@@ -2066,8 +2039,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: postres_varietat.csv
-  (plat-gelat-artesa-assortit of Plat
-    (nom "Gelat artesà (assortit)")
+  (plat-gelat-artesa of Plat
+    (nom "Gelat Artesà")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2076,7 +2049,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-panna-cotta-fruits-vermells of Plat
-    (nom "Panna cotta amb fruits vermells")
+    (nom "Panna Cotta amb Fruits Vermells")
     (procedencia "Itàlia")
     (formalitat "formal")
     (temperatura "Fred")
@@ -2085,8 +2058,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: primers_varietat.csv
-  (plat-quiche-lorraine-porcio of Plat
-    (nom "Quiche lorraine (porció)")
+  (plat-quiche-lorraine of Plat
+    (nom "Quiche Lorraine")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2095,7 +2068,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-torro-en-textures of Plat
-    (nom "Torró en textures")
+    (nom "Torró en Textures")
     (procedencia "Espanya")
     (formalitat "formal")
     (temperatura "Fred")
@@ -2105,7 +2078,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-timbal-d-escalivada-formatge-cabra of Plat
-    (nom "Timbal d’escalivada amb formatge de cabra")
+    (nom "Timbal d’escalivada amb Formatge de Cabra")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2124,7 +2097,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-sobaos-pasiegos of Plat
-    (nom "Sobaos pasiegos")
+    (nom "Sobaos Pasiegos")
     (procedencia "Cantàbria")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -2134,7 +2107,7 @@
   )
   ; origen: primers_varietat.csv
   (plat-musclos-marinera of Plat
-    (nom "Musclos a la marinera")
+    (nom "Musclos a la Marinera")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2143,7 +2116,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-quesada-pasiega of Plat
-    (nom "Quesada pasiega")
+    (nom "Quesada Pasiega")
     (procedencia "Cantàbria")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -2152,8 +2125,8 @@
     (te_ordre ordre-postres)
   )
   ; origen: primers_varietat.csv
-  (plat-pop-gallega-racio of Plat
-    (nom "Pop a la gallega (ració)")
+  (plat-pop-gallega of Plat
+    (nom "Pop a la Gallega")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2162,7 +2135,7 @@
   )
   ; origen: postres_varietat.csv
   (plat-filloas-mel of Plat
-    (nom "Filloas amb mel")
+    (nom "Filloas amb Mel")
     (procedencia "Galícia")
     (formalitat "formal")
     (temperatura "Tebi")
@@ -2172,7 +2145,7 @@
   )
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-copa-fruites-iogurt-mel of Plat
-    (nom "Copa de fruites amb iogurt i mel")
+    (nom "Copa de Fruites amb Iogurt i Mel")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2180,8 +2153,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: aperitiu | origen: postres_catalunya.csv
-  (plat-torro-cremos-cullera of Plat
-    (nom "Torró cremós (cullera)")
+  (plat-torro-cremos of Plat
+    (nom "Torró Cremós")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -2190,8 +2163,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: aperitiu | origen: postres_catalunya.csv
-  (plat-mousse-mato-mel-copa of Plat
-    (nom "Mousse de mató i mel (copa)")
+  (plat-mousse-mato-mel of Plat
+    (nom "Mousse de Mató i Mel")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -2200,8 +2173,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: aperitiu | origen: postres_varietat.csv
-  (plat-vaset-llimona-mousse of Plat
-    (nom "Vaset de llimona (mousse)")
+  (plat-vaset-llimona of Plat
+    (nom "Vaset de Llimona")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2209,8 +2182,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: aperitiu | origen: postres_varietat.csv
-  (plat-pastis-iogurt-llimona-vaset of Plat
-    (nom "Pastís de iogurt i llimona (vaset)")
+  (plat-pastis-iogurt-llimona of Plat
+    (nom "Pastís de Iogurt i Llimona")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2218,8 +2191,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: aperitiu | origen: postres_varietat.csv
-  (plat-copa-tiramisu-mini of Plat
-    (nom "Copa tiramisú (mini)")
+  (plat-copa-tiramisu of Plat
+    (nom "Copa Tiramisú")
     (procedencia "Itàlia")
     (formalitat "informal")
     (temperatura "Fred")
@@ -2229,7 +2202,7 @@
   )
   ; especificacio: aperitiu | origen: postres_varietat.csv
   (plat-vaset-xocolata-gerds of Plat
-    (nom "Vaset de xocolata i gerds")
+    (nom "Vaset de Xocolata i Gerds")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2238,7 +2211,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-tartar-tonyina-soja of Plat
-    (nom "Cullereta de tartar de tonyina i soja")
+    (nom "Cullereta de Tartar de Tonyina i Soja")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
@@ -2247,7 +2220,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-mini-tartar-salmo-alvocat of Plat
-    (nom "Mini tàrtar de salmó amb alvocat")
+    (nom "Mini Tàrtar de Salmó amb Alvocat")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2256,7 +2229,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-clotxines-al-vapor-llimona of Plat
-    (nom "Clotxines al vapor amb llimona")
+    (nom "Clotxines al Vapor amb Llimona")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2264,8 +2237,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-ratatouille-tasta of Plat
-    (nom "Ratatouille (tasta)")
+  (plat-ratatouille of Plat
+    (nom "Ratatouille")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2273,8 +2246,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-salmorejo-vaset of Plat
-    (nom "Salmorejo (vaset)")
+  (plat-salmorejo of Plat
+    (nom "Salmorejo")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2283,7 +2256,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-esqueixada-bacalla of Plat
-    (nom "Esqueixada de bacallà")
+    (nom "Esqueixada de Bacallà")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2291,8 +2264,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-vitello-tonnato-laminats of Plat
-    (nom "Vitello tonnato (laminats)")
+  (plat-vitello-tonnato of Plat
+    (nom "Vitello Tonnato")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2301,7 +2274,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-amanida-caprese of Plat
-    (nom "Amanida caprese")
+    (nom "Amanida Caprese")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2310,7 +2283,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-carpaccio-vedella-parmesa of Plat
-    (nom "Carpaccio de vedella amb parmesà")
+    (nom "Carpaccio de Vedella amb Parmesà")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2318,8 +2291,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-ceviche-corvina-vaset of Plat
-    (nom "Ceviche de corvina (vaset)")
+  (plat-ceviche-corvina of Plat
+    (nom "Ceviche de Corvina")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
@@ -2328,7 +2301,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-tartar-tonyina-soja-sesam of Plat
-    (nom "Tàrtar de tonyina amb soja i sèsam")
+    (nom "Tàrtar de Tonyina amb Soja i Sèsam")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2336,8 +2309,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-vichyssoise-vaset of Plat
-    (nom "Vichyssoise (vaset)")
+  (plat-vichyssoise of Plat
+    (nom "Vichyssoise")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2345,8 +2318,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-crema-carbassa-vaset of Plat
-    (nom "Crema de carbassa (vaset)")
+  (plat-crema-carbassa of Plat
+    (nom "Crema de Carbassa")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2354,8 +2327,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-canelo-fred-tonyina-mos of Plat
-    (nom "Caneló fred de tonyina (mos)")
+  (plat-canelo-fred-tonyina of Plat
+    (nom "Caneló Fred de Tonyina")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2363,8 +2336,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-ou-guatlla-pate-torradeta of Plat
-    (nom "Ou de guatlla amb paté (torradeta)")
+  (plat-ou-guatlla-pate of Plat
+    (nom "Ou de Guatlla amb Paté")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2373,7 +2346,7 @@
   )
   ; especificacio: aperitiu | origen: primers_catalunya.csv
   (plat-sopa-freda-tomaquet-sindria of Plat
-    (nom "Sopa freda de tomàquet i síndria")
+    (nom "Sopa Freda de Tomàquet i Síndria")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -2382,8 +2355,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-tartar-gambes-cullereta of Plat
-    (nom "Tàrtar de gambes (cullereta)")
+  (plat-tartar-gambes of Plat
+    (nom "Tàrtar de Gambes")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
@@ -2391,8 +2364,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-verdures-planxa-romesco-vaset of Plat
-    (nom "Verdures a la planxa amb romesco (vaset)")
+  (plat-verdures-planxa-romesco of Plat
+    (nom "Verdures a la Planxa amb Romesco")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2401,7 +2374,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-bastons-pastanaga-rostida-iogurt of Plat
-    (nom "Bastons de pastanaga rostida amb iogurt")
+    (nom "Bastons de Pastanaga Rostida amb Iogurt")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2410,7 +2383,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-timbal-d-escalivada-formatge of Plat
-    (nom "Timbal d’escalivada amb formatge")
+    (nom "Timbal d’escalivada amb Formatge")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2419,7 +2392,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-brandada-bacalla-freda of Plat
-    (nom "Cullereta de brandada de bacallà freda")
+    (nom "Cullereta de Brandada de Bacallà Freda")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2428,7 +2401,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-amanida-caprese-en-bastonet of Plat
-    (nom "Amanida caprese en bastonet")
+    (nom "Amanida Caprese en Bastonet")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2437,7 +2410,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-canape-salmo-fumat-crema-agra of Plat
-    (nom "Canapè de salmó fumat i crema agra")
+    (nom "Canapè de Salmó Fumat i Crema Agra")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2446,7 +2419,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-endivia-crema-roquefort-nous of Plat
-    (nom "Endívia amb crema de roquefort i nous")
+    (nom "Endívia amb Crema de Roquefort i Nous")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2455,7 +2428,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-cullereta-remolatxa-formatge-fresc of Plat
-    (nom "Cullereta de remolatxa i formatge fresc")
+    (nom "Cullereta de Remolatxa i Formatge Fresc")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2463,8 +2436,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
-  (plat-ceviche-blanc-vaset of Plat
-    (nom "Ceviche blanc (vaset)")
+  (plat-ceviche-blanc of Plat
+    (nom "Ceviche Blanc")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat alta)
@@ -2473,7 +2446,7 @@
   )
   ; especificacio: aperitiu | origen: tapes_base.csv
   (plat-carpaccio-vedella-en-mos of Plat
-    (nom "Carpaccio de vedella en mos")
+    (nom "Carpaccio de Vedella en Mos")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2482,7 +2455,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-cullereta-brandada-bacalla of Plat
-    (nom "Cullereta de brandada de bacallà")
+    (nom "Cullereta de Brandada de Bacallà")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2490,8 +2463,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-viera-gratinada-unitat of Plat
-    (nom "Viera gratinada (unitat)")
+  (plat-viera-gratinada of Plat
+    (nom "Viera Gratinada")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat alta)
@@ -2500,7 +2473,7 @@
   )
   ; especificacio: aperitiu | origen: primers_catalunya.csv
   (plat-carpaccio-bacalla of Plat
-    (nom "Carpaccio de bacallà")
+    (nom "Carpaccio de Bacallà")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Fred")
@@ -2509,8 +2482,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
-  (plat-gazpacho-classic-vaset of Plat
-    (nom "Gazpacho clàssic (vaset)")
+  (plat-gazpacho-classic of Plat
+    (nom "Gazpacho Clàssic")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2519,7 +2492,7 @@
   )
   ; especificacio: aperitiu | origen: primers_varietat.csv
   (plat-tartar-remolatxa-formatge-fresc of Plat
-    (nom "Tàrtar de remolatxa i formatge fresc")
+    (nom "Tàrtar de Remolatxa i Formatge Fresc")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2527,8 +2500,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
-  (plat-xistorra-sidra-mos of Plat
-    (nom "Xistorra a la sidra (mos)")
+  (plat-xistorra-sidra of Plat
+    (nom "Xistorra a la Sidra")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2536,8 +2509,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-calamars-romana of Plat
-    (nom "Calamars a la romana")
+  (plat-calamars-romana-2 of Plat
+    (nom "Calamars a la Romana")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2546,7 +2519,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bunyols-bacalla of Plat
-    (nom "Bunyols de bacallà")
+    (nom "Bunyols de Bacallà")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2555,7 +2528,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-bolets of Plat
-    (nom "Croquetes de bolets")
+    (nom "Croquetes de Bolets")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2564,7 +2537,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-pollastre-rostit of Plat
-    (nom "Croquetes de pollastre rostit")
+    (nom "Croquetes de Pollastre Rostit")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2573,7 +2546,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-croquetes-pernil of Plat
-    (nom "Croquetes de pernil")
+    (nom "Croquetes de Pernil")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2582,7 +2555,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bastons-pollastre-cruixent of Plat
-    (nom "Bastons de pollastre cruixent")
+    (nom "Bastons de Pollastre Cruixent")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2591,7 +2564,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-broqueta-gamba-sipia of Plat
-    (nom "Broqueta de gamba i sípia")
+    (nom "Broqueta de Gamba i Sípia")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2599,8 +2572,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-gamba-l-all-cassola of Plat
-    (nom "Gamba a l’all (cassola)")
+  (plat-gamba-l-all of Plat
+    (nom "Gamba a l’all")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2608,8 +2581,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-samoses-vegetals-mini of Plat
-    (nom "Samoses vegetals (mini)")
+  (plat-samoses-vegetals of Plat
+    (nom "Samoses Vegetals")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2618,7 +2591,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-fingers-lluc-arrebossats of Plat
-    (nom "Fingers de lluç arrebossats")
+    (nom "Fingers de Lluç Arrebossats")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2627,7 +2600,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-mandonguilles-salsa-tomaquet of Plat
-    (nom "Mini mandonguilles amb salsa de tomàquet")
+    (nom "Mini Mandonguilles amb Salsa de Tomàquet")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2636,7 +2609,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-hot-dog-gourmet of Plat
-    (nom "Mini hot-dog gourmet")
+    (nom "Mini Hot-dog Gourmet")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2645,7 +2618,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-burger-vedella of Plat
-    (nom "Mini burger de vedella")
+    (nom "Mini Burger de Vedella")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2654,7 +2627,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-alitas-pollastre-especiades of Plat
-    (nom "Alitas de pollastre especiades")
+    (nom "Alitas de Pollastre Especiades")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2663,7 +2636,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-patates-braves of Plat
-    (nom "Patates braves")
+    (nom "Patates Braves")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2672,7 +2645,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-coca-d-escalivada-tonyina of Plat
-    (nom "Coca d’escalivada amb tonyina")
+    (nom "Coca d’escalivada amb Tonyina")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2681,7 +2654,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-focaccia-herbes-olives of Plat
-    (nom "Focaccia amb herbes i olives")
+    (nom "Focaccia amb Herbes i Olives")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2689,8 +2662,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_catalunya.csv
-  (plat-embotits-pais-platet of Plat
-    (nom "Embotits del país (platet)")
+  (plat-embotits-pais of Plat
+    (nom "Embotits del País")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -2699,8 +2672,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_catalunya.csv
-  (plat-formatges-catalans-platet of Plat
-    (nom "Formatges catalans (platet)")
+  (plat-formatges-catalans of Plat
+    (nom "Formatges Catalans")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -2710,7 +2683,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-gilda-classica of Plat
-    (nom "Gilda clàssica")
+    (nom "Gilda Clàssica")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2719,7 +2692,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-broqueta-tomaquet-cherry-mozzarella of Plat
-    (nom "Broqueta de tomàquet cherry i mozzarella")
+    (nom "Broqueta de Tomàquet Cherry i Mozzarella")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2727,8 +2700,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_catalunya.csv
-  (plat-allioli-codony-morro-tripa-tast of Plat
-    (nom "Allioli de codony amb morro i tripa (tast)")
+  (plat-allioli-codony-morro-tripa of Plat
+    (nom "Allioli de Codony amb Morro i Tripa")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -2738,7 +2711,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-tartaleta-pollastre-al-curri of Plat
-    (nom "Mini tartaleta de pollastre al curri")
+    (nom "Mini Tartaleta de Pollastre al Curri")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -2747,7 +2720,7 @@
   )
   ; especificacio: pica-pica | origen: primers_catalunya.csv
   (plat-torrada-escalivada-formatge of Plat
-    (nom "Torrada amb escalivada i formatge")
+    (nom "Torrada amb Escalivada i Formatge")
     (procedencia "Catalunya")
     (formalitat "informal")
     (temperatura "Tebi")
@@ -2756,8 +2729,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-guacamole-nachos-mini-bowl of Plat
-    (nom "Guacamole amb nachos (mini bowl)")
+  (plat-guacamole-nachos of Plat
+    (nom "Guacamole amb Nachos")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2766,7 +2739,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-wrap-gall-dindi-enciam of Plat
-    (nom "Mini wrap de gall dindi i enciam")
+    (nom "Mini Wrap de Gall Dindi i Enciam")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2775,7 +2748,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-torrada-d-escalivada-anxova of Plat
-    (nom "Torrada d’escalivada i anxova")
+    (nom "Torrada d’escalivada i Anxova")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2784,7 +2757,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-quiche-lorraine of Plat
-    (nom "Mini quiche lorraine")
+    (nom "Mini Quiche Lorraine")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2793,7 +2766,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-provolone-al-forn-tomaquet of Plat
-    (nom "Provolone al forn amb tomàquet")
+    (nom "Provolone al Forn amb Tomàquet")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2801,8 +2774,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
-  (plat-remenat-bolets-mos of Plat
-    (nom "Remenat de bolets (mos)")
+  (plat-remenat-bolets of Plat
+    (nom "Remenat de Bolets")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2811,7 +2784,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-empanadilles-verdures of Plat
-    (nom "Empanadilles de verdures")
+    (nom "Empanadilles de Verdures")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2819,8 +2792,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-mini-truita-patata-pinxo of Plat
-    (nom "Mini truita de patata (pinxo)")
+  (plat-mini-truita-patata of Plat
+    (nom "Mini Truita de Patata")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2829,7 +2802,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-patates-al-caliu-allioli of Plat
-    (nom "Patates al caliu amb allioli")
+    (nom "Patates al Caliu amb Allioli")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2838,7 +2811,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bolets-saltejats-en-mos of Plat
-    (nom "Bolets saltejats en mos")
+    (nom "Bolets Saltejats en Mos")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2847,7 +2820,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-xips-carbasso-arrebossats of Plat
-    (nom "Xips de carbassó arrebossats")
+    (nom "Xips de Carbassó Arrebossats")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2856,7 +2829,7 @@
   )
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-carrot-cake of Plat
-    (nom "Mini carrot cake")
+    (nom "Mini Carrot Cake")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2864,8 +2837,8 @@
     (te_ordre ordre-postres)
   )
   ; especificacio: pica-pica | origen: postres_varietat.csv
-  (plat-trufes-xocolata-mos of Plat
-    (nom "Trufes de xocolata (mos)")
+  (plat-trufes-xocolata of Plat
+    (nom "Trufes de Xocolata")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2874,7 +2847,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-entrepa-vegetal of Plat
-    (nom "Mini entrepà vegetal")
+    (nom "Mini Entrepà Vegetal")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat baixa)
@@ -2883,7 +2856,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-montadito-pernil-pebrots of Plat
-    (nom "Montadito de pernil i pebrots")
+    (nom "Montadito de Pernil i Pebrots")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2891,8 +2864,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
-  (plat-couscous-verdures-tasta of Plat
-    (nom "Couscous de verdures (tasta)")
+  (plat-couscous-verdures of Plat
+    (nom "Couscous de Verdures")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2901,7 +2874,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-cullereta-arros-negre-all-oli of Plat
-    (nom "Cullereta de arròs negre amb all i oli")
+    (nom "Cullereta de Arròs Negre amb All i Oli")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -2909,8 +2882,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-taula-formatges-artesans-mosos of Plat
-    (nom "Taula de formatges artesans (mosos)")
+  (plat-taula-formatges-artesans of Plat
+    (nom "Taula de Formatges Artesans")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2919,7 +2892,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-assortit-d-olives-encurtits of Plat
-    (nom "Assortit d’olives i encurtits")
+    (nom "Assortit d’olives i Encurtits")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2927,8 +2900,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-taula-d-embotits-coctel of Plat
-    (nom "Taula d’embotits (còctel)")
+  (plat-taula-d-embotits of Plat
+    (nom "Taula d’embotits")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2936,8 +2909,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
-  (plat-fideus-cassola-tasta of Plat
-    (nom "Fideus a la cassola (tasta)")
+  (plat-fideus-cassola of Plat
+    (nom "Fideus a la Cassola")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2945,17 +2918,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
-  (plat-arros-negre-cullereta of Plat
-    (nom "Arròs negre (cullereta)")
-    (formalitat "informal")
-    (temperatura "Tebi")
-    (complexitat mitjana)
-    (mida_racio pica-pica)
-    (te_ordre ordre-primer)
-  )
-  ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-broqueta-pollastre-yakitori of Plat
-    (nom "Broqueta de pollastre yakitori")
+    (nom "Broqueta de Pollastre Yakitori")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2964,7 +2928,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-fingers-pollastre-cruixents of Plat
-    (nom "Fingers de pollastre cruixents")
+    (nom "Fingers de Pollastre Cruixents")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -2973,7 +2937,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-seito-fregit-cruixent of Plat
-    (nom "Seitó fregit cruixent")
+    (nom "Seitó Fregit Cruixent")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -2982,7 +2946,7 @@
   )
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-brownie-nous of Plat
-    (nom "Mini brownie amb nous")
+    (nom "Mini Brownie amb Nous")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -2991,7 +2955,7 @@
   )
   ; especificacio: pica-pica | origen: postres_varietat.csv
   (plat-mini-lemon-pie of Plat
-    (nom "Mini lemon pie")
+    (nom "Mini Lemon Pie")
     (formalitat "informal")
     (temperatura "Fred")
     (complexitat mitjana)
@@ -3000,7 +2964,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-taco-vegetal of Plat
-    (nom "Mini taco vegetal")
+    (nom "Mini Taco Vegetal")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3009,7 +2973,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-entrepa-rostit-mostassa of Plat
-    (nom "Mini entrepà de rostit amb mostassa")
+    (nom "Mini Entrepà de Rostit amb Mostassa")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3018,7 +2982,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-mandonguilles-tomaquet of Plat
-    (nom "Mini mandonguilles amb tomàquet")
+    (nom "Mini Mandonguilles amb Tomàquet")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -3027,7 +2991,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-formatge-al-forn-herbes of Plat
-    (nom "Formatge al forn amb herbes")
+    (nom "Formatge al Forn amb Herbes")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -3036,7 +3000,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-tires-bacalla-arrebossat of Plat
-    (nom "Tires de bacallà arrebossat")
+    (nom "Tires de Bacallà Arrebossat")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -3045,7 +3009,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-mini-truita-patata-ceba of Plat
-    (nom "Mini truita de patata amb ceba")
+    (nom "Mini Truita de Patata amb Ceba")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3054,7 +3018,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-broqueta-pop-patata of Plat
-    (nom "Mini broqueta de pop i patata")
+    (nom "Mini Broqueta de Pop i Patata")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat mitjana)
@@ -3063,7 +3027,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-mini-taco-peix of Plat
-    (nom "Mini taco de peix")
+    (nom "Mini Taco de Peix")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -3071,8 +3035,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-pernil-iberic-tall-fi-mos of Plat
-    (nom "Pernil ibèric tall fi (mos)")
+  (plat-pernil-iberic-tall-fi of Plat
+    (nom "Pernil Ibèric Tall Fi")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3081,7 +3045,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-daus-truita-botifarra of Plat
-    (nom "Daus de truita i botifarra")
+    (nom "Daus de Truita i Botifarra")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3089,8 +3053,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-mandonguilla-thai-mos of Plat
-    (nom "Mandonguilla thai (mos)")
+  (plat-mandonguilla-thai of Plat
+    (nom "Mandonguilla Thai")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -3098,8 +3062,8 @@
     (te_ordre ordre-primer)
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
-  (plat-mini-fondue-formatge-pa-torrat of Plat
-    (nom "Mini fondue de formatge (pa torrat)")
+  (plat-mini-fondue-formatge of Plat
+    (nom "Mini Fondue de Formatge")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat mitjana)
@@ -3108,7 +3072,7 @@
   )
   ; especificacio: pica-pica | origen: primers_varietat.csv
   (plat-empanadilles-tonyina of Plat
-    (nom "Empanadilles de tonyina")
+    (nom "Empanadilles de Tonyina")
     (formalitat "informal")
     (temperatura "Tebi")
     (complexitat baixa)
@@ -3117,7 +3081,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-provolone-al-forn-herbes of Plat
-    (nom "Provolone al forn amb herbes")
+    (nom "Provolone al Forn amb Herbes")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
@@ -3126,7 +3090,7 @@
   )
   ; especificacio: pica-pica | origen: tapes_base.csv
   (plat-bastonet-brie-arrebossat of Plat
-    (nom "Bastonet de brie arrebossat")
+    (nom "Bastonet de Brie Arrebossat")
     (formalitat "informal")
     (temperatura "Calent")
     (complexitat baixa)
