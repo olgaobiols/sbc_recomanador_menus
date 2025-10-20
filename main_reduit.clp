@@ -300,42 +300,132 @@
   (preguntat-alergens-prohibits)
   ?p <- (peticio (alergies-si ?r&~nil))
 =>
-  (assert (respostes-completes)))
+  (assert (respostes-completes))
+  (focus AbstraccioHeuristica))
 
 ;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
+(deftemplate plat-valid-final
+   (slot nom))   ; Nom del plat que passa totes les restriccions
+
+(deftemplate plat-valid-temp
+   (slot nom))          ;; Nom del plat que passa la restricció de temperatura
+
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+(defrule AbstraccioHeuristica::filtrar-plats-per-temperatura
+   ?p <- (peticio (data ?estacio))
+   ?plat <- (object (is-a Plat)
+           (nom ?nom)
+           (temperatura ?temp)
+           (te_ordre $?ordres))
+   =>
+   (if (member$ ordre-postres ?ordres) ; les postres passen sempre
+      then
+         (assert (plat-valid-temp (nom ?nom)))
+      else
+         (if (or
+              (and (or (eq ?estacio primavera) (eq ?estacio estiu))
+                   (or (eq ?temp "Fred") (eq ?temp "Tebi")))
+              (and (or (eq ?estacio tardor) (eq ?estacio hivern))
+                   (or (eq ?temp "Calent") (eq ?temp "Tebi"))))
+            then
+               (assert (plat-valid-temp (nom ?nom)))
+         )
+   )
+)
+
+(defrule AbstraccioHeuristica::final-abstraccio
+   (declare (auto-focus TRUE))
+   (not (plat-pendent-temp))  ;; o alguna condició que indica que ja ha acabat
+   =>
+   (printout t ">> Final Abstracció: canviant focus a Associació" crlf)
+   (focus AssociacioHeuristica)
+)
+
+
+
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
+(defrule AssociacioHeuristica::final-associacio
+   (declare (auto-focus TRUE))
+   (not (plat-pendent-formalitat))
+   =>
+   (printout t ">> Final Associació: canviant focus a Refinament" crlf)
+   (focus RefinamentHeuristica)
+)
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
+(defrule RefinamentHeuristica::combinar-validacions
+   (plat-valid-temp (nom ?nom))
+   ;; Quan afegeixis més validacions, les afegeixes així:
+   ;; (plat-valid-formalitat (nom ?nom))
+   ;; (plat-valid-complexitat (nom ?nom))
+   =>
+   (assert (plat-valid-final (nom ?nom)))
+)
+
+(defrule RefinamentHeuristica::final-refinament
+   (declare (auto-focus TRUE))
+   (not (plat-pendent-pressupost))
+   =>
+   (printout t ">> Final Refinament: canviant focus a Composició" crlf)
+   (focus ComposicioMenus)
+)
+
 
 ; VEURE A QUIN MODUL IMPORTAR-HO
 (defmodule ComposicioMenus (import MAIN ?ALL)(import PreferenciesMenu ?ALL)(export ?ALL))
 
 (defrule ComposicioMenus::mostrar-menus-inicials
-  (declare (auto-focus TRUE))
-  (respostes-completes)
-  (not (menus-presentats))
-=>
-  (bind ?primers (find-all-instances ((?p Plat)) (member$ ordre-primer (send ?p get-te_ordre))))
-  (bind ?segons (find-all-instances ((?p Plat)) (member$ ordre-segon (send ?p get-te_ordre))))
-  (bind ?postres (find-all-instances ((?p Plat)) (member$ ordre-postres (send ?p get-te_ordre))))
-  (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
-  (if (<= ?limit 0) then
-    (printout t crlf "*** No s'han trobat menus per mostrar. ***" crlf)
+   (declare (auto-focus TRUE))
+   (respostes-completes)
+   (not (menus-presentats))
+   =>
+   ;; Recollim noms finals vàlids
+   (bind ?plats-valids (find-all-facts ((?f plat-valid-final)) TRUE))
+   (bind ?noms-valids (create$))
+   (foreach ?f ?plats-valids
+       (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom)))
+   )
+
+   ;; Busquem plats per ordre
+   (bind ?primers (find-all-instances
+                      ((?p Plat))
+                      (and (member$ ordre-primer (send ?p get-te_ordre))
+                           (member$ (send ?p get-nom) ?noms-valids))))
+   
+   (bind ?segons (find-all-instances
+                      ((?p Plat))
+                      (and (member$ ordre-segon (send ?p get-te_ordre))
+                           (member$ (send ?p get-nom) ?noms-valids))))
+   
+   (bind ?postres (find-all-instances
+                      ((?p Plat))
+                      (member$ ordre-postres (send ?p get-te_ordre))))
+
+   (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
+
+   (if (<= ?limit 0) then
+       (printout t crlf "*** No s'han trobat menus per mostrar. ***" crlf)
    else
-    (printout t crlf "Et proposem " ?limit " menus inicials:" crlf)
-    (loop-for-count (?i 1 ?limit)
-      (bind ?primer (nth$ ?i ?primers))
-      (bind ?segon (nth$ ?i ?segons))
-      (bind ?postre (nth$ ?i ?postres))
-      (printout t crlf "*** Menu " ?i " ***" crlf)
-      (printout t "  Entrant: " (send ?primer get-nom) crlf)
-      (printout t "  Principal: " (send ?segon get-nom) crlf)
-      (printout t "  Postres: " (send ?postre get-nom) crlf)))
-  (assert (menus-presentats)))
+       (printout t crlf "Et proposem " ?limit " menus inicials:" crlf)
+       (loop-for-count (?i 1 ?limit)
+           (bind ?primer (nth$ ?i ?primers))
+           (bind ?segon (nth$ ?i ?segons))
+           (bind ?postre (nth$ ?i ?postres))
+           (printout t crlf "*** Menu " ?i " ***" crlf)
+           (printout t "  Entrant: " (send ?primer get-nom) crlf)
+           (printout t "  Principal: " (send ?segon get-nom) crlf)
+           (printout t "  Postres: " (send ?postre get-nom) crlf)
+       )
+   )
+
+   (assert (menus-presentats))
+)
+
+
+
 
 ; (deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
 ;   (/ (float (round (* ?x 100))) 100.0))
