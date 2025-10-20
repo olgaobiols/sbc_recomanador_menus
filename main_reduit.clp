@@ -313,6 +313,9 @@
 (deftemplate plat-valid-formal
     (slot nom))
 
+(deftemplate plat-valid-complexitat
+    (slot nom))
+
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 (defrule AbstraccioHeuristica::filtrar-plats-per-temperatura
    ?p <- (peticio (data ?estacio))
@@ -352,6 +355,19 @@
     
 )
 
+(defrule AbstraccioHeuristica::filtrar-complexitat-per-num-comensals
+  ?p <- (peticio (num-comensals ?n))
+  ?plat <- (object (is-a Plat) (nom ?nom) (complexitat ?cx) (te_ordre $?ordres))
+  =>
+  (if (or
+        (and (<= ?n 50) (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa)))
+        (and (> ?n 50) (<= ?n 150) (or (eq ?cx mitjana) (eq ?cx baixa)))
+        (and (> ?n 150) (eq ?cx baixa)))
+      then 
+        (assert (plat-valid-complexitat (nom ?nom)))
+  )
+)
+
 (defrule AbstraccioHeuristica::final-abstraccio
    (declare (auto-focus TRUE))
    (not (plat-pendent-temp))  ;; o alguna condició que indica que ja ha acabat
@@ -359,8 +375,6 @@
    (printout t ">> Final Abstracció: canviant focus a Associació" crlf)
    (focus AssociacioHeuristica)
 )
-
-
 
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
