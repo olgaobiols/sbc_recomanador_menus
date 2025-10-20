@@ -310,6 +310,9 @@
 (deftemplate plat-valid-temp
    (slot nom))          ;; Nom del plat que passa la restricció de temperatura
 
+(deftemplate plat-valid-formal
+    (slot nom))
+
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 (defrule AbstraccioHeuristica::filtrar-plats-per-temperatura
    ?p <- (peticio (data ?estacio))
@@ -331,6 +334,22 @@
                (assert (plat-valid-temp (nom ?nom)))
          )
    )
+)
+
+(defrule AbstraccioHeuristica::filtrar-plats-per-formalitat
+    ?p <- (peticio (formalitat ?f))
+    ?plat <- (object (is-a Plat)
+              (nom ?nom)
+              (formalitat ?form)
+              (te_ordre $?ordres))
+=>
+    (if (or
+         (and (eq ?f formal) (eq ?form "formal"))
+         (and (eq ?f informal) (eq ?form "informal")))
+      then 
+        (assert (plat-valid-formal (nom ?nom)))
+    )
+    
 )
 
 (defrule AbstraccioHeuristica::final-abstraccio
@@ -359,7 +378,7 @@
 (defrule RefinamentHeuristica::combinar-validacions
    (plat-valid-temp (nom ?nom))
    ;; Quan afegeixis més validacions, les afegeixes així:
-   ;; (plat-valid-formalitat (nom ?nom))
+   (plat-valid-formal (nom ?nom))
    ;; (plat-valid-complexitat (nom ?nom))
    =>
    (assert (plat-valid-final (nom ?nom)))
@@ -401,8 +420,9 @@
                            (member$ (send ?p get-nom) ?noms-valids))))
    
    (bind ?postres (find-all-instances
-                      ((?p Plat))
-                      (member$ ordre-postres (send ?p get-te_ordre))))
+                   ((?p Plat))
+                   (and (member$ ordre-postres (send ?p get-te_ordre))
+                        (member$ (send ?p get-nom) ?noms-valids))))
 
    (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
 
