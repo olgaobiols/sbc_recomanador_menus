@@ -343,8 +343,7 @@
     ?p <- (peticio (formalitat ?f))
     ?plat <- (object (is-a Plat)
               (nom ?nom)
-              (formalitat ?form)
-              (te_ordre $?ordres))
+              (formalitat ?form))
 =>
     (if (or
          (and (eq ?f formal) (eq ?form "formal"))
@@ -356,16 +355,18 @@
 )
 
 (defrule AbstraccioHeuristica::filtrar-complexitat-per-num-comensals
-  ?p <- (peticio (num-comensals ?n))
-  ?plat <- (object (is-a Plat) (nom ?nom) (complexitat ?cx) (te_ordre $?ordres))
-  =>
-  (if (or
+    ?p <- (peticio (num-comensals ?n))
+    ?plat <- (object (is-a Plat)
+                (nom ?nom)
+                (complexitat ?cx))
+=>
+    (if (or
         (and (<= ?n 50) (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa)))
         (and (> ?n 50) (<= ?n 150) (or (eq ?cx mitjana) (eq ?cx baixa)))
         (and (> ?n 150) (eq ?cx baixa)))
       then 
         (assert (plat-valid-complexitat (nom ?nom)))
-  )
+    )
 )
 
 (defrule AbstraccioHeuristica::final-abstraccio
@@ -375,6 +376,8 @@
    (printout t ">> Final Abstracció: canviant focus a Associació" crlf)
    (focus AssociacioHeuristica)
 )
+
+
 
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
@@ -393,7 +396,7 @@
    (plat-valid-temp (nom ?nom))
    ;; Quan afegeixis més validacions, les afegeixes així:
    (plat-valid-formal (nom ?nom))
-   ;; (plat-valid-complexitat (nom ?nom))
+   (plat-valid-complexitat (nom ?nom))
    =>
    (assert (plat-valid-final (nom ?nom)))
 )
