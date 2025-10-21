@@ -310,6 +310,7 @@
 (deftemplate plat-valid-complexitat (slot nom))
 (deftemplate plat-valid-event
    (slot nom))
+(deftemplate plat-valid-dispo (slot nom))
 
 
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
@@ -395,6 +396,15 @@
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
+
+(defrule AssociacioHeuristica::filtrar-plats-per-disponibilitat
+  (peticio (data ?estacio))   ; primavera / estiu / tardor / hivern
+  ?p <- (object (is-a Plat) (nom ?nom) (disponibilitat_plats $?dispo))
+  (test (member$ ?estacio (create$ $?dispo)))
+  =>
+  (assert (plat-valid-dispo (nom ?nom)))
+)
+
 (defrule AssociacioHeuristica::final-associacio
    (declare (auto-focus TRUE))
    (not (plat-pendent-formalitat))
@@ -406,13 +416,14 @@
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
 (defrule RefinamentHeuristica::combinar-validacions
-   (plat-valid-temp (nom ?nom))
-   ;; Quan afegeixis més validacions, les afegeixes així:
-   (plat-valid-formal (nom ?nom))
-   (plat-valid-complexitat (nom ?nom))
-   (plat-valid-event (nom ?nom)) 
-   =>
-   (assert (plat-valid-final (nom ?nom)))
+    (plat-valid-temp (nom ?nom))
+    ;; Quan afegeixis més validacions, les afegeixes així:
+    (plat-valid-formal (nom ?nom))
+    (plat-valid-complexitat (nom ?nom))
+    (plat-valid-event (nom ?nom)) 
+    (plat-valid-dispo (nom ?nom))
+    =>
+    (assert (plat-valid-final (nom ?nom)))
 )
 
 (defrule RefinamentHeuristica::final-refinament

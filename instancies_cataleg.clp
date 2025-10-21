@@ -1,5 +1,5 @@
 ;;; Fitxer generat automaticament per genera_instancies.py
-;;; Conte les instancies de la classe Plat derivades de cataleg_global_updated.csv
+;;; Conte les instancies de la classe Plat derivades de cataleg_global_with_dispo.csv
 
 (definstances plats-cataleg
   (plat-llobarro-al-forn-patata-panadera of Plat
@@ -10,6 +10,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-entrecot-brasa-guarnicio of Plat
     (nom "Entrecot a la Brasa amb Guarnició")
@@ -19,6 +20,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-amanida-mongetes-tendres-patata of Plat
     (nom "Amanida de Mongetes Tendres i Patata")
@@ -29,6 +31,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-cigrons-espinacs of Plat
     (nom "Cigrons amb Espinacs")
@@ -39,6 +42,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-sopa-farigola-ou of Plat
     (nom "Sopa de Farigola amb Ou")
@@ -49,6 +53,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-amanida-bacalla-taronja of Plat
     (nom "Amanida de Bacallà i Taronja")
@@ -59,6 +64,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-timbal-patata-tonyina-pebrot-escalivat of Plat
     (nom "Timbal de Patata, Tonyina i Pebrot Escalivat")
@@ -69,6 +75,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-sopa-verdures of Plat
     (nom "Sopa de Verdures")
@@ -79,6 +86,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-crema-carbasso of Plat
     (nom "Crema de Carbassó")
@@ -89,6 +97,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-xato-vilanova of Plat
     (nom "Xató de Vilanova")
@@ -99,6 +108,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-carxofes-confitades-pernil of Plat
     (nom "Carxofes Confitades amb Pernil")
@@ -109,6 +119,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-sopa-peix-fideus of Plat
     (nom "Sopa de Peix amb Fideus")
@@ -119,6 +130,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-mongetes-tendres-saltejades-pernil of Plat
     (nom "Mongetes Tendres Saltejades amb Pernil")
@@ -129,6 +141,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-amanida-llegums of Plat
     (nom "Amanida de Llegums")
@@ -139,6 +152,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-cargols-cassola of Plat
     (nom "Cargols a la Cassola")
@@ -149,6 +163,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-filet-vedella-al-pebre-verd of Plat
     (nom "Filet de Vedella al Pebre Verd")
@@ -158,6 +173,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-rap-marinera of Plat
     (nom "Rap a la Marinera")
@@ -167,6 +183,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-rostit-vedella-bolets of Plat
     (nom "Rostit de Vedella amb Bolets")
@@ -176,6 +193,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-mandonguilles-salsa-d-ametlla of Plat
     (nom "Mandonguilles amb Salsa d’ametlla")
@@ -185,6 +203,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-fricando-vedella of Plat
     (nom "Fricandó de Vedella")
@@ -194,6 +213,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-secreto-iberic-planxa-chimichurri-suau of Plat
     (nom "Secreto Ibèric a la Planxa amb Chimichurri Suau")
@@ -203,6 +223,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-presa-iberica-salsa-mostassa-antiga of Plat
     (nom "Presa Ibèrica amb Salsa de Mostassa Antiga")
@@ -212,6 +233,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-costelles-porc-baixa-temperatura of Plat
     (nom "Costelles de Porc a Baixa Temperatura")
@@ -221,6 +243,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-garro-porc-al-forn-patates of Plat
     (nom "Garró de Porc al Forn amb Patates")
@@ -230,6 +253,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-xai-al-forn-herbes of Plat
     (nom "Xai al Forn amb Herbes")
@@ -239,6 +263,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-corder-al-chilindron of Plat
     (nom "Corder al Chilindrón")
@@ -248,6 +273,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-pollastre-rostit-prunes-pinyons of Plat
     (nom "Pollastre Rostit amb Prunes i Pinyons")
@@ -257,6 +283,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-magret-d-anec-reduccio-vi of Plat
     (nom "Magret d’ànec amb Reducció de Vi")
@@ -266,6 +293,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pollastre-al-curri-suau-arros of Plat
     (nom "Pollastre al Curri Suau amb Arròs")
@@ -275,6 +303,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-confit-d-anec-poma of Plat
     (nom "Confit d’ànec amb Poma")
@@ -285,6 +314,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-esqueixada-alvocat of Plat
     (nom "Esqueixada amb Alvocat")
@@ -295,6 +325,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-calcots-romesco of Plat
     (nom "Calçots amb Romesco")
@@ -315,6 +346,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-llobarro-donostiarra of Plat
     (nom "Llobarro a la Donostiarra")
@@ -325,6 +357,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-arros-negre of Plat
     (nom "Arròs Negre")
@@ -335,6 +368,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-arros-caldos-peix of Plat
     (nom "Arròs Caldós de Peix")
@@ -345,6 +379,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-coca-recapte of Plat
     (nom "Coca de Recapte")
@@ -355,6 +390,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-esparrecs-brasa-romesco of Plat
     (nom "Espàrrecs a la Brasa amb Romesco")
@@ -375,6 +411,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-faves-catalana of Plat
     (nom "Faves a la Catalana")
@@ -385,6 +422,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-cargols-llauna of Plat
     (nom "Cargols a la Llauna")
@@ -395,6 +433,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-brandada-bacalla of Plat
     (nom "Brandada de Bacallà")
@@ -405,6 +444,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-trinxat-cerdanya of Plat
     (nom "Trinxat de la Cerdanya")
@@ -415,6 +455,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-amanida-formatge-cabra-fruits-secs of Plat
     (nom "Amanida de Formatge de Cabra amb Fruits Secs")
@@ -425,6 +466,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-escudella-nadal of Plat
     (nom "Escudella de Nadal")
@@ -435,6 +477,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-sopa-galets of Plat
     (nom "Sopa de Galets")
@@ -445,6 +488,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-crema-bolets of Plat
     (nom "Crema de Bolets")
@@ -455,6 +499,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-amanida-mongetes-ganxet-bacalla of Plat
     (nom "Amanida de Mongetes del Ganxet amb Bacallà")
@@ -465,6 +510,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-esqueixada-mongeta-tendra of Plat
     (nom "Esqueixada amb Mongeta Tendra")
@@ -515,6 +561,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-musclos-al-vapor of Plat
     (nom "Musclos al Vapor")
@@ -525,6 +572,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-amanida-tomaquet-ceba-figueres of Plat
     (nom "Amanida de Tomàquet i Ceba de Figueres")
@@ -535,6 +583,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-graellada-carn of Plat
     (nom "Graellada de Carn")
@@ -545,6 +594,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coca-salada-escalivada-tonyina of Plat
     (nom "Coca Salada amb Escalivada i Tonyina")
@@ -555,6 +605,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-llenguado-meuniere of Plat
     (nom "Llenguado a la Meunière")
@@ -565,6 +616,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   (plat-sopa-ceba-gratinada of Plat
     (nom "Sopa de Ceba Gratinada")
@@ -575,6 +627,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-daurada-planxa-verduretes of Plat
     (nom "Daurada a la Planxa amb Verduretes")
@@ -585,6 +638,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-remenat-d-ous-esparrecs-pernil of Plat
     (nom "Remenat d’ous amb Espàrrecs i Pernil")
@@ -595,6 +649,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-daurada-sal of Plat
     (nom "Daurada a la Sal")
@@ -604,6 +659,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-tonyina-planxa-sesam of Plat
     (nom "Tonyina a la Planxa amb Sèsam")
@@ -613,6 +669,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-sopa-d-all-pa of Plat
     (nom "Sopa d’all i Pa")
@@ -623,6 +680,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-cap-pota of Plat
     (nom "Cap i Pota")
@@ -633,6 +691,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-canelons-rostit of Plat
     (nom "Canelons de Rostit")
@@ -643,6 +702,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-fricando-moixernons of Plat
     (nom "Fricandó amb Moixernons")
@@ -653,6 +713,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-suquet-peix of Plat
     (nom "Suquet de Peix")
@@ -663,6 +724,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-bacalla-llauna of Plat
     (nom "Bacallà a la Llauna")
@@ -673,6 +735,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-arros-cassola of Plat
     (nom "Arròs a la Cassola")
@@ -683,6 +746,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-fideua-marisc of Plat
     (nom "Fideuà de Marisc")
@@ -693,6 +757,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-anec-peres of Plat
     (nom "Ànec amb Peres")
@@ -703,6 +768,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-sarsuela-peix-marisc of Plat
     (nom "Sarsuela de Peix i Marisc")
@@ -723,6 +789,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-calamars-farcits-catalana of Plat
     (nom "Calamars Farcits a la Catalana")
@@ -733,6 +800,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-mar-muntanya of Plat
     (nom "Mar i Muntanya")
@@ -743,6 +811,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-peus-porc-cargols of Plat
     (nom "Peus de Porc amb Cargols")
@@ -753,6 +822,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-botifarra-mongetes of Plat
     (nom "Botifarra amb Mongetes")
@@ -763,6 +833,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-graellada-peix of Plat
     (nom "Graellada de Peix")
@@ -783,6 +854,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-pollastre-escamarlans of Plat
     (nom "Pollastre amb Escamarlans")
@@ -803,6 +875,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-conill-cargols of Plat
     (nom "Conill amb Cargols")
@@ -813,6 +886,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-conill-cassola-allioli-negat of Plat
     (nom "Conill a la Cassola amb Allioli Negat")
@@ -823,6 +897,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-xai-al-forn-patates of Plat
     (nom "Xai al Forn amb Patates")
@@ -833,6 +908,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-filet-porc-salsa-prunes of Plat
     (nom "Filet de Porc amb Salsa de Prunes")
@@ -843,6 +919,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-carn-d-olla of Plat
     (nom "Carn d’olla")
@@ -853,6 +930,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-llom-bacalla-sanfaina of Plat
     (nom "Llom de Bacallà amb Sanfaina")
@@ -863,6 +941,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-ternasco-catalana of Plat
     (nom "Ternasco a la Catalana")
@@ -873,6 +952,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-gall-rostit-escamarlans of Plat
     (nom "Gall Rostit amb Escamarlans")
@@ -883,6 +963,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-civet-porc-senglar of Plat
     (nom "Civet de Porc Senglar")
@@ -893,6 +974,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-ossobuco-milanesa of Plat
     (nom "Ossobuco a la Milanesa")
@@ -902,6 +984,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-ratatouille-ou-poche of Plat
     (nom "Ratatouille amb Ou Poché")
@@ -911,6 +994,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-bacalla-al-pil-pil of Plat
     (nom "Bacallà al Pil-pil")
@@ -920,6 +1004,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-lluc-koskera of Plat
     (nom "Lluç a la Koskera")
@@ -929,6 +1014,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-calamars-farcits-salsa of Plat
     (nom "Calamars Farcits amb Salsa")
@@ -938,6 +1024,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-paella-marisc of Plat
     (nom "Paella de Marisc")
@@ -956,6 +1043,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-arros-al-forn of Plat
     (nom "Arròs al Forn")
@@ -965,6 +1053,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-fideua-classica of Plat
     (nom "Fideuà Clàssica")
@@ -974,6 +1063,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-rabo-toro-estofat of Plat
     (nom "Rabo de Toro Estofat")
@@ -983,6 +1073,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-callos-madrilenya of Plat
     (nom "Callos a la Madrilenya")
@@ -992,6 +1083,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-parmigiana-di-melanzane of Plat
     (nom "Parmigiana di Melanzane")
@@ -1001,6 +1093,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-lasanya-verdures of Plat
     (nom "Lasanya de Verdures")
@@ -1019,6 +1112,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-risotto-bolets of Plat
     (nom "Risotto de Bolets")
@@ -1028,6 +1122,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-marmitako of Plat
     (nom "Marmitako")
@@ -1037,6 +1132,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-caldereta-marisc of Plat
     (nom "Caldereta de Marisc")
@@ -1046,6 +1142,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-daurada-al-forn-verdures of Plat
     (nom "Daurada al Forn amb Verdures")
@@ -1055,6 +1152,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-pollastre-cervesa of Plat
     (nom "Pollastre a la Cervesa")
@@ -1064,6 +1162,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-corder-bolets of Plat
     (nom "Corder amb Bolets")
@@ -1073,6 +1172,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-hamburguesa-gourmet of Plat
     (nom "Hamburguesa Gourmet")
@@ -1082,6 +1182,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-pernil-gall-dindi-rostit of Plat
     (nom "Pernil de gall dindi rostit")
@@ -1091,6 +1192,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   (plat-sopa-peix of Plat
     (nom "Sopa de Peix")
@@ -1101,6 +1203,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-escalivada-anxoves of Plat
     (nom "Escalivada amb Anxoves")
@@ -1111,6 +1214,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-tonyina-samfaina of Plat
     (nom "Tonyina amb Samfaina")
@@ -1121,6 +1225,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-panellets-variats of Plat
     (nom "Panellets Variats")
@@ -1131,6 +1236,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-coca-iogurt of Plat
     (nom "Coca de Iogurt")
@@ -1141,6 +1247,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-galetes-mantega of Plat
     (nom "Galetes de Mantega")
@@ -1151,6 +1258,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-teules-d-ametlla of Plat
     (nom "Teules d’ametlla")
@@ -1161,6 +1269,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-carquinyolis of Plat
     (nom "Carquinyolis")
@@ -1171,6 +1280,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-brac-gitano-trufa of Plat
     (nom "Braç de Gitano de Trufa")
@@ -1181,6 +1291,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-brac-gitano-nata of Plat
     (nom "Braç de Gitano de Nata")
@@ -1191,6 +1302,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-melindros-xocolata-desfeta of Plat
     (nom "Melindros amb Xocolata Desfeta")
@@ -1201,6 +1313,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-xuixos-crema of Plat
     (nom "Xuixos de Crema")
@@ -1211,6 +1324,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-bunyols-vent of Plat
     (nom "Bunyols de Vent")
@@ -1221,6 +1335,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coca-llardons of Plat
     (nom "Coca de Llardons")
@@ -1231,6 +1346,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-coca-forner-pinyons of Plat
     (nom "Coca de Forner amb Pinyons")
@@ -1241,6 +1357,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-menjar-blanc of Plat
     (nom "Menjar Blanc")
@@ -1261,6 +1378,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-massini of Plat
     (nom "Massini")
@@ -1271,6 +1389,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coca-llavaneres of Plat
     (nom "Coca de Llavaneres")
@@ -1281,6 +1400,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-mel-mato of Plat
     (nom "Mel i Mató")
@@ -1291,6 +1411,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-crema-catalana of Plat
     (nom "Crema Catalana")
@@ -1301,6 +1422,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-gelat-vainilla-crumble-salsa-toffee of Plat
     (nom "Gelat de Vainilla amb Crumble i Salsa Toffee")
@@ -1310,6 +1432,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-panna-cotta-xocolata-blanca of Plat
     (nom "Panna Cotta de Xocolata Blanca")
@@ -1320,6 +1443,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-amanida-catalana of Plat
     (nom "Amanida Catalana")
@@ -1330,6 +1454,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-pastis-formatge-fred of Plat
     (nom "Pastís de Formatge Fred")
@@ -1339,6 +1464,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-crumble-fruits-vermells of Plat
     (nom "Crumble de Fruits Vermells")
@@ -1348,6 +1474,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-gelatina-cava-fruites of Plat
     (nom "Gelatina de Cava amb Fruites")
@@ -1357,6 +1484,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-semifreddo-d-ametlla of Plat
     (nom "Semifreddo d’ametlla")
@@ -1367,6 +1495,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-farigola-mel of Plat
     (nom "Farigola amb Mel")
@@ -1377,6 +1506,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-peres-al-vi of Plat
     (nom "Peres al Vi")
@@ -1387,6 +1517,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-poma-al-forn-canyella of Plat
     (nom "Poma al Forn amb Canyella")
@@ -1397,6 +1528,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-music-moscatell of Plat
     (nom "Músic amb Moscatell")
@@ -1407,6 +1539,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-bescuit-nous-mel of Plat
     (nom "Bescuit amb Nous i Mel")
@@ -1427,6 +1560,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-castanya of Plat
     (nom "Pastís de Castanya")
@@ -1437,6 +1571,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-peres-xocolata of Plat
     (nom "Peres amb Xocolata")
@@ -1447,6 +1582,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-flam-mato of Plat
     (nom "Flam de Mató")
@@ -1457,6 +1593,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coca-d-ametlla-fina of Plat
     (nom "Coca d’ametlla Fina")
@@ -1467,6 +1604,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-bunyols-quaresma of Plat
     (nom "Bunyols de Quaresma")
@@ -1477,6 +1615,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-crema-llimona-merenga of Plat
     (nom "Crema de Llimona amb Merenga")
@@ -1487,6 +1626,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-panellets-xocolata of Plat
     (nom "Panellets de Xocolata")
@@ -1497,6 +1637,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-panellets-coco of Plat
     (nom "Panellets de Coco")
@@ -1507,6 +1648,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-pastisset-cabell-d-angel of Plat
     (nom "Pastisset de Cabell d’àngel")
@@ -1517,6 +1659,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-carquinyolis-xocolata of Plat
     (nom "Carquinyolis de Xocolata")
@@ -1527,6 +1670,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-bescuit-d-ametlla of Plat
     (nom "Bescuit d’ametlla")
@@ -1537,6 +1681,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-mato-codonyat of Plat
     (nom "Mató amb Codonyat")
@@ -1547,6 +1692,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-catanies of Plat
     (nom "Catànies")
@@ -1557,6 +1703,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-bescuit-emborratxat of Plat
     (nom "Bescuit emborratxat")
@@ -1567,6 +1714,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pijama of Plat
     (nom "Pijama")
@@ -1577,6 +1725,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-coca-montserrat of Plat
     (nom "Coca de Montserrat")
@@ -1587,6 +1736,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-coca-vidre of Plat
     (nom "Coca de Vidre")
@@ -1597,6 +1747,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-melo-al-moscatell of Plat
     (nom "Meló al Moscatell")
@@ -1607,6 +1758,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-pastis-massini of Plat
     (nom "Pastís Massini")
@@ -1617,6 +1769,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-bescuit-iogurt-xocolata of Plat
     (nom "Bescuit de Iogurt amb Xocolata")
@@ -1627,6 +1780,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coca-sant-joan of Plat
     (nom "Coca de Sant Joan")
@@ -1637,6 +1791,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-pastis-sacher of Plat
     (nom "Pastís Sacher")
@@ -1647,6 +1802,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-lluc-cloisses-salsa-verda of Plat
     (nom "Lluç amb Cloïsses i Salsa Verda")
@@ -1657,6 +1813,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-profiteroles-xocolata of Plat
     (nom "Profiteroles amb Xocolata")
@@ -1667,6 +1824,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats hivern)
   )
   (plat-tarta-santiago of Plat
     (nom "Tarta de Santiago")
@@ -1677,6 +1835,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-mousse-llimona of Plat
     (nom "Mousse de Llimona")
@@ -1686,6 +1845,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-mousse-xocolata of Plat
     (nom "Mousse de Xocolata")
@@ -1696,6 +1856,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-fruita-temporada-tallada of Plat
     (nom "Fruita de Temporada Tallada")
@@ -1706,6 +1867,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-leche-frita of Plat
     (nom "Leche Frita")
@@ -1716,6 +1878,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-torrijas of Plat
     (nom "Torrijas")
@@ -1726,6 +1889,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-esparrecs-verds-brasa-romesco of Plat
     (nom "Espàrrecs Verds a la Brasa amb Romesco")
@@ -1745,6 +1909,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-natilles of Plat
     (nom "Natilles")
@@ -1755,6 +1920,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-flam-d-ou-casola of Plat
     (nom "Flam d’ou Casolà")
@@ -1765,6 +1931,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-ravioli-carbassa-mantega-salvia of Plat
     (nom "Ravioli de Carbassa i Mantega de Sàlvia")
@@ -1774,6 +1941,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-crema-porro-poma-verda of Plat
     (nom "Crema de Porro i Poma Verda")
@@ -1783,6 +1951,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   (plat-conill-brasa-all-julivert of Plat
     (nom "Conill a la Brasa amb All i Julivert")
@@ -1793,6 +1962,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   (plat-lluc-al-forn-patata of Plat
     (nom "Lluç al Forn amb Patata")
@@ -1803,6 +1973,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-amanida-llenties-vinagreta of Plat
     (nom "Amanida de Llenties amb Vinagreta")
@@ -1812,6 +1983,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-tonyina-brasa-samfaina of Plat
     (nom "Tonyina a la Brasa amb Samfaina")
@@ -1822,6 +1994,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-filet-porc-poma-caramel-litzada of Plat
     (nom "Filet de Porc amb Poma Caramel·litzada")
@@ -1832,6 +2005,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-escalopa-vedella-llimona of Plat
     (nom "Escalopa de Vedella amb Llimona")
@@ -1842,6 +2016,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-peus-porc-brasa of Plat
     (nom "Peus de Porc a la Brasa")
@@ -1852,6 +2027,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-ceps-saltejats-all-julivert of Plat
     (nom "Ceps Saltejats amb All i Julivert")
@@ -1861,6 +2037,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-gall-sant-pere-planxa of Plat
     (nom "Gall de Sant Pere a la Planxa")
@@ -1871,6 +2048,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera hivern)
   )
   (plat-rap-cloisses-gambes of Plat
     (nom "Rap amb Cloïsses i Gambes")
@@ -1881,6 +2059,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-caldereta-llagosta of Plat
     (nom "Caldereta de Llagosta")
@@ -1891,6 +2070,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-mini-falafel-tahina of Plat
     (nom "Mini Falàfel amb Tahina")
@@ -1900,6 +2080,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-conill-samfaina of Plat
     (nom "Conill amb Samfaina")
@@ -1910,6 +2091,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-bacalla-allioli-gratinat of Plat
     (nom "Bacallà amb Allioli Gratinat")
@@ -1920,6 +2102,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-xato of Plat
     (nom "Xató")
@@ -1930,6 +2113,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-pastis-formatge-al-forn of Plat
     (nom "Pastís de Formatge al Forn")
@@ -1940,6 +2124,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-coulant-xocolata of Plat
     (nom "Coulant de Xocolata")
@@ -1950,6 +2135,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-arnadi of Plat
     (nom "Arnadí")
@@ -1960,6 +2146,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-tiramisu of Plat
     (nom "Tiramisú")
@@ -1970,6 +2157,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-hummus-crudites of Plat
     (nom "Hummus amb Crudités")
@@ -1979,6 +2167,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-amanida-grega of Plat
     (nom "Amanida Grega")
@@ -1997,6 +2186,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-baklava of Plat
     (nom "Baklava")
@@ -2017,6 +2207,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-tarte-tatin of Plat
     (nom "Tarte Tatin")
@@ -2027,6 +2218,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-llimona of Plat
     (nom "Pastís de Llimona")
@@ -2037,6 +2229,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-gelat-artesa of Plat
     (nom "Gelat Artesà")
@@ -2046,6 +2239,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-panna-cotta-fruits-vermells of Plat
     (nom "Panna Cotta amb Fruits Vermells")
@@ -2056,6 +2250,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-quiche-lorraine of Plat
     (nom "Quiche Lorraine")
@@ -2065,6 +2260,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-torro-en-textures of Plat
     (nom "Torró en Textures")
@@ -2075,6 +2271,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-timbal-d-escalivada-formatge-cabra of Plat
     (nom "Timbal d’escalivada amb Formatge de Cabra")
@@ -2084,6 +2281,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-piononos-santa-fe of Plat
     (nom "Piononos de Santa Fe")
@@ -2094,6 +2292,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-sobaos-pasiegos of Plat
     (nom "Sobaos Pasiegos")
@@ -2104,6 +2303,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-musclos-marinera of Plat
     (nom "Musclos a la Marinera")
@@ -2113,6 +2313,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-quesada-pasiega of Plat
     (nom "Quesada Pasiega")
@@ -2123,6 +2324,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pop-gallega of Plat
     (nom "Pop a la Gallega")
@@ -2132,6 +2334,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-filloas-mel of Plat
     (nom "Filloas amb Mel")
@@ -2142,6 +2345,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: aperitiu
   (plat-copa-fruites-iogurt-mel of Plat
@@ -2152,6 +2356,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: aperitiu
   (plat-torro-cremos of Plat
@@ -2174,6 +2379,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: aperitiu
   (plat-vaset-llimona of Plat
@@ -2184,6 +2390,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-pastis-iogurt-llimona of Plat
@@ -2194,6 +2401,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-copa-tiramisu of Plat
@@ -2205,6 +2413,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-vaset-xocolata-gerds of Plat
@@ -2215,6 +2424,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: aperitiu
   (plat-cullereta-tartar-tonyina-soja of Plat
@@ -2225,6 +2435,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   ; especificacio: aperitiu
   (plat-mini-tartar-salmo-alvocat of Plat
@@ -2235,6 +2446,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-clotxines-al-vapor-llimona of Plat
@@ -2245,6 +2457,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: aperitiu
   (plat-ratatouille of Plat
@@ -2255,6 +2468,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-salmorejo of Plat
@@ -2265,6 +2479,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: aperitiu
   (plat-esqueixada-bacalla of Plat
@@ -2275,6 +2490,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: aperitiu
   (plat-vitello-tonnato of Plat
@@ -2285,6 +2501,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: aperitiu
   (plat-amanida-caprese of Plat
@@ -2295,6 +2512,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-carpaccio-vedella-parmesa of Plat
@@ -2305,6 +2523,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: aperitiu
   (plat-ceviche-corvina of Plat
@@ -2315,6 +2534,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-tartar-tonyina-soja-sesam of Plat
@@ -2325,6 +2545,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   ; especificacio: aperitiu
   (plat-vichyssoise of Plat
@@ -2335,6 +2556,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   ; especificacio: aperitiu
   (plat-crema-carbassa of Plat
@@ -2345,6 +2567,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: aperitiu
   (plat-canelo-fred-tonyina of Plat
@@ -2355,6 +2578,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: aperitiu
   (plat-ou-guatlla-pate of Plat
@@ -2365,6 +2589,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   ; especificacio: aperitiu
   (plat-sopa-freda-tomaquet-sindria of Plat
@@ -2376,6 +2601,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-tartar-gambes of Plat
@@ -2406,6 +2632,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   ; especificacio: aperitiu
   (plat-timbal-d-escalivada-formatge of Plat
@@ -2416,6 +2643,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: aperitiu
   (plat-cullereta-brandada-bacalla-freda of Plat
@@ -2426,6 +2654,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-amanida-caprese-en-bastonet of Plat
@@ -2436,6 +2665,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-canape-salmo-fumat-crema-agra of Plat
@@ -2446,6 +2676,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   ; especificacio: aperitiu
   (plat-endivia-crema-roquefort-nous of Plat
@@ -2456,6 +2687,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-cullereta-remolatxa-formatge-fresc of Plat
@@ -2466,6 +2698,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-ceviche-blanc of Plat
@@ -2476,6 +2709,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-carpaccio-vedella-en-mos of Plat
@@ -2486,6 +2720,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: aperitiu
   (plat-cullereta-brandada-bacalla of Plat
@@ -2496,6 +2731,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-viera-gratinada of Plat
@@ -2517,6 +2753,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: aperitiu
   (plat-gazpacho-classic of Plat
@@ -2527,6 +2764,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: aperitiu
   (plat-tartar-remolatxa-formatge-fresc of Plat
@@ -2537,6 +2775,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-xistorra-sidra of Plat
@@ -2547,6 +2786,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-calamars-romana-2 of Plat
@@ -2557,6 +2797,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-bunyols-bacalla of Plat
@@ -2567,6 +2808,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-croquetes-bolets of Plat
@@ -2577,6 +2819,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-croquetes-pollastre-rostit of Plat
@@ -2587,6 +2830,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-croquetes-pernil of Plat
@@ -2597,6 +2841,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-bastons-pollastre-cruixent of Plat
@@ -2607,6 +2852,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-broqueta-gamba-sipia of Plat
@@ -2617,6 +2863,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: pica-pica
   (plat-gamba-l-all of Plat
@@ -2627,6 +2874,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: pica-pica
   (plat-samoses-vegetals of Plat
@@ -2637,6 +2885,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: pica-pica
   (plat-fingers-lluc-arrebossats of Plat
@@ -2647,6 +2896,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-mandonguilles-salsa-tomaquet of Plat
@@ -2657,6 +2907,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-mini-hot-dog-gourmet of Plat
@@ -2667,6 +2918,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-burger-vedella of Plat
@@ -2677,6 +2929,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-alitas-pollastre-especiades of Plat
@@ -2687,6 +2940,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-patates-braves of Plat
@@ -2697,6 +2951,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-coca-d-escalivada-tonyina of Plat
@@ -2707,6 +2962,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-focaccia-herbes-olives of Plat
@@ -2717,6 +2973,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-embotits-pais of Plat
@@ -2728,6 +2985,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-formatges-catalans of Plat
@@ -2739,6 +2997,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-gilda-classica of Plat
@@ -2749,6 +3008,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-broqueta-tomaquet-cherry-mozzarella of Plat
@@ -2759,6 +3019,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: pica-pica
   (plat-allioli-codony-morro-tripa of Plat
@@ -2770,6 +3031,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-mini-tartaleta-pollastre-al-curri of Plat
@@ -2780,6 +3042,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-torrada-escalivada-formatge of Plat
@@ -2791,6 +3054,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-guacamole-nachos of Plat
@@ -2811,6 +3075,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-torrada-d-escalivada-anxova of Plat
@@ -2821,6 +3086,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-mini-quiche-lorraine of Plat
@@ -2831,6 +3097,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-provolone-al-forn-tomaquet of Plat
@@ -2841,6 +3108,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-remenat-bolets of Plat
@@ -2851,6 +3119,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-empanadilles-verdures of Plat
@@ -2861,6 +3130,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   ; especificacio: pica-pica
   (plat-mini-truita-patata of Plat
@@ -2871,6 +3141,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-patates-al-caliu-allioli of Plat
@@ -2881,6 +3152,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-bolets-saltejats-en-mos of Plat
@@ -2891,6 +3163,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-xips-carbasso-arrebossats of Plat
@@ -2901,6 +3174,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: pica-pica
   (plat-mini-carrot-cake of Plat
@@ -2911,6 +3185,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-trufes-xocolata of Plat
@@ -2921,6 +3196,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-entrepa-vegetal of Plat
@@ -2931,6 +3207,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   ; especificacio: pica-pica
   (plat-montadito-pernil-pebrots of Plat
@@ -2941,6 +3218,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-couscous-verdures of Plat
@@ -2951,6 +3229,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   ; especificacio: pica-pica
   (plat-cullereta-arros-negre-all-oli of Plat
@@ -2971,6 +3250,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-assortit-d-olives-encurtits of Plat
@@ -2981,6 +3261,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-taula-d-embotits of Plat
@@ -2991,6 +3272,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-fideus-cassola of Plat
@@ -3001,6 +3283,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-broqueta-pollastre-yakitori of Plat
@@ -3011,6 +3294,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-fingers-pollastre-cruixents of Plat
@@ -3021,6 +3305,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-seito-fregit-cruixent of Plat
@@ -3031,6 +3316,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: pica-pica
   (plat-mini-brownie-nous of Plat
@@ -3041,6 +3327,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-lemon-pie of Plat
@@ -3051,6 +3338,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-taco-vegetal of Plat
@@ -3071,6 +3359,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-mini-mandonguilles-tomaquet of Plat
@@ -3081,6 +3370,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-formatge-al-forn-herbes of Plat
@@ -3091,6 +3381,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-tires-bacalla-arrebossat of Plat
@@ -3101,6 +3392,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-truita-patata-ceba of Plat
@@ -3111,6 +3403,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-broqueta-pop-patata of Plat
@@ -3121,6 +3414,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mini-taco-peix of Plat
@@ -3141,6 +3435,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-daus-truita-botifarra of Plat
@@ -3151,6 +3446,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-mandonguilla-thai of Plat
@@ -3161,6 +3457,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   ; especificacio: pica-pica
   (plat-mini-fondue-formatge of Plat
@@ -3171,6 +3468,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   ; especificacio: pica-pica
   (plat-empanadilles-tonyina of Plat
@@ -3181,6 +3479,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-provolone-al-forn-herbes of Plat
@@ -3191,6 +3490,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   ; especificacio: pica-pica
   (plat-bastonet-brie-arrebossat of Plat
@@ -3201,6 +3501,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-amanida-faves-menta of Plat
     (nom "Amanida de Faves amb Menta")
@@ -3211,6 +3512,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   (plat-escalivada-tonyina of Plat
     (nom "Escalivada amb Tonyina")
@@ -3221,6 +3523,7 @@
     (mida_racio mitja)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-gaspatxo-sindria of Plat
     (nom "Gaspatxo de Síndria")
@@ -3231,6 +3534,7 @@
     (mida_racio petita)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-sopa-freda-cogombre-iogurt of Plat
     (nom "Sopa Freda de Cogombre i Iogurt")
@@ -3241,6 +3545,7 @@
     (mida_racio petita)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-vichyssoise-classica of Plat
     (nom "Vichyssoise Clàssica")
@@ -3251,6 +3556,7 @@
     (mida_racio petita)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-carpaccio-carbasso-parmesa of Plat
     (nom "Carpaccio de Carbassó amb Parmesà")
@@ -3261,6 +3567,7 @@
     (mida_racio petita)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-amanida-llenties-verdures-rostides of Plat
     (nom "Amanida de Llenties amb Verdures Rostides")
@@ -3281,6 +3588,7 @@
     (mida_racio petita)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera)
   )
   (plat-truita-patata-catalana of Plat
     (nom "Truita de Patata a la Catalana")
@@ -3291,6 +3599,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pollastre-escabetxat of Plat
     (nom "Pollastre Escabetxat")
@@ -3301,6 +3610,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-roast-beef-fines-lamines of Plat
     (nom "Roast Beef Fines Làmines")
@@ -3311,6 +3621,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-salmo-marinat-anet of Plat
     (nom "Salmó Marinat amb Anet")
@@ -3321,6 +3632,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor)
   )
   (plat-pernil-dolc-pinya-rostida of Plat
     (nom "Pernil Dolç amb Pinya Rostida")
@@ -3331,6 +3643,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-amanida-cigrons-pebrots of Plat
     (nom "Amanida de Cigrons amb Pebrots")
@@ -3341,6 +3654,7 @@
     (mida_racio gran)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-bacalla-esqueixat-romesco of Plat
     (nom "Bacallà Esqueixat amb Romesco")
@@ -3351,6 +3665,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats tardor)
   )
   (plat-alberginia-farcida-bulgur-herbes of Plat
     (nom "Albergínia Farcida de Bulgur i Herbes")
@@ -3361,6 +3676,7 @@
     (mida_racio mitja)
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu tardor)
   )
   (plat-mousse-iogurt-mel-nous of Plat
     (nom "Mousse de Iogurt amb Mel i Nous")
@@ -3381,6 +3697,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-tiramisu-fruits-bosc of Plat
     (nom "Tiramisú de Fruits del Bosc")
@@ -3391,6 +3708,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-crema-catalana-citrics of Plat
     (nom "Crema Catalana amb Cítrics")
@@ -3401,6 +3719,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-formatge-fresc-llimona of Plat
     (nom "Pastís de Formatge Fresc i Llimona")
@@ -3411,6 +3730,7 @@
     (mida_racio mitja)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-gelat-vainilla-oli-d-oliva-sal of Plat
     (nom "Gelat de Vainilla amb Oli d’Oliva i Sal")
@@ -3421,6 +3741,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-copa-fruita-infusio-menta of Plat
     (nom "Copa de Fruita Amb Infusió de Menta")
@@ -3441,6 +3762,7 @@
     (mida_racio petita)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-red-velvet-crema-formatge of Plat
     (nom "Pastís casament Red Velvet amb Crema de Formatge")
@@ -3450,6 +3772,7 @@
     (mida_racio gran)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-xocolata-belga-ganache of Plat
     (nom "Pastís casament de Xocolata Belga amb Ganache")
@@ -3459,6 +3782,7 @@
     (mida_racio gran)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-llimona-merenga-suissa of Plat
     (nom "Pastís casament de Llimona i Merenga Suïssa")
@@ -3468,6 +3792,7 @@
     (mida_racio gran)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-casament-fruits-vermells-nata of Plat
     (nom "Pastís casament de Fruits Vermells i Nata")
@@ -3477,6 +3802,7 @@
     (mida_racio gran)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-vainilla-capes-mango of Plat
     (nom "Pastís casament de Vainilla amb Capes de Mango")
@@ -3486,6 +3812,7 @@
     (mida_racio gran)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-nata-pressec of Plat
     (nom "Pastís casament de Nata i Préssec")
@@ -3495,6 +3822,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-llimona-iogurt-greg of Plat
     (nom "Pastís casament de Llimona amb Iogurt Greg")
@@ -3504,6 +3832,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-casament-maduixa-gelatina-natural of Plat
     (nom "Pastís casament de Maduixa amb Gelatina Natural")
@@ -3513,6 +3842,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-casament-xocolata-blanca-gerds of Plat
     (nom "Pastís casament de Xocolata Blanca i Gerds")
@@ -3522,6 +3852,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-pastis-casament-iogurt-llimona-coco of Plat
     (nom "Pastís casament de Iogurt i Llimona amb Coco")
@@ -3531,6 +3862,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment casament)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-aniversari-llet-condensada-galeta of Plat
     (nom "Pastís aniversari de Llet Condensada i Galeta")
@@ -3540,6 +3872,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-aniversari-xocolata-caramel-salat of Plat
     (nom "Pastís aniversari de Xocolata i Caramel Salat")
@@ -3549,6 +3882,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-aniversari-oreo-crema-vainilla of Plat
     (nom "Pastís aniversari Oreo amb Crema de Vainilla")
@@ -3558,6 +3892,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-aniversari-taronja-ametlles of Plat
     (nom "Pastís aniversari de Taronja i Ametlles")
@@ -3567,6 +3902,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-aniversari-tres-xocolates of Plat
     (nom "Pastís aniversari de Tres Xocolates")
@@ -3576,6 +3912,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-aniversari-formatge-fruits-vermells of Plat
     (nom "Pastís aniversari de Formatge amb Fruits Vermells")
@@ -3585,6 +3922,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-pastis-aniversari-pastanaga-nous-glace of Plat
     (nom "Pastís aniversari de Pastanaga i Nous amb Glacé")
@@ -3594,6 +3932,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats tardor hivern)
   )
   (plat-pastis-aniversari-sacher-xocolata-melmelada-d-albercoc of Plat
     (nom "Pastís aniversari Sacher de Xocolata i Melmelada d’Albercoc")
@@ -3603,6 +3942,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-aniversari-banoffee-platan-toffee of Plat
     (nom "Pastís aniversari Banoffee de Plàtan i Toffee")
@@ -3612,6 +3952,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment aniversari)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-coco-pinya of Plat
     (nom "Pastís de Coco i Pinya")
@@ -3621,6 +3962,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats estiu)
   )
   (plat-pastis-llimona-mousse-llimona of Plat
     (nom "Pastís de Llimona i Mousse de Llimona")
@@ -3630,6 +3972,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-mango-maracuia of Plat
     (nom "Pastís de Mango i Maracuià")
@@ -3639,6 +3982,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-red-velvet-crema-suau-vainilla of Plat
     (nom "Pastís Red Velvet amb Crema Suau de Vainilla")
@@ -3648,6 +3992,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
   (plat-pastis-poma-crumble of Plat
     (nom "Pastís de Poma amb Crumble")
@@ -3657,6 +4002,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera tardor hivern)
   )
   (plat-pastis-pistatxo-gerds of Plat
     (nom "Pastís de Pistatxo i Gerds")
@@ -3666,6 +4012,7 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu)
   )
   (plat-pastis-tiramisu-capes-cafe-mascarpone of Plat
     (nom "Pastís Tiramisú (Capes de Cafè i Mascarpone)")
@@ -3675,5 +4022,6 @@
     (mida_racio mitjana)
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
+    (disponibilitat_plats primavera estiu tardor hivern)
   )
 )

@@ -2,7 +2,7 @@
 Generador d'instancies CLIPS a partir del cataleg CSV.
 
 Usage basica:
-    python3 genera_instancies.py -i cataleg_global_updated.csv -o instancies_cataleg.clp
+    python3 genera_instancies.py -i cataleg_global_with_dispo.csv -o instancies_cataleg.clp
 """
 
 from __future__ import annotations
@@ -11,12 +11,21 @@ import argparse
 import csv
 import sys
 import unicodedata
+import ast
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, Sequence
 
 # ---------------------------------------------------------------------------
 # Utilities de normalitzacio i format
+
+ESTACIONS_CANON = ("primavera", "estiu", "tardor", "hivern")
+ALIASES_ESTACIONS = {
+    "spring": "primavera", "summer": "estiu", "autumn": "tardor", "fall": "tardor", "winter": "hivern",
+    "primavera": "primavera", "estiu": "estiu", "tardor": "tardor", "hivern": "hivern",
+    "verano": "estiu", "otoño": "tardor", "invierno": "hivern",
+}
 
 def _strip_accents(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value)
@@ -41,7 +50,7 @@ def _ensure_unique(name: str, used: set[str]) -> str:
     while cand in used:
         cand = f"{name}-{k}"; k += 1
     used.add(cand); return cand
-    
+
 def _clips_string(value: str) -> str:
     s = value.replace("\\", "\\\\").replace('"', '\\"').replace("\r\n", "\n").replace("\r", "\n").replace("\n", " ")
     return f"\"{s}\""
@@ -80,6 +89,36 @@ def _normalize_tipus(value: str) -> str:
 def _normalize_apte_event(value: str) -> str:
     return "tots" if not value or not value.strip() else _clips_symbol(value)
 
+def _parse_list_like(s) -> list[str]:
+    """Accepta '["a","b"]' o 'a,b; c' i retorna llista d'strings neta."""
+    if s is None:
+        return []
+    s = str(s).strip()
+    if not s:
+        return []
+    try:
+        v = ast.literal_eval(s)
+        if isinstance(v, (list, tuple)):
+            return [str(x).strip() for x in v]
+    except Exception:
+        pass
+    parts = re.split(r"[;,]", s)
+    return [p.strip() for p in parts if p.strip()]
+
+def _normalize_estacions_list(vals: list[str]) -> list[str]:
+    """Normalitza estacions (alias → canònic), elimina duplicats i ordena primavera→hivern."""
+    out = []
+    seen = set()
+    for v in vals:
+        k = _strip_accents(str(v)).strip().lower()
+        canon = ALIASES_ESTACIONS.get(k, k)
+        if canon in ESTACIONS_CANON and canon not in seen:
+            seen.add(canon); out.append(canon)
+    # ordena segons l'ordre canònic
+    order = {e:i for i,e in enumerate(ESTACIONS_CANON)}
+    out.sort(key=lambda x: order.get(x, 99))
+    return out
+
 # ---------------------------------------------------------------------------
 # Estructures de dades
 
@@ -94,18 +133,27 @@ class PlatRow:
     procedencia: str
     te_ordre: str
     apte_esdeveniment: str
+    disponibilitat_plats: List[str]   # NOVETAT
     especificacio: str
     font: str
 
 def _looks_like_header_row(row: dict) -> bool:
     """Detecta files que en realitat repeteixen els headers."""
-    sample = {k.strip().lower(): (row.get(k) or "").strip().lower() for k in row.keys()}
-    # si algun valor coincideix exactament amb el seu header (p.ex. 'tipus'=='tipus')
-    return any(sample[k] == k for k in sample) or (sample.get("nom_plat","") == "nom_plat")
+    sample: dict[str, str] = {}
+    for k, v in row.items():
+        if not isinstance(k, str):
+            continue
+        key = k.strip().lower()
+        if isinstance(v, list):
+            val = " ".join(str(x) for x in v)
+        else:
+            val = "" if v is None else str(v)
+        sample[key] = val.strip().lower()
+    return any(sample[k] == k for k in sample) or (sample.get("nom_plat", "") == "nom_plat")
 
 def _row_to_plat(row: dict, used_names: set[str]) -> PlatRow | None:
     raw_name = (row.get("nom_plat") or "").strip()
-    if not raw_name:  # buida
+    if not raw_name:
         return None
     instance_name = _ensure_unique(_slugify(raw_name), used_names)
 
@@ -117,6 +165,10 @@ def _row_to_plat(row: dict, used_names: set[str]) -> PlatRow | None:
     especificacio = (row.get("especificacio") or "").strip()
     font = (row.get("__source") or "").strip()
     apte_esdeveniment = _normalize_apte_event(row.get("apte_esdeveniment","tots"))
+
+    # Disponibilitat (llista d'estacions; no s'accepta 'totes' com a simbol)
+    dispo_raw_list = _parse_list_like(row.get("disponibilitat_plats"))
+    dispo_norm = _normalize_estacions_list(dispo_raw_list)
 
     # Tipus amb tolerancia: si falla, fem skip de la fila amb avís
     tipus_raw = row.get("tipus","")
@@ -136,6 +188,7 @@ def _row_to_plat(row: dict, used_names: set[str]) -> PlatRow | None:
         procedencia=procedencia,
         te_ordre=tipus,
         apte_esdeveniment=apte_esdeveniment,
+        disponibilitat_plats=dispo_norm,
         especificacio=especificacio,
         font=font,
     )
@@ -168,6 +221,14 @@ def _format_plat_instance(plat: PlatRow) -> List[str]:
         lines.append(f"    (te_ordre {plat.te_ordre})")
     if plat.apte_esdeveniment and plat.apte_esdeveniment != "-":
         lines.append(f"    (apte_esdeveniment {plat.apte_esdeveniment})")
+
+    # NOVETAT: bolcar el multislot disponibilitat_plats
+    # esperat: (disponibilitat_plats primavera estiu ...) o buit si no hi ha dades
+    if plat.disponibilitat_plats:
+        # imprimeix com a símbols (sense cometes)
+        vals = " ".join(_clips_symbol(s) for s in plat.disponibilitat_plats)
+        lines.append(f"    (disponibilitat_plats {vals})")
+
     lines.append("  )")
     return lines
 
@@ -177,7 +238,7 @@ def generate_instances(rows: Iterable[PlatRow]) -> str:
         body_lines.extend(_format_plat_instance(plat))
     return (
         ";;; Fitxer generat automaticament per genera_instancies.py\n"
-        ";;; Conte les instancies de la classe Plat derivades de cataleg_global_updated.csv\n\n"
+        ";;; Conte les instancies de la classe Plat derivades de cataleg_global_with_dispo.csv\n\n"
         "(definstances plats-cataleg\n"
         + "\n".join(body_lines) + "\n"
         ")\n"
@@ -210,8 +271,8 @@ def read_csv(path: Path) -> List[dict]:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Genera instancies CLIPS a partir d'un CSV.")
-    p.add_argument("-i","--input", type=Path, default=Path("cataleg_global_updated.csv"),
-                   help="Ruta al CSV d'entrada (per defecte: cataleg_global_updated.csv).")
+    p.add_argument("-i","--input", type=Path, default=Path("cataleg_global_with_dispo.csv"),
+                   help="Ruta al CSV d'entrada (per defecte: cataleg_global_with_dispo.csv).")
     p.add_argument("-o","--output", type=Path, default=Path("instancies_cataleg.clp"),
                    help="Fitxer CLP de sortida (per defecte: instancies_cataleg.clp).")
     return p.parse_args(argv)
@@ -223,7 +284,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     used_names: set[str] = set()
     plats: List[PlatRow] = []
     for raw in rows:
-        if not raw: continue
+        if not raw: 
+            continue
         plat = _row_to_plat(raw, used_names)
         if plat is not None:
             plats.append(plat)

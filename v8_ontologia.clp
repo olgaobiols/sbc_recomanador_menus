@@ -14,7 +14,6 @@
     (multislot part_de
         (type INSTANCE)
         (create-accessor read-write))
-
     (slot alcohol
         (type SYMBOL)
         (create-accessor read-write))
@@ -176,6 +175,12 @@
         (create-accessor read-write))
     (slot apte_esdeveniment
         (type SYMBOL)
+        (create-accessor read-write))
+
+    ; AFEGIR A ONTOLOGIA 
+    (multislot disponibilitat_plats
+        (type SYMBOL)
+        (allowed-symbols primavera estiu tardor hivern)
         (create-accessor read-write))
 )
 
