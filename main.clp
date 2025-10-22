@@ -163,7 +163,7 @@
 
 
 (deffunction ingredient-apte-dieta (?diet ?dietes-ing)
-  (if (eq ?diet cap) then (return TRUE))
+  (if (or (eq ?diet cap) (eq ?diet indiferent)) then (return TRUE))
 
   ; Vegà: cal etiqueta VG
   (if (eq ?diet vega) then
@@ -193,12 +193,12 @@
 
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
-(deffunction valida-boolea "Valida una resposta booleana (sí/no)"
+(deffunction valida-boolea "Valida sí/no/indiferent"
   (?prompt)
   (bind ?resp_valida FALSE)
   (bind ?resp nil)
   (while (not ?resp_valida)
-    (printout t ?prompt " (sí/no): " crlf)
+    (printout t ?prompt " (sí/no/indiferent): " crlf)
     (bind ?x (lowcase (readline)))
     (if (or (eq ?x "sí") (eq ?x "si") (eq ?x "s") (eq ?x "y") (eq ?x "yes")) then
         (bind ?resp_valida TRUE) (bind ?resp si)
@@ -206,9 +206,12 @@
     (if (or (eq ?x "no") (eq ?x "n")) then
         (bind ?resp_valida TRUE) (bind ?resp no)
     else
-        (printout t "Si us plau, respon 'sí' o 'no'." crlf)))
- ) ?resp
-)
+    (if (eq ?x "indiferent") then
+        (bind ?resp_valida TRUE) (bind ?resp indiferent)
+    else
+        (printout t "Respon 'sí', 'no' o 'indiferent'." crlf))))
+ ) ?resp)
+
 
 (deffunction valida-num "Valida una resposta numèrica dins d'un rang"
   (?prompt ?min ?max)
@@ -229,21 +232,49 @@
   ) ?resp ; retorna la resposta validada  
 )
 
+(deffunction valida-num-o-indif "Com valida-num però accepta 'indiferent'"
+  (?prompt ?min ?max)
+  (bind ?resp_valida FALSE)
+  (bind ?resp nil)
+  (while (not ?resp_valida)
+    (printout t ?prompt " (" ?min "-" ?max ", o 'indiferent'): " crlf)
+    (bind ?raw (lowcase (readline)))
+    (if (eq ?raw "indiferent") then
+      (bind ?resp_valida TRUE)
+      (bind ?resp indiferent)
+    else
+      ; Converteix la línia a camp CLIPS (pot ser nombre si és vàlid)
+      (bind ?fld (string-to-field ?raw))
+      (if (numberp ?fld) then
+        ; Si és float, el passem a enter només per comparar/retornar enters
+        (bind ?n (if (integerp ?fld) then ?fld else (integer ?fld)))
+        (if (and (>= ?n ?min) (<= ?n ?max)) then
+          (bind ?resp_valida TRUE)
+          (bind ?resp ?n)
+        else
+          (printout t "Si us plau introdueix un valor dins del rang (" ?min " - " ?max ")." crlf))
+      else
+        (printout t "Introdueix un número vàlid o 'indiferent'." crlf))))
+  ?resp)
+
+
 (deffunction valida-opcio (?pregunta $?opcions)
   (bind ?resp_valida FALSE)
   (bind ?resp nil)
   (while (not ?resp_valida)
     (printout t ?pregunta crlf)
-    (bind ?input (string-to-field (lowcase (readline)))) 
-
-    ; comprova si l’entrada és una de les opcions vàlides
-    (if (member$ ?input ?opcions) then
+    (bind ?input (string-to-field (lowcase (readline))))
+    (if (eq ?input indiferent) then
+        (bind ?resp_valida TRUE)
+        (bind ?resp indiferent)
+     else
+      (if (member$ ?input ?opcions) then
         (bind ?resp_valida TRUE)
         (bind ?resp ?input)
-     else
-        (printout t "La resposta que has introduït no és vàlida. Si us plau, tria una de les següents: " ?opcions crlf))
-  ) ?resp
-)
+       else
+        (printout t "La resposta que has introduït no és vàlida. Si us plau, tria una de les següents: " ?opcions crlf))))
+  ?resp)
+
 
 (deffunction valida-llista-numeros (?input ?min ?max) "Valida una llista de números separats per espais dins d'un rang concret. Retorna la llista com a multislot si és vàlida, sinó retorna nil."
     (bind ?resp_valida TRUE)
@@ -313,6 +344,7 @@
   =>
   (printout t "Benvingut/da al recomanador de menús RicoRico!" crlf)
   (printout t "Si us plau respon a les preguntes següents per personalitzar les propostes." crlf)
+  (printout t "Per a totes les preguntes tens l'opció de respondre 'indiferent' si encara no ho tens clar." crlf crlf)
   (assert (peticio))
   (focus PreferenciesMenu))
 
@@ -323,7 +355,7 @@
   (not (preguntat-tipus))
 =>
   (bind ?res (valida-opcio 
-              "Quin tipus d’esdeveniment estàs organitzant? (casament/ aniversari/ comunió/ congrés/ empresa/ altres)"
+              "Quin tipus d’esdeveniment estàs organitzant? (casament/aniversari/comunió/congrés/empresa/altres)"
               casament aniversari comunio congres empresa altres)
   )
   (modify ?p (tipus-esdeveniment ?res))
@@ -336,7 +368,7 @@
   (not (preguntat-data))
 =>
   (bind ?r (valida-opcio
-              "Quina època de l’any? (primavera/ estiu/ tardor/ hivern)"
+              "Quina època de l’any? (primavera/estiu/tardor/hivern)"
               primavera estiu tardor hivern))
   (modify ?p (data ?r))
   (assert (preguntat-data)))
@@ -365,7 +397,7 @@
   (preguntat-interior-exterior)
   (not (preguntat-num-comensals))
 =>
-  (bind ?r (valida-num "Quants comensals assistiran aproximadament?" 1 5000))
+  (bind ?r (valida-num-o-indif "Quants comensals assistiran aproximadament?" 1 5000))
   (modify ?p (num-comensals ?r))
   (assert (preguntat-num-comensals)))
 
@@ -374,7 +406,7 @@
   (preguntat-num-comensals)
   (not (preguntat-pressupost))
 =>
-  (bind ?min (valida-num "Quin és el pressupost mínim per persona?" 1 1000))
+  (bind ?min (valida-num-o-indif "Quin és el pressupost mínim per persona?" 1 1000))
   (modify ?p (pressupost-min ?min))
   (assert (preguntat-pressupost-min)))
 
@@ -383,7 +415,7 @@
   (preguntat-pressupost-min)
   (not (preguntat-pressupost-max))
 =>
-  (bind ?max (valida-num "I quin és el pressupost màxim per persona?" ?min 2000))
+  (bind ?max (valida-num-o-indif "I quin és el pressupost màxim per persona?" 5 2000))
   (modify ?p (pressupost-max ?max))
   (assert (preguntat-pressupost-max))
   (assert (preguntat-pressupost)))
@@ -431,7 +463,7 @@
   (not (preguntat-alergens-prohibits))
 =>
   (bind ?r (valida-boolea
-     "Hi ha grups de comensals amb dietes o al·lèrgies concretes (p.ex. 15 vegans, 3 sense gluten)?"))
+     "Vols definir grups amb dietes o al·lèrgies específiques?"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits))
 )
@@ -487,7 +519,7 @@
 
   ; AL·LÈRGENS (nums o noms)
   (print-alergens-ajuda)
-  (printout t "Escriu els al·lèrgens a evitar (o deixa en blanc si cap):" crlf)
+  (printout t "Escriu els al·lèrgens a evitar (números o noms), o deixa en blanc si cap:" crlf)
   (bind ?aline (readline))
   (bind ?al (parse-alergens-resposta ?aline))
 
@@ -563,6 +595,12 @@
          )
    )
 )
+(defrule AbstraccioHeuristica::temp-indiferent
+  (peticio (data indiferent))
+  ?p <- (object (is-a Plat) (nom ?nom))
+  =>
+  (assert (plat-valid-temp (nom ?nom))))
+
 
 (defrule AbstraccioHeuristica::filtrar-plats-per-formalitat
     ?p <- (peticio (formalitat ?f))
@@ -577,9 +615,15 @@
         (assert (plat-valid-formal (nom ?nom)))
     )
 )
+(defrule AbstraccioHeuristica::formalitat-indiferent
+  (peticio (formalitat indiferent))
+  ?p <- (object (is-a Plat) (nom ?nom))
+  =>
+  (assert (plat-valid-formal (nom ?nom))))
 
 (defrule AbstraccioHeuristica::filtrar-complexitat-per-num-comensals
     ?p <- (peticio (num-comensals ?n))
+    (test (numberp ?n))
     ?plat <- (object (is-a Plat) (nom ?nom) (complexitat ?cx))
 =>
     (if (or
@@ -590,6 +634,14 @@
         (assert (plat-valid-complexitat (nom ?nom)))
     )
 )
+
+
+(defrule AbstraccioHeuristica::complexitat-indiferent
+  (peticio (num-comensals indiferent))
+  ?p <- (object (is-a Plat) (nom ?nom))
+  =>
+  (assert (plat-valid-complexitat (nom ?nom))))
+
 
 (defrule AbstraccioHeuristica::filtrar-postres-per-esdeveniment
   (peticio (tipus-esdeveniment ?ev))
@@ -667,6 +719,12 @@
   (assert (plat-valid-dispo (nom ?nom)))
 )
 
+(defrule AssociacioHeuristica::disponibilitat-indiferent
+  (peticio (data indiferent))
+  ?p <- (object (is-a Plat) (nom ?nom))
+  =>
+  (assert (plat-valid-dispo (nom ?nom))))
+
 (defrule AssociacioHeuristica::final-associacio
    (declare (auto-focus TRUE))
    (not (plat-pendent-formalitat))
@@ -730,14 +788,24 @@
 )
 
 (deftemplate plat-valid-pressupost (slot nom))
+
 (defrule RefinamentHeuristica::filtrar-plats-per-pressupost
   (peticio (pressupost-min ?pmin) (pressupost-max ?pmax))
+  (test (and (numberp ?pmin) (numberp ?pmax)))
   (preu-venta (nom ?nom) (valor ?pv))
 =>
-  (bind ?min-plat (/ ?pmin 3.0)) ; per assegurar que hi ha pressupost per a 3 plats
+  (bind ?min-plat (/ ?pmin 3.0))
   (bind ?max-plat (/ ?pmax 3.0))
   (if (and (>= ?pv ?min-plat) (<= ?pv ?max-plat)) then
       (assert (plat-valid-pressupost (nom ?nom)))))
+
+(defrule RefinamentHeuristica::pressupost-indiferent
+  (peticio (pressupost-min ?pmin) (pressupost-max ?pmax))
+  (test (or (eq ?pmin indiferent) (eq ?pmax indiferent)))
+  ?p <- (object (is-a Plat) (nom ?nom))
+  =>
+  (assert (plat-valid-pressupost (nom ?nom))))
+
 ; ============================================================
 ; Després d'al·lèrgens: marquem plats aptes per dieta, per grup
 ; ============================================================
