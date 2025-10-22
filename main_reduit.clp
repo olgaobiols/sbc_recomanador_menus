@@ -311,6 +311,7 @@
 (deftemplate plat-valid-event
    (slot nom))
 (deftemplate plat-valid-dispo (slot nom))
+(deftemplate preu-venta (slot nom (type STRING SYMBOL)) (slot valor (type FLOAT)))
 
 
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
@@ -413,15 +414,77 @@
    (focus RefinamentHeuristica)
 )
 
+;; Declaració anticipada del mòdul de composició per permetre la importació des del refinament
+(defmodule ComposicioMenus (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
+
+(defrule RefinamentHeuristica::calcular-preu-venta
+  (peticio (formalitat ?form))
+  ?p <- (object (is-a Plat)
+           (nom ?nom)
+           (te_ordre $?ordres)
+           (complexitat ?comp)
+           (mida_racio ?mida)
+           (disponibilitat_plats $?dispo_plats)
+           (preu_cost ?pc&:(> ?pc 0)))
+  (not (preu-venta (nom ?nom)))
+=>
+  ;; Factors
+  (bind ?Fcx  (if   (or (eq ?comp alta) (eq ?comp "alta")) then 1.35
+               else (if (or (eq ?comp mitjana) (eq ?comp "mitjana")) then 1.15 else 1.0)))
+
+  (bind ?Ffor (if   (or (eq ?form formal) (eq ?form "formal")) then 1.30 else 1.0))
+
+  (bind ?Fmd  (if (or (eq ?mida gran) (eq ?mida "gran")) then 1.10
+            else (if (or (eq ?mida petita) (eq ?mida "petita")) then 0.90 else 1.0)))
+
+  ;; Factor de disponibilitat basat en el nombre d'estacions disponibles
+  (bind ?n (length$ ?dispo_plats))
+  (bind ?Fdis (if (>= ?n 4) then 1.00
+             else (if (eq ?n 3) then 1.05
+             else (if (eq ?n 2) then 1.10
+             else (if (eq ?n 1) then 1.20 
+             else 1.00)))))
+
+  ;; Càlcul
+  (bind ?mult (* ?Fcx ?Ffor ?Fmd ?Fdis))
+  (bind ?pv   (* ?pc ?mult))
+
+  ;; Determinar ordre principal del plat per ajustar mínims
+  (bind ?tipus
+        (if (member$ ordre-primer ?ordres) then primer
+        else (if (member$ ordre-segon ?ordres) then segon
+        else (if (member$ ordre-postres ?ordres) then postres else desconegut))))
+
+  ;; Preus mínims segons ordre
+  (if (or (eq ?tipus primer) (eq ?tipus "primer")) then (bind ?pv (max ?pv 5.50)))
+  (if (or (eq ?tipus segon)  (eq ?tipus "segon"))  then (bind ?pv (max ?pv 9.00)))
+  (if (or (eq ?tipus postres)(eq ?tipus "postres"))then (bind ?pv (max ?pv 3.00)))
+
+  ;; Arrodonir i asserta
+  (bind ?pv (/ (round (* ?pv 100)) 100.0))
+  (assert (preu-venta (nom ?nom) (valor ?pv)))
+)
+
+(deftemplate plat-valid-pressupost (slot nom))
+(defrule RefinamentHeuristica::filtrar-plats-per-pressupost
+  (peticio (pressupost-min ?pmin) (pressupost-max ?pmax))
+  (preu-venta (nom ?nom) (valor ?pv))
+=>
+  (bind ?min-plat (/ ?pmin 3.0)) ; per assegurar que hi ha pressupost per a 3 plats
+  (bind ?max-plat (/ ?pmax 3.0))
+  (if (and (>= ?pv ?min-plat) (<= ?pv ?max-plat)) then
+      (assert (plat-valid-pressupost (nom ?nom)))))
+
 (defrule RefinamentHeuristica::combinar-validacions
     (plat-valid-temp (nom ?nom))
-    ;; Quan afegeixis més validacions, les afegeixes així:
     (plat-valid-formal (nom ?nom))
     (plat-valid-complexitat (nom ?nom))
     (plat-valid-event (nom ?nom)) 
     (plat-valid-dispo (nom ?nom))
+    (plat-valid-pressupost (nom ?nom))
     =>
     (assert (plat-valid-final (nom ?nom)))
 )
@@ -434,96 +497,61 @@
    (focus ComposicioMenus)
 )
 
-
-; VEURE A QUIN MODUL IMPORTAR-HO
-(defmodule ComposicioMenus (import MAIN ?ALL)(import PreferenciesMenu ?ALL)(export ?ALL))
-
+;; PAS 5: COMPOSICIÓ DE MENÚS -------------------------------
 (defrule ComposicioMenus::mostrar-menus-inicials
-   (declare (auto-focus TRUE))
-   (respostes-completes)
-   (not (menus-presentats))
-   =>
-   ;; Recollim noms finals vàlids
-   (bind ?plats-valids (find-all-facts ((?f plat-valid-final)) TRUE))
-   (bind ?noms-valids (create$))
-   (foreach ?f ?plats-valids
-       (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom)))
-   )
+  (declare (auto-focus TRUE))
+  (respostes-completes)
+  (not (menus-presentats))
+  =>
+  ;; Recollim noms finals vàlids
+  (bind ?plats-valids (find-all-facts ((?f plat-valid-final)) TRUE))
+  (bind ?noms-valids (create$))
+  (foreach ?f ?plats-valids
+     (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom)))
+  )
 
-   ;; Busquem plats per ordre
-   (bind ?primers (find-all-instances
-                      ((?p Plat))
-                      (and (member$ ordre-primer (send ?p get-te_ordre))
-                           (member$ (send ?p get-nom) ?noms-valids))))
-   
-   (bind ?segons (find-all-instances
-                      ((?p Plat))
-                      (and (member$ ordre-segon (send ?p get-te_ordre))
-                           (member$ (send ?p get-nom) ?noms-valids))))
-   
-   (bind ?postres (find-all-instances
-                   ((?p Plat))
-                   (and (member$ ordre-postres (send ?p get-te_ordre))
-                        (member$ (send ?p get-nom) ?noms-valids))))
+  ;; Busquem plats per ordre
+  (bind ?primers (find-all-instances
+               ((?p Plat))
+               (and (member$ ordre-primer (send ?p get-te_ordre))
+                  (member$ (send ?p get-nom) ?noms-valids))))
+  (bind ?segons (find-all-instances
+               ((?p Plat))
+               (and (member$ ordre-segon (send ?p get-te_ordre))
+                  (member$ (send ?p get-nom) ?noms-valids))))
+  (bind ?postres (find-all-instances
+               ((?p Plat))
+               (and (member$ ordre-postres (send ?p get-te_ordre))
+                  (member$ (send ?p get-nom) ?noms-valids))))
 
-   (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
+  (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
 
-   (if (<= ?limit 0) then
-       (printout t crlf "*** No s'han trobat menus per mostrar. ***" crlf)
+  (if (<= ?limit 0) then
+     (printout t crlf "*** No s'han trobat menus per mostrar dins del pressupost. ***" crlf)
    else
-       (printout t crlf "Et proposem " ?limit " menus inicials:" crlf)
-       (loop-for-count (?i 1 ?limit)
-           (bind ?primer (nth$ ?i ?primers))
-           (bind ?segon (nth$ ?i ?segons))
-           (bind ?postre (nth$ ?i ?postres))
-           (printout t crlf "*** Menu " ?i " ***" crlf)
-           (printout t "  Entrant: " (send ?primer get-nom) crlf)
-           (printout t "  Principal: " (send ?segon get-nom) crlf)
-           (printout t "  Postres: " (send ?postre get-nom) crlf)
-       )
-   )
+     (printout t crlf "Et proposem " ?limit " menus dins del pressupost:" crlf)
+     (loop-for-count (?i 1 ?limit)
+      (bind ?pr  (nth$ ?i ?primers))
+      (bind ?sg  (nth$ ?i ?segons))
+      (bind ?po  (nth$ ?i ?postres))
+      (bind ?npr (send ?pr get-nom))
+      (bind ?nsg (send ?sg get-nom))
+      (bind ?npo (send ?po get-nom))
 
-   (assert (menus-presentats))
+      ;; busca preu-venta de cada plat
+      (bind ?ppr (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?npr))) valor))
+      (bind ?psg (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?nsg))) valor))
+      (bind ?ppo (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?npo))) valor))
+
+      (bind ?total (+ ?ppr ?psg ?ppo))
+
+      (printout t crlf "*** Menu " ?i " ***" crlf)
+      (printout t "  Entrant:   " ?npr "  [" ?ppr " €]" crlf)
+      (printout t "  Principal: " ?nsg "  [" ?psg " €]" crlf)
+      (printout t "  Postres:   " ?npo "  [" ?ppo " €]" crlf)
+      (printout t "  ----------------------------------------------------------------------" crlf)
+      (printout t "  TOTAL per persona: " ?total " €" crlf)
+     )
+  )
+  (assert (menus-presentats))
 )
-
-
-
-
-; (deffunction round2 (?x) "Arrodoneix un float a 2 decimals"
-;   (/ (float (round (* ?x 100))) 100.0))
-
-; (deffunction factor-complexitat (?c) "Factor de complexitat segons la classificació baixa/mitjana/alta"
-;   (if (eq ?c baixa) then 1.10
-;    else (if (eq ?c mitjana) then 1.25
-;    else (if (eq ?c alta) then 1.50 else 1.20))))
-
-; (deffunction factor-formalitat (?f)  "Factor de formalitat segons la classificació informal/formal"
-;   (if (eq ?f formal) then 1.15 else 1.00))
-
-; (defrule ComposicioMenus::calcula-preu-venta-plat "Calcula el preu de venda d'un plat segons els ingredients que el componen i altres factors rellevants"
-;   (plat (nom ?np)(complexitat ?cx)(racio ?r)(formalitat ?ff)) ; AJUSTAR FORMULA SEGONS NOSTRE CRITERI / EXPERT
-;   (not (plat-preu (plat ?np)))
-;   =>
-;   (bind ?cost-base
-;     (accumulate 
-;       (bind ?sum 0.0)
-;       (and (usa-ingredient (plat ?np)(ingredient ?ni)(quantitat ?q))
-;            (ingredient (nom ?ni)(cost-unitari ?cu)))
-;       (+ ?sum (* ?q ?cu))))
-
-;   (bind ?fcomp (factor-complexitat ?cx))
-;   (bind ?frac  (if (> ?r 1.0) then ?r else 1.0)) ; AJUSTAR SEGONS MIDES RACIONS BASE DE DADES
-;   (bind ?fform (factor-formalitat ?ff))
-;   (bind ?marge 1.35) ; marge global de venda --> AJUSTAR SEGONS BENEFICI DESITJAT
-
-;   (bind ?preu-venta (round2 (* ?cost-base ?fcomp ?frac ?fform ?marge))) 
-;   (assert (plat-preu (plat ?np)(preu-venta ?preu-venta)))
-; )
-
-; (defrule ComposicioMenus::calcula-preu-venta-beguda
-; ; atributs beguda que es poden tenir en compte: alcohol, formalitat, preu_cost, ?
-; ; tenir en compte si beguda per plat o general del menu
-;   ?b <- ()
-; )
-
-; (defrule ComposicioMenus::calcula-preu-venta-menu)

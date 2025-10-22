@@ -2,7 +2,7 @@
 Generador d'instancies CLIPS a partir del cataleg CSV.
 
 Usage basica:
-    python3 genera_instancies.py -i cataleg_global_with_dispo.csv -o instancies_cataleg.clp
+    python3 genera_instancies.py -i cataleg_global_with_dispo_cost.csv -o instancies_cataleg.clp
 """
 
 from __future__ import annotations
@@ -119,6 +119,34 @@ def _normalize_estacions_list(vals: list[str]) -> list[str]:
     out.sort(key=lambda x: order.get(x, 99))
     return out
 
+def _parse_float_monetary(value) -> float | None:
+    """Converteix un valor monetari a float. Accepta formats amb €/espais, ',' o '.' com a separador decimal.
+    Retorna None si és buit o '-/—'."""
+    if value is None:
+        return None
+    s = str(value).strip()
+    if not s or s in {"-", "—"}:
+        return None
+    # Elimina símbols comuns de moneda i espais
+    s = s.replace("€", "").replace("EUR", "").replace("eur", "").replace(" ", "")
+    # Normalitza separadors: detecta milers/decimals habituals
+    if "," in s and "." in s:
+        # Casos com 1.234,56 -> '.' milers, ',' decimals
+        if s.rfind(",") > s.rfind("."):
+            s = s.replace(".", "")
+            s = s.replace(",", ".")
+        else:
+            # Casos com 1,234.56 -> ',' milers, '.' decimals
+            s = s.replace(",", "")
+    elif "," in s:
+        s = s.replace(",", ".")
+    # Conserva només dígits, signes i el punt decimal
+    s = re.sub(r"[^0-9\.\-]", "", s)
+    try:
+        return float(s)
+    except Exception:
+        return None
+
 # ---------------------------------------------------------------------------
 # Estructures de dades
 
@@ -134,6 +162,7 @@ class PlatRow:
     te_ordre: str
     apte_esdeveniment: str
     disponibilitat_plats: List[str]   # NOVETAT
+    preu_cost: float | None           # NOVETAT: slot numèric opcional
     especificacio: str
     font: str
 
@@ -178,6 +207,9 @@ def _row_to_plat(row: dict, used_names: set[str]) -> PlatRow | None:
         print(f"[WARN] Fila ignorada (tipus invàlid): nom_plat={raw_name!r}, tipus={tipus_raw!r}", file=sys.stderr)
         return None
 
+    # Nou: parseig del preu/cost
+    preu_cost = _parse_float_monetary(row.get("preu_cost"))
+
     return PlatRow(
         instance_name=instance_name,
         nom=raw_name,
@@ -189,6 +221,7 @@ def _row_to_plat(row: dict, used_names: set[str]) -> PlatRow | None:
         te_ordre=tipus,
         apte_esdeveniment=apte_esdeveniment,
         disponibilitat_plats=dispo_norm,
+        preu_cost=preu_cost,
         especificacio=especificacio,
         font=font,
     )
@@ -222,6 +255,10 @@ def _format_plat_instance(plat: PlatRow) -> List[str]:
     if plat.apte_esdeveniment and plat.apte_esdeveniment != "-":
         lines.append(f"    (apte_esdeveniment {plat.apte_esdeveniment})")
 
+    # Nou: slot numèric de preu/cost (sense cometes)
+    if plat.preu_cost is not None:
+        lines.append(f"    (preu_cost {plat.preu_cost:.2f})")
+
     # NOVETAT: bolcar el multislot disponibilitat_plats
     # esperat: (disponibilitat_plats primavera estiu ...) o buit si no hi ha dades
     if plat.disponibilitat_plats:
@@ -238,7 +275,7 @@ def generate_instances(rows: Iterable[PlatRow]) -> str:
         body_lines.extend(_format_plat_instance(plat))
     return (
         ";;; Fitxer generat automaticament per genera_instancies.py\n"
-        ";;; Conte les instancies de la classe Plat derivades de cataleg_global_with_dispo.csv\n\n"
+        ";;; Conte les instancies de la classe Plat derivades de cataleg_global_with_dispo_cost.csv\n\n"
         "(definstances plats-cataleg\n"
         + "\n".join(body_lines) + "\n"
         ")\n"
@@ -271,8 +308,8 @@ def read_csv(path: Path) -> List[dict]:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Genera instancies CLIPS a partir d'un CSV.")
-    p.add_argument("-i","--input", type=Path, default=Path("cataleg_global_with_dispo.csv"),
-                   help="Ruta al CSV d'entrada (per defecte: cataleg_global_with_dispo.csv).")
+    p.add_argument("-i","--input", type=Path, default=Path("cataleg_global_with_dispo_cost.csv"),
+                   help="Ruta al CSV d'entrada (per defecte: cataleg_global_with_dispo_cost.csv).")
     p.add_argument("-o","--output", type=Path, default=Path("instancies_cataleg.clp"),
                    help="Fitxer CLP de sortida (per defecte: instancies_cataleg.clp).")
     return p.parse_args(argv)

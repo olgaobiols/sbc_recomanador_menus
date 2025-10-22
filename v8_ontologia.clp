@@ -182,6 +182,10 @@
         (type SYMBOL)
         (allowed-symbols primavera estiu tardor hivern)
         (create-accessor read-write))
+
+    (slot preu_cost
+        (type FLOAT)
+        (create-accessor read-write))
 )
 
 (defclass Restriccions
