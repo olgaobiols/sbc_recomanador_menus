@@ -8,19 +8,22 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (slot nom
+        (type STRING)
+        (create-accessor read-write))
     (multislot acompanya
         (type INSTANCE)
         (create-accessor read-write))
     (multislot part_de
         (type INSTANCE)
         (create-accessor read-write))
+    (multislot maridatge
+        (type SYMBOL)
+        (create-accessor read-write))
     (slot alcohol
         (type SYMBOL)
         (create-accessor read-write))
     (slot formalitat
-        (type STRING)
-        (create-accessor read-write))
-    (slot nom
         (type STRING)
         (create-accessor read-write))
     (slot preu_cost
