@@ -12,6 +12,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.75)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "llobarro" "patata" "ceba" "all" "oli d'oliva" "vi blanc" "julivert" "sal")
   )
   (plat-entrecot-brasa-guarnicio of Plat
     (nom "Entrecot a la Brasa amb Guarnició")
@@ -23,6 +24,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "vedella" "sal gruixuda" "pebre" "oli d'oliva" "patata rostida" "pebrot escalivat")
   )
   (plat-amanida-mongetes-tendres-patata of Plat
     (nom "Amanida de Mongetes Tendres i Patata")
@@ -35,6 +37,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "mongetes tendres" "patata" "oli d'oliva" "vinagre" "sal")
   )
   (plat-cigrons-espinacs of Plat
     (nom "Cigrons amb Espinacs")
@@ -47,6 +50,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.30)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "cigrons cuits" "espinacs" "all" "oli d'oliva" "pebre vermell")
   )
   (plat-sopa-farigola-ou of Plat
     (nom "Sopa de Farigola amb Ou")
@@ -59,6 +63,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "farigola" "aigua" "pa" "ou" "oli d'oliva" "sal")
   )
   (plat-amanida-bacalla-taronja of Plat
     (nom "Amanida de Bacallà i Taronja")
@@ -71,6 +76,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.45)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "bacallà dessalat" "taronja" "olives negres" "oli d'oliva" "ceba")
   )
   (plat-timbal-patata-tonyina-pebrot-escalivat of Plat
     (nom "Timbal de Patata, Tonyina i Pebrot Escalivat")
@@ -83,6 +89,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "patata" "tonyina" "pebrot escalivat" "ou dur" "oli d'oliva")
   )
   (plat-sopa-verdures of Plat
     (nom "Sopa de Verdures")
@@ -95,6 +102,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.15)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "verdures" "aigua" "sal" "pastanaga" "porro" "api" "carbassó" "patata")
   )
   (plat-crema-carbasso of Plat
     (nom "Crema de Carbassó")
@@ -107,6 +115,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "carbassó" "ceba" "patata" "verdures" "aigua" "sal" "oli d'oliva")
   )
   (plat-xato-vilanova of Plat
     (nom "Xató de Vilanova")
@@ -119,6 +128,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "escarola" "tonyina" "anxoves" "olives arbequines" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   (plat-carxofes-confitades-pernil of Plat
     (nom "Carxofes Confitades amb Pernil")
@@ -131,6 +141,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.30)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "carxofes" "oli d'oliva" "pernil" "sal")
   )
   (plat-sopa-peix-fideus of Plat
     (nom "Sopa de Peix amb Fideus")
@@ -143,6 +154,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.75)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "peix" "verdures" "aigua" "sal" "pasta" "tomàquet" "all" "oli d'oliva")
   )
   (plat-mongetes-tendres-saltejades-pernil of Plat
     (nom "Mongetes Tendres Saltejades amb Pernil")
@@ -155,6 +167,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "mongetes tendres" "pernil" "all" "oli d'oliva")
   )
   (plat-amanida-llegums of Plat
     (nom "Amanida de Llegums")
@@ -167,6 +180,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "cigrons" "mongeta" "tomàquet" "ceba" "pebrot" "oli d'oliva" "vinagre")
   )
   (plat-cargols-cassola of Plat
     (nom "Cargols a la Cassola")
@@ -179,6 +193,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "cargols" "porc" "all" "julivert" "pebre" "tomàquet" "aigua" "sal")
   )
   (plat-filet-vedella-al-pebre-verd of Plat
     (nom "Filet de Vedella al Pebre Verd")
@@ -190,6 +205,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "vedella" "nata" "pebre verd" "conyac" "mantega" "sal")
   )
   (plat-rap-marinera of Plat
     (nom "Rap a la Marinera")
@@ -201,6 +217,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "rap" "all" "ceba" "tomàquet" "vi blanc" "peix" "verdures" "aigua" "sal" "oli d'oliva" "julivert")
   )
   (plat-rostit-vedella-bolets of Plat
     (nom "Rostit de Vedella amb Bolets")
@@ -212,6 +229,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "tall rodó de vedella" "ceba" "pastanaga" "tomàquet" "bolets" "vi negre" "aigua" "sal")
   )
   (plat-mandonguilles-salsa-d-ametlla of Plat
     (nom "Mandonguilles amb Salsa d’ametlla")
@@ -223,6 +241,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "carn picada" "pa remullat" "ou" "all" "julivert" "ametlla mòlta" "ceba" "tomàquet")
   )
   (plat-fricando-vedella of Plat
     (nom "Fricandó de Vedella")
@@ -234,6 +253,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "vedella" "moixernons" "ceba" "tomàquet" "farina" "aigua" "sal" "oli d'oliva")
   )
   (plat-secreto-iberic-planxa-chimichurri-suau of Plat
     (nom "Secreto Ibèric a la Planxa amb Chimichurri Suau")
@@ -245,6 +265,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.50)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "secreto ibèric" "sal" "pebre" "oli d'oliva" "julivert" "all" "vinagre" "orenga")
   )
   (plat-presa-iberica-salsa-mostassa-antiga of Plat
     (nom "Presa Ibèrica amb Salsa de Mostassa Antiga")
@@ -256,6 +277,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "presa ibèrica" "mostassa antiga" "nata" "conyac" "sal" "pebre")
   )
   (plat-costelles-porc-baixa-temperatura of Plat
     (nom "Costelles de Porc a Baixa Temperatura")
@@ -267,6 +289,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.50)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "porc" "tomàquet" "sucre o mel" "vinagre" "espècies" "mel" "mostassa" "sal" "pebre")
   )
   (plat-garro-porc-al-forn-patates of Plat
     (nom "Garró de Porc al Forn amb Patates")
@@ -278,6 +301,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.80)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "porc" "all" "romaní" "sal" "patates" "oli d'oliva")
   )
   (plat-xai-al-forn-herbes of Plat
     (nom "Xai al Forn amb Herbes")
@@ -289,6 +313,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "xai" "all" "romaní" "farigola" "oli d'oliva" "sal" "patates")
   )
   (plat-corder-al-chilindron of Plat
     (nom "Corder al Chilindrón")
@@ -300,6 +325,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "carn de corder" "pebrot roig" "tomàquet" "ceba" "all" "vi blanc" "oli d'oliva")
   )
   (plat-pollastre-rostit-prunes-pinyons of Plat
     (nom "Pollastre Rostit amb Prunes i Pinyons")
@@ -311,6 +337,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.45)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "pollastre" "prunes" "pinyons" "ceba" "vi dolç" "aigua" "sal" "oli d'oliva")
   )
   (plat-magret-d-anec-reduccio-vi of Plat
     (nom "Magret d’ànec amb Reducció de Vi")
@@ -322,6 +349,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.60)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "magret d'ànec" "vi negre" "sucre" "mantega" "sal" "pebre")
   )
   (plat-pollastre-al-curri-suau-arros of Plat
     (nom "Pollastre al Curri Suau amb Arròs")
@@ -333,6 +361,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pollastre" "curri" "llet de coco" "nata" "ceba" "arròs blanc")
   )
   (plat-confit-d-anec-poma of Plat
     (nom "Confit d’ànec amb Poma")
@@ -345,6 +374,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.60)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "cuixa d'ànec confitada" "poma saltejada" "reducció de vi")
   )
   (plat-esqueixada-alvocat of Plat
     (nom "Esqueixada amb Alvocat")
@@ -357,6 +387,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.65)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "bacallà" "alvocat" "tomàquet" "ceba" "oli d'oliva" "llimona")
   )
   (plat-calcots-romesco of Plat
     (nom "Calçots amb Romesco")
@@ -368,6 +399,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.30)
+    (te_ingredients_nom "calçots" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   (plat-pollastre-cassola-bolets of Plat
     (nom "Pollastre a la Cassola amb Bolets")
@@ -380,6 +412,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "pollastre" "bolets" "all" "ceba" "tomàquet" "vi blanc" "aigua" "sal")
   )
   (plat-llobarro-donostiarra of Plat
     (nom "Llobarro a la Donostiarra")
@@ -392,6 +425,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.45)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "llobarro" "all" "bitxo" "oli d'oliva" "julivert" "llimona")
   )
   (plat-arros-negre of Plat
     (nom "Arròs Negre")
@@ -404,6 +438,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "arròs" "tinta de sípia" "calamar" "peix" "verdures" "aigua" "sal" "all" "oli d'oliva" "ou")
   )
   (plat-arros-caldos-peix of Plat
     (nom "Arròs Caldós de Peix")
@@ -416,6 +451,7 @@
     (apte_esdeveniment tots)
     (preu_cost 9.00)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "arròs" "peix" "verdures" "aigua" "sal" "rap" "lluç" "gamba" "tomàquet" "all")
   )
   (plat-coca-recapte of Plat
     (nom "Coca de Recapte")
@@ -428,6 +464,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "farina" "pebrot" "albergínia" "seitó" "arengada" "oli d'oliva")
   )
   (plat-esparrecs-brasa-romesco of Plat
     (nom "Espàrrecs a la Brasa amb Romesco")
@@ -439,6 +476,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.00)
+    (te_ingredients_nom "espàrrecs" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   (plat-amanida-favetes-pernil of Plat
     (nom "Amanida de Favetes amb Pernil")
@@ -451,6 +489,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "favetes tendres" "pernil" "menta" "oli d'oliva" "sal")
   )
   (plat-faves-catalana of Plat
     (nom "Faves a la Catalana")
@@ -463,6 +502,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.70)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "faves" "porc" "butifarra negra" "ceba" "vi" "oli d'oliva" "menta")
   )
   (plat-cargols-llauna of Plat
     (nom "Cargols a la Llauna")
@@ -475,6 +515,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.50)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "cargols" "sal" "oli d'oliva" "all" "ou")
   )
   (plat-brandada-bacalla of Plat
     (nom "Brandada de Bacallà")
@@ -487,6 +528,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.55)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bacallà dessalat" "patata" "oli d'oliva" "all" "llet")
   )
   (plat-trinxat-cerdanya of Plat
     (nom "Trinxat de la Cerdanya")
@@ -499,6 +541,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "col d'hivern" "patata" "porc" "all" "oli d'oliva" "sal")
   )
   (plat-amanida-formatge-cabra-fruits-secs of Plat
     (nom "Amanida de Formatge de Cabra amb Fruits Secs")
@@ -511,6 +554,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.90)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "enciam barrejat" "formatge de cabra" "nous" "panses" "vinagreta")
   )
   (plat-escudella-nadal of Plat
     (nom "Escudella de Nadal")
@@ -523,6 +567,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.60)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "brou de carn" "pasta de sopa" "carn d'olla picada" "verdures")
   )
   (plat-sopa-galets of Plat
     (nom "Sopa de Galets")
@@ -535,6 +580,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pasta de sopa" "brou de carn" "pilota picada")
   )
   (plat-crema-bolets of Plat
     (nom "Crema de Bolets")
@@ -547,6 +593,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "bolets" "ceba" "verdures" "aigua" "sal" "nata (opcional)" "oli d'oliva")
   )
   (plat-amanida-mongetes-ganxet-bacalla of Plat
     (nom "Amanida de Mongetes del Ganxet amb Bacallà")
@@ -559,6 +606,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.95)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "mongeta del ganxet" "bacallà esqueixat" "pebrot" "ceba" "oli d'oliva" "vinagre")
   )
   (plat-esqueixada-mongeta-tendra of Plat
     (nom "Esqueixada amb Mongeta Tendra")
@@ -570,6 +618,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 5.55)
+    (te_ingredients_nom "bacallà" "mongeta tendra" "tomàquet" "olives" "oli d'oliva")
   )
   (plat-amanida-d-arros of Plat
     (nom "Amanida d’arròs")
@@ -581,6 +630,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 6.00)
+    (te_ingredients_nom "arròs blanc" "tonyina" "blat de moro" "olives" "pebrot")
   )
   (plat-entremesos-freds of Plat
     (nom "Entremesos Freds")
@@ -592,6 +642,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 3.00)
+    (te_ingredients_nom "pernil dolç" "formatge" "olives" "espàrrecs blancs" "enciam")
   )
   (plat-sardines-planxa of Plat
     (nom "Sardines a la Planxa")
@@ -603,6 +654,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 6.00)
+    (te_ingredients_nom "sardines" "sal" "oli d'oliva" "julivert" "llimona")
   )
   (plat-calamars-romana of Plat
     (nom "Calamars a la romana")
@@ -615,6 +667,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.50)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "calamar" "farina" "ou" "oli d'oliva" "sal")
   )
   (plat-musclos-al-vapor of Plat
     (nom "Musclos al Vapor")
@@ -627,6 +680,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.90)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "musclos" "llimona" "julivert")
   )
   (plat-amanida-tomaquet-ceba-figueres of Plat
     (nom "Amanida de Tomàquet i Ceba de Figueres")
@@ -639,6 +693,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "tomàquet madur" "ceba de figueres" "oli d'oliva" "sal")
   )
   (plat-graellada-carn of Plat
     (nom "Graellada de Carn")
@@ -651,6 +706,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.75)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "botifarra" "xai" "vedella" "pollastre" "patata al caliu")
   )
   (plat-coca-salada-escalivada-tonyina of Plat
     (nom "Coca Salada amb Escalivada i Tonyina")
@@ -663,6 +719,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "farina" "albergínia" "pebrot" "ceba" "oli d'oliva" "sal" "tonyina")
   )
   (plat-llenguado-meuniere of Plat
     (nom "Llenguado a la Meunière")
@@ -675,6 +732,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.30)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "llenguado en filets" "mantega" "llimona" "julivert" "farina" "sal")
   )
   (plat-sopa-ceba-gratinada of Plat
     (nom "Sopa de Ceba Gratinada")
@@ -687,6 +745,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "ceba" "aigua" "sal" "pa" "formatge" "mantega" "oli d'oliva")
   )
   (plat-daurada-planxa-verduretes of Plat
     (nom "Daurada a la Planxa amb Verduretes")
@@ -699,6 +758,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.75)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "daurada" "oli d'oliva" "sal" "pebre" "verdures")
   )
   (plat-remenat-d-ous-esparrecs-pernil of Plat
     (nom "Remenat d’ous amb Espàrrecs i Pernil")
@@ -711,6 +771,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "ous" "espàrrecs" "pernil" "oli d'oliva" "sal")
   )
   (plat-daurada-sal of Plat
     (nom "Daurada a la Sal")
@@ -722,6 +783,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.05)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "daurada" "sal grossa" "oli d'oliva" "llimona")
   )
   (plat-tonyina-planxa-sesam of Plat
     (nom "Tonyina a la Planxa amb Sèsam")
@@ -733,6 +795,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.50)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "tonyina" "sèsam" "oli d'oliva" "sal" "pebre" "salsa de soja")
   )
   (plat-sopa-d-all-pa of Plat
     (nom "Sopa d’all i Pa")
@@ -745,6 +808,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pa" "all" "aigua" "sal" "ous" "oli d'oliva")
   )
   (plat-cap-pota of Plat
     (nom "Cap i Pota")
@@ -757,6 +821,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.25)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "vedella" "ceba" "tomàquet" "pebrot" "all" "aigua" "sal")
   )
   (plat-canelons-rostit of Plat
     (nom "Canelons de Rostit")
@@ -769,6 +834,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.35)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pasta de caneló" "carn de rostit" "llet" "farina" "mantega" "sal" "nou moscada" "formatge")
   )
   (plat-fricando-moixernons of Plat
     (nom "Fricandó amb Moixernons")
@@ -781,6 +847,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "vedella" "moixernons" "ceba" "tomàquet" "aigua" "sal" "farina")
   )
   (plat-suquet-peix of Plat
     (nom "Suquet de Peix")
@@ -793,6 +860,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.55)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "peix blanc" "patata" "alls" "tomàquet" "verdures" "aigua" "sal" "oli d'oliva")
   )
   (plat-bacalla-llauna of Plat
     (nom "Bacallà a la Llauna")
@@ -805,6 +873,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.05)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "bacallà" "all" "julivert" "pebre vermell" "oli d'oliva")
   )
   (plat-arros-cassola of Plat
     (nom "Arròs a la Cassola")
@@ -817,6 +886,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.20)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "arròs" "costella" "salsitxa" "bolets" "aigua" "sal" "tomàquet" "ceba" "oli d'oliva")
   )
   (plat-fideua-marisc of Plat
     (nom "Fideuà de Marisc")
@@ -829,6 +899,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "pasta" "sípia" "gamba" "cloïsses" "peix" "aigua" "sal" "verdures" "all" "oli d'oliva" "ou")
   )
   (plat-anec-peres of Plat
     (nom "Ànec amb Peres")
@@ -841,6 +912,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.60)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "ànec" "pera" "ceba" "vi negre" "aigua" "sal" "oli d'oliva")
   )
   (plat-sarsuela-peix-marisc of Plat
     (nom "Sarsuela de Peix i Marisc")
@@ -852,6 +924,7 @@
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
     (preu_cost 8.60)
+    (te_ingredients_nom "rap" "lluç" "gamba" "musclo" "calamar" "tomàquet" "all" "peix" "aigua" "sal" "verdures" "ametlla")
   )
   (plat-rap-l-all-cremat of Plat
     (nom "Rap a l’all Cremat")
@@ -864,6 +937,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.05)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "rap" "all" "pebre vermell" "oli d'oliva" "peix" "aigua" "sal" "verdures" "julivert")
   )
   (plat-calamars-farcits-catalana of Plat
     (nom "Calamars Farcits a la Catalana")
@@ -876,6 +950,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.80)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "calamars" "carn picada" "pa remullat" "ou" "ceba" "tomàquet" "aigua" "sal")
   )
   (plat-mar-muntanya of Plat
     (nom "Mar i Muntanya")
@@ -888,6 +963,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "mandonguilles de vedella" "porc" "sípia" "ceba" "tomàquet" "aigua" "sal" "ametlla")
   )
   (plat-peus-porc-cargols of Plat
     (nom "Peus de Porc amb Cargols")
@@ -900,6 +976,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.50)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "porc" "cargols" "ceba" "tomàquet" "vi" "aigua" "sal" "herbes")
   )
   (plat-botifarra-mongetes of Plat
     (nom "Botifarra amb Mongetes")
@@ -912,6 +989,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.90)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "botifarra" "mongeta seca" "all" "oli d'oliva" "julivert")
   )
   (plat-graellada-peix of Plat
     (nom "Graellada de Peix")
@@ -923,6 +1001,7 @@
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
     (preu_cost 8.30)
+    (te_ingredients_nom "lluç" "rap" "llobarro" "gamba" "oli d'oliva" "all" "julivert" "llimona")
   )
   (plat-arrossejat of Plat
     (nom "Arrossejat")
@@ -935,6 +1014,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "arròs" "verdures" "aigua" "sal" "all" "oli d'oliva" "ou" "peix blanc" "gamba")
   )
   (plat-pollastre-escamarlans of Plat
     (nom "Pollastre amb Escamarlans")
@@ -946,6 +1026,7 @@
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
     (preu_cost 8.60)
+    (te_ingredients_nom "pollastre" "escamarlans" "ceba" "tomàquet" "brandi" "aigua" "sal" "ametlla")
   )
   (plat-mandonguilles-sipia of Plat
     (nom "Mandonguilles amb Sípia")
@@ -958,6 +1039,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.00)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "carn picada" "sípia" "all" "ceba" "tomàquet" "aigua" "sal" "ametlla")
   )
   (plat-conill-cargols of Plat
     (nom "Conill amb Cargols")
@@ -970,6 +1052,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.50)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "conill" "cargols" "all" "julivert" "oli d'oliva" "vi blanc")
   )
   (plat-conill-cassola-allioli-negat of Plat
     (nom "Conill a la Cassola amb Allioli Negat")
@@ -982,6 +1065,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.60)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "conill" "all" "oli d'oliva" "julivert" "aigua" "sal" "ou" "brou")
   )
   (plat-xai-al-forn-patates of Plat
     (nom "Xai al Forn amb Patates")
@@ -994,6 +1078,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "xai" "patates" "all" "romaní" "oli d'oliva" "sal")
   )
   (plat-filet-porc-salsa-prunes of Plat
     (nom "Filet de Porc amb Salsa de Prunes")
@@ -1006,6 +1091,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "porc" "prunes" "ceba" "vi ranci" "aigua" "sal" "mantega")
   )
   (plat-carn-d-olla of Plat
     (nom "Carn d’olla")
@@ -1018,6 +1104,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.10)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "carns variades de l'escudella" "cigrons" "verdures" "patata")
   )
   (plat-llom-bacalla-sanfaina of Plat
     (nom "Llom de Bacallà amb Sanfaina")
@@ -1030,6 +1117,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.45)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "bacallà" "albergínia" "carbassó" "pebrot" "tomàquet" "oli d'oliva" "sal")
   )
   (plat-ternasco-catalana of Plat
     (nom "Ternasco a la Catalana")
@@ -1042,6 +1130,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "xai" "all" "romaní" "oli d'oliva" "sal" "patates")
   )
   (plat-gall-rostit-escamarlans of Plat
     (nom "Gall Rostit amb Escamarlans")
@@ -1054,6 +1143,7 @@
     (apte_esdeveniment tots)
     (preu_cost 9.00)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "pollastre" "escamarlans" "ceba" "tomàquet" "brandi" "aigua" "sal")
   )
   (plat-civet-porc-senglar of Plat
     (nom "Civet de Porc Senglar")
@@ -1066,6 +1156,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.50)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "porc senglar" "vi negre" "ceba" "pastanaga" "herbes" "xocolata (punt)")
   )
   (plat-ossobuco-milanesa of Plat
     (nom "Ossobuco a la Milanesa")
@@ -1077,6 +1168,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "vedella" "vi blanc" "tomàquet" "api" "pastanaga" "ceba" "aigua" "sal" "julivert" "all" "llimona")
   )
   (plat-ratatouille-ou-poche of Plat
     (nom "Ratatouille amb Ou Poché")
@@ -1088,6 +1180,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "albergínia" "carbassó" "pebrot" "tomàquet" "oli d'oliva" "ou")
   )
   (plat-bacalla-al-pil-pil of Plat
     (nom "Bacallà al Pil-pil")
@@ -1099,6 +1192,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "bacallà" "oli d'oliva" "all" "bitxo")
   )
   (plat-lluc-koskera of Plat
     (nom "Lluç a la Koskera")
@@ -1110,6 +1204,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.45)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "lluç" "julivert" "all" "oli d'oliva" "vi blanc" "aigua" "sal" "pèsols" "espàrrecs")
   )
   (plat-calamars-farcits-salsa of Plat
     (nom "Calamars Farcits amb Salsa")
@@ -1121,6 +1216,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.80)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "calamars" "carn picada" "peix" "pa remullat" "ou" "ceba" "tomàquet" "aigua" "sal")
   )
   (plat-paella-marisc of Plat
     (nom "Paella de Marisc")
@@ -1131,6 +1227,7 @@
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
     (preu_cost 8.60)
+    (te_ingredients_nom "arròs" "gamba" "calamar" "musclo" "peix" "verdures" "aigua" "sal" "safrà" "oli d'oliva")
   )
   (plat-arros-negre-allioli of Plat
     (nom "Arròs Negre amb Allioli")
@@ -1142,6 +1239,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "arròs" "tinta de sípia" "sípia" "calamar" "peix" "verdures" "aigua" "sal" "all" "oli d'oliva" "ou")
   )
   (plat-arros-al-forn of Plat
     (nom "Arròs al Forn")
@@ -1153,6 +1251,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.00)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "arròs" "costella" "botifarra" "cigrons" "tomàquet" "all" "aigua" "sal")
   )
   (plat-fideua-classica of Plat
     (nom "Fideuà Clàssica")
@@ -1164,6 +1263,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "pasta" "sípia" "gamba" "calamar" "peix" "aigua" "sal" "verdures" "all" "oli d'oliva" "ou")
   )
   (plat-rabo-toro-estofat of Plat
     (nom "Rabo de Toro Estofat")
@@ -1175,6 +1275,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.75)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "vedella" "vi negre" "ceba" "pastanaga" "api" "tomàquet" "aigua" "sal")
   )
   (plat-callos-madrilenya of Plat
     (nom "Callos a la Madrilenya")
@@ -1186,6 +1287,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.55)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "tripa de vedella" "xoriço" "pernil" "pebre vermell" "tomàquet" "cigrons (opcional)")
   )
   (plat-parmigiana-di-melanzane of Plat
     (nom "Parmigiana di Melanzane")
@@ -1197,6 +1299,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "albergínia" "tomàquet" "mozzarella" "parmesà" "alfàbrega" "oli d'oliva")
   )
   (plat-lasanya-verdures of Plat
     (nom "Lasanya de Verdures")
@@ -1207,6 +1310,7 @@
     (te_ordre ordre-segon)
     (apte_esdeveniment tots)
     (preu_cost 3.80)
+    (te_ingredients_nom "pasta de lasanya" "carbassó" "albergínia" "espinacs" "tomàquet" "llet" "farina" "mantega" "sal" "nou moscada" "formatge")
   )
   (plat-cigrons-estofats-espinacs of Plat
     (nom "Cigrons Estofats amb Espinacs")
@@ -1218,6 +1322,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.90)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "cigrons cuits" "espinacs" "all" "pebre vermell" "tomàquet" "oli d'oliva")
   )
   (plat-risotto-bolets of Plat
     (nom "Risotto de Bolets")
@@ -1229,6 +1334,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.25)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "arròs arborio" "bolets" "aigua" "sal" "vi blanc" "ceba" "mantega" "parmesà")
   )
   (plat-marmitako of Plat
     (nom "Marmitako")
@@ -1240,6 +1346,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.00)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "tonyina" "patata" "ceba" "pebrot" "tomàquet" "peix" "verdures" "aigua" "sal")
   )
   (plat-caldereta-marisc of Plat
     (nom "Caldereta de Marisc")
@@ -1251,6 +1358,7 @@
     (apte_esdeveniment tots)
     (preu_cost 9.00)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "llagostí" "escamarlà" "sípia" "peix de roca" "tomàquet" "all" "brandi" "peix" "aigua" "sal" "verdures")
   )
   (plat-daurada-al-forn-verdures of Plat
     (nom "Daurada al Forn amb Verdures")
@@ -1262,6 +1370,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.15)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "daurada" "carbassó" "pastanaga" "ceba" "oli d'oliva" "llimona" "vi blanc")
   )
   (plat-pollastre-cervesa of Plat
     (nom "Pollastre a la Cervesa")
@@ -1273,6 +1382,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pollastre tallat" "cervesa" "ceba" "farina" "oli d'oliva" "sal")
   )
   (plat-corder-bolets of Plat
     (nom "Corder amb Bolets")
@@ -1284,6 +1394,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.00)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "corder" "bolets" "vi negre" "ceba" "aigua" "sal" "farigola")
   )
   (plat-hamburguesa-gourmet of Plat
     (nom "Hamburguesa Gourmet")
@@ -1295,6 +1406,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.05)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "vedella picada" "pa artesà" "formatge" "ceba confitada" "enciams" "salsa")
   )
   (plat-pernil-gall-dindi-rostit of Plat
     (nom "Pernil de gall dindi rostit")
@@ -1306,6 +1418,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.25)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "gall dindi" "mantega" "herbes" "llimona" "sal" "pebre")
   )
   (plat-sopa-peix of Plat
     (nom "Sopa de Peix")
@@ -1318,6 +1431,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.75)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "peix blanc" "verdures" "aigua" "sal" "tomàquet" "ceba" "all" "oli d'oliva" "pa")
   )
   (plat-escalivada-anxoves of Plat
     (nom "Escalivada amb Anxoves")
@@ -1330,6 +1444,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "albergínia" "pebrot" "ceba" "anxoves" "oli d'oliva")
   )
   (plat-tonyina-samfaina of Plat
     (nom "Tonyina amb Samfaina")
@@ -1342,6 +1457,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tonyina" "albergínia" "carbassó" "pebrot" "ceba" "tomàquet" "oli d'oliva" "sal")
   )
   (plat-panellets-variats of Plat
     (nom "Panellets Variats")
@@ -1354,6 +1470,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.55)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "ametlla mòlta" "sucre" "patata" "moniato" "pinyons" "coco" "xocolata")
   )
   (plat-coca-iogurt of Plat
     (nom "Coca de Iogurt")
@@ -1366,6 +1483,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "iogurt" "farina" "sucre" "ous" "oli d'oliva" "llimona")
   )
   (plat-galetes-mantega of Plat
     (nom "Galetes de Mantega")
@@ -1378,6 +1496,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "sucre" "ous")
   )
   (plat-teules-d-ametlla of Plat
     (nom "Teules d’ametlla")
@@ -1390,6 +1509,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla laminada" "sucre" "clara d'ou")
   )
   (plat-carquinyolis of Plat
     (nom "Carquinyolis")
@@ -1402,6 +1522,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla" "farina" "sucre" "ous" "llimona")
   )
   (plat-brac-gitano-trufa of Plat
     (nom "Braç de Gitano de Trufa")
@@ -1414,6 +1535,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "xocolata" "nata" "sucre")
   )
   (plat-brac-gitano-nata of Plat
     (nom "Braç de Gitano de Nata")
@@ -1426,6 +1548,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "nata" "sucre")
   )
   (plat-melindros-xocolata-desfeta of Plat
     (nom "Melindros amb Xocolata Desfeta")
@@ -1438,6 +1561,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "melindros" "xocolata negra" "llet" "nata")
   )
   (plat-xuixos-crema of Plat
     (nom "Xuixos de Crema")
@@ -1450,6 +1574,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.45)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "massa tipus brioix" "llet" "rovells d'ou" "sucre" "midó (opcional)" "vainilla" "oli d'oliva")
   )
   (plat-bunyols-vent of Plat
     (nom "Bunyols de Vent")
@@ -1462,6 +1587,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "ous" "sal" "sucre" "nata" "crema (opcional)")
   )
   (plat-coca-llardons of Plat
     (nom "Coca de Llardons")
@@ -1474,6 +1600,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.85)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "llardons" "sucre" "pinyons")
   )
   (plat-coca-forner-pinyons of Plat
     (nom "Coca de Forner amb Pinyons")
@@ -1486,6 +1613,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.85)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "farina" "aigua" "oli d'oliva" "sucre" "pinyons" "llevat")
   )
   (plat-menjar-blanc of Plat
     (nom "Menjar Blanc")
@@ -1497,6 +1625,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 1.15)
+    (te_ingredients_nom "ametlla" "sucre" "midó" "aigua de flor de taronger")
   )
   (plat-creme-brulee of Plat
     (nom "Crème Brûlée")
@@ -1509,6 +1638,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "nata" "rovells" "sucre" "vainilla" "sucre cremat")
   )
   (plat-massini of Plat
     (nom "Massini")
@@ -1521,6 +1651,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.45)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "llet" "rovells d'ou" "sucre" "midó (opcional)" "vainilla" "nata" "xocolata")
   )
   (plat-coca-llavaneres of Plat
     (nom "Coca de Llavaneres")
@@ -1533,6 +1664,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.15)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "llet" "rovells d'ou" "sucre" "midó (opcional)" "vainilla" "pinyons")
   )
   (plat-mel-mato of Plat
     (nom "Mel i Mató")
@@ -1545,6 +1677,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "mató" "mel")
   )
   (plat-crema-catalana of Plat
     (nom "Crema Catalana")
@@ -1557,6 +1690,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "llet" "ou" "sucre" "llimona" "canyella")
   )
   (plat-gelat-vainilla-crumble-salsa-toffee of Plat
     (nom "Gelat de Vainilla amb Crumble i Salsa Toffee")
@@ -1568,6 +1702,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "gelat de vainilla" "sucre" "nata" "mantega" "galeta")
   )
   (plat-panna-cotta-xocolata-blanca of Plat
     (nom "Panna Cotta de Xocolata Blanca")
@@ -1580,6 +1715,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "nata" "xocolata blanca" "gelatina" "sucre")
   )
   (plat-amanida-catalana of Plat
     (nom "Amanida Catalana")
@@ -1592,6 +1728,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.90)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "enciam" "tomàquet" "olives" "pernil" "llonganissa" "oli d'oliva")
   )
   (plat-pastis-formatge-fred of Plat
     (nom "Pastís de Formatge Fred")
@@ -1603,6 +1740,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "formatge crema" "nata" "sucre" "galeta" "mantega" "gelatina (opcional)")
   )
   (plat-crumble-fruits-vermells of Plat
     (nom "Crumble de Fruits Vermells")
@@ -1614,6 +1752,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "fruits vermells" "farina" "sucre" "mantega")
   )
   (plat-gelatina-cava-fruites of Plat
     (nom "Gelatina de Cava amb Fruites")
@@ -1625,6 +1764,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "cava" "gelatina" "sucre" "fruites")
   )
   (plat-semifreddo-d-ametlla of Plat
     (nom "Semifreddo d’ametlla")
@@ -1637,6 +1777,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "nata" "clares muntades" "ametlla" "sucre")
   )
   (plat-farigola-mel of Plat
     (nom "Farigola amb Mel")
@@ -1649,6 +1790,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "mató" "formatge" "mel de romaní" "farigola")
   )
   (plat-peres-al-vi of Plat
     (nom "Peres al Vi")
@@ -1661,6 +1803,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "peres" "vi negre" "sucre" "canyella" "pell de taronja")
   )
   (plat-poma-al-forn-canyella of Plat
     (nom "Poma al Forn amb Canyella")
@@ -1673,6 +1816,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "poma" "sucre" "canyella" "nous (opcional)")
   )
   (plat-music-moscatell of Plat
     (nom "Músic amb Moscatell")
@@ -1685,6 +1829,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "fruits secs" "panses" "moscatell")
   )
   (plat-bescuit-nous-mel of Plat
     (nom "Bescuit amb Nous i Mel")
@@ -1696,6 +1841,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 1.15)
+    (te_ingredients_nom "farina" "ous" "sucre" "nous" "mel")
   )
   (plat-crespells-dolcos of Plat
     (nom "Crespells Dolços")
@@ -1708,6 +1854,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "ou" "sucre" "oli d'oliva" "pell de llimona")
   )
   (plat-pastis-castanya of Plat
     (nom "Pastís de Castanya")
@@ -1720,6 +1867,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.05)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "castanya" "farina" "ous" "sucre" "mantega")
   )
   (plat-peres-xocolata of Plat
     (nom "Peres amb Xocolata")
@@ -1732,6 +1880,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "peres" "xocolata" "sucre" "mantega")
   )
   (plat-flam-mato of Plat
     (nom "Flam de Mató")
@@ -1744,6 +1893,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "mató" "llet" "ous" "sucre" "vainilla")
   )
   (plat-coca-d-ametlla-fina of Plat
     (nom "Coca d’ametlla Fina")
@@ -1756,6 +1906,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla mòlta" "ous" "sucre" "farina")
   )
   (plat-bunyols-quaresma of Plat
     (nom "Bunyols de Quaresma")
@@ -1768,6 +1919,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "llevat" "anís")
   )
   (plat-crema-llimona-merenga of Plat
     (nom "Crema de Llimona amb Merenga")
@@ -1780,6 +1932,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "llimona" "ous" "sucre" "mantega" "merenga")
   )
   (plat-panellets-xocolata of Plat
     (nom "Panellets de Xocolata")
@@ -1792,6 +1945,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla mòlta" "sucre" "ou" "cacau")
   )
   (plat-panellets-coco of Plat
     (nom "Panellets de Coco")
@@ -1804,6 +1958,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla mòlta" "sucre" "ou" "coco ratllat")
   )
   (plat-pastisset-cabell-d-angel of Plat
     (nom "Pastisset de Cabell d’àngel")
@@ -1816,6 +1971,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "massa" "cabell d'àngel" "sucre")
   )
   (plat-carquinyolis-xocolata of Plat
     (nom "Carquinyolis de Xocolata")
@@ -1828,6 +1984,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla" "farina" "cacau" "sucre" "ous")
   )
   (plat-bescuit-d-ametlla of Plat
     (nom "Bescuit d’ametlla")
@@ -1840,6 +1997,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla" "ous" "sucre" "farina")
   )
   (plat-mato-codonyat of Plat
     (nom "Mató amb Codonyat")
@@ -1852,6 +2010,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "mató" "codonyat")
   )
   (plat-catanies of Plat
     (nom "Catànies")
@@ -1864,6 +2023,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla torrada" "praliné" "xocolata blanca" "cacau")
   )
   (plat-bescuit-emborratxat of Plat
     (nom "Bescuit emborratxat")
@@ -1876,6 +2036,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "aigua" "sucre" "licor" "rovell d'ou")
   )
   (plat-pijama of Plat
     (nom "Pijama")
@@ -1888,6 +2049,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.55)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "flam" "gelat de vainilla" "préssec en almívar" "pinya" "nata" "xocolata")
   )
   (plat-coca-montserrat of Plat
     (nom "Coca de Montserrat")
@@ -1900,6 +2062,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.85)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "farina" "aigua" "mantega" "sucre" "ous" "anís" "pinyons")
   )
   (plat-coca-vidre of Plat
     (nom "Coca de Vidre")
@@ -1912,6 +2075,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "aigua" "oli d'oliva" "sucre" "anís")
   )
   (plat-melo-al-moscatell of Plat
     (nom "Meló al Moscatell")
@@ -1924,6 +2088,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "meló madur" "moscatell" "menta")
   )
   (plat-pastis-massini of Plat
     (nom "Pastís Massini")
@@ -1936,6 +2101,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.25)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "crema" "nata" "xocolata")
   )
   (plat-bescuit-iogurt-xocolata of Plat
     (nom "Bescuit de Iogurt amb Xocolata")
@@ -1948,6 +2114,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "iogurt" "farina" "sucre" "ous" "cacau" "oli d'oliva")
   )
   (plat-coca-sant-joan of Plat
     (nom "Coca de Sant Joan")
@@ -1960,6 +2127,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.85)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "brioche" "llet" "rovells d'ou" "sucre" "midó (opcional)" "vainilla" "fruita confitada" "pinyons")
   )
   (plat-pastis-sacher of Plat
     (nom "Pastís Sacher")
@@ -1972,6 +2140,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "xocolata" "bescuit de cacau" "melmelada d'albercoc")
   )
   (plat-lluc-cloisses-salsa-verda of Plat
     (nom "Lluç amb Cloïsses i Salsa Verda")
@@ -1984,6 +2153,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "lluç" "cloïsses" "julivert" "all" "vi blanc" "aigua" "sal" "farina")
   )
   (plat-profiteroles-xocolata of Plat
     (nom "Profiteroles amb Xocolata")
@@ -1996,6 +2166,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.85)
     (disponibilitat_plats hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "ous" "sal" "nata" "crema" "xocolata calenta")
   )
   (plat-tarta-santiago of Plat
     (nom "Tarta de Santiago")
@@ -2008,6 +2179,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "ametlla mòlta" "sucre" "ous" "llimona" "canyella")
   )
   (plat-mousse-llimona of Plat
     (nom "Mousse de Llimona")
@@ -2019,6 +2191,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.35)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "nata" "llimona" "llet condensada" "sucre" "gelatina (opcional)")
   )
   (plat-mousse-xocolata of Plat
     (nom "Mousse de Xocolata")
@@ -2031,6 +2204,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "xocolata negra" "nata" "ous" "sucre" "sal")
   )
   (plat-fruita-temporada-tallada of Plat
     (nom "Fruita de Temporada Tallada")
@@ -2043,6 +2217,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "fruita variada de temporada")
   )
   (plat-leche-frita of Plat
     (nom "Leche Frita")
@@ -2055,6 +2230,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet" "sucre" "midó" "canyella" "ou" "farina" "oli d'oliva")
   )
   (plat-torrijas of Plat
     (nom "Torrijas")
@@ -2067,6 +2243,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pa del dia abans" "llet" "ou" "sucre" "canyella" "oli d'oliva")
   )
   (plat-esparrecs-verds-brasa-romesco of Plat
     (nom "Espàrrecs Verds a la Brasa amb Romesco")
@@ -2077,6 +2254,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.00)
+    (te_ingredients_nom "espàrrecs" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   (plat-arros-llet of Plat
     (nom "Arròs amb Llet")
@@ -2089,6 +2267,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "arròs" "llet" "sucre" "canyella" "llimona")
   )
   (plat-natilles of Plat
     (nom "Natilles")
@@ -2101,6 +2280,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet" "ous" "sucre" "canyella" "midó (opcional)")
   )
   (plat-flam-d-ou-casola of Plat
     (nom "Flam d’ou Casolà")
@@ -2113,6 +2293,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet" "ous" "sucre" "vainilla")
   )
   (plat-ravioli-carbassa-mantega-salvia of Plat
     (nom "Ravioli de Carbassa i Mantega de Sàlvia")
@@ -2124,6 +2305,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.00)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "pasta" "carbassa" "ricotta" "parmesà" "mantega" "sàlvia" "nou moscada" "sal")
   )
   (plat-crema-porro-poma-verda of Plat
     (nom "Crema de Porro i Poma Verda")
@@ -2135,6 +2317,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.50)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "porro" "poma verda" "patata" "verdures" "aigua" "sal" "nata (opcional)" "oli d'oliva")
   )
   (plat-conill-brasa-all-julivert of Plat
     (nom "Conill a la Brasa amb All i Julivert")
@@ -2147,6 +2330,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.00)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "conill" "all" "julivert" "oli d'oliva" "sal")
   )
   (plat-lluc-al-forn-patata of Plat
     (nom "Lluç al Forn amb Patata")
@@ -2159,6 +2343,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.75)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "lluç" "patata" "ceba" "all" "vi blanc" "oli d'oliva")
   )
   (plat-amanida-llenties-vinagreta of Plat
     (nom "Amanida de Llenties amb Vinagreta")
@@ -2170,6 +2355,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "llenties cuites" "pebrot" "ceba" "tomàquet" "vinagreta")
   )
   (plat-tonyina-brasa-samfaina of Plat
     (nom "Tonyina a la Brasa amb Samfaina")
@@ -2182,6 +2368,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tonyina" "albergínia" "carbassó" "pebrot" "ceba" "tomàquet" "oli d'oliva" "sal")
   )
   (plat-filet-porc-poma-caramel-litzada of Plat
     (nom "Filet de Porc amb Poma Caramel·litzada")
@@ -2194,6 +2381,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.30)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "porc" "poma" "sucre" "mantega" "vi blanc")
   )
   (plat-escalopa-vedella-llimona of Plat
     (nom "Escalopa de Vedella amb Llimona")
@@ -2206,6 +2394,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.75)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "vedella" "farina" "ou" "pa" "oli d'oliva" "llimona")
   )
   (plat-peus-porc-brasa of Plat
     (nom "Peus de Porc a la Brasa")
@@ -2218,6 +2407,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.50)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "porc" "sal" "oli d'oliva" "allioli (opcional)")
   )
   (plat-ceps-saltejats-all-julivert of Plat
     (nom "Ceps Saltejats amb All i Julivert")
@@ -2229,6 +2419,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "ceps" "all" "julivert" "oli d'oliva" "sal")
   )
   (plat-gall-sant-pere-planxa of Plat
     (nom "Gall de Sant Pere a la Planxa")
@@ -2241,6 +2432,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.20)
     (disponibilitat_plats primavera hivern)
+    (te_ingredients_nom "gall de sant pere" "oli d'oliva" "sal" "llimona")
   )
   (plat-rap-cloisses-gambes of Plat
     (nom "Rap amb Cloïsses i Gambes")
@@ -2253,6 +2445,7 @@
     (apte_esdeveniment tots)
     (preu_cost 9.00)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "rap" "cloïsses" "gamba" "all" "vi blanc" "aigua" "sal")
   )
   (plat-caldereta-llagosta of Plat
     (nom "Caldereta de Llagosta")
@@ -2265,6 +2458,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.75)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "llagosta" "peix" "verdures" "aigua" "sal" "alls" "tomàquet" "oli d'oliva")
   )
   (plat-mini-falafel-tahina of Plat
     (nom "Mini Falàfel amb Tahina")
@@ -2276,6 +2470,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.20)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "cigrons" "ceba" "all" "julivert" "comí" "coriandre" "oli d'oliva" "sal" "tahina" "llimona")
   )
   (plat-conill-samfaina of Plat
     (nom "Conill amb Samfaina")
@@ -2288,6 +2483,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "conill" "albergínia" "carbassó" "pebrot" "ceba" "tomàquet" "oli d'oliva" "sal")
   )
   (plat-bacalla-allioli-gratinat of Plat
     (nom "Bacallà amb Allioli Gratinat")
@@ -2300,6 +2496,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.05)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bacallà" "all" "oli d'oliva" "ou" "sal")
   )
   (plat-xato of Plat
     (nom "Xató")
@@ -2312,6 +2509,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "escarola" "bacallà" "tonyina" "anxoves" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   (plat-pastis-formatge-al-forn of Plat
     (nom "Pastís de Formatge al Forn")
@@ -2324,6 +2522,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "formatge crema" "ous" "sucre" "nata" "galeta" "mantega")
   )
   (plat-coulant-xocolata of Plat
     (nom "Coulant de Xocolata")
@@ -2336,6 +2535,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "xocolata" "mantega" "ous" "sucre" "farina")
   )
   (plat-arnadi of Plat
     (nom "Arnadí")
@@ -2348,6 +2548,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.55)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "carabassa" "moniato" "ametlla" "sucre" "ou" "canyella")
   )
   (plat-tiramisu of Plat
     (nom "Tiramisú")
@@ -2360,6 +2561,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "mascarpone" "cafè" "melindros" "cacau" "ous" "sucre")
   )
   (plat-hummus-crudites of Plat
     (nom "Hummus amb Crudités")
@@ -2371,6 +2573,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.75)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "cigrons cuits" "tahina" "llimona" "all" "oli d'oliva" "pastanaga" "api")
   )
   (plat-amanida-grega of Plat
     (nom "Amanida Grega")
@@ -2381,6 +2584,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 3.00)
+    (te_ingredients_nom "tomàquet" "cogombre" "ceba" "olives" "formatge feta" "oli d'oliva" "orenga")
   )
   (plat-ensaladilla-russa-fina of Plat
     (nom "Ensaladilla Russa Fina")
@@ -2392,6 +2596,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.40)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "patata" "pastanaga" "pèsols" "tonyina" "ou dur" "ou" "oli d'oliva" "llimona" "vinagre" "sal")
   )
   (plat-baklava of Plat
     (nom "Baklava")
@@ -2403,6 +2608,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 1.15)
+    (te_ingredients_nom "farina" "aigua" "oli d'oliva" "nous" "pistatxos" "mantega" "sucre" "mel")
   )
   (plat-fartons-orxata of Plat
     (nom "Fartons amb Orxata")
@@ -2415,6 +2621,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "fartons" "orxata de xufa")
   )
   (plat-tarte-tatin of Plat
     (nom "Tarte Tatin")
@@ -2427,6 +2634,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "poma" "sucre" "mantega" "farina" "aigua" "sal")
   )
   (plat-pastis-llimona of Plat
     (nom "Pastís de Llimona")
@@ -2439,6 +2647,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "llimona" "merenga" "sucre" "ous")
   )
   (plat-gelat-artesa of Plat
     (nom "Gelat Artesà")
@@ -2450,6 +2659,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "gelats variats")
   )
   (plat-panna-cotta-fruits-vermells of Plat
     (nom "Panna Cotta amb Fruits Vermells")
@@ -2462,6 +2672,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "nata" "gelatina" "sucre" "vainilla" "fruits vermells")
   )
   (plat-quiche-lorraine of Plat
     (nom "Quiche Lorraine")
@@ -2473,6 +2684,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "ous" "nata" "bacó" "ceba" "formatge")
   )
   (plat-torro-en-textures of Plat
     (nom "Torró en Textures")
@@ -2485,6 +2697,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "torró d'alacant" "nata" "xocolata" "fruits secs")
   )
   (plat-timbal-d-escalivada-formatge-cabra of Plat
     (nom "Timbal d’escalivada amb Formatge de Cabra")
@@ -2496,6 +2709,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.00)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "albergínia" "pebrot" "ceba" "formatge de cabra" "oli d'oliva")
   )
   (plat-piononos-santa-fe of Plat
     (nom "Piononos de Santa Fe")
@@ -2508,6 +2722,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bescuit" "aigua" "sucre" "crema" "canyella")
   )
   (plat-sobaos-pasiegos of Plat
     (nom "Sobaos Pasiegos")
@@ -2520,6 +2735,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "ous" "sucre" "llevat")
   )
   (plat-musclos-marinera of Plat
     (nom "Musclos a la Marinera")
@@ -2531,6 +2747,7 @@
     (apte_esdeveniment tots)
     (preu_cost 8.20)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "musclos" "ceba" "all" "tomàquet" "vi blanc" "julivert" "oli d'oliva" "sal")
   )
   (plat-quesada-pasiega of Plat
     (nom "Quesada Pasiega")
@@ -2543,6 +2760,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "formatge" "llet" "ous" "sucre" "farina" "llimona")
   )
   (plat-pop-gallega of Plat
     (nom "Pop a la Gallega")
@@ -2554,6 +2772,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pop cuit" "patata" "pebre vermell" "oli d'oliva" "sal gruixuda")
   )
   (plat-filloas-mel of Plat
     (nom "Filloas amb Mel")
@@ -2566,6 +2785,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "farina" "llet" "ous" "mel" "oli d'oliva")
   )
   ; especificacio: aperitiu
   (plat-copa-fruites-iogurt-mel of Plat
@@ -2578,6 +2798,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "fruita variada" "iogurt" "mel" "granola (opcional)")
   )
   ; especificacio: aperitiu
   (plat-torro-cremos of Plat
@@ -2590,6 +2811,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 1.15)
+    (te_ingredients_nom "ametlla" "mel" "sucre" "clares" "nata")
   )
   ; especificacio: aperitiu
   (plat-mousse-mato-mel of Plat
@@ -2603,6 +2825,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.55)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "mató" "nata" "mel" "sucre")
   )
   ; especificacio: aperitiu
   (plat-vaset-llimona of Plat
@@ -2615,6 +2838,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "nata" "llimona" "sucre" "gelatina")
   )
   ; especificacio: aperitiu
   (plat-pastis-iogurt-llimona of Plat
@@ -2627,6 +2851,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.35)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "iogurt" "nata" "llimona" "galeta" "mantega")
   )
   ; especificacio: aperitiu
   (plat-copa-tiramisu of Plat
@@ -2640,6 +2865,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "mascarpone" "cafè" "melindros" "cacau" "ous" "sucre")
   )
   ; especificacio: aperitiu
   (plat-vaset-xocolata-gerds of Plat
@@ -2652,6 +2878,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "xocolata negra" "nata" "gerds" "sucre")
   )
   ; especificacio: aperitiu
   (plat-cullereta-tartar-tonyina-soja of Plat
@@ -2664,6 +2891,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.80)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "tonyina" "salsa de soja" "sèsam torrat" "cibulet" "oli d'oliva" "llimona")
   )
   ; especificacio: aperitiu
   (plat-mini-tartar-salmo-alvocat of Plat
@@ -2676,6 +2904,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.30)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "salmó" "alvocat" "llimona" "oli d'oliva" "sal" "pebre")
   )
   ; especificacio: aperitiu
   (plat-clotxines-al-vapor-llimona of Plat
@@ -2688,6 +2917,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.90)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "clotxines" "all" "julivert" "llimona")
   )
   ; especificacio: aperitiu
   (plat-ratatouille of Plat
@@ -2700,6 +2930,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "albergínia" "carbassó" "pebrot" "tomàquet" "oli d'oliva" "herbes")
   )
   ; especificacio: aperitiu
   (plat-salmorejo of Plat
@@ -2712,6 +2943,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "tomàquet" "pa" "all" "oli d'oliva" "vinagre" "pernil" "ou dur")
   )
   ; especificacio: aperitiu
   (plat-esqueixada-bacalla of Plat
@@ -2724,6 +2956,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.65)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "bacallà dessalat" "tomàquet" "ceba" "olives" "oli d'oliva")
   )
   ; especificacio: aperitiu
   (plat-vitello-tonnato of Plat
@@ -2736,6 +2969,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.95)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "vedella" "ou" "oli d'oliva" "llimona" "vinagre" "sal" "tonyina" "tàperes")
   )
   ; especificacio: aperitiu
   (plat-amanida-caprese of Plat
@@ -2748,6 +2982,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tomàquet" "mozzarella" "alfàbrega" "oli d'oliva" "vinagre balsàmic" "sucre")
   )
   ; especificacio: aperitiu
   (plat-carpaccio-vedella-parmesa of Plat
@@ -2760,6 +2995,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.95)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "vedella làmines fines" "parmesà" "ruca" "oli d'oliva" "llimona" "sal" "pebre")
   )
   ; especificacio: aperitiu
   (plat-ceviche-corvina of Plat
@@ -2772,6 +3008,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "corvina" "llima" "coriandre" "ceba morada" "bitxo" "sal")
   )
   ; especificacio: aperitiu
   (plat-tartar-tonyina-soja-sesam of Plat
@@ -2784,6 +3021,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.50)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "tonyina" "salsa de soja" "oli de sèsam" "llimona" "cibulet" "sèsam torrat")
   )
   ; especificacio: aperitiu
   (plat-vichyssoise of Plat
@@ -2796,6 +3034,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.50)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "porro" "patata" "verdures" "aigua" "sal" "nata" "mantega" "pebre")
   )
   ; especificacio: aperitiu
   (plat-crema-carbassa of Plat
@@ -2808,6 +3047,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "carbassa" "ceba" "verdures" "aigua" "sal" "nata (opcional)" "oli d'oliva")
   )
   ; especificacio: aperitiu
   (plat-canelo-fred-tonyina of Plat
@@ -2820,6 +3060,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.70)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "làmina de pasta" "tonyina" "ou" "oli d'oliva" "llimona" "vinagre" "sal" "tàperes" "encurtits fins")
   )
   ; especificacio: aperitiu
   (plat-ou-guatlla-pate of Plat
@@ -2832,6 +3073,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "ous de guatlla" "paté" "pa" "cibulet")
   )
   ; especificacio: aperitiu
   (plat-sopa-freda-tomaquet-sindria of Plat
@@ -2845,6 +3087,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tomàquet" "síndria" "oli d'oliva" "sal" "vinagre")
   )
   ; especificacio: aperitiu
   (plat-tartar-gambes of Plat
@@ -2856,6 +3099,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 8.10)
+    (te_ingredients_nom "gamba crua tallada" "oli d'oliva" "llimona" "sal" "cibulet")
   )
   ; especificacio: aperitiu
   (plat-verdures-planxa-romesco of Plat
@@ -2867,6 +3111,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.30)
+    (te_ingredients_nom "carbassó" "albergínia" "pebrot" "nyora" "ametlla" "avellana" "tomàquet escalivat" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   ; especificacio: aperitiu
   (plat-bastons-pastanaga-rostida-iogurt of Plat
@@ -2879,6 +3124,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "pastanaga" "comí" "oli d'oliva" "sal" "iogurt" "llimona" "menta")
   )
   ; especificacio: aperitiu
   (plat-timbal-d-escalivada-formatge of Plat
@@ -2891,6 +3137,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.00)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "albergínia" "pebrot" "ceba" "formatge de cabra" "oli d'oliva")
   )
   ; especificacio: aperitiu
   (plat-cullereta-brandada-bacalla-freda of Plat
@@ -2903,6 +3150,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.55)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bacallà dessalat" "patata" "oli d'oliva" "all" "llet")
   )
   ; especificacio: aperitiu
   (plat-amanida-caprese-en-bastonet of Plat
@@ -2915,6 +3163,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "mozzarella" "tomàquet" "alfàbrega" "oli d'oliva" "vinagre balsàmic" "sucre")
   )
   ; especificacio: aperitiu
   (plat-canape-salmo-fumat-crema-agra of Plat
@@ -2927,6 +3176,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "pa de motlle torrat" "salmó fumat" "crema agra" "anet" "llimona")
   )
   ; especificacio: aperitiu
   (plat-endivia-crema-roquefort-nous of Plat
@@ -2939,6 +3189,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "fulles d'endívia" "formatge blau" "nata" "nous" "pebre")
   )
   ; especificacio: aperitiu
   (plat-cullereta-remolatxa-formatge-fresc of Plat
@@ -2951,6 +3202,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "remolatxa cuita" "formatge" "nous" "oli d'oliva" "sal")
   )
   ; especificacio: aperitiu
   (plat-ceviche-blanc of Plat
@@ -2963,6 +3215,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "peix blanc" "suc de llima" "coriandre" "ceba morada" "bitxo" "sal")
   )
   ; especificacio: aperitiu
   (plat-carpaccio-vedella-en-mos of Plat
@@ -2975,6 +3228,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.95)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "vedella làmines fines" "parmesà" "ruca" "oli d'oliva" "llimona" "sal" "pebre")
   )
   ; especificacio: aperitiu
   (plat-cullereta-brandada-bacalla of Plat
@@ -2987,6 +3241,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.55)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bacallà dessalat" "patata" "oli d'oliva" "all" "llet")
   )
   ; especificacio: aperitiu
   (plat-viera-gratinada of Plat
@@ -2998,6 +3253,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.60)
+    (te_ingredients_nom "vieira" "all" "julivert" "pa" "oli d'oliva" "sal")
   )
   ; especificacio: aperitiu
   (plat-carpaccio-bacalla of Plat
@@ -3011,6 +3267,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.55)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "lloms de bacallà dessalat" "oli d'oliva" "pebre" "llimona")
   )
   ; especificacio: aperitiu
   (plat-gazpacho-classic of Plat
@@ -3023,6 +3280,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tomàquet" "pebrot" "cogombre" "all" "pa" "oli d'oliva" "vinagre" "sal")
   )
   ; especificacio: aperitiu
   (plat-tartar-remolatxa-formatge-fresc of Plat
@@ -3035,6 +3293,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "remolatxa cuita" "formatge" "nous" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-xistorra-sidra of Plat
@@ -3047,6 +3306,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "xistorra" "sidra" "oli d'oliva" "pa")
   )
   ; especificacio: pica-pica
   (plat-calamars-romana-2 of Plat
@@ -3059,6 +3319,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.50)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "calamar" "farina" "ou" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-bunyols-bacalla of Plat
@@ -3071,6 +3332,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.55)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "bacallà dessalat" "farina" "ou" "all" "julivert" "oli d'oliva" "llevat")
   )
   ; especificacio: pica-pica
   (plat-croquetes-bolets of Plat
@@ -3083,6 +3345,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.70)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "bolets" "llet" "mantega" "farina" "all" "julivert" "sal" "pa" "ou" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-croquetes-pollastre-rostit of Plat
@@ -3095,6 +3358,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.55)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet" "mantega" "farina" "pollastre rostit" "nou moscada" "sal" "pa" "ou" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-croquetes-pernil of Plat
@@ -3107,6 +3371,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet" "mantega" "farina" "pernil picat" "nou moscada" "sal" "pa" "ou" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-bastons-pollastre-cruixent of Plat
@@ -3119,6 +3384,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pollastre" "farina" "ou" "pa" "all en pols" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-broqueta-gamba-sipia of Plat
@@ -3131,6 +3397,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.90)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "gamba" "sípia" "all" "oli d'oliva" "julivert" "sal")
   )
   ; especificacio: pica-pica
   (plat-gamba-l-all of Plat
@@ -3143,6 +3410,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.90)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "gamba" "all" "oli d'oliva" "pebre de caiena" "julivert" "sal")
   )
   ; especificacio: pica-pica
   (plat-samoses-vegetals of Plat
@@ -3155,6 +3423,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.45)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "pasta brick" "filo" "patata" "pèsols" "curry" "ceba" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-fingers-lluc-arrebossats of Plat
@@ -3167,6 +3436,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.25)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "lluç" "farina" "ou" "pa" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-mandonguilles-salsa-tomaquet of Plat
@@ -3179,6 +3449,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "carn picada" "pa remullat" "ou" "all" "julivert" "tomàquet" "ceba" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-hot-dog-gourmet of Plat
@@ -3191,6 +3462,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "panet mini" "salsitxa" "mostassa antiga" "ceba cruixent")
   )
   ; especificacio: pica-pica
   (plat-mini-burger-vedella of Plat
@@ -3203,6 +3475,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.55)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "panet mini" "vedella picada" "formatge" "enciam" "salsa")
   )
   ; especificacio: pica-pica
   (plat-alitas-pollastre-especiades of Plat
@@ -3215,6 +3488,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.50)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "ales de pollastre" "paprika" "all en pols" "pebre" "sal" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-patates-braves of Plat
@@ -3227,6 +3501,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "patates" "tomàquet triturat" "all" "bitxo" "pebre vermell" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-coca-d-escalivada-tonyina of Plat
@@ -3239,6 +3514,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "farina" "albergínia" "pebrot" "ceba" "oli d'oliva" "sal" "tonyina")
   )
   ; especificacio: pica-pica
   (plat-focaccia-herbes-olives of Plat
@@ -3251,6 +3527,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "farina" "aigua" "llevat" "oli d'oliva" "romaní" "olives" "sal")
   )
   ; especificacio: pica-pica
   (plat-embotits-pais of Plat
@@ -3264,6 +3541,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "llonganissa" "fuet" "pernil" "pa amb tomàquet")
   )
   ; especificacio: pica-pica
   (plat-formatges-catalans of Plat
@@ -3277,6 +3555,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.70)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "formatges de pastor" "pa" "fruits secs")
   )
   ; especificacio: pica-pica
   (plat-gilda-classica of Plat
@@ -3289,6 +3568,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "oliva verda" "anxova" "bitxo verd en vinagre")
   )
   ; especificacio: pica-pica
   (plat-broqueta-tomaquet-cherry-mozzarella of Plat
@@ -3301,6 +3581,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "tomàquet cherry" "mozzarella mini" "alfàbrega" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-allioli-codony-morro-tripa of Plat
@@ -3314,6 +3595,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.95)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "codony" "all" "oli d'oliva" "morro de bacallà" "tripa de bacallà")
   )
   ; especificacio: pica-pica
   (plat-mini-tartaleta-pollastre-al-curri of Plat
@@ -3326,6 +3608,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.80)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "tartaletes salades" "pit de pollastre cuit" "ou" "oli d'oliva" "llimona" "vinagre" "sal" "curri" "poma")
   )
   ; especificacio: pica-pica
   (plat-torrada-escalivada-formatge of Plat
@@ -3339,6 +3622,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.70)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pa" "albergínia" "pebrot" "ceba" "formatge de cabra" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-guacamole-nachos of Plat
@@ -3350,6 +3634,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 2.00)
+    (te_ingredients_nom "alvocat" "llimona" "tomàquet" "ceba" "coriandre" "sal" "nachos")
   )
   ; especificacio: pica-pica
   (plat-mini-wrap-gall-dindi-enciam of Plat
@@ -3362,6 +3647,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.65)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "truita de blat" "gall dindi rostit" "enciam" "tomàquet" "iogurt" "llimona" "sal" "espècies suaus")
   )
   ; especificacio: pica-pica
   (plat-torrada-d-escalivada-anxova of Plat
@@ -3374,6 +3660,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pa" "albergínia" "pebrot" "ceba" "anxoves" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-mini-quiche-lorraine of Plat
@@ -3386,6 +3673,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "ous" "nata" "bacó" "ceba" "formatge")
   )
   ; especificacio: pica-pica
   (plat-provolone-al-forn-tomaquet of Plat
@@ -3398,6 +3686,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "provolone" "tomàquet" "orenga" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-remenat-bolets of Plat
@@ -3410,6 +3699,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "ous" "bolets" "all" "julivert" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-empanadilles-verdures of Plat
@@ -3422,6 +3712,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.70)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "massa d'empanadilla" "carbassó" "pebrot" "ceba" "tomàquet" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-mini-truita-patata of Plat
@@ -3434,6 +3725,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "patata" "ou" "ceba" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-patates-al-caliu-allioli of Plat
@@ -3446,6 +3738,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "patates" "all" "oli d'oliva" "sal" "ou (opcional)" "llimona")
   )
   ; especificacio: pica-pica
   (plat-bolets-saltejats-en-mos of Plat
@@ -3458,6 +3751,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "bolets mixtos" "all" "julivert" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-xips-carbasso-arrebossats of Plat
@@ -3470,6 +3764,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "carbassó" "farina de cigró" "aigua" "sal" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-mini-carrot-cake of Plat
@@ -3482,6 +3777,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.35)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "pastanaga" "farina" "ous" "sucre" "oli d'oliva" "nous" "espècies" "crema formatge")
   )
   ; especificacio: pica-pica
   (plat-trufes-xocolata of Plat
@@ -3494,6 +3790,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "xocolata" "nata" "cacau en pols")
   )
   ; especificacio: pica-pica
   (plat-mini-entrepa-vegetal of Plat
@@ -3506,6 +3803,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.40)
     (disponibilitat_plats tardor)
+    (te_ingredients_nom "panet mini" "alvocat" "enciam" "tomàquet" "pastanaga ratllada" "ou" "oli d'oliva" "llimona" "vinagre" "sal")
   )
   ; especificacio: pica-pica
   (plat-montadito-pernil-pebrots of Plat
@@ -3518,6 +3816,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.45)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pa" "pernil" "pebrot rostit" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-couscous-verdures of Plat
@@ -3530,6 +3829,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.70)
     (disponibilitat_plats primavera)
+    (te_ingredients_nom "sèmola" "carbassó" "pastanaga" "ceba" "cigrons" "espècies" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-cullereta-arros-negre-all-oli of Plat
@@ -3540,6 +3840,7 @@
     (mida_racio pica-pica)
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
+    (te_ingredients_nom "arròs" "tinta de sípia" "calamar" "all" "oli d'oliva" "ou (per a l'allioli)" "sal")
   )
   ; especificacio: pica-pica
   (plat-taula-formatges-artesans of Plat
@@ -3552,6 +3853,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "formatge" "fruits secs" "melmelades" "pa")
   )
   ; especificacio: pica-pica
   (plat-assortit-d-olives-encurtits of Plat
@@ -3564,6 +3866,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "olives verdes" "olives negres" "pebrot envinagrat" "cebes petites" "cogombrets")
   )
   ; especificacio: pica-pica
   (plat-taula-d-embotits of Plat
@@ -3576,6 +3879,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pernil tall" "llonganissa" "xoriço" "pa" "tomàquet")
   )
   ; especificacio: pica-pica
   (plat-fideus-cassola of Plat
@@ -3588,6 +3892,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pasta" "tomàquet" "ceba" "oli d'oliva" "sal" "aigua" "costella" "salsitxa")
   )
   ; especificacio: pica-pica
   (plat-broqueta-pollastre-yakitori of Plat
@@ -3600,6 +3905,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pollastre" "salsa de soja" "sucre" "mirin" "gingebre")
   )
   ; especificacio: pica-pica
   (plat-fingers-pollastre-cruixents of Plat
@@ -3612,6 +3918,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pollastre" "farina" "ou" "pa" "espècies" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-seito-fregit-cruixent of Plat
@@ -3624,6 +3931,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "seitó" "farina" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-brownie-nous of Plat
@@ -3636,6 +3944,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.05)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "xocolata" "mantega" "sucre" "ous" "farina" "nous")
   )
   ; especificacio: pica-pica
   (plat-mini-lemon-pie of Plat
@@ -3648,6 +3957,7 @@
     (apte_esdeveniment tots)
     (preu_cost 1.15)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "mantega" "aigua" "sal" "llimona" "merenga" "sucre")
   )
   ; especificacio: pica-pica
   (plat-mini-taco-vegetal of Plat
@@ -3659,6 +3969,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 3.00)
+    (te_ingredients_nom "truita de blat" "alvocat" "tomàquet" "ceba" "llima" "coriandre")
   )
   ; especificacio: pica-pica
   (plat-mini-entrepa-rostit-mostassa of Plat
@@ -3671,6 +3982,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.25)
     (disponibilitat_plats primavera estiu tardor)
+    (te_ingredients_nom "panet mini" "carn de rostit" "mostassa antiga" "enciam")
   )
   ; especificacio: pica-pica
   (plat-mini-mandonguilles-tomaquet of Plat
@@ -3683,6 +3995,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.50)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "carn picada" "pa remullat" "ou" "all" "julivert" "tomàquet" "ceba" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-formatge-al-forn-herbes of Plat
@@ -3695,6 +4008,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "provolone" "orenga" "tomàquet" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-tires-bacalla-arrebossat of Plat
@@ -3707,6 +4021,7 @@
     (apte_esdeveniment tots)
     (preu_cost 5.25)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "bacallà dessalat" "farina" "ou" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-truita-patata-ceba of Plat
@@ -3719,6 +4034,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "patata" "ou" "ceba" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-broqueta-pop-patata of Plat
@@ -3731,6 +4047,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.80)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "pop cuit" "patata" "oli d'oliva" "pebre vermell" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-taco-peix of Plat
@@ -3742,6 +4059,7 @@
     (te_ordre ordre-primer)
     (apte_esdeveniment tots)
     (preu_cost 5.55)
+    (te_ingredients_nom "truita de blat" "peix" "farina" "ou" "oli d'oliva" "sal" "col" "salsa" "llima")
   )
   ; especificacio: pica-pica
   (plat-pernil-iberic-tall-fi of Plat
@@ -3754,6 +4072,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "pernil ibèric" "pa" "tomàquet" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-daus-truita-botifarra of Plat
@@ -3766,6 +4085,7 @@
     (apte_esdeveniment tots)
     (preu_cost 4.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "ous" "patata" "botifarra" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mandonguilla-thai of Plat
@@ -3778,6 +4098,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.50)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "carn picada" "gingebre" "cilantre" "all" "llet de coco" "espècies suaus" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-mini-fondue-formatge of Plat
@@ -3790,6 +4111,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.30)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "formatge" "vi blanc" "midó" "all" "pa")
   )
   ; especificacio: pica-pica
   (plat-empanadilles-tonyina of Plat
@@ -3802,6 +4124,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "farina" "tonyina" "tomàquet" "ceba" "oli d'oliva" "sal")
   )
   ; especificacio: pica-pica
   (plat-provolone-al-forn-herbes of Plat
@@ -3814,6 +4137,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.20)
     (disponibilitat_plats estiu tardor)
+    (te_ingredients_nom "provolone" "orenga" "tomàquet" "oli d'oliva")
   )
   ; especificacio: pica-pica
   (plat-bastonet-brie-arrebossat of Plat
@@ -3826,6 +4150,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.00)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "formatge brie" "farina" "ou" "pa" "oli d'oliva")
   )
   (plat-amanida-faves-menta of Plat
     (nom "Amanida de Faves amb Menta")
@@ -3886,6 +4211,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.20)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "porro" "patata" "nata" "brou de pollastre" "mantega" "sal")
   )
   (plat-carpaccio-carbasso-parmesa of Plat
     (nom "Carpaccio de Carbassó amb Parmesà")
@@ -3969,6 +4295,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.20)
     (disponibilitat_plats primavera tardor)
+    (te_ingredients_nom "salmó" "sal" "sucre" "anet" "llimona")
   )
   (plat-pernil-dolc-pinya-rostida of Plat
     (nom "Pernil Dolç amb Pinya Rostida")
@@ -3981,6 +4308,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.90)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "pernil dolç" "pinya" "mantega" "pebre")
   )
   (plat-amanida-cigrons-pebrots of Plat
     (nom "Amanida de Cigrons amb Pebrots")
@@ -4028,6 +4356,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 2.35)
+    (te_ingredients_nom "iogurt" "mel" "nous" "vainilla")
   )
   (plat-panna-cotta-vainilla of Plat
     (nom "Panna Cotta de Vainilla")
@@ -4040,6 +4369,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "nata" "sucre" "vainilla" "gelatina")
   )
   (plat-tiramisu-fruits-bosc of Plat
     (nom "Tiramisú de Fruits del Bosc")
@@ -4052,6 +4382,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "mascarpone" "melindros" "cafè" "fruits del bosc" "sucre" "cacau")
   )
   (plat-crema-catalana-citrics of Plat
     (nom "Crema Catalana amb Cítrics")
@@ -4076,6 +4407,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "formatge cremós" "nata" "galeta" "mantega" "llimona" "sucre")
   )
   (plat-gelat-vainilla-oli-d-oliva-sal of Plat
     (nom "Gelat de Vainilla amb Oli d’Oliva i Sal")
@@ -4099,6 +4431,7 @@
     (te_ordre ordre-postres)
     (apte_esdeveniment tots)
     (preu_cost 0.85)
+    (te_ingredients_nom "maduixa" "pinya" "raïm" "menta" "llimona")
   )
   (plat-bavarois-mango of Plat
     (nom "Bavarois de Mango")
@@ -4111,6 +4444,7 @@
     (apte_esdeveniment tots)
     (preu_cost 0.85)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "mango" "nata" "sucre" "gelatina" "vainilla")
   )
   (plat-pastis-casament-red-velvet-crema-formatge of Plat
     (nom "Pastís casament Red Velvet amb Crema de Formatge")
@@ -4122,6 +4456,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.45)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina de blat" "cacau" "sucre" "mantega" "ous" "llet" "colorant vermell" "vinagre" "bicarbonat" "formatge cremós")
   )
   (plat-pastis-casament-xocolata-belga-ganache of Plat
     (nom "Pastís casament de Xocolata Belga amb Ganache")
@@ -4133,6 +4468,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.45)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "cacau pur" "xocolata negra" "ous" "sucre" "nata líquida" "mantega")
   )
   (plat-pastis-casament-llimona-merenga-suissa of Plat
     (nom "Pastís casament de Llimona i Merenga Suïssa")
@@ -4144,6 +4480,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.45)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "mantega" "ous" "llimona" "merenga" "midó de blat de moro")
   )
   (plat-pastis-casament-fruits-vermells-nata of Plat
     (nom "Pastís casament de Fruits Vermells i Nata")
@@ -4155,6 +4492,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "ous" "sucre" "nata" "grosella" "maduixa" "nabiu" "mantega")
   )
   (plat-pastis-casament-vainilla-capes-mango of Plat
     (nom "Pastís casament de Vainilla amb Capes de Mango")
@@ -4166,6 +4504,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.15)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "mantega" "vainilla" "mango" "nata")
   )
   (plat-pastis-casament-nata-pressec of Plat
     (nom "Pastís casament de Nata i Préssec")
@@ -4177,6 +4516,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.25)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "nata" "préssec" "ous" "vainilla")
   )
   (plat-pastis-casament-llimona-iogurt-greg of Plat
     (nom "Pastís casament de Llimona amb Iogurt Greg")
@@ -4188,6 +4528,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.25)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "iogurt grec" "llimona" "oli de gira-sol")
   )
   (plat-pastis-casament-maduixa-gelatina-natural of Plat
     (nom "Pastís casament de Maduixa amb Gelatina Natural")
@@ -4199,6 +4540,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.25)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "maduixa" "gelatina" "nata")
   )
   (plat-pastis-casament-xocolata-blanca-gerds of Plat
     (nom "Pastís casament de Xocolata Blanca i Gerds")
@@ -4210,6 +4552,7 @@
     (apte_esdeveniment casament)
     (preu_cost 3.15)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "xocolata blanca" "gerds" "nata" "ous" "sucre" "farina")
   )
   (plat-pastis-casament-iogurt-llimona-coco of Plat
     (nom "Pastís casament de Iogurt i Llimona amb Coco")
@@ -4221,6 +4564,7 @@
     (apte_esdeveniment casament)
     (preu_cost 2.65)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "iogurt" "llimona" "coco ratllat")
   )
   (plat-pastis-aniversari-llet-condensada-galeta of Plat
     (nom "Pastís aniversari de Llet Condensada i Galeta")
@@ -4232,6 +4576,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "llet condensada" "galeta" "mantega" "ous" "nata" "sucre")
   )
   (plat-pastis-aniversari-xocolata-caramel-salat of Plat
     (nom "Pastís aniversari de Xocolata i Caramel Salat")
@@ -4243,6 +4588,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "xocolata negra" "mantega" "farina" "sucre" "caramel" "nata" "sal marina")
   )
   (plat-pastis-aniversari-oreo-crema-vainilla of Plat
     (nom "Pastís aniversari Oreo amb Crema de Vainilla")
@@ -4254,6 +4600,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "galetes oreo" "nata" "formatge cremós" "sucre glass" "vainilla")
   )
   (plat-pastis-aniversari-taronja-ametlles of Plat
     (nom "Pastís aniversari de Taronja i Ametlles")
@@ -4276,6 +4623,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "galetes" "mantega" "xocolata negra" "xocolata amb llet" "xocolata blanca" "nata" "llet")
   )
   (plat-pastis-aniversari-formatge-fruits-vermells of Plat
     (nom "Pastís aniversari de Formatge amb Fruits Vermells")
@@ -4287,6 +4635,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.85)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "galetes" "mantega" "formatge cremós" "nata" "sucre" "maduixes" "groselles" "gerds")
   )
   (plat-pastis-aniversari-pastanaga-nous-glace of Plat
     (nom "Pastís aniversari de Pastanaga i Nous amb Glacé")
@@ -4298,6 +4647,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 3.15)
     (disponibilitat_plats tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "pastanaga ratllada" "nous" "ous" "oli de gira-sol" "canyella" "formatge cremós")
   )
   (plat-pastis-aniversari-sacher-xocolata-melmelada-d-albercoc of Plat
     (nom "Pastís aniversari Sacher de Xocolata i Melmelada d’Albercoc")
@@ -4320,6 +4670,7 @@
     (apte_esdeveniment aniversari)
     (preu_cost 2.65)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "galetes" "mantega" "dolç de llet" "plàtan" "nata" "sucre")
   )
   (plat-pastis-coco-pinya of Plat
     (nom "Pastís de Coco i Pinya")
@@ -4331,6 +4682,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.05)
     (disponibilitat_plats estiu)
+    (te_ingredients_nom "farina" "sucre" "ous" "llet de coco" "coco ratllat" "pinya" "mantega")
   )
   (plat-pastis-llimona-mousse-llimona of Plat
     (nom "Pastís de Llimona i Mousse de Llimona")
@@ -4342,6 +4694,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "llimona" "nata" "gelatina" "mantega")
   )
   (plat-pastis-mango-maracuia of Plat
     (nom "Pastís de Mango i Maracuià")
@@ -4353,6 +4706,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "ous" "mango" "maracuià" "nata" "gelatina" "mantega")
   )
   (plat-pastis-red-velvet-crema-suau-vainilla of Plat
     (nom "Pastís Red Velvet amb Crema Suau de Vainilla")
@@ -4364,6 +4718,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "farina" "cacau" "sucre" "mantega" "ous" "llet" "colorant vermell" "vinagre" "bicarbonat" "vainilla")
   )
   (plat-pastis-poma-crumble of Plat
     (nom "Pastís de Poma amb Crumble")
@@ -4375,6 +4730,7 @@
     (apte_esdeveniment tots)
     (preu_cost 2.65)
     (disponibilitat_plats primavera tardor hivern)
+    (te_ingredients_nom "farina" "sucre" "mantega" "ous" "poma" "canyella" "llevat")
   )
   (plat-pastis-pistatxo-gerds of Plat
     (nom "Pastís de Pistatxo i Gerds")
@@ -4386,6 +4742,7 @@
     (apte_esdeveniment tots)
     (preu_cost 3.15)
     (disponibilitat_plats primavera estiu)
+    (te_ingredients_nom "farina" "sucre" "ous" "mantega" "pistatxo mòlt" "gerds" "nata")
   )
   (plat-pastis-tiramisu-capes-cafe-mascarpone of Plat
     (nom "Pastís Tiramisú (Capes de Cafè i Mascarpone)")
@@ -4397,5 +4754,6 @@
     (apte_esdeveniment tots)
     (preu_cost 2.95)
     (disponibilitat_plats primavera estiu tardor hivern)
+    (te_ingredients_nom "melindros" "cafè" "mascarpone" "nata" "sucre" "cacau en pols")
   )
 )
