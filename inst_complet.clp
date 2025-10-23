@@ -6707,7 +6707,7 @@
 (definstances begudes-cataleg 
   (beguda-vi-blanc-afruitat of Beguda 
     (nom "Vi blanc jove afruitat") 
-    (formalitat "informal") 
+    (formalitat "formal" "informal") 
     (alcohol si) 
     (maridatge ordre-primer) 
     (preu_cost 3) 
