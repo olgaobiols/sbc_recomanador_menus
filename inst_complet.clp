@@ -6834,7 +6834,7 @@
     (preu_cost 1.5)
     (es_general si)
   )
-  (beguda-refresc-cola of beguda
+  (beguda-refresc-cola of Beguda
   (nom "Refresc de cola")
     (formalitat "informal")
     (alcohol no)
