@@ -456,6 +456,10 @@
      "Vols definir grups amb dietes o al·lèrgies específiques?"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits))
+
+  (if (eq ?r no) then
+     (assert (respostes-completes))
+     (focus AbstraccioHeuristica))
 )
 
 
