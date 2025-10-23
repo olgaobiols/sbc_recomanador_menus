@@ -11,27 +11,22 @@
     (slot nom
         (type STRING)
         (create-accessor read-write))
-    (multislot acompanya
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot part_de
-        (type INSTANCE)
-        (create-accessor read-write))
-    (multislot maridatge
-        (type SYMBOL)
+    (slot formalitat
+        (type STRING)
         (create-accessor read-write))
     (slot alcohol
         (type SYMBOL)
         (create-accessor read-write))
-    (slot formalitat
-        (type STRING)
+    (slot maridatge
+        (type SYMBOL)
         (create-accessor read-write))
     (slot preu_cost
         (type FLOAT)
         (create-accessor read-write))
-    (slot procedencia
-        (type STRING)
-        (create-accessor read-write))
+    (slot es_general
+        (type SYMBOL)
+        (create-accessor read-write)
+    )
 )
 
 (defclass Comensal
