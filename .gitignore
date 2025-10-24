@@ -1,2 +1,5 @@
 altres/
 obsoleto/
+bases_provisionals/
+__pycache__/
+*.pyc
