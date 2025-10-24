@@ -151,7 +151,7 @@
   (slot id             (type INTEGER) (default 1))
   (slot nom            (type STRING)  (default ""))
   (slot quantitat      (type INTEGER) (default 0))
-  (slot dieta          (type SYMBOL)
+  (multislot dieta     (type SYMBOL)
                        (allowed-symbols cap vega vegetaria halal kosher)
                        (default cap))
   (slot alergia-mode   (type SYMBOL)
@@ -169,8 +169,7 @@
 ; Fets de control per recollir N grups
 (deftemplate num-grups (slot total (type INTEGER)))
 (deftemplate grup-pendent (slot id (type INTEGER)))
-(deftemplate menus-presentats-grup
-  (slot gid (type INTEGER)))
+(deftemplate menus-presentats-grup (slot gid (type INTEGER)))
 (deftemplate imprimir-grup (slot id (type INTEGER)))
 
 ; ============================================================
@@ -180,6 +179,9 @@
 (deftemplate plat-valid-dieta   (slot nom) (slot gid (type INTEGER)))
 (deftemplate plat-valid-final-grup (slot nom) (slot gid (type INTEGER)))
 
+(deftemplate beguda-valida-alergen (slot nom) (slot gid (type INTEGER)))
+(deftemplate beguda-valida-dieta (slot nom) (slot gid (type INTEGER)))
+(deftemplate beguda-valida-final-grup (slot nom) (slot gid (type INTEGER)))
 
 (deffunction ingredient-apte-dieta (?diet ?dietes-ing)
   (if (or (eq ?diet cap) (eq ?diet indiferent)) then (return TRUE))
@@ -215,35 +217,6 @@
       then (return (nth$ 1 ?cand))
       else (return FALSE)))
 
-; ---------- Beguda apta per al grup (al·lèrgens + halal/kosher) ----------
-(deffunction beguda-permesa-per-grup
-  (?B ?te-gluten ?te-sulfites ?no-alcohol)
-  (if (not ?B) then (return FALSE))
-
-  ; BLOQUEIG per alcohol si el grup és halal/kosher
-  (bind ?is-alcohol (eq (send ?B get-alcohol) si))
-  (if (and ?no-alcohol ?is-alcohol) then (return FALSE))
-
-  ; Heurístiques pel nom (si no tens atributs d'al·lèrgens a Beguda)
-  (bind ?nm (lowcase (send ?B get-nom)))
-
-  ; "cervesa" -> possible gluten (si no és específica sense gluten)
-  (bind ?p-beer (str-index "cervesa" ?nm))
-  (bind ?is-beer (and (numberp ?p-beer) (> ?p-beer 0)))
-
-  ; "vi " (al principi o com a paraula) o "cava" -> sulfits
-  (bind ?p-w1   (str-index "vi " ?nm))
-  (bind ?p-w2   (str-index " vi " ?nm))
-  (bind ?p-cava (str-index "cava" ?nm))
-  (bind ?is-wine (or (and (numberp ?p-w1) (= ?p-w1 1))
-                     (and (numberp ?p-w2) (> ?p-w2 0))
-                     (and (numberp ?p-cava) (> ?p-cava 0))))
-
-  ; VETOS per al·lèrgens
-  (if (and ?te-gluten   ?is-beer) then (return FALSE))
-  (if (and ?te-sulfites ?is-wine) then (return FALSE))
-
-  TRUE)
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
 (deffunction valida-boolea "Valida sí/no/indiferent"
@@ -441,7 +414,7 @@
   (preguntat-beguda-general)
   (not (preguntat-alcohol))
 =>
-  (bind ?r (valida-boolea "Prefereixes que el menú inclogui begudes alcohòliques? (sí/no)"))
+  (bind ?r (valida-boolea "Prefereixes que el menú inclogui begudes alcohòliques?"))
   (modify ?p (alcohol ?r))
   (assert (preguntat-alcohol)))
 
@@ -567,8 +540,7 @@
 (deftemplate plat-valid-temp (slot nom))          ;; Nom del plat que passa la restricció de temperatura
 (deftemplate plat-valid-formal (slot nom))
 (deftemplate plat-valid-complexitat (slot nom))
-(deftemplate plat-valid-event
-   (slot nom))
+(deftemplate plat-valid-event (slot nom))
 (deftemplate plat-valid-dispo (slot nom))
 (deftemplate preu-venta (slot nom (type STRING SYMBOL)) (slot valor (type FLOAT)))
 (deftemplate plat-amb-ingredients (slot nom))
@@ -754,6 +726,31 @@
     (assert (plat-valid-alergen (nom ?np) (gid ?gid))))
 )
 
+(defrule AbstraccioHeuristica::filtrar-begudes-per-alergens-grup
+  (grup-restriccio (id ?gid) (alergens $?ALS))
+  ?b <- (object (is-a Beguda) (nom ?nb))
+  (not (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+=>
+  (bind $?ialgs (send ?b get-alergens)) ; multislot d'al·lèrgens
+
+  ; Comprovem si algun al·lèrgens de la beguda coincideix amb el grup
+  (if (not (member$ $?ialgs $?ALS)) then
+      (assert (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+  )
+)
+
+(defrule AbstraccioHeuristica::filtrar-begudes-per-dietes-grup
+  (grup-restriccio (id ?gid) (dieta $?DIET))
+  ?b <- (object (is-a Beguda) (nom ?nb))
+  (not (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+=>
+  (bind $?idiet (send ?b get-dietes)) ; multislot de dietes
+
+  ; Comprovem si alguna dieta de la beguda coincideix amb el grup
+  (if (not (member$ $?idiet $?DIET)) then
+      (assert (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+  )
+)
 
 
 (defrule AbstraccioHeuristica::marcar-alergen-ok-si-cap
@@ -911,8 +908,6 @@
     (assert (plat-valid-dieta (nom ?np) (gid ?gid))))
 )
 
-
-
 ; ============================================================
 ; COMBINE per GRUP: afegeix requisits de sempre + al·lergen+dieta per grup
 ; ============================================================
@@ -940,6 +935,15 @@
   (plat-valid-pressupost (nom ?nom))
 =>
   (assert (plat-valid-final (nom ?nom)))
+)
+
+(defrule RefinamentHeuristica::b-combinar-validacions-per-grup
+  (beguda-valida-alcohol (nom ?nom))
+  (beguda-valida-formal (nom ?nom))
+  (beguda-valida-alergen (nom ?nom) (gid ?gid))
+  (beguda-valida-dieta (nom ?nom) (gid ?gid))
+=>
+  (assert (beguda-valida-final-grup (nom ?nom) (gid ?gid)))
 )
 
 (defrule RefinamentHeuristica::b-combinar-validacions-base
@@ -988,7 +992,7 @@
                       (member$ (send ?p get-nom) ?noms-valids))))
 
   ; Recollim noms de begudes finals
-  (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final)) TRUE))
+  (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final-grup)) (eq (fact-slot-value ?bf gid) ?gid)))
   (bind ?b-noms-valids (create$))
   (foreach ?bf ?begudes-valides
      (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom)))
@@ -1010,38 +1014,6 @@
                        (and (eq (send ?b get-maridatge) ordre-postres)
                             (member$ (send ?b get-nom) ?b-noms-valids))))
   )
-  ; --- FILTRE BEGUDES per AL·LÈRGENS del GRUP + HALAL/KOSHER ---
-  (bind ?te-gluten   (member$ gluten   (create$ $?ALS)))
-  (bind ?te-sulfites (member$ sulfites (create$ $?ALS)))
-  (bind ?no-alcohol  (or (eq ?diet halal) (eq ?diet kosher)))
-
-  (if (eq ?bm general) then
-    (bind ?acc (create$))
-    (foreach ?bb ?b-generals
-      (if (beguda-permesa-per-grup ?bb ?te-gluten ?te-sulfites ?no-alcohol)
-          then (bind ?acc (create$ $?acc ?bb))))
-    (bind ?b-generals ?acc)
-  else
-    (bind ?acc1 (create$))
-    (foreach ?bb ?b-primers
-      (if (beguda-permesa-per-grup ?bb ?te-gluten ?te-sulfites ?no-alcohol)
-          then (bind ?acc1 (create$ $?acc1 ?bb))))
-    (bind ?b-primers ?acc1)
-
-    (bind ?acc2 (create$))
-    (foreach ?bb ?b-segons
-      (if (beguda-permesa-per-grup ?bb ?te-gluten ?te-sulfites ?no-alcohol)
-          then (bind ?acc2 (create$ $?acc2 ?bb))))
-    (bind ?b-segons ?acc2)
-
-    (bind ?acc3 (create$))
-    (foreach ?bb ?b-postres
-      (if (beguda-permesa-per-grup ?bb ?te-gluten ?te-sulfites ?no-alcohol)
-          then (bind ?acc3 (create$ $?acc3 ?bb))))
-    (bind ?b-postres ?acc3)
-  )
-  ; --- FI FILTRE ---
-
   
   ;; LÍMIT DE MENÚS (pel menjar)
   (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
