@@ -1,4 +1,4 @@
-nom_plat,mida_racio,complexitat,temperatura,ordre_plat,formalitat,preu_cost_heur,apte_esdeveniment,disponibilitat,ingredients
+nom_plat,mida_racio,complexitat,temperatura,te_ordre,formalitat,preu_cost,apte_esdeveniment,disponibilitat,ingredients
 Vinagreta sense amanida,mitjana,baixa,fred,primer,formal,4.0,"['casament', 'empresa', 'congres', 'comunio', 'aniversari']","['estiu', 'hivern', 'primavera', 'tardor']","['llimona', 'formatge parmesà', 'sal d'all', 'maionesa', 'llet']"
 Pastís de xocolata per a dues persones,petita,mitjana,tebi,postres,informal,7.0,['totes'],"['estiu', 'hivern', 'primavera', 'tardor']","['oli', 'xocolata', 'sucre', 'ou', 'farina', 'sal', 'bicarbonat', 'extracte de vainilla', 'aigua', 'fruits secs', 'formatge fresc']"
 Pastís 1-2-3-4,gran,mitjana,tebi,postres,formal,5.0,"['casament', 'empresa', 'congres', 'comunio', 'aniversari']","['estiu', 'hivern', 'primavera', 'tardor']","['mantega', 'llet', 'extracte de vainilla', 'sucre', 'farina', 'llevat químic', 'ou']"
