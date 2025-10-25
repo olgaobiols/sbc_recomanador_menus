@@ -577,11 +577,11 @@
       else
          (if (or
               (and (or (eq ?estacio primavera) (eq ?estacio estiu))
-                   (or (eq ?temp "Fred") (eq ?temp "Tebi")))
+                   (or (eq ?temp "fred") (eq ?temp "tebi")))
               (and (or (eq ?estacio primavera) (eq ?estacio estiu))
-                   (eq ?temp "Calent") (eq ?espai interior))
+                   (eq ?temp "calent") (eq ?espai interior))
               (and (or (eq ?estacio tardor) (eq ?estacio hivern))
-                   (or (eq ?temp "Calent") (eq ?temp "Tebi"))))
+                   (or (eq ?temp "calent") (eq ?temp "tebi"))))
             then
                (assert (plat-valid-temp (nom ?nom)))
          )
@@ -637,25 +637,26 @@
 
 (defrule AbstraccioHeuristica::filtrar-postres-per-esdeveniment
   (peticio (tipus-esdeveniment ?ev))
-  ?plat <- (object (is-a Plat) (nom ?nom) (apte_esdeveniment ?apt) (te_ordre $?ordres))
+  ?plat <- (object (is-a Plat) (nom ?nom) (apte_esdeveniment $?apt) (te_ordre $?ordres))
 =>
   (if (member$ ordre-postres ?ordres)
       then
         ; És un postre: aplica la lògica d’esdeveniment
         (if (or
-              (and (eq ?ev casament)   (eq ?apt casament))     ; boda → pastís apte per casament
-              (and (eq ?ev aniversari) (eq ?apt aniversari))   ; aniversari → postre apte per aniversari
-              (and (not (or (eq ?ev casament) (eq ?ev aniversari)))
-                   (eq ?apt tots))                            ; resta d’esdeveniments → només “tots”
+              (and (eq ?ev casament)   (member$ casament $?apt))     ; boda → apte per casament
+              (and (eq ?ev aniversari) (member$ aniversari $?apt))   ; aniversari → apte per aniversari
+              (and (not (or (eq ?ev casament) (eq ?ev aniversari)))  ; altres esdeveniments
+                   (or (member$ ?ev $?apt) (member$ tots $?apt)))    ; si conté l'event o “tots”
              )
           then
             (assert (plat-valid-event (nom ?nom)))
         )
       else
-        ; No és postre: no apliquem cap filtre d’esdeveniment, passa
+        ; No és postre → passa sempre
         (assert (plat-valid-event (nom ?nom)))
   )
 )
+
 
 (defrule AbstraccioHeuristica::filtrar-begudes-alcohol
    ?p <- (peticio (alcohol ?alc))
