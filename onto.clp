@@ -54,6 +54,7 @@
     (multislot restriccions-alergen
         (type SYMBOL)
         (create-accessor read-write))
+    
 )
 
 (defclass Esdeveniment
@@ -163,7 +164,6 @@
     (multislot te_ordre
         (type INSTANCE)
         (create-accessor read-write))
-
     (multislot alergens
         (type SYMBOL)
         (create-accessor read-write))
@@ -183,6 +183,12 @@
         (type STRING)
         (create-accessor read-write))
     (slot temperatura
+        (type STRING)
+        (create-accessor read-write))
+    (slot categoria
+        (type STRING)
+        (create-accessor read-write))
+    (slot procedencia_plat
         (type STRING)
         (create-accessor read-write))
     (multislot apte_esdeveniment
