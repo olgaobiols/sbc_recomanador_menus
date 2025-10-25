@@ -185,7 +185,7 @@
     (slot temperatura
         (type STRING)
         (create-accessor read-write))
-    (slot apte_esdeveniment
+    (multislot apte_esdeveniment
         (type SYMBOL)
         (create-accessor read-write))
 
