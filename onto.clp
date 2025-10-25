@@ -26,7 +26,12 @@
     (slot es_general
         (type SYMBOL)
         (create-accessor read-write)
-    )
+    (multislot alergens
+        (type STRING)
+        (create-accessor read-write))
+    (multislot dietes
+        (type SYMBOL)
+        (create-accessor read-write))
 )
 
 (defclass Comensal
