@@ -11,7 +11,7 @@
     (slot nom
         (type STRING)
         (create-accessor read-write))
-    (slot formalitat
+    (multislot formalitat
         (type STRING)
         (create-accessor read-write))
     (slot alcohol
@@ -25,7 +25,7 @@
         (create-accessor read-write))
     (slot es_general
         (type SYMBOL)
-        (create-accessor read-write)
+        (create-accessor read-write))
     (multislot alergens
         (type STRING)
         (create-accessor read-write))
