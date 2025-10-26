@@ -183,6 +183,19 @@
 (deftemplate beguda-valida-dieta (slot nom) (slot gid (type INTEGER)))
 (deftemplate beguda-valida-final-grup (slot nom) (slot gid (type INTEGER)))
 
+(deftemplate plat-valid-final (slot nom))   ; Nom del plat que passa totes les restriccions
+(deftemplate plat-valid-temp (slot nom))          ;; Nom del plat que passa la restricció de temperatura
+(deftemplate plat-valid-formal (slot nom))
+(deftemplate plat-valid-complexitat (slot nom))
+(deftemplate plat-valid-event (slot nom))
+(deftemplate plat-valid-dispo (slot nom))
+(deftemplate preu-venta (slot nom (type STRING SYMBOL)) (slot valor (type FLOAT)))
+(deftemplate plat-amb-ingredients (slot nom))
+
+(deftemplate beguda-valida-alcohol (slot nom))
+(deftemplate beguda-valida-formal (slot nom))
+(deftemplate beguda-valida-final (slot nom))
+
 ; --- Normalització d'etiquetes de dieta a símbols canònics ---
 (deffunction diet-token->sym (?x)
   (bind ?s (if (symbolp ?x) then (lowcase (str-cat ?x)) else (lowcase (trim (str-cat ?x)))))
@@ -218,6 +231,20 @@
 
   FALSE)
 
+(deffunction noms-plats-valids-base ()
+  (bind ?out (create$))
+  (foreach ?f (find-all-facts ((?fv plat-valid-final)) TRUE)
+    (bind ?out (create$ $?out (fact-slot-value ?f nom))))
+  ?out)
+
+(deffunction noms-candidats-ordre (?ordre-sym)
+  (bind $?base (noms-plats-valids-base))
+  (bind ?res (create$))
+  (foreach ?p (find-all-instances ((?pl Plat))
+                (and (member$ ?ordre-sym (send ?pl get-te_ordre))
+                     (member$ (send ?pl get-nom) $?base)))
+    (bind ?res (create$ $?res (send ?p get-nom))))
+  ?res)
 
 ; Helper: cerca l’objecte Ingredient pel seu nom (string)
 (deffunction ingredient-by-name (?nom-str)
@@ -229,7 +256,29 @@
   (if (> (length$ ?cand) 0)
       then (return (nth$ 1 ?cand))
       else (return FALSE)))
-    
+
+(deffunction preu-plat-by-name (?nom)
+  (bind ?ff (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?nom)))
+  (if (> (length$ ?ff) 0)
+      then (fact-slot-value (nth$ 1 ?ff) valor)
+      else 0.0))
+
+(deffunction sum-preu-begudes ($?noms)
+  (bind ?s 0.0)
+  (foreach ?b ?noms
+    (bind ?insts (find-all-instances ((?x Beguda)) (eq (send ?x get-nom) ?b)))
+    (if (> (length$ ?insts) 0)
+        then (bind ?s (+ ?s (send (nth$ 1 ?insts) get-preu_cost)))))
+  ?s)
+
+(deffunction budget-ok (?total)
+  (bind ?p (nth$ 1 (find-all-facts ((?x peticio)) TRUE)))
+  (bind ?pmin (fact-slot-value ?p pressupost-min))
+  (bind ?pmax (fact-slot-value ?p pressupost-max))
+  (and (or (eq ?pmin indiferent) (<= ?pmin ?total))
+       (or (eq ?pmax indiferent) (>= ?pmax ?total))))
+
+
 ; Retorna TRUE si el PLAT (?platNom) és apte per al GRUP ?gid
 ; Criteri:
 ;  - Si el grup té al·lèrgens i algun ingredient no té info d'al·lèrgens -> NO apte
@@ -626,19 +675,7 @@
   (focus AbstraccioHeuristica))
 
 
-;; PAS 2: ABSTRACCIÓ HEURÍSTICA -------------------------------
-(deftemplate plat-valid-final (slot nom))   ; Nom del plat que passa totes les restriccions
-(deftemplate plat-valid-temp (slot nom))          ;; Nom del plat que passa la restricció de temperatura
-(deftemplate plat-valid-formal (slot nom))
-(deftemplate plat-valid-complexitat (slot nom))
-(deftemplate plat-valid-event (slot nom))
-(deftemplate plat-valid-dispo (slot nom))
-(deftemplate preu-venta (slot nom (type STRING SYMBOL)) (slot valor (type FLOAT)))
-(deftemplate plat-amb-ingredients (slot nom))
-
-(deftemplate beguda-valida-alcohol (slot nom))
-(deftemplate beguda-valida-formal (slot nom))
-(deftemplate beguda-valida-final (slot nom))
+;; PAS 2: ABSTRACCIÓ HEURÍSTICA ------------------------------
 
 
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
@@ -1195,6 +1232,10 @@
   (slot preu (type FLOAT))
 )
 
+(deftemplate menu-noapte
+  (slot gid (type INTEGER))
+  (slot idx (type INTEGER)))
+
 
 (defrule ComposicioMenus::generador-menus-inicials
   (declare (auto-focus TRUE))
@@ -1468,7 +1509,8 @@
         (bind ?ok-po (plat-apte-per-grup ?po ?gid))
 
         (bind ?ok (and ?ok-pr ?ok-sg ?ok-po))
-
+        (if (not ?ok) then
+          (assert (menu-noapte (gid ?gid) (idx ?idx))))
         (printout t "Menú " ?idx ": [" ?pr " | " ?sg " | " ?po "]  ->  "
                     (if ?ok then "APTE" else "NO apte") crlf)
 
@@ -1482,9 +1524,193 @@
   )
 )
 
+(deffunction tria-substitut (?ordre-sym ?gid ?preu-fix-1 ?preu-fix-2 ?begudes-total $?exclusions)
+  ;; ?preu-fix-1 i ?preu-fix-2 = preus dels altres dos plats
+  ;; ?begudes-total = suma preu begudes del menú
+  (bind $?cand (noms-candidats-ordre ?ordre-sym))
+  (bind ?millor FALSE)
+  (bind ?millorTotal 1.0e+15)
+  (foreach ?nom $?cand
+    (if (not (member$ ?nom $?exclusions)) then
+      (if (plat-apte-per-grup ?nom ?gid) then
+        (bind ?p (preu-plat-by-name ?nom))
+        (bind ?total (+ ?begudes-total ?preu-fix-1 ?preu-fix-2 ?p))
+        (if (and (budget-ok ?total) (< ?total ?millorTotal)) then
+          (bind ?millor ?nom)
+          (bind ?millorTotal ?total)))))
+  (if ?millor then
+      (return (create$ ?millor ?millorTotal))
+    else
+      (return (create$ FALSE 0.0)))
+) ;; <— AQUESTA era la que faltava per tancar el deffunction
+
+(deftemplate repair-state
+  (slot gid (type INTEGER))
+  (slot idx (type INTEGER))
+  (slot primer)
+  (slot segon)
+  (slot postres)
+  (multislot begudes)
+  (slot preu (type FLOAT))
+  (multislot tried-primer)
+  (multislot tried-segon)
+  (multislot tried-postres))
+
+(defrule ComposicioMenus::repair-start
+  (declare (auto-focus TRUE))
+  (menus-presentats)
+  (menu-noapte (gid ?gid) (idx ?idx)) 
+  (grup-restriccio (id ?gid))
+  ?m <- (menu-seleccionat (idx ?idx) (primer ?pr) (segon ?sg) (postres ?po) (begudes $?bgs) (preu ?pp))
+  (test (or (not (plat-apte-per-grup ?pr ?gid))
+            (not (plat-apte-per-grup ?sg ?gid))
+            (not (plat-apte-per-grup ?po ?gid))))
+  (not (repair-state (gid ?gid) (idx ?idx)))
+=>
+  (assert (repair-state (gid ?gid) (idx ?idx)
+                        (primer ?pr) (segon ?sg) (postres ?po)
+                        (begudes $?bgs) (preu ?pp)))
+)
+
+(defrule ComposicioMenus::repair-primer
+  ?rs <- (repair-state (gid ?gid) (idx ?idx)
+                       (primer ?pr) (segon ?sg) (postres ?po)
+                       (begudes $?bgs) (preu ?base)
+                       (tried-primer $?tp))
+  (test (not (plat-apte-per-grup ?pr ?gid)))
+=>
+  (bind ?begT (sum-preu-begudes $?bgs))
+  (bind $?r (tria-substitut ordre-primer ?gid (preu-plat-by-name ?sg) (preu-plat-by-name ?po) ?begT (create$ ?pr ?sg ?po $?tp)))
+  (bind ?sub (nth$ 1 $?r))
+  (bind ?tot (nth$ 2 $?r))
+  (retract ?rs)
+  (if ?sub then
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?sub) (segon ?sg) (postres ?po)
+                          (begudes $?bgs) (preu ?tot)
+                          (tried-primer $?tp ?pr)))
+   else
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?pr) (segon ?sg) (postres ?po)
+                          (begudes $?bgs) (preu ?base)
+                          (tried-primer $?tp ?pr))))
+)
+
+(defrule ComposicioMenus::repair-segon
+  ?rs <- (repair-state (gid ?gid) (idx ?idx)
+                       (primer ?pr) (segon ?sg) (postres ?po)
+                       (begudes $?bgs) (preu ?base)
+                       (tried-segon $?ts))
+  (test (and (plat-apte-per-grup ?pr ?gid)
+             (not (plat-apte-per-grup ?sg ?gid))))
+=>
+  (bind ?begT (sum-preu-begudes $?bgs))
+  (bind $?r (tria-substitut ordre-segon ?gid (preu-plat-by-name ?pr) (preu-plat-by-name ?po) ?begT (create$ ?pr ?sg ?po $?ts)))
+  (bind ?sub (nth$ 1 $?r))
+  (bind ?tot (nth$ 2 $?r))
+  (retract ?rs)
+  (if ?sub then
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?pr) (segon ?sub) (postres ?po)
+                          (begudes $?bgs) (preu ?tot)
+                          (tried-segon $?ts ?sg)))
+   else
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?pr) (segon ?sg) (postres ?po)
+                          (begudes $?bgs) (preu ?base)
+                          (tried-segon $?ts ?sg))))
+)
+
+(defrule ComposicioMenus::repair-postres
+  ?rs <- (repair-state (gid ?gid) (idx ?idx)
+                       (primer ?pr) (segon ?sg) (postres ?po)
+                       (begudes $?bgs) (preu ?base)
+                       (tried-postres $?tp))
+  (test (and (plat-apte-per-grup ?pr ?gid)
+             (plat-apte-per-grup ?sg ?gid)
+             (not (plat-apte-per-grup ?po ?gid))))
+=>
+  (bind ?begT (sum-preu-begudes $?bgs))
+  (bind $?r (tria-substitut ordre-postres ?gid (preu-plat-by-name ?pr) (preu-plat-by-name ?sg) ?begT (create$ ?pr ?sg ?po $?tp)))
+  (bind ?sub (nth$ 1 $?r))
+  (bind ?tot (nth$ 2 $?r))
+  (retract ?rs)
+  (if ?sub then
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?pr) (segon ?sg) (postres ?sub)
+                          (begudes $?bgs) (preu ?tot)
+                          (tried-postres $?tp ?po)))
+   else
+    (assert (repair-state (gid ?gid) (idx ?idx)
+                          (primer ?pr) (segon ?sg) (postres ?po)
+                          (begudes $?bgs) (preu ?base)
+                          (tried-postres $?tp ?po))))
+)
+
+(defrule ComposicioMenus::repair-finish-ok
+  ?rs <- (repair-state (gid ?gid) (idx ?idx)
+                       (primer ?pr) (segon ?sg) (postres ?po)
+                       (begudes $?bgs) (preu ?tot))
+  (test (and (plat-apte-per-grup ?pr ?gid)
+             (plat-apte-per-grup ?sg ?gid)
+             (plat-apte-per-grup ?po ?gid)))
+=>
+  (retract ?rs)
+  (assert (menu-reparat-grup (gid ?gid) (idx ?idx)
+                             (primer ?pr) (segon ?sg) (postres ?po)
+                             (begudes $?bgs) (preu ?tot)))
+)
+
+(defrule ComposicioMenus::repair-stuck
+  ?rs <- (repair-state (gid ?gid) (idx ?idx)
+                       (primer ?pr) (segon ?sg) (postres ?po)
+                       (begudes $?bgs) (preu ?tot)
+                       (tried-primer $?tp1)
+                       (tried-segon  $?tp2)
+                       (tried-postres $?tp3))
+  (test (or (not (plat-apte-per-grup ?pr ?gid))
+            (not (plat-apte-per-grup ?sg ?gid))
+            (not (plat-apte-per-grup ?po ?gid))))
+=>
+  (printout t "Menú " ?idx " (grup " ?gid "): no s'ha pogut reparar completament dins del pressupost." crlf)
+  (retract ?rs))
 
 
+(defrule ComposicioMenus::mostrar-menus-reparats-per-grup
+  (declare (auto-focus TRUE))
+  (menus-presentats)
+  ?g <- (grup-restriccio (id ?gid) (nom ?gnom))
+  (repair-done (gid ?gid))                                   ;; assegura que hem acabat
+  (exists (menu-reparat-grup (gid ?gid)))
+  (not (reparats-impressos (gid ?gid)))                      ;; evita doble impressió
+=>
+  (printout t crlf "=== Menús REPARATS per al grup " ?gid " (" ?gnom ") ===" crlf)
 
+  ;; 1) recull índexs reparats d’aquest grup
+  (bind ?mx (find-all-facts ((?m menu-reparat-grup)) (eq (fact-slot-value ?m gid) ?gid)))
+  (bind ?idxs (create$))
+  (foreach ?m ?mx
+    (bind ?idxs (create$ $?idxs (fact-slot-value ?m idx))))
+
+  ;; 2) ordena per idx creixent
+  (bind ?ord (sort < (create$ $?idxs)))
+
+  ;; 3) imprimeix en ordre
+  (foreach ?i ?ord
+    (bind ?m2 (nth$ 1 (find-all-facts ((?z menu-reparat-grup))
+                   (and (eq (fact-slot-value ?z gid)  ?gid)
+                        (eq (fact-slot-value ?z idx)  ?i)))))
+    (printout t crlf "*** Menú " ?i " ***" crlf)
+    (printout t "  Entrant:   " (fact-slot-value ?m2 primer)  crlf)
+    (printout t "  Principal: " (fact-slot-value ?m2 segon)   crlf)
+    (printout t "  Postres:   " (fact-slot-value ?m2 postres) crlf)
+    (printout t "  Begudes:   " (implode$ (fact-slot-value ?m2 begudes)) crlf)
+    (printout t "  TOTAL:     " (fact-slot-value ?m2 preu) " €" crlf)
+    (printout t "  ----------------------------------------" crlf)
+  )
+
+  (assert (reparats-impressos (gid ?gid)))
+)
 
 
 
