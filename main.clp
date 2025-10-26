@@ -806,68 +806,68 @@
 ; ============================================================
 ; Abans dieta: marquem plats aptes d'al·lèrgens per grup
 ; ============================================================
-; (defrule AbstraccioHeuristica::filtrar-plats-per-alergens-grup
-;   (grup-restriccio (id ?gid) (alergens $?ALS))
-;   ?pl <- (object (is-a Plat) (nom ?np))
-;   (not (plat-valid-alergen (nom ?np) (gid ?gid)))
-; =>
-;   (bind ?restriccions (length$ (create$ $?ALS)))
-;   (bind $?ings (send ?pl get-te_ingredients_noms))
-;   (bind ?apte TRUE)
+(defrule AbstraccioHeuristica::filtrar-plats-per-alergens-grup
+  (grup-restriccio (id ?gid) (alergens $?ALS))
+  ?pl <- (object (is-a Plat) (nom ?np))
+  (not (plat-valid-alergen (nom ?np) (gid ?gid)))
+=>
+  (bind ?restriccions (length$ (create$ $?ALS)))
+  (bind $?ings (send ?pl get-te_ingredients_noms))
+  (bind ?apte TRUE)
 
-;   (foreach ?ing ?ings
-;     (if ?apte then
-;       (bind ?I (ingredient-by-name ?ing))
+  (foreach ?ing ?ings
+    (if ?apte then
+      (bind ?I (ingredient-by-name ?ing))
 
-;       ; Ingredient inexistent → si hi ha restriccions, NO apte
-;       (if (not ?I) then
-;         (if (> ?restriccions 0) then (bind ?apte FALSE))
-;       else
-;         (bind ?ialgs-raw (send ?I get-alergens))
-;         (bind $?ialgs (if (multifieldp ?ialgs-raw) then ?ialgs-raw else (create$)))
+      ; Ingredient inexistent → si hi ha restriccions, NO apte
+      (if (not ?I) then
+        (if (> ?restriccions 0) then (bind ?apte FALSE))
+      else
+        (bind ?ialgs-raw (send ?I get-alergens))
+        (bind $?ialgs (if (multifieldp ?ialgs-raw) then ?ialgs-raw else (create$)))
 
-;         ; >>> CANVI CLAU: multifield buit == sense info → FAIL si hi ha restriccions
-;         (if (and (> ?restriccions 0) (= (length$ (create$ $?ialgs)) 0)) then
-;           (bind ?apte FALSE)
-;         else
-;           (bind $?ialgs_sym (normalize-alergen-list $?ialgs))
-;           (foreach ?a $?ialgs_sym
-;             (if (and ?apte (member$ ?a (create$ $?ALS))) then
-;               (bind ?apte FALSE)))
-;         )
-;       )
-;     )
-;   )
+        ; >>> CANVI CLAU: multifield buit == sense info → FAIL si hi ha restriccions
+        (if (and (> ?restriccions 0) (= (length$ (create$ $?ialgs)) 0)) then
+          (bind ?apte FALSE)
+        else
+          (bind $?ialgs_sym (normalize-alergen-list $?ialgs))
+          (foreach ?a $?ialgs_sym
+            (if (and ?apte (member$ ?a (create$ $?ALS))) then
+              (bind ?apte FALSE)))
+        )
+      )
+    )
+  )
 
-;   (if ?apte then
-;     (assert (plat-valid-alergen (nom ?np) (gid ?gid))))
-; )
+  (if ?apte then
+    (assert (plat-valid-alergen (nom ?np) (gid ?gid))))
+)
 
-; (defrule AbstraccioHeuristica::filtrar-begudes-per-alergens-grup
-;   (grup-restriccio (id ?gid) (alergens $?ALS))
-;   ?b <- (object (is-a Beguda) (nom ?nb))
-;   (not (beguda-valida-alergen (nom ?nb) (gid ?gid)))
-; =>
-;   (bind $?ialgs (send ?b get-alergens)) ; multislot d'al·lèrgens
+(defrule AbstraccioHeuristica::filtrar-begudes-per-alergens-grup
+  (grup-restriccio (id ?gid) (alergens $?ALS))
+  ?b <- (object (is-a Beguda) (nom ?nb))
+  (not (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+=>
+  (bind $?ialgs (send ?b get-alergens)) ; multislot d'al·lèrgens
 
-;   ; Comprovem si algun al·lèrgens de la beguda coincideix amb el grup
-;   (if (not (member$ $?ialgs $?ALS)) then
-;       (assert (beguda-valida-alergen (nom ?nb) (gid ?gid)))
-;   )
-; )
+  ; Comprovem si algun al·lèrgens de la beguda coincideix amb el grup
+  (if (not (member$ $?ialgs $?ALS)) then
+      (assert (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+  )
+)
 
-; (defrule AbstraccioHeuristica::filtrar-begudes-per-dietes-grup
-;   (grup-restriccio (id ?gid) (dieta $?DIET))
-;   ?b <- (object (is-a Beguda) (nom ?nb))
-;   (not (beguda-valida-dieta (nom ?nb) (gid ?gid)))
-; =>
-;   (bind $?idiet (send ?b get-dietes)) ; multislot de dietes
+(defrule AbstraccioHeuristica::filtrar-begudes-per-dietes-grup
+  (grup-restriccio (id ?gid) (dieta $?DIET))
+  ?b <- (object (is-a Beguda) (nom ?nb))
+  (not (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+=>
+  (bind $?idiet (send ?b get-dietes)) ; multislot de dietes
 
-;   ; Comprovem si alguna dieta de la beguda coincideix amb el grup
-;   (if (not (member$ $?idiet $?DIET)) then
-;       (assert (beguda-valida-dieta (nom ?nb) (gid ?gid)))
-;   )
-; )
+  ; Comprovem si alguna dieta de la beguda coincideix amb el grup
+  (if (not (member$ $?idiet $?DIET)) then
+      (assert (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+  )
+)
 
 
 (defrule AbstraccioHeuristica::marcar-alergen-ok-si-cap
@@ -973,56 +973,56 @@
 ; ============================================================
 ; Després d'al·lèrgens: marquem plats aptes per dieta, per grup
 ; ============================================================
-; (defrule RefinamentHeuristica::filtrar-plats-per-dieta-grup
-;   (grup-restriccio (id ?gid) (dieta ?diet))
-;   (plat-valid-alergen (nom ?np) (gid ?gid))
-;   ?pl <- (object (is-a Plat) (nom ?np))
-;   (not (plat-valid-dieta (nom ?np) (gid ?gid)))
-; =>
-;   (bind ?ok TRUE)
+(defrule RefinamentHeuristica::filtrar-plats-per-dieta-grup
+  (grup-restriccio (id ?gid) (dieta ?diet))
+  (plat-valid-alergen (nom ?np) (gid ?gid))
+  ?pl <- (object (is-a Plat) (nom ?np))
+  (not (plat-valid-dieta (nom ?np) (gid ?gid)))
+=>
+  (bind ?ok TRUE)
 
-;   (if (neq ?diet cap) then
-;     (bind $?ings (send ?pl get-te_ingredients_noms))
-;     (foreach ?ing ?ings
-;       (if ?ok then
-;         (bind ?I (ingredient-by-name ?ing))
-;         (if (not ?I) then
-;           (bind ?ok FALSE)
-;         else
-;           (bind ?diets-raw (send ?I get-dietes))
-;           (bind $?diets (if (multifieldp ?diets-raw) then ?diets-raw else (create$)))
+  (if (neq ?diet cap) then
+    (bind $?ings (send ?pl get-te_ingredients_noms))
+    (foreach ?ing ?ings
+      (if ?ok then
+        (bind ?I (ingredient-by-name ?ing))
+        (if (not ?I) then
+          (bind ?ok FALSE)
+        else
+          (bind ?diets-raw (send ?I get-dietes))
+          (bind $?diets (if (multifieldp ?diets-raw) then ?diets-raw else (create$)))
 
-;           ; >>> CANVI CLAU: multifield buit == sense info → FAIL
-;           (if (= (length$ (create$ $?diets)) 0) then
-;             (bind ?ok FALSE)
-;           else
-;             (if (not (ingredient-apte-dieta ?diet $?diets)) then
-;               (bind ?ok FALSE))
-;           )
-;         )
-;       )
-;     )
-;   )
+          ; >>> CANVI CLAU: multifield buit == sense info → FAIL
+          (if (= (length$ (create$ $?diets)) 0) then
+            (bind ?ok FALSE)
+          else
+            (if (not (ingredient-apte-dieta ?diet $?diets)) then
+              (bind ?ok FALSE))
+          )
+        )
+      )
+    )
+  )
 
-;   (if ?ok then
-;     (assert (plat-valid-dieta (nom ?np) (gid ?gid))))
-; )
+  (if ?ok then
+    (assert (plat-valid-dieta (nom ?np) (gid ?gid))))
+)
 
 ; ; ============================================================
 ; ; COMBINE per GRUP: afegeix requisits de sempre + al·lergen+dieta per grup
 ; ; ============================================================
-; (defrule RefinamentHeuristica::combinar-validacions-per-grup
-;   (plat-amb-ingredients (nom ?nom))
-;   (plat-valid-temp (nom ?nom))
-;   (plat-valid-formal (nom ?nom))
-;   (plat-valid-complexitat (nom ?nom))
-;   (plat-valid-event (nom ?nom))
-;   (plat-valid-dispo (nom ?nom))
-;   (plat-valid-alergen (nom ?nom) (gid ?gid))
-;   (plat-valid-dieta (nom ?nom)   (gid ?gid))
-; =>
-;   (assert (plat-valid-final-grup (nom ?nom) (gid ?gid)))
-; )
+(defrule RefinamentHeuristica::combinar-validacions-per-grup
+  (plat-amb-ingredients (nom ?nom))
+  (plat-valid-temp (nom ?nom))
+  (plat-valid-formal (nom ?nom))
+  (plat-valid-complexitat (nom ?nom))
+  (plat-valid-event (nom ?nom))
+  (plat-valid-dispo (nom ?nom))
+  (plat-valid-alergen (nom ?nom) (gid ?gid))
+  (plat-valid-dieta (nom ?nom)   (gid ?gid))
+=>
+  (assert (plat-valid-final-grup (nom ?nom) (gid ?gid)))
+)
 
 (defrule RefinamentHeuristica::combinar-validacions-base
   (plat-amb-ingredients (nom ?nom)) 
@@ -1035,14 +1035,14 @@
   (assert (plat-valid-final (nom ?nom)))
 )
 
-; (defrule RefinamentHeuristica::b-combinar-validacions-per-grup
-;   (beguda-valida-alcohol (nom ?nom))
-;   (beguda-valida-formal (nom ?nom))
-;   (beguda-valida-alergen (nom ?nom) (gid ?gid))
-;   (beguda-valida-dieta (nom ?nom) (gid ?gid))
-; =>
-;   (assert (beguda-valida-final-grup (nom ?nom) (gid ?gid)))
-; )
+(defrule RefinamentHeuristica::b-combinar-validacions-per-grup
+  (beguda-valida-alcohol (nom ?nom))
+  (beguda-valida-formal (nom ?nom))
+  (beguda-valida-alergen (nom ?nom) (gid ?gid))
+  (beguda-valida-dieta (nom ?nom) (gid ?gid))
+=>
+  (assert (beguda-valida-final-grup (nom ?nom) (gid ?gid)))
+)
 
 (defrule RefinamentHeuristica::b-combinar-validacions-base
   (beguda-valida-alcohol (nom ?nom))
@@ -1235,6 +1235,15 @@
 (deftemplate menu-noapte
   (slot gid (type INTEGER))
   (slot idx (type INTEGER)))
+
+(defrule ComposicioMenus::iniciar-impressio-grups
+  (declare (auto-focus TRUE))
+  (respostes-completes)
+  (menus-presentats)
+  (grup-restriccio (id 1))
+  (not (imprimir-grup (id 1)))
+=>
+  (assert (imprimir-grup (id 1))))
 
 
 (defrule ComposicioMenus::generador-menus-inicials
@@ -1675,6 +1684,8 @@
   (printout t "Menú " ?idx " (grup " ?gid "): no s'ha pogut reparar completament dins del pressupost." crlf)
   (retract ?rs))
 
+(deftemplate repair-done (slot gid (type INTEGER)))
+(deftemplate reparats-impressos (slot gid (type INTEGER)))
 
 (defrule ComposicioMenus::mostrar-menus-reparats-per-grup
   (declare (auto-focus TRUE))

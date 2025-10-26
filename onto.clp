@@ -12,7 +12,7 @@
         (type STRING)
         (create-accessor read-write))
     (multislot formalitat
-        (type STRING)
+        (type SYMBOL)
         (create-accessor read-write))
     (slot alcohol
         (type SYMBOL)
@@ -27,7 +27,7 @@
         (type SYMBOL)
         (create-accessor read-write))
     (multislot alergens
-        (type STRING)
+        (type SYMBOL)
         (create-accessor read-write))
     (multislot dietes
         (type SYMBOL)
