@@ -183,28 +183,41 @@
 (deftemplate beguda-valida-dieta (slot nom) (slot gid (type INTEGER)))
 (deftemplate beguda-valida-final-grup (slot nom) (slot gid (type INTEGER)))
 
+; --- Normalització d'etiquetes de dieta a símbols canònics ---
+(deffunction diet-token->sym (?x)
+  (bind ?s (if (symbolp ?x) then (lowcase (str-cat ?x)) else (lowcase (trim (str-cat ?x)))))
+  (if (or (eq ?s "v") (eq ?s "vegetaria") (eq ?s "vegetari") (eq ?s "vegetarian") (eq ?s "vegetariana")) then (return V))
+  (if (or (eq ?s "vg") (eq ?s "vega") (eq ?s "vegà") (eq ?s "vegà") (eq ?s "vegan") (eq ?s "vegana")) then (return VG))
+  (if (or (eq ?s "halal") (eq ?s "halal_pot") (eq ?s "halal-pot")) then (return HALAL_POT))
+  (if (or (eq ?s "kosher") (eq ?s "kosher_pot") (eq ?s "kosher-pot")) then (return KOSHER_POT))
+  (return nil))
+
+(deffunction normalize-dieta-list ($?tags)
+  (bind ?OUT (create$))
+  (foreach ?t ?tags
+    (bind ?sym (diet-token->sym ?t))
+    (if (and ?sym (not (member$ ?sym ?OUT))) then
+      (bind ?OUT (create$ $?OUT ?sym))))
+  ?OUT)
+
+
 (deffunction ingredient-apte-dieta (?diet ?dietes-ing)
+  ; Accepta strings o símbols dins ?dietes-ing i els normalitza a {V, VG, HALAL_POT, KOSHER_POT}
   (if (or (eq ?diet cap) (eq ?diet indiferent)) then (return TRUE))
 
-  ; Vegà: cal etiqueta VG
-  (if (eq ?diet vega) then
-    (return (member$ VG (create$ $?dietes-ing))))
+  (bind $?norm (normalize-dieta-list $?dietes-ing))
 
-  ; Vegetarià: V o VG
-  (if (eq ?diet vegetaria) then
-    (return (or (member$ V  (create$ $?dietes-ing))
-                (member$ VG (create$ $?dietes-ing)))))
+  ; Si l'ingredient NO porta etiquetes de dieta, no el tombem (mode “lax”)
+  (if (= (length$ $?norm) 0) then (return TRUE))
 
-  ; Halal: només tenim HALAL_POT al CSV
-  (if (eq ?diet halal) then
-    (return (member$ HALAL_POT (create$ $?dietes-ing))))
+  (if (eq ?diet vega)       then (return (member$ VG (create$ $?norm))))
+  (if (eq ?diet vegetaria)  then (return (or (member$ V (create$ $?norm))
+                                             (member$ VG (create$ $?norm)))))
+  (if (eq ?diet halal)      then (return (member$ HALAL_POT (create$ $?norm))))
+  (if (eq ?diet kosher)     then (return (member$ KOSHER_POT (create$ $?norm))))
 
-  ; Kosher: només tenim KOSHER_POT al CSV
-  (if (eq ?diet kosher) then
-    (return (member$ KOSHER_POT (create$ $?dietes-ing))))
+  FALSE)
 
-  FALSE
-)
 
 ; Helper: cerca l’objecte Ingredient pel seu nom (string)
 (deffunction ingredient-by-name (?nom-str)
@@ -216,6 +229,84 @@
   (if (> (length$ ?cand) 0)
       then (return (nth$ 1 ?cand))
       else (return FALSE)))
+    
+; Retorna TRUE si el PLAT (?platNom) és apte per al GRUP ?gid
+; Criteri:
+;  - Si el grup té al·lèrgens i algun ingredient no té info d'al·lèrgens -> NO apte
+;  - Si hi ha intersecció d'al·lèrgens -> NO apte
+;  - Si el grup té dieta (≠ cap) i l'ingredient no porta etiquetes de dieta -> NO apte
+;  - Si la dieta no és compatible amb l'ingredient -> NO apte
+
+(deffunction plat-apte-per-grup (?platNom ?gid)
+  (bind ?glist (find-all-facts ((?gr grup-restriccio))
+                 (eq (fact-slot-value ?gr id) ?gid)))
+  (if (<= (length$ ?glist) 0) then (return TRUE))
+  (bind ?g (nth$ 1 ?glist))
+
+  ;; AL·LÈRGENS del grup (multislot) i DIETA com a SÍMBOL (no multifield)
+  (bind $?ALS (fact-slot-value ?g alergens))
+  (bind ?dietMF (fact-slot-value ?g dieta))
+  (bind ?diet   (if (multifieldp ?dietMF)
+                    then (if (> (length$ ?dietMF) 0) then (nth$ 1 ?dietMF) else cap)
+                    else ?dietMF))
+
+  ;; Plat
+  (bind ?pl (nth$ 1 (find-all-instances ((?p Plat))
+                 (eq (send ?p get-nom) ?platNom))))
+  (if (not ?pl) then (return TRUE))  ;; mode lax: si no trobem el plat, no tombem
+  (bind $?ings (send ?pl get-te_ingredients_noms))
+
+  (bind ?apte TRUE)
+  (foreach ?ing ?ings
+    (if ?apte then
+      (bind ?I (ingredient-by-name ?ing))
+      ;; mode lax: ingredient desconegut -> no tombem
+      (if ?I then
+        ;; --- Al·lèrgens / dieta de l'ingredient ?I ---
+        (bind ?cls (class ?I))
+
+        ;; al·lergen singular (si existeix el slot)
+        (bind $?ialgs-slot
+              (if (slot-existp ?cls alergen)
+                  then
+                    (bind ?val (send ?I get-alergen))
+                    (if (lexemep ?val) then (create$ ?val) else (create$))
+                  else
+                    (create$)))
+
+        ;; al·lergens en multislot (si existeix el slot)
+        (bind $?ialgs-plu
+              (if (slot-existp ?cls alergens)
+                  then (send ?I get-alergens)
+                  else (create$)))
+
+        ;; combinem i normalitzem
+        (bind $?ialgs-mixed (create$ $?ialgs-slot $?ialgs-plu))
+        (bind $?ialgs_sym   (normalize-alergen-list $?ialgs-mixed))
+
+        ;; col·lisió amb els al·lèrgens del grup?
+        (foreach ?a $?ialgs_sym
+          (if (and ?apte (member$ ?a (create$ $?ALS)))
+              then (bind ?apte FALSE)))
+
+        ;; --- Dieta (només tombem si hi ha etiquetes i són incompatibles) ---
+        (if (and ?apte (neq ?diet cap)) then
+          (bind $?diets-raw
+                (if (slot-existp ?cls dietes)
+                    then (send ?I get-dietes)
+                    else (create$)))
+          (bind $?diets (if (multifieldp $?diets-raw) then $?diets-raw else (create$)))
+          (if (> (length$ (create$ $?diets)) 0) then
+            (if (not (ingredient-apte-dieta ?diet $?diets))
+                then (bind ?apte FALSE))))
+
+      )
+    )
+  )
+  ?apte
+)
+
+
 
 
 ;; VALIDADORS DE RESPOSTES -------------------------------------------------
@@ -637,24 +728,11 @@
 
 (defrule AbstraccioHeuristica::filtrar-postres-per-esdeveniment
   (peticio (tipus-esdeveniment ?ev))
-  ?plat <- (object (is-a Plat) (nom ?nom) (apte_esdeveniment $?apt) (te_ordre $?ordres))
+  ?plat <- (object (is-a Plat) (nom ?nom) (te_ordre $?ordres))
 =>
-  (if (member$ ordre-postres ?ordres)
-      then
-        ; És un postre: aplica la lògica d’esdeveniment
-        (if (or
-              (and (eq ?ev casament)   (member$ casament $?apt))     ; boda → apte per casament
-              (and (eq ?ev aniversari) (member$ aniversari $?apt))   ; aniversari → apte per aniversari
-              (and (not (or (eq ?ev casament) (eq ?ev aniversari)))  ; altres esdeveniments
-                   (or (member$ ?ev $?apt) (member$ tots $?apt)))    ; si conté l'event o “tots”
-             )
-          then
-            (assert (plat-valid-event (nom ?nom)))
-        )
-      else
-        ; No és postre → passa sempre
-        (assert (plat-valid-event (nom ?nom)))
-  )
+  ;; A LA FASE BASE: tots els plats (incloent postres) passen l’event.
+  ;; Ja validarem després per grups (i, si vols, també per esdeveniment).
+  (assert (plat-valid-event (nom ?nom)))
 )
 
 
@@ -691,68 +769,68 @@
 ; ============================================================
 ; Abans dieta: marquem plats aptes d'al·lèrgens per grup
 ; ============================================================
-(defrule AbstraccioHeuristica::filtrar-plats-per-alergens-grup
-  (grup-restriccio (id ?gid) (alergens $?ALS))
-  ?pl <- (object (is-a Plat) (nom ?np))
-  (not (plat-valid-alergen (nom ?np) (gid ?gid)))
-=>
-  (bind ?restriccions (length$ (create$ $?ALS)))
-  (bind $?ings (send ?pl get-te_ingredients_noms))
-  (bind ?apte TRUE)
+; (defrule AbstraccioHeuristica::filtrar-plats-per-alergens-grup
+;   (grup-restriccio (id ?gid) (alergens $?ALS))
+;   ?pl <- (object (is-a Plat) (nom ?np))
+;   (not (plat-valid-alergen (nom ?np) (gid ?gid)))
+; =>
+;   (bind ?restriccions (length$ (create$ $?ALS)))
+;   (bind $?ings (send ?pl get-te_ingredients_noms))
+;   (bind ?apte TRUE)
 
-  (foreach ?ing ?ings
-    (if ?apte then
-      (bind ?I (ingredient-by-name ?ing))
+;   (foreach ?ing ?ings
+;     (if ?apte then
+;       (bind ?I (ingredient-by-name ?ing))
 
-      ; Ingredient inexistent → si hi ha restriccions, NO apte
-      (if (not ?I) then
-        (if (> ?restriccions 0) then (bind ?apte FALSE))
-      else
-        (bind ?ialgs-raw (send ?I get-alergens))
-        (bind $?ialgs (if (multifieldp ?ialgs-raw) then ?ialgs-raw else (create$)))
+;       ; Ingredient inexistent → si hi ha restriccions, NO apte
+;       (if (not ?I) then
+;         (if (> ?restriccions 0) then (bind ?apte FALSE))
+;       else
+;         (bind ?ialgs-raw (send ?I get-alergens))
+;         (bind $?ialgs (if (multifieldp ?ialgs-raw) then ?ialgs-raw else (create$)))
 
-        ; >>> CANVI CLAU: multifield buit == sense info → FAIL si hi ha restriccions
-        (if (and (> ?restriccions 0) (= (length$ (create$ $?ialgs)) 0)) then
-          (bind ?apte FALSE)
-        else
-          (bind $?ialgs_sym (normalize-alergen-list $?ialgs))
-          (foreach ?a $?ialgs_sym
-            (if (and ?apte (member$ ?a (create$ $?ALS))) then
-              (bind ?apte FALSE)))
-        )
-      )
-    )
-  )
+;         ; >>> CANVI CLAU: multifield buit == sense info → FAIL si hi ha restriccions
+;         (if (and (> ?restriccions 0) (= (length$ (create$ $?ialgs)) 0)) then
+;           (bind ?apte FALSE)
+;         else
+;           (bind $?ialgs_sym (normalize-alergen-list $?ialgs))
+;           (foreach ?a $?ialgs_sym
+;             (if (and ?apte (member$ ?a (create$ $?ALS))) then
+;               (bind ?apte FALSE)))
+;         )
+;       )
+;     )
+;   )
 
-  (if ?apte then
-    (assert (plat-valid-alergen (nom ?np) (gid ?gid))))
-)
+;   (if ?apte then
+;     (assert (plat-valid-alergen (nom ?np) (gid ?gid))))
+; )
 
-(defrule AbstraccioHeuristica::filtrar-begudes-per-alergens-grup
-  (grup-restriccio (id ?gid) (alergens $?ALS))
-  ?b <- (object (is-a Beguda) (nom ?nb))
-  (not (beguda-valida-alergen (nom ?nb) (gid ?gid)))
-=>
-  (bind $?ialgs (send ?b get-alergens)) ; multislot d'al·lèrgens
+; (defrule AbstraccioHeuristica::filtrar-begudes-per-alergens-grup
+;   (grup-restriccio (id ?gid) (alergens $?ALS))
+;   ?b <- (object (is-a Beguda) (nom ?nb))
+;   (not (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+; =>
+;   (bind $?ialgs (send ?b get-alergens)) ; multislot d'al·lèrgens
 
-  ; Comprovem si algun al·lèrgens de la beguda coincideix amb el grup
-  (if (not (member$ $?ialgs $?ALS)) then
-      (assert (beguda-valida-alergen (nom ?nb) (gid ?gid)))
-  )
-)
+;   ; Comprovem si algun al·lèrgens de la beguda coincideix amb el grup
+;   (if (not (member$ $?ialgs $?ALS)) then
+;       (assert (beguda-valida-alergen (nom ?nb) (gid ?gid)))
+;   )
+; )
 
-(defrule AbstraccioHeuristica::filtrar-begudes-per-dietes-grup
-  (grup-restriccio (id ?gid) (dieta $?DIET))
-  ?b <- (object (is-a Beguda) (nom ?nb))
-  (not (beguda-valida-dieta (nom ?nb) (gid ?gid)))
-=>
-  (bind $?idiet (send ?b get-dietes)) ; multislot de dietes
+; (defrule AbstraccioHeuristica::filtrar-begudes-per-dietes-grup
+;   (grup-restriccio (id ?gid) (dieta $?DIET))
+;   ?b <- (object (is-a Beguda) (nom ?nb))
+;   (not (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+; =>
+;   (bind $?idiet (send ?b get-dietes)) ; multislot de dietes
 
-  ; Comprovem si alguna dieta de la beguda coincideix amb el grup
-  (if (not (member$ $?idiet $?DIET)) then
-      (assert (beguda-valida-dieta (nom ?nb) (gid ?gid)))
-  )
-)
+;   ; Comprovem si alguna dieta de la beguda coincideix amb el grup
+;   (if (not (member$ $?idiet $?DIET)) then
+;       (assert (beguda-valida-dieta (nom ?nb) (gid ?gid)))
+;   )
+; )
 
 
 (defrule AbstraccioHeuristica::marcar-alergen-ok-si-cap
@@ -801,6 +879,7 @@
 
 ;; Declaració anticipada del mòdul de composició per permetre la importació des del refinament
 (defmodule ComposicioMenus (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
 (defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
@@ -857,56 +936,56 @@
 ; ============================================================
 ; Després d'al·lèrgens: marquem plats aptes per dieta, per grup
 ; ============================================================
-(defrule RefinamentHeuristica::filtrar-plats-per-dieta-grup
-  (grup-restriccio (id ?gid) (dieta ?diet))
-  (plat-valid-alergen (nom ?np) (gid ?gid))
-  ?pl <- (object (is-a Plat) (nom ?np))
-  (not (plat-valid-dieta (nom ?np) (gid ?gid)))
-=>
-  (bind ?ok TRUE)
+; (defrule RefinamentHeuristica::filtrar-plats-per-dieta-grup
+;   (grup-restriccio (id ?gid) (dieta ?diet))
+;   (plat-valid-alergen (nom ?np) (gid ?gid))
+;   ?pl <- (object (is-a Plat) (nom ?np))
+;   (not (plat-valid-dieta (nom ?np) (gid ?gid)))
+; =>
+;   (bind ?ok TRUE)
 
-  (if (neq ?diet cap) then
-    (bind $?ings (send ?pl get-te_ingredients_noms))
-    (foreach ?ing ?ings
-      (if ?ok then
-        (bind ?I (ingredient-by-name ?ing))
-        (if (not ?I) then
-          (bind ?ok FALSE)
-        else
-          (bind ?diets-raw (send ?I get-dietes))
-          (bind $?diets (if (multifieldp ?diets-raw) then ?diets-raw else (create$)))
+;   (if (neq ?diet cap) then
+;     (bind $?ings (send ?pl get-te_ingredients_noms))
+;     (foreach ?ing ?ings
+;       (if ?ok then
+;         (bind ?I (ingredient-by-name ?ing))
+;         (if (not ?I) then
+;           (bind ?ok FALSE)
+;         else
+;           (bind ?diets-raw (send ?I get-dietes))
+;           (bind $?diets (if (multifieldp ?diets-raw) then ?diets-raw else (create$)))
 
-          ; >>> CANVI CLAU: multifield buit == sense info → FAIL
-          (if (= (length$ (create$ $?diets)) 0) then
-            (bind ?ok FALSE)
-          else
-            (if (not (ingredient-apte-dieta ?diet $?diets)) then
-              (bind ?ok FALSE))
-          )
-        )
-      )
-    )
-  )
+;           ; >>> CANVI CLAU: multifield buit == sense info → FAIL
+;           (if (= (length$ (create$ $?diets)) 0) then
+;             (bind ?ok FALSE)
+;           else
+;             (if (not (ingredient-apte-dieta ?diet $?diets)) then
+;               (bind ?ok FALSE))
+;           )
+;         )
+;       )
+;     )
+;   )
 
-  (if ?ok then
-    (assert (plat-valid-dieta (nom ?np) (gid ?gid))))
-)
+;   (if ?ok then
+;     (assert (plat-valid-dieta (nom ?np) (gid ?gid))))
+; )
 
-; ============================================================
-; COMBINE per GRUP: afegeix requisits de sempre + al·lergen+dieta per grup
-; ============================================================
-(defrule RefinamentHeuristica::combinar-validacions-per-grup
-  (plat-amb-ingredients (nom ?nom))
-  (plat-valid-temp (nom ?nom))
-  (plat-valid-formal (nom ?nom))
-  (plat-valid-complexitat (nom ?nom))
-  (plat-valid-event (nom ?nom))
-  (plat-valid-dispo (nom ?nom))
-  (plat-valid-alergen (nom ?nom) (gid ?gid))
-  (plat-valid-dieta (nom ?nom)   (gid ?gid))
-=>
-  (assert (plat-valid-final-grup (nom ?nom) (gid ?gid)))
-)
+; ; ============================================================
+; ; COMBINE per GRUP: afegeix requisits de sempre + al·lergen+dieta per grup
+; ; ============================================================
+; (defrule RefinamentHeuristica::combinar-validacions-per-grup
+;   (plat-amb-ingredients (nom ?nom))
+;   (plat-valid-temp (nom ?nom))
+;   (plat-valid-formal (nom ?nom))
+;   (plat-valid-complexitat (nom ?nom))
+;   (plat-valid-event (nom ?nom))
+;   (plat-valid-dispo (nom ?nom))
+;   (plat-valid-alergen (nom ?nom) (gid ?gid))
+;   (plat-valid-dieta (nom ?nom)   (gid ?gid))
+; =>
+;   (assert (plat-valid-final-grup (nom ?nom) (gid ?gid)))
+; )
 
 (defrule RefinamentHeuristica::combinar-validacions-base
   (plat-amb-ingredients (nom ?nom)) 
@@ -919,14 +998,14 @@
   (assert (plat-valid-final (nom ?nom)))
 )
 
-(defrule RefinamentHeuristica::b-combinar-validacions-per-grup
-  (beguda-valida-alcohol (nom ?nom))
-  (beguda-valida-formal (nom ?nom))
-  (beguda-valida-alergen (nom ?nom) (gid ?gid))
-  (beguda-valida-dieta (nom ?nom) (gid ?gid))
-=>
-  (assert (beguda-valida-final-grup (nom ?nom) (gid ?gid)))
-)
+; (defrule RefinamentHeuristica::b-combinar-validacions-per-grup
+;   (beguda-valida-alcohol (nom ?nom))
+;   (beguda-valida-formal (nom ?nom))
+;   (beguda-valida-alergen (nom ?nom) (gid ?gid))
+;   (beguda-valida-dieta (nom ?nom) (gid ?gid))
+; =>
+;   (assert (beguda-valida-final-grup (nom ?nom) (gid ?gid)))
+; )
 
 (defrule RefinamentHeuristica::b-combinar-validacions-base
   (beguda-valida-alcohol (nom ?nom))
@@ -947,9 +1026,149 @@
 ; ============================================================
 ; MOSTRAR MENÚS PER GRUP
 ; ============================================================
+(defrule ComposicioMenus::mostrar-menus-per-grup
+  (declare (auto-focus TRUE))
+  (respostes-completes)
+  (menus-presentats)
+  ?imp <- (imprimir-grup (id ?gid))
+  (grup-restriccio (id ?gid) (nom ?gnom) (alergens $?ALS) (dieta ?diet))
+  (not (menus-presentats-grup (gid ?gid)))
+  (peticio (beguda-mode ?bm))
+  =>
+  ; Recollim noms finals vàlids per aquest grup
+  (bind ?facts (find-all-facts ((?f plat-valid-final-grup)) (eq (fact-slot-value ?f gid) ?gid)))
+  (bind ?noms-valids (create$))
+  (foreach ?f ?facts
+     (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom))))
 
-(deftemplate menu-valid-grup
-  (slot gid (type INTEGER))
+  ; Busquem plats per ordre
+  (bind ?primers (find-all-instances ((?p Plat))
+                 (and (member$ ordre-primer (send ?p get-te_ordre))
+                      (member$ (send ?p get-nom) ?noms-valids))))
+  (bind ?segons  (find-all-instances ((?p Plat))
+                 (and (member$ ordre-segon (send ?p get-te_ordre))
+                      (member$ (send ?p get-nom) ?noms-valids))))
+  (bind ?postres (find-all-instances ((?p Plat))
+                 (and (member$ ordre-postres (send ?p get-te_ordre))
+                      (member$ (send ?p get-nom) ?noms-valids))))
+
+  ; Recollim noms de begudes finals
+  (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final-grup)) (eq (fact-slot-value ?bf gid) ?gid)))
+  (bind ?b-noms-valids (create$))
+  (foreach ?bf ?begudes-valides
+     (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom)))
+  )
+  ; Busquem begudes per mode i ordre
+  (if (eq ?bm general)
+    then
+      (bind ?b-generals (find-all-instances ((?b Beguda))
+                      (and (eq (send ?b get-es_general) si)
+                           (member$ (send ?b get-nom) ?b-noms-valids))))
+    else 
+      (bind ?b-primers (find-all-instances ((?b Beguda))
+                      (and (eq (send ?b get-maridatge) ordre-primer)
+                           (member$ (send ?b get-nom) ?b-noms-valids))))
+      (bind ?b-segons (find-all-instances ((?b Beguda))
+                      (and (eq (send ?b get-maridatge) ordre-segon)
+                           (member$ (send ?b get-nom) ?b-noms-valids))))
+      (bind ?b-postres (find-all-instances ((?b Beguda))
+                       (and (eq (send ?b get-maridatge) ordre-postres)
+                            (member$ (send ?b get-nom) ?b-noms-valids))))
+  )
+  
+  ;; LÍMIT DE MENÚS (pel menjar)
+  (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
+
+  (printout t crlf "=== Menús per al grup " ?gid " (" ?gnom ") ===" crlf)
+
+  (if (<= ?limit 0) then
+     (printout t "*** No hi ha prou plats aptes amb aquestes restriccions. ***" crlf)
+   else
+     (loop-for-count (?i 1 ?limit)
+       (bind ?pr (nth$ ?i ?primers))
+       (bind ?sg (nth$ ?i ?segons))
+       (bind ?po (nth$ ?i ?postres))
+
+       ;; Begudes: només si existeixen per a l'índex
+       (if (eq ?bm general)
+         then
+           (if (<= ?i (length$ ?b-generals))
+               then (bind ?bg (nth$ ?i ?b-generals))
+               else (bind ?bg FALSE))
+         else
+           (if (<= ?i (length$ ?b-primers)) then (bind ?bpr (nth$ ?i ?b-primers)) else (bind ?bpr FALSE))
+           (if (<= ?i (length$ ?b-segons))  then (bind ?bsg (nth$ ?i ?b-segons))   else (bind ?bsg FALSE))
+           (if (<= ?i (length$ ?b-postres)) then (bind ?bpo (nth$ ?i ?b-postres))  else (bind ?bpo FALSE))
+       )
+
+       (bind ?npr (send ?pr get-nom))
+       (bind ?nsg (send ?sg get-nom))
+       (bind ?npo (send ?po get-nom))
+
+       (if (eq ?bm general)
+         then (bind ?nbg (if ?bg then (send ?bg get-nom) else "--"))
+         else
+           (bind ?nbpr (if ?bpr then (send ?bpr get-nom) else "--"))
+           (bind ?nbsg (if ?bsg then (send ?bsg get-nom) else "--"))
+           (bind ?nbpo (if ?bpo then (send ?bpo get-nom) else "--"))
+       )
+
+       ;; Preus dels plats
+       (bind ?ppr (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
+                       (eq (fact-slot-value ?f nom) ?npr))) valor))
+       (bind ?psg (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
+                       (eq (fact-slot-value ?f nom) ?nsg))) valor))
+       (bind ?ppo (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
+                       (eq (fact-slot-value ?f nom) ?npo))) valor))
+
+       ;; Preus de beguda si existeixen; si no, 0
+       (if (eq ?bm general)
+         then (bind ?pbg (if ?bg then (send ?bg get-preu_cost) else 0))
+         else
+           (bind ?pbpr (if ?bpr then (send ?bpr get-preu_cost) else 0))
+           (bind ?pbsg (if ?bsg then (send ?bsg get-preu_cost) else 0))
+           (bind ?pbpo (if ?bpo then (send ?bpo get-preu_cost) else 0))
+       )
+
+       ;; Total del menú
+       (if (eq ?bm general)
+         then (bind ?total (+ ?ppr ?psg ?ppo ?pbg))
+         else (bind ?total (+ ?ppr ?psg ?ppo ?pbpr ?pbsg ?pbpo))
+       )
+
+       ;; Impressió
+       (printout t crlf "*** Menú " ?i " ***" crlf)
+       (printout t "  Entrant:   " ?npr "  [" ?ppr " €]" crlf)
+       (printout t "  Principal: " ?nsg "  [" ?psg " €]" crlf)
+       (printout t "  Postres:   " ?npo "  [" ?ppo " €]" crlf)
+
+       (if (eq ?bm general)
+         then
+           (if ?bg
+               then (printout t "  Beguda Recomanada: " ?nbg "  [" ?pbg " €]" crlf)
+               else (printout t "  Beguda Recomanada: --" crlf))
+         else
+           (printout t "  Beguda Entrant:   " ?nbpr (if ?bpr then (str-cat "  [" ?pbpr " €]") else "") crlf)
+           (printout t "  Beguda Principal: " ?nbsg (if ?bsg then (str-cat "  [" ?pbsg " €]") else "") crlf)
+           (printout t "  Beguda Postres:   " ?nbpo (if ?bpo then (str-cat "  [" ?pbpo " €]") else "") crlf)
+       )
+
+       (printout t "  ----------------------------------------------------------------------" crlf)
+       (printout t "  TOTAL per persona: " ?total " €" crlf)
+     )
+  )
+  (assert (menus-presentats-grup (gid ?gid)))
+  (bind ?next (+ ?gid 1))
+  (if (> (length$ (find-all-facts ((?g grup-restriccio))
+              (eq (fact-slot-value ?g id) ?next))) 0)
+      then (assert (imprimir-grup (id ?next))))
+  (retract ?imp)
+
+)
+
+
+
+(deftemplate menu-valid
   (slot primer)
   (slot segon)
   (slot postres)
@@ -957,180 +1176,18 @@
   (slot preu (type FLOAT))
 )
 
-(deftemplate menu-presentat-grup (slot gid (type INTEGER)))
-
-(defrule ComposicioMenus::generador-menus-grup
-  (declare (auto-focus TRUE))
-  (respostes-completes)
-  (peticio (pressupost-min ?pmin)
-           (pressupost-max ?pmax)
-           (beguda-mode ?bm))
-  (grup-restriccio (id ?gid) (nom ?gnom))
-=>
-  (printout t crlf "=== Generant menús per al grup " ?gid " (" ?gnom ") ===" crlf)
-
-  ;; --- Plats vàlids per aquest grup ---
-  (bind ?plats-valids (find-all-facts ((?f plat-valid-final-grup))
-                       (eq (fact-slot-value ?f gid) ?gid)))
-  (bind ?noms-valids (create$))
-  (foreach ?f ?plats-valids
-     (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom))))
-
-  ;; Classificació per ordre
-  (bind ?primers (find-all-instances ((?p Plat))
-                   (and (member$ ordre-primer (send ?p get-te_ordre))
-                        (member$ (send ?p get-nom) ?noms-valids))))
-  (bind ?segons (find-all-instances ((?p Plat))
-                   (and (member$ ordre-segon (send ?p get-te_ordre))
-                        (member$ (send ?p get-nom) ?noms-valids))))
-  (bind ?postres (find-all-instances ((?p Plat))
-                   (and (member$ ordre-postres (send ?p get-te_ordre))
-                        (member$ (send ?p get-nom) ?noms-valids))))
-
-  ;; --- Begudes vàlides per aquest grup ---
-  (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final-grup))
-                       (eq (fact-slot-value ?bf gid) ?gid)))
-  (bind ?b-noms-valids (create$))
-  (foreach ?bf ?begudes-valides
-     (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom))))
-
-  ;; --- Begudes per mode ---
-  (if (eq ?bm general) then
-    (bind ?b-generals (find-all-instances ((?b Beguda))
-                           (and (eq (send ?b get-es_general) si)
-                                (member$ (send ?b get-nom) ?b-noms-valids))))
-    else
-    (bind ?b-primers (find-all-instances ((?b Beguda))
-                           (and (eq (send ?b get-maridatge) ordre-primer)
-                                (member$ (send ?b get-nom) ?b-noms-valids))))
-    (bind ?b-segons (find-all-instances ((?b Beguda))
-                           (and (eq (send ?b get-maridatge) ordre-segon)
-                                (member$ (send ?b get-nom) ?b-noms-valids))))
-    (bind ?b-postres (find-all-instances ((?b Beguda))
-                           (and (eq (send ?b get-maridatge) ordre-postres)
-                                (member$ (send ?b get-nom) ?b-noms-valids))))
-  )
-
-  (bind ?count 0)
-
-  ;; --- Generació de menús ---
-  (foreach ?pr ?primers
-    (foreach ?sg ?segons
-      (foreach ?po ?postres
-        (bind ?npr (send ?pr get-nom))
-        (bind ?nsg (send ?sg get-nom))
-        (bind ?npo (send ?po get-nom))
-
-        ;; Preus dels plats
-        (bind ?ppr (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                           (eq (fact-slot-value ?f nom) ?npr))) valor))
-        (bind ?psg (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                           (eq (fact-slot-value ?f nom) ?nsg))) valor))
-        (bind ?ppo (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                           (eq (fact-slot-value ?f nom) ?npo))) valor))
-        (bind ?total (+ ?ppr ?psg ?ppo))
-
-        ;; --- Begudes ---
-        (if (eq ?bm general) then
-          (foreach ?bg ?b-generals
-            (bind ?nbg (send ?bg get-nom))
-            (bind ?pbg (send ?bg get-preu_cost))
-            (bind ?total2 (+ ?total ?pbg))
-            (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax)) then
-              (assert (menu-valid-grup
-                         (gid ?gid)
-                         (primer ?npr)
-                         (segon ?nsg)
-                         (postres ?npo)
-                         (begudes (create$ ?nbg))
-                         (preu ?total2)))
-              (bind ?count (+ ?count 1))))
-          else
-          (foreach ?bpr ?b-primers
-            (foreach ?bsg ?b-segons
-              (foreach ?bpo ?b-postres
-                (bind ?pbpr (send ?bpr get-preu_cost))
-                (bind ?pbsg (send ?bsg get-preu_cost))
-                (bind ?pbpo (send ?bpo get-preu_cost))
-                (bind ?total2 (+ ?total ?pbpr ?pbsg ?pbpo))
-                (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax)) then
-                  (assert (menu-valid-grup
-                             (gid ?gid)
-                             (primer ?npr)
-                             (segon ?nsg)
-                             (postres ?npo)
-                             (begudes (create$ (send ?bpr get-nom)
-                                               (send ?bsg get-nom)
-                                               (send ?bpo get-nom)))
-                             (preu ?total2)))
-                  (bind ?count (+ ?count 1))))))))))
-  (printout t "S'han generat " ?count " menús vàlids per al grup " ?gnom "." crlf)
+(deftemplate menu-seleccionat
+  (slot idx (type INTEGER))
+  (slot primer)
+  (slot segon)
+  (slot postres)
+  (multislot begudes)
+  (slot preu (type FLOAT))
 )
 
-; (defrule ComposicioMenus::mostrar-menus-grup
-;   (declare (auto-focus TRUE))
-;   (respostes-completes)
-;   (not (menus-presentats-grup (gid ?gid)))
-;   =>
-;   (bind ?menus (find-all-facts ((?m menu-valid-grup))
-;                  (eq (fact-slot-value ?m gid) ?gid)))
-;   (bind ?n (length$ ?menus))
-
-;   (if (<= ?n 0)
-;     then (printout t crlf "*** No hi ha menús vàlids per al grup " ?gid " ***" crlf)
-;     else
-;       (printout t crlf "=== MENÚS DISPONIBLES PER AL GRUP " ?gid " (" ?n " en total) ===" crlf)
-
-;       ;; Ordenació per preu
-;       (bind ?preus (create$))
-;       (foreach ?m ?menus
-;         (bind ?preus (create$ $?preus (fact-slot-value ?m preu))))
-;       (bind ?sorted (sort < ?preus))
-
-;       (if (<= ?n 3)
-;         then
-;           (bind ?to-show ?menus)
-;         else
-;           (bind ?min-preu (nth$ 1 ?sorted))
-;           (bind ?max-preu (nth$ (length$ ?sorted) ?sorted))
-;           (bind ?avg (/ (+ ?min-preu ?max-preu) 2.0))
-
-;           (bind ?min-menu FALSE)
-;           (bind ?max-menu FALSE)
-;           (bind ?mid-menu FALSE)
-;           (bind ?best-diff 999999)
-
-;           (foreach ?m ?menus
-;             (bind ?p (fact-slot-value ?m preu))
-;             (if (eq ?p ?min-preu) then (bind ?min-menu ?m))
-;             (if (eq ?p ?max-preu) then (bind ?max-menu ?m))
-;             (bind ?diff (abs (- ?p ?avg)))
-;             (if (< ?diff ?best-diff)
-;               then (bind ?best-diff ?diff) (bind ?mid-menu ?m)))
-;           (bind ?to-show (create$ ?min-menu ?mid-menu ?max-menu))
-;       )
-
-;       ;; Impressió
-;       (bind ?i 1)
-;       (foreach ?m ?to-show
-;         (printout t crlf "*** Menú " ?i " ***" crlf)
-;         (printout t "  Entrant:   " (fact-slot-value ?m primer) crlf)
-;         (printout t "  Principal: " (fact-slot-value ?m segon) crlf)
-;         (printout t "  Postres:   " (fact-slot-value ?m postres) crlf)
-;         (printout t "  Begudes:   " (implode$ (fact-slot-value ?m begudes)) crlf)
-;         (printout t "  TOTAL:     " (fact-slot-value ?m preu) " €" crlf)
-;         (printout t "  ----------------------------------------" crlf)
-;         (bind ?i (+ ?i 1))
-;       )
-
-;       (assert (menu-presentat-grup (gid ?gid)))
-;   )
-; )
-
-
-
-
-(deftemplate menu-valid
+(deftemplate menu-reparat-grup
+  (slot gid (type INTEGER))
+  (slot idx (type INTEGER))
   (slot primer)
   (slot segon)
   (slot postres)
@@ -1144,49 +1201,68 @@
   (respostes-completes)
   (peticio (pressupost-min ?pmin) (pressupost-max ?pmax) (beguda-mode ?bm))
   =>
+  ;; Plats vàlids -> noms
   (bind ?plats-valids (find-all-facts ((?f plat-valid-final)) TRUE))
   (bind ?noms-valids (create$))
   (foreach ?f ?plats-valids
-     (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom))))
+    (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom))))
 
-  ;; Classifiquem per ordre
+  ;; Classificació per ordre
   (bind ?primers (find-all-instances ((?p Plat))
-                 (and (member$ ordre-primer (send ?p get-te_ordre))
-                      (member$ (send ?p get-nom) ?noms-valids))))
+                   (and (member$ ordre-primer (send ?p get-te_ordre))
+                        (member$ (send ?p get-nom) ?noms-valids))))
   (bind ?segons  (find-all-instances ((?p Plat))
-                 (and (member$ ordre-segon (send ?p get-te_ordre))
-                      (member$ (send ?p get-nom) ?noms-valids))))
+                   (and (member$ ordre-segon (send ?p get-te_ordre))
+                        (member$ (send ?p get-nom) ?noms-valids))))
   (bind ?postres (find-all-instances ((?p Plat))
-                 (and (member$ ordre-postres (send ?p get-te_ordre))
-                      (member$ (send ?p get-nom) ?noms-valids))))
+                   (and (member$ ordre-postres (send ?p get-te_ordre))
+                        (member$ (send ?p get-nom) ?noms-valids))))
 
-  ;; Begudes vàlides
+  ;; Begudes vàlides -> noms
   (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final)) TRUE))
   (bind ?b-noms-valids (create$))
   (foreach ?bf ?begudes-valides
-     (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom))))
+    (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom))))
 
+  ;; Inicialitza llistes de begudes
+  (bind ?b-generals (create$))
+  (bind ?b-primers  (create$))
+  (bind ?b-segons   (create$))
+  (bind ?b-postres  (create$))
+
+  ;; Carrega llistes segons mode
   (if (eq ?bm general)
     then
-      (bind ?b-generals (find-all-instances ((?b Beguda))
-                        (and (eq (send ?b get-es_general) si)
-                             (member$ (send ?b get-nom) ?b-noms-valids))))
+      (progn
+        (bind ?b-generals
+          (find-all-instances ((?b Beguda))
+            (and (eq (send ?b get-es_general) si)
+                 (member$ (send ?b get-nom) ?b-noms-valids)))))
     else
-      (bind ?b-primers (find-all-instances ((?b Beguda))
-                        (and (eq (send ?b get-maridatge) ordre-primer)
-                             (member$ (send ?b get-nom) ?b-noms-valids))))
-      (bind ?b-segons (find-all-instances ((?b Beguda))
-                        (and (eq (send ?b get-maridatge) ordre-segon)
-                             (member$ (send ?b get-nom) ?b-noms-valids))))
-      (bind ?b-postres (find-all-instances ((?b Beguda))
-                        (and (eq (send ?b get-maridatge) ordre-postres)
-                             (member$ (send ?b get-nom) ?b-noms-valids))))
-  )
+      (progn
+        (bind ?b-primers
+          (find-all-instances ((?b Beguda))
+            (and (eq (send ?b get-maridatge) ordre-primer)
+                 (member$ (send ?b get-nom) ?b-noms-valids))))
+        (bind ?b-segons
+          (find-all-instances ((?b Beguda))
+            (and (eq (send ?b get-maridatge) ordre-segon)
+                 (member$ (send ?b get-nom) ?b-noms-valids))))
+        (bind ?b-postres
+          (find-all-instances ((?b Beguda))
+            (and (eq (send ?b get-maridatge) ordre-postres)
+                 (member$ (send ?b get-nom) ?b-noms-valids))))))
+  (printout t crlf "— Disponibilitat de plats després de filtres —" crlf)
+  (printout t "Primers: " (length$ ?primers) " | Segons: " (length$ ?segons) " | Postres: " (length$ ?postres) crlf)
 
   (printout t crlf "=== Generant menús dins del pressupost ===" crlf)
   (bind ?count 0)
+  ;; (printout t "[DEBUG] primers=" (length$ ?primers)
+  ;;                " segons=" (length$ ?segons)
+  ;;                " postres=" (length$ ?postres)
+  ;;                " b-generals=" (length$ ?b-generals) crlf)
 
-  ;; Bucle de combinacions
+  ;; Combinacions de plats
   (foreach ?pr ?primers
     (foreach ?sg ?segons
       (foreach ?po ?postres
@@ -1195,66 +1271,94 @@
         (bind ?npo (send ?po get-nom))
 
         ;; Preus dels plats
-        (bind ?ppr (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                          (eq (fact-slot-value ?f nom) ?npr))) valor))
-        (bind ?psg (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                          (eq (fact-slot-value ?f nom) ?nsg))) valor))
-        (bind ?ppo (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta))
-                          (eq (fact-slot-value ?f nom) ?npo))) valor))
+        (bind ?ppr (fact-slot-value
+                      (nth$ 1 (find-all-facts ((?f preu-venta))
+                               (eq (fact-slot-value ?f nom) ?npr)))
+                      valor))
+        (bind ?psg (fact-slot-value
+                      (nth$ 1 (find-all-facts ((?f preu-venta))
+                               (eq (fact-slot-value ?f nom) ?nsg)))
+                      valor))
+        (bind ?ppo (fact-slot-value
+                      (nth$ 1 (find-all-facts ((?f preu-venta))
+                               (eq (fact-slot-value ?f nom) ?npo)))
+                      valor))
 
-        ;; Begudes i preus
-        (bind ?begudes (create$))
         (bind ?total (+ ?ppr ?psg ?ppo))
 
+        ;; Decisió per mode de beguda
         (if (eq ?bm general)
           then
-            (foreach ?bg ?b-generals
-              (bind ?nbg (send ?bg get-nom))
-              (bind ?pbg (send ?bg get-preu_cost))
-              (bind ?total2 (+ ?total ?pbg))
-              (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax))
+            (progn
+              ;; 1) Si hi ha begudes generals, tria la millor dins pressupost
+              (bind ?best-bg FALSE)
+              (bind ?best-nom "")
+              (bind ?best-total 1.0e+15)
+              (foreach ?bg ?b-generals
+                (bind ?nbg (send ?bg get-nom))
+                (bind ?pbg (send ?bg get-preu_cost))
+                (bind ?total2 (+ ?total ?pbg))
+                (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax))
+                  then
+                    (if (< ?total2 ?best-total)
+                      then
+                        (bind ?best-bg ?bg)
+                        (bind ?best-nom ?nbg)
+                        (bind ?best-total ?total2))))
+              (if ?best-bg
                 then
-                  (assert (menu-valid
-                             (primer ?npr)
-                             (segon ?nsg)
-                             (postres ?npo)
-                             (begudes (create$ ?nbg))
-                             (preu ?total2)))
-                  (bind ?count (+ ?count 1))
-              )
-            )
-          else
-            (foreach ?bpr ?b-primers
-              (foreach ?bsg ?b-segons
-                (foreach ?bpo ?b-postres
-                  (bind ?pbpr (send ?bpr get-preu_cost))
-                  (bind ?pbsg (send ?bsg get-preu_cost))
-                  (bind ?pbpo (send ?bpo get-preu_cost))
-                  (bind ?total2 (+ ?total ?pbpr ?pbsg ?pbpo))
-                  (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax))
+                  (progn
+                    (assert (menu-valid
+                              (primer ?npr)
+                              (segon ?nsg)
+                              (postres ?npo)
+                              (begudes (create$ ?best-nom))
+                              (preu ?best-total)))
+                    (bind ?count (+ ?count 1)))
+                else
+                  ;; 2) Fallback: sense beguda si ja compleix pressupost
+                  (if (and (>= ?total ?pmin) (<= ?total ?pmax))
                     then
-                      (assert (menu-valid
-                                 (primer ?npr)
-                                 (segon ?nsg)
-                                 (postres ?npo)
-                                 (begudes (create$ (send ?bpr get-nom)
-                                                   (send ?bsg get-nom)
-                                                   (send ?bpo get-nom)))
-                                 (preu ?total2)))
-                      (bind ?count (+ ?count 1))
-                  )
-                )
-              )
-            )
-        )
-      )
-    )
-  )
+                      (progn
+                        (assert (menu-valid
+                                  (primer ?npr)
+                                  (segon ?nsg)
+                                  (postres ?npo)
+                                  (begudes (create$))
+                                  (preu ?total)))
+                        (bind ?count (+ ?count 1)))))))
+          else
+            (progn
+              ;; Per-plat: totes les combinacions
+              (foreach ?bpr ?b-primers
+                (foreach ?bsg ?b-segons
+                  (foreach ?bpo ?b-postres
+                    (bind ?pbpr (send ?bpr get-preu_cost))
+                    (bind ?pbsg (send ?bsg get-preu_cost))
+                    (bind ?pbpo (send ?bpo get-preu_cost))
+                    (bind ?total2 (+ ?total ?pbpr ?pbsg ?pbpo))
+                    (if (and (>= ?total2 ?pmin) (<= ?total2 ?pmax))
+                      then
+                        (progn
+                          (assert (menu-valid
+                                    (primer ?npr)
+                                    (segon ?nsg)
+                                    (postres ?npo)
+                                    (begudes (create$ (send ?bpr get-nom)
+                                                      (send ?bsg get-nom)
+                                                      (send ?bpo get-nom)))
+                                    (preu ?total2))
+                          (bind ?count (+ ?count 1))))))))))))
 
+  ;; Resum
   (if (> ?count 0)
-    then (printout t "S'han generat " ?count " menús vàlids dins del pressupost." crlf)
-    else (printout t "*** Cap menú dins del rang de pressupost. ***" crlf))
+    then
+      (printout t "S'han generat " ?count " menús vàlids dins del pressupost." crlf)
+    else
+      (printout t "*** Cap menú dins del rang de pressupost. ***" crlf))
 )
+
+
 
 (defrule ComposicioMenus::mostrar-menus-inicials
   (declare (auto-focus TRUE))
@@ -1264,13 +1368,12 @@
   (bind ?menus (find-all-facts ((?m menu-valid)) TRUE))
   (bind ?n (length$ ?menus))
 
-  (if (<= ?n 0)
-    then
-      (printout t crlf "*** No hi ha menús vàlids dins del pressupost. ***" crlf)
-    else
-      (printout t crlf "=== MENÚS DISPONIBLES (" ?n " en total) ===" crlf)
+  (if (<= ?n 0) then
+    (printout t crlf "*** No hi ha menús vàlids dins del pressupost. ***" crlf)
+   else
+    (printout t crlf "=== MENÚS DISPONIBLES (" ?n " en total) ===" crlf)
 
-      ;; Si només hi ha 1, 2 o 3 menús → mostrar tots
+    ;; Si només hi ha 1, 2 o 3 menús → mostrar tots
       (if (<= ?n 3)
         then
           (bind ?to-show ?menus)
@@ -1325,10 +1428,65 @@
         (printout t "  Begudes:   " (implode$ (fact-slot-value ?m begudes)) crlf)
         (printout t "  TOTAL:     " (fact-slot-value ?m preu) " €" crlf)
         (printout t "  ----------------------------------------" crlf)
+
+        ;; Assertem el menú indexat
+        (bind $?bgs (fact-slot-value ?m begudes))
+        (assert (menu-seleccionat
+                  (idx ?index)
+                  (primer  (fact-slot-value ?m primer))
+                  (segon   (fact-slot-value ?m segon))
+                  (postres (fact-slot-value ?m postres))
+                  (begudes $?bgs)
+                  (preu    (fact-slot-value ?m preu))))
+
         (bind ?index (+ ?index 1))
       )
+    
+    (assert (menus-presentats))
+  )
+)
 
-      (assert (menus-presentats))
+
+(defrule ComposicioMenus::informar-validesa-menus-grups
+  (declare (auto-focus TRUE))
+  (menus-presentats)
+=>
+  (bind ?menus (find-all-facts ((?m menu-seleccionat)) TRUE))
+  (bind ?grups (find-all-facts ((?g grup-restriccio)) TRUE))
+
+  (if (<= (length$ ?menus) 0) then
+    (printout t crlf "— No hi ha menús seleccionats per validar (cap 'menu-seleccionat'). —" crlf))
+
+  (if (<= (length$ ?grups) 0) then
+    (printout t crlf "— Sense grups definits: no cal validar al·lèrgens/dieta per grups. —" crlf)
+  else
+    (foreach ?g ?grups
+      (bind ?gid  (fact-slot-value ?g id))
+      (bind ?gnom (fact-slot-value ?g nom))
+      (printout t crlf "— Validació d'al·lèrgens/dieta per al grup " ?gid " (" ?gnom ") —" crlf)
+
+      (foreach ?m ?menus
+        (bind ?idx (fact-slot-value ?m idx))
+        (bind ?pr  (fact-slot-value ?m primer))
+        (bind ?sg  (fact-slot-value ?m segon))
+        (bind ?po  (fact-slot-value ?m postres))
+
+        (bind ?ok-pr (plat-apte-per-grup ?pr ?gid))
+        (bind ?ok-sg (plat-apte-per-grup ?sg ?gid))
+        (bind ?ok-po (plat-apte-per-grup ?po ?gid))
+
+        (bind ?ok (and ?ok-pr ?ok-sg ?ok-po))
+
+        (printout t "Menú " ?idx ": [" ?pr " | " ?sg " | " ?po "]  ->  "
+                    (if ?ok then "APTE" else "NO apte") crlf)
+
+        (if (not ?ok) then
+          (if (not ?ok-pr) then (printout t "   ✖ No apte pel plat ENTRANT:   " ?pr crlf))
+          (if (not ?ok-sg) then (printout t "   ✖ No apte pel plat PRINCIPAL: " ?sg crlf))
+          (if (not ?ok-po) then (printout t "   ✖ No apte pel plat POSTRES:   " ?po crlf))
+        )
+      )
+    )
   )
 )
 
@@ -1343,3 +1501,155 @@
 
 
 
+; ;; PAS 5: COMPOSICIÓ DE MENÚS -------------------------------
+; (defrule ComposicioMenus::mostrar-menus-inicials
+;   (declare (auto-focus TRUE))
+;   (respostes-completes)
+;   (not (menus-presentats))
+;   (peticio (beguda-mode ?bm))
+;   =>
+;   ;; Recollim noms finals vàlids
+;   (bind ?plats-valids (find-all-facts ((?f plat-valid-final)) TRUE))
+;   (bind ?noms-valids (create$))
+;   (foreach ?f ?plats-valids
+;      (bind ?noms-valids (create$ $?noms-valids (fact-slot-value ?f nom)))
+;   )
+
+;   ;; Busquem plats per ordre
+;   (bind ?primers (find-all-instances
+;                ((?p Plat))
+;                (and (member$ ordre-primer (send ?p get-te_ordre))
+;                   (member$ (send ?p get-nom) ?noms-valids))))
+;   (bind ?segons (find-all-instances
+;                ((?p Plat))
+;                (and (member$ ordre-segon (send ?p get-te_ordre))
+;                   (member$ (send ?p get-nom) ?noms-valids))))
+;   (bind ?postres (find-all-instances
+;                ((?p Plat))
+;                (and (member$ ordre-postres (send ?p get-te_ordre))
+;                   (member$ (send ?p get-nom) ?noms-valids))))
+
+
+;   ; Recollim noms de begudes finals
+;   (bind ?begudes-valides (find-all-facts ((?bf beguda-valida-final)) TRUE))
+;   (bind ?b-noms-valids (create$))
+;   (foreach ?bf ?begudes-valides
+;      (bind ?b-noms-valids (create$ $?b-noms-valids (fact-slot-value ?bf nom)))
+;   )
+
+;   ; Busquem begudes per mode i ordre
+;   (if (eq ?bm general)
+;     then
+;       (bind ?b-generals (find-all-instances ((?b Beguda))
+;                       (and (eq (send ?b get-es_general) si)
+;                            (member$ (send ?b get-nom) ?b-noms-valids))))
+;     else 
+;       (bind ?b-primers (find-all-instances ((?b Beguda))
+;                       (and (eq (send ?b get-maridatge) ordre-primer)
+;                            (member$ (send ?b get-nom) ?b-noms-valids))))
+;       (bind ?b-segons (find-all-instances ((?b Beguda))
+;                       (and (eq (send ?b get-maridatge) ordre-segon)
+;                            (member$ (send ?b get-nom) ?b-noms-valids))))
+;       (bind ?b-postres (find-all-instances ((?b Beguda))
+;                        (and (eq (send ?b get-maridatge) ordre-postres)
+;                             (member$ (send ?b get-nom) ?b-noms-valids))))
+;   )
+
+;   ;; LÍMIT DE MENÚS PEL MENJAR
+;   (bind ?limit (min (length$ ?primers) (length$ ?segons) (length$ ?postres) 3))
+
+;   ;; LÍMIT DE BEGUDES (no forcem el límit final pels menús: si no hi ha beguda per a un i,
+;   ;; imprimirem el menjar i posarem "Sense beguda recomanada")
+;   (bind ?drink-limit
+;         (if (eq ?bm general)
+;             then (length$ ?b-generals)
+;             else (min (length$ ?b-primers) (length$ ?b-segons) (length$ ?b-postres))))
+
+;   (if (<= ?limit 0) then
+;      (printout t crlf "*** No s'han trobat menus per mostrar dins del pressupost. ***" crlf)
+;    else
+;      (printout t crlf "Et proposem " ?limit " menus dins del pressupost:" crlf)
+;      (loop-for-count (?i 1 ?limit)
+;        (bind ?pr  (nth$ ?i ?primers))
+;        (bind ?sg  (nth$ ?i ?segons))
+;        (bind ?po  (nth$ ?i ?postres))
+
+;        ;; Begudes: només vinculem si existeixen per a aquest índex
+;        (if (eq ?bm general)
+;          then
+;            (if (<= ?i (length$ ?b-generals))
+;                then (bind ?bg (nth$ ?i ?b-generals))
+;                else (bind ?bg FALSE))
+;          else
+;            (if (<= ?i (length$ ?b-primers)) then (bind ?bpr (nth$ ?i ?b-primers)) else (bind ?bpr FALSE))
+;            (if (<= ?i (length$ ?b-segons))  then (bind ?bsg (nth$ ?i ?b-segons))   else (bind ?bsg FALSE))
+;            (if (<= ?i (length$ ?b-postres)) then (bind ?bpo (nth$ ?i ?b-postres))  else (bind ?bpo FALSE))
+;        )
+
+;        (bind ?npr (send ?pr get-nom))
+;        (bind ?nsg (send ?sg get-nom))
+;        (bind ?npo (send ?po get-nom))
+
+;        ;; Noms de beguda si n'hi ha; altrament, marquem "--"
+;        (if (eq ?bm general)
+;          then
+;            (bind ?nbg (if ?bg then (send ?bg get-nom) else "--"))
+;          else
+;            (bind ?nbpr (if ?bpr then (send ?bpr get-nom) else "--"))
+;            (bind ?nbsg (if ?bsg then (send ?bsg get-nom) else "--"))
+;            (bind ?nbpo (if ?bpo then (send ?bpo get-nom) else "--"))
+;        )
+
+;        ;; Preus dels plats
+;        (bind ?ppr (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?npr))) valor))
+;        (bind ?psg (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?nsg))) valor))
+;        (bind ?ppo (fact-slot-value (nth$ 1 (find-all-facts ((?f preu-venta)) (eq (fact-slot-value ?f nom) ?npo))) valor))
+
+;        ;; Preus de beguda si existeixen; si no, 0
+;        (if (eq ?bm general)
+;          then
+;            (bind ?pbg (if ?bg then (send ?bg get-preu_cost) else 0))
+;          else
+;            (bind ?pbpr (if ?bpr then (send ?bpr get-preu_cost) else 0))
+;            (bind ?pbsg (if ?bsg then (send ?bsg get-preu_cost) else 0))
+;            (bind ?pbpo (if ?bpo then (send ?bpo get-preu_cost) else 0))
+;        )
+
+;        ;; Total
+;        (if (eq ?bm general)
+;          then (bind ?total (+ ?ppr ?psg ?ppo ?pbg))
+;          else (bind ?total (+ ?ppr ?psg ?ppo ?pbpr ?pbsg ?pbpo))
+;        )
+
+;        ;; Impressió
+;        (printout t crlf "*** Menu " ?i " ***" crlf)
+;        (printout t "  Entrant:   " ?npr "  [" ?ppr " €]" crlf)
+;        (printout t "  Principal: " ?nsg "  [" ?psg " €]" crlf)
+;        (printout t "  Postres:   " ?npo "  [" ?ppo " €]" crlf)
+
+;        (if (eq ?bm general)
+;          then
+;            (if ?bg
+;                then (printout t "  Beguda Recomanada: " ?nbg "  [" ?pbg " €]" crlf)
+;                else (printout t "  Beguda Recomanada: --" crlf))
+;          else
+;            (printout t "  Beguda Entrant:   " ?nbpr (if ?bpr then (str-cat "  [" ?pbpr " €]") else "") crlf)
+;            (printout t "  Beguda Principal: " ?nbsg (if ?bsg then (str-cat "  [" ?pbsg " €]") else "") crlf)
+;            (printout t "  Beguda Postres:   " ?nbpo (if ?bpo then (str-cat "  [" ?pbpo " €]") else "") crlf)
+;        )
+
+;        (printout t "  ----------------------------------------------------------------------" crlf)
+;        (printout t "  TOTAL per persona: " ?total " €" crlf)
+;      )
+;   )
+;   (assert (menus-presentats))
+; )
+; (defrule ComposicioMenus::iniciar-impressio-grups
+;   (declare (auto-focus TRUE))
+;   (respostes-completes)
+;   (menus-presentats)
+;   (grup-restriccio (id 1))
+;   (not (imprimir-grup (id 1)))
+; =>
+;   (assert (imprimir-grup (id 1)))
+; )
