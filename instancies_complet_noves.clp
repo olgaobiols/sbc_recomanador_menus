@@ -3451,7 +3451,7 @@
 
   (espaguetis-alla-carbonara of Plat
     (nom "Espaguetis alla carbonara")
-    (formalitat "formal")
+    (formalitat "informal")
     (temperatura "tebi")
     (complexitat mitjana)
     (mida_racio mitjana)
@@ -18580,7 +18580,7 @@
 
   (ingredient-espaguetis of Ingredient
     (nom "espaguetis")
-    (alergen "-")
+    (alergen "Gluten")
     (dietes VG V HALAL_POT KOSHER_POT)
   )
 
@@ -19048,7 +19048,7 @@
 
   (ingredient-musclos of Ingredient
     (nom "musclos")
-    (alergen "Molluscs")
+    (alergen "Molluscs, Peix")
     (dietes HALAL_POT)
   )
 

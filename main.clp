@@ -142,6 +142,139 @@
     " 13  sulfites   14  tramussos" crlf
     "Exemples:  '2 7'   |   'llet, fruits_secs'   |   'gluten sesam 14'." crlf crlf))
 
+;; AFEGIT PER GESTIONAR IMPRESSIÓ JUSTIFICACIÓ (he pujat templates a dalt per que funcioni)
+(deftemplate frase-grups-impresa)
+(deftemplate menus-presentats-grup (slot grup))
+(deftemplate menu-seleccionat-grup
+  (slot grup)
+  (slot idx (type INTEGER))
+  (slot primer)
+  (slot segon)
+  (slot postres)
+  (multislot begudes)
+  (slot preu (type FLOAT))
+)
+
+(deffunction print-justificacio-global ()
+  ;; Si no hi ha menús seleccionats, no fem res
+  (bind ?SEL (find-all-facts ((?m menu-seleccionat)) TRUE))
+  (if (<= (length$ ?SEL) 0) then (return))
+
+  ;; Dades de la petició
+  (bind ?P (nth$ 1 (find-all-facts ((?p peticio)) TRUE)))
+  (bind ?tipus   (fact-slot-value ?P tipus-esdeveniment))
+  (bind ?estacio (fact-slot-value ?P data))
+  (bind ?espai   (fact-slot-value ?P espai))
+  (bind ?ncom    (fact-slot-value ?P num-comensals))
+  (bind ?lo      (fact-slot-value ?P pressupost-min))
+  (bind ?hi      (fact-slot-value ?P pressupost-max))
+  (bind ?form    (fact-slot-value ?P formalitat))
+  (bind ?bm      (fact-slot-value ?P beguda-mode))
+  (bind ?alc     (fact-slot-value ?P alcohol))
+
+  ;; Rang de preus real dels menús seleccionats
+  (bind ?preus (create$))
+  (foreach ?m ?SEL
+    (bind ?preu (fact-slot-value ?m preu))
+    (bind ?preus (create$ $?preus ?preu)))
+  (bind ?pmin (nth$ 1 (sort < ?preus)))
+  (bind ?pmax (nth$ (length$ ?preus) (sort < ?preus)))
+
+  ;; Resum de begudes (noms deduplicats)
+  (bind ?begudes (create$))
+  (foreach ?m ?SEL
+    (bind $?bgs (fact-slot-value ?m begudes))
+    (foreach ?b $?bgs
+      (if (not (member$ ?b ?begudes)) then
+        (bind ?begudes (create$ $?begudes ?b)))) )
+  (bind ?bgs-str (if (> (length$ ?begudes) 0) then (implode$ ?begudes) else "les begudes proposades"))
+
+  ;; Etiquetes de mode i alcohol (inline, sense helpers)
+  (bind ?modeStr (if (eq ?bm general) then "general" else "per plat"))
+  (bind ?alcText
+        (if (eq ?alc si) then "amb alcohol"
+         else (if (eq ?alc no) then "sense alcohol" else "amb o sense alcohol segons preferència")))
+
+  ;; Microadaptacions per estació/espai (frases curtes i naturals)
+  (bind ?microEstacio "")
+  (if (and (eq ?estacio hivern) (eq ?espai interior)) then
+    (bind ?microEstacio " amb coccions càlides i bon manteniment de temperatura a sala"))
+  (if (and (eq ?estacio estiu) (eq ?espai exterior)) then
+    (bind ?microEstacio " amb elaboracions lleugeres i to refrescant, idoni a l’aire lliure"))
+  (if (and (eq ?estacio estiu) (eq ?espai interior)) then
+    (bind ?microEstacio " amb plats frescos i coccions curtes"))
+  (if (eq ?estacio primavera) then
+    (bind ?microEstacio " amb producte de temporada i textures amables"))
+  (if (eq ?estacio tardor) then
+    (bind ?microEstacio " amb salses suaus i producte de tardor"))
+
+  ;; Paràgraf base comú de context (adequació i preu)
+  (printout t crlf
+    "En conjunt, les tres propostes s’ajusten a un " ?tipus " " ?form
+    " en " ?estacio " i " ?espai ?microEstacio
+    ", dimensionades per a " ?ncom " comensals, amb un cost per persona dins del rang sol·licitat ["
+    ?lo "–" ?hi "] € (propostes reals entre " ?pmin " € i " ?pmax " €)." crlf)
+
+  ;; Paràgrafs específics per tipus d’esdeveniment
+  (if (eq ?tipus casament) then
+    (progn
+      (printout t
+        "S’ha buscat una seqüència natural de plats, amb equilibri entre intensitats i presentacions netes, evitant repeticions innecessàries i prioritzant la temporada." crlf)
+      (printout t
+        "Pel que fa a begudes, el maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " acompanya el caràcter celebratiu sense sobreposar-se al plat." crlf crlf)))
+
+  (if (eq ?tipus aniversari) then
+    (progn
+      (printout t
+        "Les propostes privilegien sabors amables i formats fàcils de gaudir, pensats per agradar a perfils diversos sense redundàncies." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " manté un to festiu i refrescant." crlf crlf)))
+
+  (if (eq ?tipus comunio) then
+    (progn
+      (printout t
+        "S’ha prioritzat una cuina suau i equilibrada, amb presentacions netes i ritme regular de servei, adequada a un públic familiar." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " acompanya sense tapar el plat." crlf crlf)))
+
+  (if (eq ?tipus congres) then
+    (progn
+      (printout t
+        "El plantejament afavoreix la fluïdesa de servei en entorns professionals: racions de mida petita i complexitat baixa, pensades per consumir-se còmodament de peu." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " manté la boca neta i s’integra bé en passades successives." crlf crlf)))
+
+  (if (eq ?tipus empresa) then
+    (progn
+      (printout t
+        "El disseny culinari combina netedat de sabors i presentacions acurades amb un ritme de sortides estable, adaptable a formats de migdia o vespre." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " aporta tensió aromàtica sense saturar, coherent amb el to corporatiu." crlf crlf)))
+
+  (if (eq ?tipus altres) then
+    (progn
+      (printout t
+        "S’ha buscat un equilibri clar entre plats, respectant l’estacionalitat i evitant barreges d’orígens massa marcades per mantenir coherència." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " s’ajusta al perfil general de l’esdeveniment." crlf crlf)))
+
+  ;; Paràgraf addicional si hi ha menús específics per a grups amb restriccions
+  (bind ?SELGR (find-all-facts ((?g menu-seleccionat-grup)) TRUE))
+  (if (> (length$ ?SELGR) 0) then
+    (printout t
+      "A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei." crlf))
+
+  (printout t crlf)
+)
+
+
+;;; FI DE LO AFEGIT 
 
 ;; VALIDADORS DE RESPOSTES 
 (deffunction valida-boolea "Valida sí/no/indiferent"
@@ -271,7 +404,7 @@
   (not (preguntat-tipus))
 =>
   (bind ?res (valida-opcio 
-              "Quin tipus d’esdeveniment estàs organitzant? (casament/aniversari/comunio/congrés/empresa/altres)"
+              "Quin tipus d’esdeveniment estàs organitzant? (casament/aniversari/comunio/congres/empresa/altres)"
               casament aniversari comunio congres empresa altres)  )
   (modify ?p (tipus-esdeveniment ?res))
   (assert (preguntat-tipus)))
@@ -766,8 +899,6 @@
   ?picked
 )
 
-
-
 (deffunction print-menu-block (?idx ?primer ?segon ?postres ?preu $?begudes)
   (printout t crlf "*** Menú " ?idx " ***" crlf)
   (printout t "  Entrant:   " ?primer  crlf)
@@ -781,17 +912,6 @@
 
 
 ;; 3) Templates per marcar el que s'ha presentat per grup (no barrejar amb el general)
-(deftemplate menus-presentats-grup (slot grup))
-(deftemplate menu-seleccionat-grup
-  (slot grup)
-  (slot idx (type INTEGER))
-  (slot primer)
-  (slot segon)
-  (slot postres)
-  (multislot begudes)
-  (slot preu (type FLOAT))
-)
-
 ;; --- Compatibilitat entre primer/segon/postres (minimalista) ---
 (deffunction compat-ok (?pr ?sg ?po)
   (bind ?c1 (send ?pr get-categoria))
@@ -1046,6 +1166,7 @@
         (bind ?index (+ ?index 1))
       )
     )
+    (print-justificacio-global)
     (assert (menus-presentats))
   )
 )
@@ -1056,6 +1177,13 @@
   (grup (nom ?g))
   (not (menus-presentats-grup (grup ?g)))
   =>
+  ;; Imprimeix la frase global per a grups un únic cop (abans del primer grup)
+  (if (<= (length$ (find-all-facts ((?f frase-grups-impresa)) TRUE)) 0) then
+    (printout t crlf
+      "A més, s’han identificat menús específics per als grups amb restriccions definides, "
+      "garantint la compatibilitat en plats i begudes sense alterar el ritme del servei." crlf crlf)
+    (assert (frase-grups-impresa)))
+
   (bind ?tots (find-all-facts ((?m menu-valid)) TRUE))
 
   ;; Filtra només menús aptes per al grup ?g
@@ -1063,7 +1191,7 @@
   (foreach ?mv ?tots
     (if (menu-apte-per-grup ?mv ?g) then
       (bind ?cand (create$ $?cand ?mv))))
-
+ 
   ;; Tria top-3 sense repetir plats
   (bind ?picked (select-3-unique-menus $?cand))
 
