@@ -908,7 +908,10 @@
         (bind ?bSg (create$ (foreach ?b ?bSg
                         (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b))))
         (bind ?bPo (create$ (foreach ?b ?bPo
-                        (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b))))))))
+                        (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b))))
+      )
+    )
+  )
 
 
   ;; Begudes generals: pren fins a 3 opcions amb menor cost per garantir varietat
@@ -1051,6 +1054,8 @@
                               (begudes (create$))
                               (preu ?base)))))))))))
   (assert (menus-generats)))
+
+)
 
 ;; 4) Impressió de 3 menús per cada grup definit
 (defrule ComposicioMenus::mostrar-menus-inicials
