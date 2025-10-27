@@ -681,10 +681,10 @@
     (if (and (>= ?prc ?lo) (<= ?prc ?T1)) then
       (bind ?cheap (create$ $?cheap ?mv))
     else
-      (if (and (> ?prc ?T1) (< ?prc ?T2)) then
+      (if (and (> ?prc ?T1) (<= ?prc ?T2)) then
         (bind ?mid (create$ $?mid ?mv))
       else
-        (if (and (>= ?prc ?T2) (<= ?prc ?hi)) then
+        (if (and (> ?prc ?T2) (<= ?prc ?hi)) then
           (bind ?exp (create$ $?exp ?mv))))))
 
   (bind ?cheap (sort-menus-by-preu $?cheap))
