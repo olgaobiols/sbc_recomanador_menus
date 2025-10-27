@@ -7,8 +7,8 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-blanc-sec of Beguda
@@ -18,8 +18,8 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-blanc-bota of Beguda
@@ -29,8 +29,8 @@
     (maridatge ordre-segon)
     (preu_cost 5)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-negre-jove of Beguda
@@ -40,8 +40,8 @@
     (maridatge ordre-segon)
     (preu_cost 3)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-negre-criança of Beguda
@@ -51,8 +51,8 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-negre-reserva of Beguda
@@ -62,8 +62,8 @@
     (maridatge ordre-segon)
     (preu_cost 5)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-negre-gran-reserva of Beguda
@@ -73,8 +73,8 @@
     (maridatge ordre-segon)
     (preu_cost 6)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-vi-rosat of Beguda
@@ -84,8 +84,8 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-espumos-jove of Beguda
@@ -95,8 +95,8 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-espumos-reserva of Beguda
@@ -106,8 +106,8 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-espumos-gran-reserva of Beguda
@@ -117,8 +117,8 @@
     (maridatge ordre-segon)
     (preu_cost 6)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-cervesa of Beguda
@@ -128,8 +128,8 @@
     (maridatge ordre-primer)
     (preu_cost 2)
     (es_general no)
-    (alergens gluten)
-    (dietes halal kosher)
+    (alergens "Gluten")
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-cervesa-artesana of Beguda
@@ -139,8 +139,8 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens gluten)
-    (dietes halal kosher)
+    (alergens "Gluten")
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-cervesa-sense-gluten of Beguda
@@ -151,19 +151,19 @@
     (preu_cost 2)
     (es_general no)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-cervesa-sense-gluten of Beguda
-  (nom "Cervesa artesana sense gluten")
-  (formalitat formal)
-  (alcohol si)
-  (maridatge es_primer)
-  (preu_cost 2)
-  (es_general no)
-  (alergens)
-  (dietes)
-  )
+    (nom "Cervesa artesana sense gluten")
+    (formalitat formal)
+    (alcohol si)
+    (maridatge es_primer)
+    (preu_cost 3)
+    (es_general no)
+    (alergens)
+    (dietes V VG KOSHER_POT)
+    )
 
   (beguda-tinto-de-verano of Beguda
     (nom "Tinto de verano")
@@ -172,8 +172,8 @@
     (maridatge ordre-primer)
     (preu_cost 2)
     (es_general no)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V)
   )
 
   (beguda-refresc-ginger-ale of Beguda
@@ -184,7 +184,7 @@
     (preu_cost 2.5)
     (es_general si)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-refresc-tonica-premium of Beguda
@@ -195,7 +195,7 @@
     (preu_cost 3)
     (es_general si)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-refresc-limona of Beguda
@@ -206,7 +206,7 @@
     (preu_cost 1.5)
     (es_general si)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-refresc-taronja of Beguda
@@ -217,7 +217,7 @@
     (preu_cost 1.5)
     (es_general si)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-refresc-cola of Beguda
@@ -228,7 +228,7 @@
     (preu_cost 1.5)
     (es_general si)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-refresc-mora of Beguda
@@ -239,7 +239,7 @@
     (preu_cost 1.5)
     (es_general no)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-ron-cola of Beguda
@@ -250,7 +250,7 @@
     (preu_cost 6)
     (es_general no)
     (alergens)
-    (dietes halal kosher)
+    (dietes V VG)
   )
 
   (beguda-gin-tonic of Beguda
@@ -261,7 +261,7 @@
     (preu_cost 6)
     (es_general no)
     (alergens)
-    (dietes halal kosher)
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-spritz of Beguda
@@ -272,7 +272,7 @@
     (preu_cost 5)
     (es_general si)
     (alergens)
-    (dietes halal kosher)
+    (dietes V VG)
   )
 
   (beguda-martini-blanc of Beguda
@@ -282,8 +282,8 @@
     (maridatge ordre-primer)
     (preu_cost 4)
     (es_general si)
-    (alergens sulfits)
-    (dietes halal kosher)
+    (alergens "Sulfits")
+    (dietes V VG)
   )
 
   (beguda-mojito-clàssic of Beguda
@@ -294,7 +294,7 @@
     (preu_cost 5)
     (es_general no)
     (alergens)
-    (dietes halal kosher)
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-licor-cafè of Beguda
@@ -305,7 +305,7 @@
     (preu_cost 4)
     (es_general no)
     (alergens)
-    (dietes halal kosher)
+    (dietes V VG KOSHER_POT)
   )
 
   (beguda-te-fred of Beguda
@@ -316,7 +316,7 @@
     (preu_cost 3)
     (es_general no)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 
   (beguda-mojito-sense-alcohol of Beguda
@@ -327,6 +327,6 @@
     (preu_cost 5)
     (es_general no)
     (alergens)
-    (dietes)
+    (dietes V VG KOSHER_POT HALAL_POT)
   )
 )
