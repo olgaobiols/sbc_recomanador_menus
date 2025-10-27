@@ -630,16 +630,20 @@
   (bind ?sg (fact-slot-value ?mv segon))
   (bind $?bg (fact-slot-value ?mv begudes))
 
-  ;; evita reutilitzar primers i segons
+  ;; evita reutilitzar primers i segons (sempre)
   (bind ?conflict (or (member$ ?pr $?used-plats-mf)
                       (member$ ?sg $?used-plats-mf)))
 
-  ;; Evita repetir begudes entre menús seleccionats (aplica als dos modes)
+  ;; NOMÉS bloqueja per repetició de begudes si el mode és GENERAL
+  (bind ?bm (fact-slot-value (nth$ 1 (find-all-facts ((?p peticio)) TRUE)) beguda-mode))
   (foreach ?b $?bg
-    (if (and (not ?conflict) (member$ ?b $?used-begs-mf)) then
-      (bind ?conflict TRUE)))
+    (if (and (not ?conflict)
+             (eq ?bm general)
+             (member$ ?b $?used-begs-mf))
+        then (bind ?conflict TRUE)))
 
   (not ?conflict))
+
 
 
 ;; 2) Selecció comuna: tria fins a 3 menús ordenats per preu, sense repetir plats
