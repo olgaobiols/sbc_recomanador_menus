@@ -845,10 +845,7 @@
   (bind ?p3 (categoria-pes (send ?po get-categoria)))
   (bind ?max (max ?p1 ?p2 ?p3))
   (bind ?min (min ?p1 ?p2 ?p3))
-  ;; abans: (if (<= (- ?max ?min) 0) then (return FALSE))
-  ;; ara permet igualtat
   TRUE)
-
 
 ;; ====== GENERADOR DE MENÚS — versió curta, sense helpers nous ======
 (defrule ComposicioMenus::generar-menus-valids
@@ -911,17 +908,31 @@
         (bind ?bSg (create$ (foreach ?b ?bSg
                         (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b))))
         (bind ?bPo (create$ (foreach ?b ?bPo
-                        (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b)))))))
+                        (if (check-alergies-dietes (create$ $?diet) ?b (create$ $?alrg)) then ?b))))))))
 
 
-  ;; Tria la BEGUDA més barata de cada llista (inline, amb protecció d'instàncies)
-  (bind ?BG FALSE) (bind ?BGp 0.0)
-  (if (> (length$ ?bG) 0) then
-    (foreach ?x ?bG
-      (if (and ?x (instancep ?x)) then
-        (bind ?px (send ?x get-preu_cost))
-        (if (or (not ?BG) (< ?px ?BGp)) then
-          (bind ?BG ?x) (bind ?BGp ?px)))))
+  ;; Begudes generals: pren fins a 3 opcions amb menor cost per garantir varietat
+  (bind $?bG-top (create$))
+  (bind ?best1 FALSE) (bind ?best1p 1.0e+15)
+  (bind ?best2 FALSE) (bind ?best2p 1.0e+15)
+  (bind ?best3 FALSE) (bind ?best3p 1.0e+15)
+  (foreach ?x ?bG
+    (if (and ?x (instancep ?x)) then
+      (bind ?px (send ?x get-preu_cost))
+      (if (< ?px ?best1p) then
+        (bind ?best3 ?best2) (bind ?best3p ?best2p)
+        (bind ?best2 ?best1) (bind ?best2p ?best1p)
+        (bind ?best1 ?x) (bind ?best1p ?px)
+      else
+        (if (< ?px ?best2p) then
+          (bind ?best3 ?best2) (bind ?best3p ?best2p)
+          (bind ?best2 ?x) (bind ?best2p ?px)
+        else
+          (if (< ?px ?best3p) then
+            (bind ?best3 ?x) (bind ?best3p ?px))))))
+  (if ?best1 then (bind $?bG-top (create$ $?bG-top ?best1)))
+  (if (and ?best2 (neq ?best2 ?best1)) then (bind $?bG-top (create$ $?bG-top ?best2)))
+  (if (and ?best3 (neq ?best3 ?best1) (neq ?best3 ?best2)) then (bind $?bG-top (create$ $?bG-top ?best3)))
 
   (bind ?BPR FALSE) (bind ?BPRp 0.0)
   (if (> (length$ ?bPr) 0) then
@@ -997,23 +1008,29 @@
 
             (bind ?base (+ ?p1 ?p2 ?p3))
 
-            ;; ====== Decideix begudes i asserta UN sol menú per combinació ======
+            ;; ====== Decideix begudes segons el mode seleccionat ======
             (if (eq ?bm general) then
-              (if (and ?BG (>= (+ ?base ?BGp) ?LO) (<= (+ ?base ?BGp) ?HI)) then
-                (assert (menu-valid
-                          (primer (send ?pr get-nom))
-                          (segon  (send ?sg get-nom))
-                          (postres (send ?po get-nom))
-                          (begudes (create$ (send ?BG get-nom)))
-                          (preu (+ ?base ?BGp))))
-              else
-                (if (and (>= ?base ?LO) (<= ?base ?HI)) then
+              (progn
+                (bind ?asserted FALSE)
+                (foreach ?GB $?bG-top
+                  (bind ?gCost (send ?GB get-preu_cost))
+                  (bind ?gTotal (+ ?base ?gCost))
+                  (bind ?gTotal (/ (round (* ?gTotal 100)) 100.0))
+                  (if (and (>= ?gTotal ?LO) (<= ?gTotal ?HI)) then
+                    (assert (menu-valid
+                              (primer (send ?pr get-nom))
+                              (segon  (send ?sg get-nom))
+                              (postres (send ?po get-nom))
+                              (begudes (create$ (send ?GB get-nom)))
+                              (preu ?gTotal)))
+                    (bind ?asserted TRUE)))
+                (if (and (not ?asserted) (and (>= ?base ?LO) (<= ?base ?HI))) then
                   (assert (menu-valid
                             (primer (send ?pr get-nom))
                             (segon  (send ?sg get-nom))
                             (postres (send ?po get-nom))
                             (begudes (create$))
-                            (preu ?base))))))
+                            (preu ?base)))))
              else
               (progn
                 (bind ?ok3 (and ?BPR ?BSG ?BPO))
@@ -1032,11 +1049,8 @@
                               (segon  (send ?sg get-nom))
                               (postres (send ?po get-nom))
                               (begudes (create$))
-                              (preu ?base))))))))
-        )
-  (assert (menus-generats))
-  )
-))
+                              (preu ?base)))))))))))
+  (assert (menus-generats)))
 
 ;; 4) Impressió de 3 menús per cada grup definit
 (defrule ComposicioMenus::mostrar-menus-inicials
