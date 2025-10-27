@@ -129,7 +129,7 @@
     (apte_esdeveniment tots)
     (preu_cost 6.0)
     (disponibilitat_plats estiu hivern primavera tardor)
-    (te_ingredients_noms "tomaquet" "ceba" "olives" "oli" "sal" "pebre")
+    (te_ingredients_noms "pollastre" "tomaquet" "ceba" "olives" "oli" "sal" "pebre")
     (categoria amanida_fresca)
     (procedencia_plat "Àsia oriental")
   )
