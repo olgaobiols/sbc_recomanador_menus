@@ -7,7 +7,7 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -18,7 +18,7 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -29,7 +29,7 @@
     (maridatge ordre-segon)
     (preu_cost 5)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -40,7 +40,7 @@
     (maridatge ordre-segon)
     (preu_cost 3)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -51,7 +51,7 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -62,7 +62,7 @@
     (maridatge ordre-segon)
     (preu_cost 5)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -73,7 +73,7 @@
     (maridatge ordre-segon)
     (preu_cost 6)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -84,7 +84,7 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -95,7 +95,7 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -106,7 +106,7 @@
     (maridatge ordre-segon)
     (preu_cost 4)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -117,7 +117,7 @@
     (maridatge ordre-segon)
     (preu_cost 6)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -128,7 +128,7 @@
     (maridatge ordre-primer)
     (preu_cost 2)
     (es_general no)
-    (alergens "Gluten")
+    (alergen "Gluten")
     (dietes V VG KOSHER_POT)
   )
 
@@ -139,7 +139,7 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens "Gluten")
+    (alergen "Gluten")
     (dietes V VG KOSHER_POT)
   )
 
@@ -150,7 +150,7 @@
     (maridatge es_primer)
     (preu_cost 2)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT)
   )
 
@@ -161,7 +161,7 @@
     (maridatge es_primer)
     (preu_cost 3)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT)
     )
 
@@ -172,7 +172,7 @@
     (maridatge ordre-primer)
     (preu_cost 2)
     (es_general no)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V)
   )
 
@@ -183,7 +183,7 @@
     (maridatge ordre-primer)
     (preu_cost 2.5)
     (es_general si)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -194,7 +194,7 @@
     (maridatge ordre-segon)
     (preu_cost 3)
     (es_general si)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -205,7 +205,7 @@
     (maridatge ordre-segon)
     (preu_cost 1.5)
     (es_general si)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -216,7 +216,7 @@
     (maridatge ordre-segon)
     (preu_cost 1.5)
     (es_general si)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -227,7 +227,7 @@
     (maridatge ordre-segon)
     (preu_cost 1.5)
     (es_general si)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -238,7 +238,7 @@
     (maridatge ordre-primer)
     (preu_cost 1.5)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -249,7 +249,7 @@
     (maridatge ordre-postres)
     (preu_cost 6)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG)
   )
 
@@ -260,7 +260,7 @@
     (maridatge ordre-postres)
     (preu_cost 6)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT)
   )
 
@@ -271,7 +271,7 @@
     (maridatge ordre-primer)
     (preu_cost 5)
     (es_general si)
-    (alergens)
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -282,7 +282,7 @@
     (maridatge ordre-primer)
     (preu_cost 4)
     (es_general si)
-    (alergens "Sulfits")
+    (alergen "Sulfits")
     (dietes V VG)
   )
 
@@ -293,7 +293,7 @@
     (maridatge ordre-postres)
     (preu_cost 5)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT)
   )
 
@@ -304,7 +304,7 @@
     (maridatge ordre-postres)
     (preu_cost 4)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT)
   )
 
@@ -315,7 +315,7 @@
     (maridatge ordre-primer)
     (preu_cost 3)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 
@@ -326,7 +326,8 @@
     (maridatge ordre-postres)
     (preu_cost 5)
     (es_general no)
-    (alergens)
+    (alergen)
     (dietes V VG KOSHER_POT HALAL_POT)
   )
 )
+
