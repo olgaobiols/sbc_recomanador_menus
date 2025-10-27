@@ -26,7 +26,7 @@
     (slot es_general
         (type SYMBOL)
         (create-accessor read-write))
-    (multislot alergens
+    (multislot alergen
         (type SYMBOL)
         (create-accessor read-write))
     (multislot dietes

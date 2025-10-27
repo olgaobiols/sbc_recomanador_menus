@@ -220,13 +220,20 @@
 (deffunction get-obj-dietes ($?d)
   (if (multifieldp $?d) then $?d else (create$)))
 
-;; Beguda: slot 'alergens' és STRING → normalitzem a símbols UE-14
+;; Beguda: slot 'alergen' pot venir com string únic → normalitzem a símbols UE-14
 (deffunction get-obj-alergens-syms (?obj)
   (bind ?cls (class ?obj))
   (if (not (slot-existp ?cls alergen)) then (return (create$)))
-  (bind $?raw (send ?obj get-alergen))
+  (bind ?slotVal (send ?obj get-alergen))
+  (if (or (eq ?slotVal FALSE) (eq ?slotVal nil)) then (return (create$)))
+  (bind $?vals (create$))
+  (if (multifieldp ?slotVal)
+      then (bind $?vals ?slotVal)
+      else
+        (if (or (lexemep ?slotVal) (numberp ?slotVal))
+            then (bind $?vals (create$ ?slotVal))))
   (bind ?OUT (create$))
-  (foreach ?x $?raw
+  (foreach ?x $?vals
     (bind ?s (string->ue14-sym ?x))
     (if (and ?s (not (member$ ?s ?OUT))) then
       (bind ?OUT (create$ $?OUT ?s))))
@@ -623,17 +630,14 @@
   (bind ?sg (fact-slot-value ?mv segon))
   (bind $?bg (fact-slot-value ?mv begudes))
 
-  ;; unicitat només per primer i segon
+  ;; evita reutilitzar primers i segons
   (bind ?conflict (or (member$ ?pr $?used-plats-mf)
                       (member$ ?sg $?used-plats-mf)))
 
-  ;; si el mode és per-plat, també evitem repetir begudes; en "general", NO
-  (bind ?pet (nth$ 1 (find-all-facts ((?x peticio)) TRUE)))
-  (bind ?bm (fact-slot-value ?pet beguda-mode))
-  (if (eq ?bm per-plat) then
-    (foreach ?b $?bg
-      (if (and (not ?conflict) (member$ ?b $?used-begs-mf)) then
-        (bind ?conflict TRUE))))
+  ;; Evita repetir begudes entre menús seleccionats (aplica als dos modes)
+  (foreach ?b $?bg
+    (if (and (not ?conflict) (member$ ?b $?used-begs-mf)) then
+      (bind ?conflict TRUE)))
 
   (not ?conflict))
 
@@ -648,7 +652,6 @@
   (bind ?p (nth$ 1 (find-all-facts ((?x peticio)) TRUE)))
   (bind ?umin (fact-slot-value ?p pressupost-min))
   (bind ?umax (fact-slot-value ?p pressupost-max))
-  (bind ?bm (fact-slot-value ?p beguda-mode))
 
   ;; Calcula min/max dels candidats (per fallback i per limitar franges)
   (bind ?prices (create$ (foreach ?mv ?menus (fact-slot-value ?mv preu))))
@@ -700,10 +703,9 @@
         (bind $?bg (fact-slot-value ?mv begudes))
         (foreach ?dish (create$ ?pr ?sg)
           (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
-        (if (eq ?bm per-plat) then
-          (foreach ?b $?bg
-            (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))))
-  ))
+        (foreach ?b $?bg
+          (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b)))))
+  )
   ;; 2) MITJÀ (el primer que compleix; ja van ordenats)
   (foreach ?mv ?mid
     (if (and (< (length$ ?picked) 2) (menu-fits ?mv ?used-plats ?used-begs))
@@ -1013,23 +1015,24 @@
                             (begudes (create$))
                             (preu ?base))))))
              else
-              (bind ?ok3 (and ?BPR ?BSG ?BPO))
-              (bind ?bSum (if ?ok3 then (+ ?BPRp ?BSGp ?BPOp) else 0.0))
-              (if (and ?ok3 (>= (+ ?base ?bSum) ?LO) (<= (+ ?base ?bSum) ?HI)) then
-                (assert (menu-valid
-                          (primer (send ?pr get-nom))
-                          (segon  (send ?sg get-nom))
-                          (postres (send ?po get-nom))
-                          (begudes (create$ (send ?BPR get-nom) (send ?BSG get-nom) (send ?BPO get-nom)))
-                          (preu (+ ?base ?bSum))))
-              else
-                (if (and (>= ?base ?LO) (<= ?base ?HI)) then
+              (progn
+                (bind ?ok3 (and ?BPR ?BSG ?BPO))
+                (bind ?bSum (if ?ok3 then (+ ?BPRp ?BSGp ?BPOp) else 0.0))
+                (if (and ?ok3 (>= (+ ?base ?bSum) ?LO) (<= (+ ?base ?bSum) ?HI)) then
                   (assert (menu-valid
                             (primer (send ?pr get-nom))
                             (segon  (send ?sg get-nom))
                             (postres (send ?po get-nom))
-                            (begudes (create$))
-                            (preu ?base)))))))
+                            (begudes (create$ (send ?BPR get-nom) (send ?BSG get-nom) (send ?BPO get-nom)))
+                            (preu (+ ?base ?bSum))))
+                else
+                  (if (and (>= ?base ?LO) (<= ?base ?HI)) then
+                    (assert (menu-valid
+                              (primer (send ?pr get-nom))
+                              (segon  (send ?sg get-nom))
+                              (postres (send ?po get-nom))
+                              (begudes (create$))
+                              (preu ?base))))))))
         )
   (assert (menus-generats))
   )
