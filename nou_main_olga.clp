@@ -11,7 +11,7 @@
   (slot beguda-mode (type SYMBOL) (default nil))
   (slot alcohol (type SYMBOL STRING) (default nil))
   (slot alergies-si (type SYMBOL STRING) (default nil))
-  (multislot alergens (type STRING SYMBOL))
+  (multislot alergen (type STRING SYMBOL))
 ) 
 
 (deftemplate grup
@@ -223,8 +223,8 @@
 ;; Beguda: slot 'alergens' és STRING → normalitzem a símbols UE-14
 (deffunction get-obj-alergens-syms (?obj)
   (bind ?cls (class ?obj))
-  (if (not (slot-existp ?cls alergens)) then (return (create$)))
-  (bind $?raw (send ?obj get-alergens))
+  (if (not (slot-existp ?cls alergen)) then (return (create$)))
+  (bind $?raw (send ?obj get-alergen))
   (bind ?OUT (create$))
   (foreach ?x $?raw
     (bind ?s (string->ue14-sym ?x))
@@ -461,8 +461,8 @@
 
   (bind ?cls (class ?obj))
 
-  ;; --- CAS 1: Beguda / Ingredient ---
-  (if (or (eq ?cls Beguda) (eq ?cls Ingredient)) then
+  ;; --- CAS 1: Beguda ---
+  (if (eq ?cls Beguda) then
     (bind $?d-obj (get-obj-dietes (send ?obj get-dietes)))
     (bind $?a-obj (get-obj-alergens-syms ?obj))
 
@@ -471,16 +471,13 @@
     (foreach ?a $?AG
       (if (member$ ?a $?a-obj) then (bind ?alg-ok FALSE)))
 
-    ;; dietes del grup: per a begudes, relaxem una mica
-    (bind ?diet-ok
-          (or
-            (= (length$ $?DG) 0) ; sense dietes
-            (subsetp $?DG (create$ $?d-obj)) ; coincideixen
-            (and (eq ?cls Beguda)
-                (not (member$ halal $?DG))  ; si no és halal/kosher, només verifiquem que no tingui carn/llet/ous
-                (not (member$ kosher $?DG))
-                (not (member$ vegetaria $?DG))
-                (not (member$ vega $?DG)))))
+    ;; dieta: ara és estricte (grup ⊆ beguda)
+    (bind ?diet-ok (or (= (length$ $?DG) 0)
+                      (subsetp $?DG (create$ $?d-obj))))
+
+    ;; si el grup és halal, l'alcohol ha de ser no
+    (if (and ?diet-ok (member$ halal $?DG) (eq (send ?obj get-alcohol) si))
+      then (bind ?diet-ok FALSE))
 
     (return (and ?diet-ok ?alg-ok))
   )
@@ -621,16 +618,25 @@
 (deffunction menu-fits (?mv ?used-plats ?used-begs)
   (bind $?used-plats-mf (if (multifieldp ?used-plats) then ?used-plats else (create$ ?used-plats)))
   (bind $?used-begs-mf  (if (multifieldp ?used-begs)  then ?used-begs  else (create$ ?used-begs)))
+
   (bind ?pr (fact-slot-value ?mv primer))
   (bind ?sg (fact-slot-value ?mv segon))
-  (bind ?po (fact-slot-value ?mv postres))
   (bind $?bg (fact-slot-value ?mv begudes))
+
+  ;; unicitat només per primer i segon
   (bind ?conflict (or (member$ ?pr $?used-plats-mf)
-                      (member$ ?sg $?used-plats-mf)
-                      (member$ ?po $?used-plats-mf)))
-  (foreach ?b $?bg
-    (if (and (not ?conflict) (member$ ?b $?used-begs-mf)) then (bind ?conflict TRUE)))
+                      (member$ ?sg $?used-plats-mf)))
+
+  ;; si el mode és per-plat, també evitem repetir begudes; en "general", NO
+  (bind ?pet (nth$ 1 (find-all-facts ((?x peticio)) TRUE)))
+  (bind ?bm (fact-slot-value ?pet beguda-mode))
+  (if (eq ?bm per-plat) then
+    (foreach ?b $?bg
+      (if (and (not ?conflict) (member$ ?b $?used-begs-mf)) then
+        (bind ?conflict TRUE))))
+
   (not ?conflict))
+
 
 ;; 2) Selecció comuna: tria fins a 3 menús ordenats per preu, sense repetir plats
 ;; Tria fins a 3 menús sense repetir CAP plat ni CAP beguda (ordenats per preu)
@@ -642,6 +648,7 @@
   (bind ?p (nth$ 1 (find-all-facts ((?x peticio)) TRUE)))
   (bind ?umin (fact-slot-value ?p pressupost-min))
   (bind ?umax (fact-slot-value ?p pressupost-max))
+  (bind ?bm (fact-slot-value ?p beguda-mode))
 
   ;; Calcula min/max dels candidats (per fallback i per limitar franges)
   (bind ?prices (create$ (foreach ?mv ?menus (fact-slot-value ?mv preu))))
@@ -691,11 +698,12 @@
         (bind ?sg (fact-slot-value ?mv segon))
         (bind ?po (fact-slot-value ?mv postres))
         (bind $?bg (fact-slot-value ?mv begudes))
-        (foreach ?dish (create$ ?pr ?sg ?po)
+        (foreach ?dish (create$ ?pr ?sg)
           (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
-        (foreach ?b $?bg
-          (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))))
-
+        (if (eq ?bm per-plat) then
+          (foreach ?b $?bg
+            (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))))
+  ))
   ;; 2) MITJÀ (el primer que compleix; ja van ordenats)
   (foreach ?mv ?mid
     (if (and (< (length$ ?picked) 2) (menu-fits ?mv ?used-plats ?used-begs))
@@ -705,7 +713,7 @@
         (bind ?sg (fact-slot-value ?mv segon))
         (bind ?po (fact-slot-value ?mv postres))
         (bind $?bg (fact-slot-value ?mv begudes))
-        (foreach ?dish (create$ ?pr ?sg ?po)
+        (foreach ?dish (create$ ?pr ?sg)
           (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
         (foreach ?b $?bg
           (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))))
@@ -719,7 +727,7 @@
         (bind ?sg (fact-slot-value ?mv segon))
         (bind ?po (fact-slot-value ?mv postres))
         (bind $?bg (fact-slot-value ?mv begudes))
-        (foreach ?dish (create$ ?pr ?sg ?po)
+        (foreach ?dish (create$ ?pr ?sg)
           (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
         (foreach ?b $?bg
           (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))))
@@ -737,7 +745,7 @@
           (bind ?sg (fact-slot-value ?mv segon))
           (bind ?po (fact-slot-value ?mv postres))
           (bind $?bg (fact-slot-value ?mv begudes))
-          (foreach ?dish (create$ ?pr ?sg ?po)
+          (foreach ?dish (create$ ?pr ?sg)
             (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
           (foreach ?b $?bg
             (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b)))))))
@@ -833,12 +841,12 @@
   (bind ?p1 (categoria-pes (send ?pr get-categoria)))
   (bind ?p2 (categoria-pes (send ?sg get-categoria)))
   (bind ?p3 (categoria-pes (send ?po get-categoria)))
-  ;; descarta si la diferència màxima és massa gran o massa petita
   (bind ?max (max ?p1 ?p2 ?p3))
   (bind ?min (min ?p1 ?p2 ?p3))
-  ;; evita menús on tot és massa semblant (tres pesats o tres lleugers)
-  (if (<= (- ?max ?min) 0) then (return FALSE))
+  ;; abans: (if (<= (- ?max ?min) 0) then (return FALSE))
+  ;; ara permet igualtat
   TRUE)
+
 
 ;; ====== GENERADOR DE MENÚS — versió curta, sense helpers nous ======
 (defrule ComposicioMenus::generar-menus-valids
