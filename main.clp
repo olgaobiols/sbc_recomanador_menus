@@ -561,10 +561,35 @@
 (deffunction check-dispo (?estacio $?dispo)
   (or (eq ?estacio indiferent) (member$ ?estacio (create$ $?dispo))))
 
-(deffunction check-event (?te $?apte)
-  (or (eq ?te indiferent)
-      (member$ tots (create$ $?apte))
-      (member$ ?te  (create$ $?apte))))
+(deffunction check-event (?te ?cx ?mida $?apte)
+  ;; Primer, comprova si el plat és apte per l’esdeveniment
+  (if (not (or (eq ?te indiferent)
+               (member$ tots (create$ $?apte))
+               (member$ ?te (create$ $?apte))))
+    then (return FALSE))
+
+  ;; Si és apte, apliquem les regles segons el tipus d’esdeveniment
+  (if (eq ?te indiferent) then (return TRUE))
+
+  (if (eq ?te casament) then
+    (return (and (or (eq ?cx alta) (eq ?cx mitjana))
+                 (or (eq ?mida gran) (eq ?mida mitjana))))
+  else
+  (if (or (eq ?te aniversari) (eq ?te comunio)) then
+    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
+                 (or (eq ?mida petita) (eq ?mida mitjana))))
+  else
+  (if (eq ?te congres) then
+    (return (and (eq ?cx baixa)
+                 (eq ?mida petita)))
+  else
+  (if (eq ?te empresa) then
+    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
+                 (or (eq ?mida petita) (eq ?mida mitjana))))
+  else
+    ;; Altres o per defecte
+    (return TRUE))))))
+
 
 ; FUNCIÓ DE VALIDACIÓ DE BEGUDES SEGONS PREFERÈNCIES
 (deffunction check-beguda (?f ?alc-pet ?beg $?formalitats)
@@ -660,17 +685,31 @@
 
 ;; PAS 2: ABSTRACCIÓ HEURÍSTICA ------------------------------
 (defmodule AbstraccioHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
-(defrule AbstraccioHeuristica::validar-plat-basic "Condensa tots els filtres en una sola passada i marca plat-valid-final."
-  (peticio (data ?estacio) (espai ?espai) (formalitat ?f) (num-comensals ?n) (tipus-esdeveniment ?te))
-  ?pl <- (object (is-a Plat) (nom ?nom) (temperatura ?temp) (formalitat ?form-str) (complexitat ?cx) (te_ordre $?ordres) (disponibilitat_plats $?dispo) (apte_esdeveniment $?apte))
+(defrule AbstraccioHeuristica::validar-plat-basic
+  "Condensa tots els filtres en una sola passada i marca plat-valid-final."
+  (peticio (data ?estacio)
+           (espai ?espai)
+           (formalitat ?f)
+           (num-comensals ?n)
+           (tipus-esdeveniment ?te))
+  ?pl <- (object (is-a Plat)
+                 (nom ?nom)
+                 (temperatura ?temp)
+                 (formalitat ?form-str)
+                 (complexitat ?cx)
+                 (mida_racio ?mida)
+                 (te_ordre $?ordres)
+                 (disponibilitat_plats $?dispo)
+                 (apte_esdeveniment $?apte))
   (test (check-temperatura ?estacio ?espai ?temp $?ordres))
   (test (check-formalitat ?f ?form-str))
   (test (check-complexitat ?n ?cx))
   (test (check-dispo ?estacio $?dispo))
-  (test (check-event ?te $?apte))
+  (test (check-event ?te ?cx ?mida $?apte))
   =>
   (assert (plat-valid-final (nom ?nom)))
 )
+
 
 (defrule AbstraccioHeuristica::validar-beguda-basic
   "Marca com a vàlides les begudes que passen alcohol, formalitat i maridatge coherent amb el mode."
