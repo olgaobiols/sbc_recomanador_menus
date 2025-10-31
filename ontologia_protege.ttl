@@ -10,6 +10,43 @@
 <http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9> rdf:type owl:Ontology .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#begudes
+untitled-ontology-9:begudes rdf:type owl:ObjectProperty ;
+                            rdfs:domain [ rdf:type owl:Restriction ;
+                                          owl:onProperty untitled-ontology-9:begudes ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass untitled-ontology-9:Plat
+                                        ] .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#disposa_de
+untitled-ontology-9:disposa_de rdf:type owl:ObjectProperty ;
+                               rdfs:domain untitled-ontology-9:Esdeveniment ;
+                               rdfs:range untitled-ontology-9:Menu .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#postres
+untitled-ontology-9:postres rdf:type owl:ObjectProperty ;
+                            rdfs:domain untitled-ontology-9:Menu ;
+                            rdfs:range untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#primer
+untitled-ontology-9:primer rdf:type owl:ObjectProperty ;
+                           rdfs:domain untitled-ontology-9:Menu ;
+                           rdfs:range untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#segon
+untitled-ontology-9:segon rdf:type owl:ObjectProperty ;
+                          rdfs:domain untitled-ontology-9:Menu ;
+                          rdfs:range untitled-ontology-9:Plat .
+
+
+#################################################################
 #    Data properties
 #################################################################
 
@@ -17,7 +54,8 @@
 untitled-ontology-9:alcohol rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
                             rdf:type owl:FunctionalProperty ;
-                            rdfs:domain untitled-ontology-9:Beguda .
+                            rdfs:domain untitled-ontology-9:Beguda ,
+                                        untitled-ontology-9:Esdeveniment .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#alergen
@@ -33,6 +71,13 @@ untitled-ontology-9:apte_esdeveniment rdf:type owl:DatatypeProperty ;
                                       rdfs:domain untitled-ontology-9:Plat .
 
 
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#beguda_mode
+untitled-ontology-9:beguda_mode rdf:type owl:DatatypeProperty ;
+                                rdfs:domain untitled-ontology-9:Esdeveniment ,
+                                            untitled-ontology-9:Menu ;
+                                rdfs:range xsd:string .
+
+
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#categoria
 untitled-ontology-9:categoria rdf:type owl:DatatypeProperty ;
                               rdfs:subPropertyOf owl:topDataProperty ;
@@ -45,6 +90,12 @@ untitled-ontology-9:categoria rdf:type owl:DatatypeProperty ;
 untitled-ontology-9:complexitat rdf:type owl:DatatypeProperty ,
                                          owl:FunctionalProperty ;
                                 rdfs:domain untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#data
+untitled-ontology-9:data rdf:type owl:DatatypeProperty ;
+                         rdfs:domain untitled-ontology-9:Esdeveniment ;
+                         rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#dietes
@@ -78,7 +129,8 @@ untitled-ontology-9:formalitat rdf:type owl:DatatypeProperty ,
 untitled-ontology-9:interior rdf:type owl:DatatypeProperty ,
                                       owl:FunctionalProperty ;
                              rdfs:domain untitled-ontology-9:Esdeveniment ;
-                             rdfs:range xsd:boolean .
+                             rdfs:range xsd:boolean ,
+                                        xsd:string .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#maridatge
@@ -121,8 +173,16 @@ untitled-ontology-9:ocasio rdf:type owl:DatatypeProperty ;
                            rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#ordre
-untitled-ontology-9:ordre rdf:type owl:DatatypeProperty .
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#pressupost_max
+untitled-ontology-9:pressupost_max rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain untitled-ontology-9:Esdeveniment ;
+                                   rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#pressupost_min
+untitled-ontology-9:pressupost_min rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain untitled-ontology-9:Esdeveniment ;
+                                   rdfs:range xsd:float .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_cost
@@ -132,6 +192,12 @@ untitled-ontology-9:preu_cost rdf:type owl:DatatypeProperty ;
                               rdfs:domain untitled-ontology-9:Beguda ,
                                           untitled-ontology-9:Ingredient ;
                               rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_total
+untitled-ontology-9:preu_total rdf:type owl:DatatypeProperty ;
+                               rdfs:domain untitled-ontology-9:Menu ;
+                               rdfs:range xsd:float .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#procedencia_plat
@@ -165,6 +231,11 @@ untitled-ontology-9:temperatura rdf:type owl:DatatypeProperty ;
                                 rdfs:range xsd:string .
 
 
+###  http://www.w3.org/2002/07/owl#topDataProperty
+owl:topDataProperty rdfs:domain untitled-ontology-9:Esdeveniment ;
+                    rdfs:range xsd:string .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -174,7 +245,12 @@ untitled-ontology-9:Beguda rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Esdeveniment
-untitled-ontology-9:Esdeveniment rdf:type owl:Class .
+untitled-ontology-9:Esdeveniment rdf:type owl:Class ;
+                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                   owl:onProperty untitled-ontology-9:disposa_de ;
+                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                   owl:onClass untitled-ontology-9:Menu
+                                                 ] .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Ingredient
@@ -182,7 +258,27 @@ untitled-ontology-9:Ingredient rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Menu
-untitled-ontology-9:Menu rdf:type owl:Class .
+untitled-ontology-9:Menu rdf:type owl:Class ;
+                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           owl:onProperty untitled-ontology-9:begudes ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass untitled-ontology-9:Beguda
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty untitled-ontology-9:postres ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass untitled-ontology-9:Plat
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty untitled-ontology-9:primer ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass untitled-ontology-9:Plat
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty untitled-ontology-9:segon ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass untitled-ontology-9:Plat
+                                         ] .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Plat
