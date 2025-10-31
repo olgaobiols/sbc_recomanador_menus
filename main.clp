@@ -196,123 +196,104 @@
          else (if (eq ?alc no) then "sense alcohol"
                else "amb o sense alcohol segons preferència")))
 
+  ;; --- Introducció general ---
   (printout t crlf)
-  (printout t "Les propostes s’han generat segons les preferències indicades per l’usuari. " crlf)
-  (printout t "L’esdeveniment definit és de tipus " ?tipus ", amb un nivell de formalitat " ?form
-             ", previst per a " ?estacio " i en espai " ?espai ". " crlf)
-  (printout t "El nombre total de comensals és de " ?ncom
-             ", i el pressupost establert per persona se situa entre "
-             ?lo " € i " ?hi " €, amb menús seleccionats que oscil·len entre "
-             ?pmin " € i " ?pmax " €." crlf crlf)
+  (printout t
+    "Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. "
+    "L’esdeveniment és de tipus " ?tipus ", amb un nivell de formalitat " ?form
+    ", previst per a " ?estacio " en espai " ?espai ", "
+    "per a un total de " ?ncom " comensals i amb un pressupost per persona entre "
+    ?lo " € i " ?hi " €. "
+    "Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre "
+    ?pmin " € i " ?pmax " €." crlf crlf)
+
+  ;; --- Condicions aplicades ---
+  (printout t
+    "Les principals condicions aplicades han estat:" crlf crlf)
 
   ;; Estació i espai
   (if (and (or (eq ?estacio primavera) (eq ?estacio estiu))
            (eq ?espai exterior)) then
     (printout t
-      "Atès que l’esdeveniment se celebra a l’exterior durant una època càlida, "
-      "s’han seleccionat únicament plats freds o tebis, d’acord amb la regla check-temperatura, "
-      "per garantir una experiència lleugera i adequada al clima." crlf crlf))
+      "• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants." crlf))
   (if (and (or (eq ?estacio primavera) (eq ?estacio estiu))
            (eq ?espai interior)) then
     (printout t
-      "En ser un esdeveniment interior en temporada càlida, "
-      "s’han prioritzat elaboracions fresques o de cocció curta segons la regla check-temperatura, "
-      "buscant un bon equilibri amb la temperatura de sala." crlf crlf))
+      "• En ser un esdeveniment interior en temporada càlida, s’han prioritzat elaboracions fresques o de cocció curta." crlf))
   (if (or (eq ?estacio tardor) (eq ?estacio hivern)) then
     (printout t
-      "Com que l’esdeveniment té lloc en una època freda, "
-      "la selecció de plats s’ha basat en coccions tebies o calentes segons la funció check-temperatura, "
-      "afavorint el confort i l’aprofitament del producte de temporada." crlf crlf))
+      "• En ser una estació freda, s’han seleccionat plats calents o tebis, amb productes de temporada." crlf))
   (if (eq ?estacio indiferent) then
     (printout t
-      "No s’ha aplicat cap filtre per estació ni espai, ja que l’usuari ha indicat indiferència en aquests camps." crlf crlf))
+      "• No s’han aplicat restriccions per estació ni espai." crlf))
 
   ;; Tipus d’esdeveniment
   (if (eq ?tipus casament) then
     (printout t
-      "Per tractar-se d’un casament, s’han mantingut les regles de la funció check-event que permeten "
-      "només plats de complexitat mitjana o alta i racions de mida mitjana o gran. "
-      "Això assegura un resultat coherent amb un àpat formal i celebratiu." crlf crlf))
+      "• Com que es tracta d’un casament, s’han escollit plats de complexitat mitjana o alta i racions mitjanes o grans, amb un to celebratiu i cuidat." crlf))
   (if (eq ?tipus aniversari) then
     (printout t
-      "En ser un aniversari, s’han aplicat les regles de check-event per seleccionar plats de complexitat mitjana o baixa "
-      "i racions petites o mitjanes, adequades per a un ambient distès i fàcil de compartir." crlf crlf))
+      "• En ser un aniversari, s’han prioritzat plats de complexitat mitjana o baixa i racions petites o mitjanes, per afavorir un ambient festiu i distès." crlf))
   (if (eq ?tipus comunio) then
     (printout t
-      "Per a una comunió, s’han utilitzat els mateixos criteris que per a un aniversari: "
-      "plats suaus, equilibrats i de mida petita o mitjana, pensats per a públic familiar." crlf crlf))
+      "• Per a una comunió, s’han seleccionat plats suaus i equilibrats, adequats per a un públic familiar." crlf))
   (if (eq ?tipus congres) then
     (printout t
-      "En tractar-se d’un congrés, la funció check-event ha filtrat només plats petits i de baixa complexitat, "
-      "per tal de permetre un servei ràpid i còmode fins i tot de peu." crlf crlf))
+      "• En tractar-se d’un congrés, s’han escollit plats petits i de baixa complexitat per facilitar un servei àgil i còmode." crlf))
   (if (eq ?tipus empresa) then
     (printout t
-      "Per a un esdeveniment d’empresa, s’han seleccionat plats de complexitat mitjana o baixa "
-      "i de mida petita o mitjana, d’acord amb les regles check-event, "
-      "per garantir un ritme de servei estable i presentacions acurades." crlf crlf))
+      "• Per a un esdeveniment d’empresa, s’han mantingut plats de complexitat mitjana o baixa i racions petites o mitjanes, coherents amb un entorn professional." crlf))
   (if (eq ?tipus altres) then
     (printout t
-      "Com que el tipus d’esdeveniment és 'altres', no s’ha aplicat cap filtre específic de check-event "
-      "i s’han acceptat totes les opcions que compleixen la resta de criteris generals." crlf crlf))
+      "• En no especificar un tipus concret d’esdeveniment, s’han mantingut criteris generals d’equilibri i coherència." crlf))
 
-  ;; Formalitat i comensals
+  ;; Formalitat
   (if (eq ?form formal) then
     (printout t
-      "Com que s’ha indicat un esdeveniment formal, "
-      "la funció check-formalitat ha limitat la selecció a plats classificats com a formals." crlf crlf))
+      "• En indicar un esdeveniment formal, només s’han inclòs plats i begudes amb presentacions i característiques formals." crlf))
   (if (eq ?form informal) then
     (printout t
-      "Atès que l’esdeveniment és informal, "
-      "s’han seleccionat únicament plats etiquetats com a informals segons la funció check-formalitat." crlf crlf))
-  (if (numberp ?ncom) then
-    (if (<= ?ncom 50) then
-      (printout t
-        "Amb menys de 50 comensals, la funció check-complexitat permet totes les categories de complexitat." crlf crlf))
-    (if (and (> ?ncom 50) (<= ?ncom 150)) then
-      (printout t
-        "Com que el nombre de comensals és entre 50 i 150, "
-        "s’han descartat els plats d’alta complexitat segons la regla check-complexitat." crlf crlf))
-    (if (> ?ncom 150) then
-      (printout t
-        "Per sobre de 150 comensals, només s’han acceptat plats de complexitat baixa "
-        "per facilitar la producció i el servei segons la regla check-complexitat." crlf crlf)))
+      "• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada." crlf))
 
-  ;; Maridatge i begudes
+  ;; Nombre de comensals
+  (if (and (numberp ?ncom) (<= ?ncom 50)) then
+    (printout t
+      "• Amb menys de 50 comensals, s’han permès totes les complexitats de plats." crlf))
+  (if (and (numberp ?ncom) (> ?ncom 50) (<= ?ncom 150)) then
+    (printout t
+      "• Entre 50 i 150 comensals, s’han descartat plats d’alta complexitat per assegurar un servei àgil." crlf))
+  (if (and (numberp ?ncom) (> ?ncom 150)) then
+    (printout t
+      "• Amb més de 150 comensals, només s’han acceptat plats de complexitat baixa per facilitar la producció i el servei." crlf))
+
+  ;; Maridatge
   (if (and (eq ?bm general) (eq ?alc no)) then
     (printout t
-      "L’usuari ha indicat beguda general sense alcohol. "
-      "S’han seleccionat només begudes amb es_general = si i alcohol = no segons la funció check-beguda." crlf crlf))
+      "• S’ha aplicat maridatge general sense alcohol, buscant begudes equilibrades i refrescants." crlf))
   (if (and (eq ?bm general) (eq ?alc si)) then
     (printout t
-      "L’usuari ha sol·licitat beguda general amb alcohol. "
-      "S’han escollit begudes amb es_general = si i alcohol = si segons la funció check-beguda." crlf crlf))
+      "• S’ha aplicat maridatge general amb alcohol, amb begudes que complementen el to festiu." crlf))
   (if (eq ?bm per-plat) then
     (printout t
-      "El mode de beguda seleccionat és per plat. "
-      "S’han associat begudes específiques per ordre (primer, segon i postres) segons la regla check-beguda." crlf crlf))
+      "• S’ha aplicat maridatge per plat, amb begudes associades específicament a cada elaboració." crlf))
   (if (eq ?alc indiferent) then
     (printout t
-      "Com que la preferència d’alcohol és indiferent, "
-      "no s’ha aplicat cap filtre per a aquest paràmetre en la funció check-beguda." crlf crlf))
+      "• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol." crlf))
   (printout t
-    "Les begudes finals seleccionades són: " ?bgs-str "." crlf crlf)
+    "• Begudes seleccionades: " ?bgs-str "." crlf)
 
   ;; Grups amb restriccions
   (bind ?SELGR (find-all-facts ((?g menu-seleccionat-grup)) TRUE))
   (if (> (length$ ?SELGR) 0) then
     (printout t
-      "S’han detectat grups amb restriccions alimentàries. "
-      "S’ha executat la funció check-alergies-dietes per garantir que cap plat ni beguda contingui al·lèrgens prohibits. "
-      "També s’han verificat les dietes específiques (vega, vegetària, halal o kosher) "
-      "per assegurar-ne la compatibilitat." crlf crlf))
+      "• S’han generat menús específics per a grups amb dietes o al·lèrgies, garantint la compatibilitat dels ingredients i begudes." crlf))
   (if (<= (length$ ?SELGR) 0) then
     (printout t
-      "No s’han definit grups amb dietes o al·lèrgies, de manera que no s’ha aplicat cap filtre addicional per restriccions." crlf crlf))
+      "• No s’han definit grups amb dietes o al·lèrgies, de manera que no s’han aplicat filtres addicionals." crlf))
 
-  (printout t
-    "En resum, totes aquestes condicions provenen de les funcions de filtratge i validació del sistema "
-    "(check-temperatura, check-event, check-formalitat, check-complexitat, check-beguda i check-alergies-dietes), "
-    "que s’apliquen de forma seqüencial per garantir que les propostes compleixin totes les preferències de l’usuari." crlf crlf)
+  ;; Tancament
+  (printout t crlf
+    "En resum, les propostes finals respecten totes les preferències introduïdes i els criteris de coherència entre plats, estació, pressupost i maridatge." crlf crlf)
 )
 
 ;; VALIDADORS DE RESPOSTES 
@@ -491,7 +472,8 @@
   (preguntat-pressupost-min)
   (not (preguntat-pressupost-max))
 =>
-  (bind ?max (valida-num-o-indif "I quin és el pressupost màxim per persona?" 5 2000))
+  (bind ?lb (if (numberp ?min) then ?min else 5))
+  (bind ?max (valida-num-o-indif "I quin és el pressupost màxim per persona?" ?lb 2000))
   (modify ?p (pressupost-max ?max))
   (assert (preguntat-pressupost-max))
   (assert (preguntat-pressupost)))
