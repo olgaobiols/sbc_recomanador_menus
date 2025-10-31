@@ -553,9 +553,9 @@
 
 (deffunction check-complexitat (?n ?cx)
   (if (not (numberp ?n)) then (return TRUE))            ; 'indiferent'
-  (if (<= ?n 50)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (and (> ?n 50) (<= ?n 150)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (> ?n 150) then (return (eq ?cx baixa)))
+  (if (<= ?n 150)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (and (> ?n 150) (<= ?n 500)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (> ?n 500) then (return (eq ?cx baixa)))
   FALSE)
 
 (deffunction check-dispo (?estacio $?dispo)
