@@ -161,7 +161,7 @@
     (multislot part_de
         (type INSTANCE)
         (create-accessor read-write))
-    (multislot te_ordre
+    (slot te_ordre
         (type INSTANCE)
         (create-accessor read-write))
     (multislot alergens
