@@ -536,8 +536,8 @@
 
 
 ; fUNCIONS DE VALIDACIÓ DE PLATS SEGONS PREFERÈNCIES
-(deffunction check-temperatura (?estacio ?espai ?temp $?ordres)
-  (if (member$ ordre-postres $?ordres) then (return TRUE))
+(deffunction check-temperatura (?estacio ?espai ?temp ?ordres)
+  (if (eq ?ordres ordre-postres) then (return TRUE))
   (if (or (eq ?estacio indiferent) (eq ?espai indiferent)) then (return TRUE))
   (if (or (eq ?estacio primavera) (eq ?estacio estiu)) then
       (return (or (eq ?temp "fred") (eq ?temp "tebi")
@@ -553,16 +553,25 @@
 
 (deffunction check-complexitat (?n ?cx)
   (if (not (numberp ?n)) then (return TRUE))            ; 'indiferent'
-  (if (<= ?n 150)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (and (> ?n 150) (<= ?n 500)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (> ?n 500) then (return (eq ?cx baixa)))
+  (if (<= ?n 50)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (and (> ?n 50) (<= ?n 150)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (> ?n 150) then (return (eq ?cx baixa)))
   FALSE)
 
 (deffunction check-dispo (?estacio $?dispo)
   (or (eq ?estacio indiferent) (member$ ?estacio (create$ $?dispo))))
 
-(deffunction check-event (?te ?cx ?mida $?apte)
+(deffunction check-event (?te ?cx ?mida ?ordres $?apte)
   ;; Primer, comprova si el plat és apte per l’esdeveniment
+
+  ;; Cas Postres de casament
+  (if (and (eq ?te casament)
+           (eq ?ordres ordre-postres))
+      then
+        ;; Només permetre postres amb casament_only
+        (return (member$ casament_only $?apte))
+  )
+
   (if (not (or (eq ?te indiferent)
                (member$ tots (create$ $?apte))
                (member$ ?te (create$ $?apte))))
@@ -572,8 +581,8 @@
   (if (eq ?te indiferent) then (return TRUE))
 
   (if (eq ?te casament) then
-    (return (and (or (eq ?cx alta) (eq ?cx mitjana))
-                 (or (eq ?mida gran) (eq ?mida mitjana))))
+      (return (and (or (eq ?cx alta) (eq ?cx mitjana))
+                  (or (eq ?mida gran) (eq ?mida mitjana)))))
   else
   (if (or (eq ?te aniversari) (eq ?te comunio)) then
     (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
@@ -588,8 +597,13 @@
                  (or (eq ?mida petita) (eq ?mida mitjana))))
   else
     ;; Altres o per defecte
-    (return TRUE))))))
+    (return TRUE)))))
 
+(deffunction check-event-postres-casament ($?apte)
+  (if (eq $?apte casament_only)
+    then (return FALSE)
+  )
+)
 
 ; FUNCIÓ DE VALIDACIÓ DE BEGUDES SEGONS PREFERÈNCIES
 (deffunction check-beguda (?f ?alc-pet ?beg $?formalitats)
@@ -698,14 +712,14 @@
                  (formalitat ?form-str)
                  (complexitat ?cx)
                  (mida_racio ?mida)
-                 (te_ordre $?ordres)
+                 (te_ordre ?ordres)
                  (disponibilitat_plats $?dispo)
                  (apte_esdeveniment $?apte))
-  (test (check-temperatura ?estacio ?espai ?temp $?ordres))
+  (test (check-temperatura ?estacio ?espai ?temp ?ordres))
   (test (check-formalitat ?f ?form-str))
   (test (check-complexitat ?n ?cx))
   (test (check-dispo ?estacio $?dispo))
-  (test (check-event ?te ?cx ?mida $?apte))
+  (test (check-event ?te ?cx ?mida ?ordres $?apte))
   =>
   (assert (plat-valid-final (nom ?nom)))
 )
@@ -1039,19 +1053,19 @@
   (bind ?primers (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (member$ ordre-primer (send ?p get-te_ordre)))))
+                        (eq (send ?p get-te_ordre) ordre-primer))))
   (bind ?segons  (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (member$ ordre-segon (send ?p get-te_ordre)))))
+                        (eq (send ?p get-te_ordre) ordre-segon))))
   (bind ?postres (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (member$ ordre-postres (send ?p get-te_ordre)))))
+                        (eq (send ?p get-te_ordre) ordre-postres))))
 
-  (bind ?primers (subseq$ ?primers 1 (min 30 (length$ ?primers))))
-  (bind ?segons  (subseq$ ?segons  1 (min 30 (length$ ?segons))))
-  (bind ?postres (subseq$ ?postres 1 (min 20 (length$ ?postres))))
+  (bind ?primers (subseq$ ?primers 1 (min 50 (length$ ?primers))))
+  (bind ?segons  (subseq$ ?segons  1 (min 50 (length$ ?segons))))
+  (bind ?postres (subseq$ ?postres 1 (min 30 (length$ ?postres))))
 
   ;; Begudes candidates segons maridatge, només valides finalment
   (bind ?bG (find-all-instances ((?b Beguda))
