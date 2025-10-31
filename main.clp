@@ -412,9 +412,9 @@
   (declare (auto-focus TRUE))
   (not (peticio))
   =>
-  (printout t "Benvingut/da al recomanador de menús RicoRico!" crlf)
-  (printout t "Si us plau respon a les preguntes següents per personalitzar les propostes." crlf)
-  (printout t "Per a totes les preguntes tens l'opció de respondre 'indiferent' si encara no ho tens clar." crlf crlf)
+  (printout t crlf crlf "Benvingut/da al recomanador de menús RicoRico!" crlf crlf)
+  (printout t "T’ajudaré a trobar el menú ideal per al teu esdeveniment." crlf)
+  (printout t "Et faré algunes preguntes curtes. Si no tens clara la resposta encara, pots respondre 'indiferent'." crlf crlf)
   (assert (peticio))
   (focus PreferenciesMenu))
 
@@ -423,10 +423,12 @@
   ?p <- (peticio (tipus-esdeveniment ?te&nil))
   (not (preguntat-tipus))
 =>
+  (printout t crlf "Comencem!" crlf)
   (bind ?res (valida-opcio 
               "Quin tipus d’esdeveniment estàs organitzant? (casament/aniversari/comunio/congres/empresa/altres)"
               casament aniversari comunio congres empresa altres)  )
   (modify ?p (tipus-esdeveniment ?res))
+  (printout t crlf "Perfecte, un " ?res ". Bona tria!" crlf)
   (assert (preguntat-tipus)))
 
 (defrule PreferenciesMenu::preguntar-data
@@ -435,27 +437,32 @@
   (not (preguntat-data))
 =>
   (bind ?r (valida-opcio
-              "Quina època de l’any? (primavera/estiu/tardor/hivern)"
+              "En quina època de l’any se celebrarà l’esdeveniment? (primavera/estiu/tardor/hivern)"
               primavera estiu tardor hivern))
   (modify ?p (data ?r))
+  (printout t crlf "Entès, " ?r "." crlf)
   (assert (preguntat-data)))
 
 (defrule PreferenciesMenu::preguntar-interior-exterior
   ?p <- (peticio (espai ?s&nil))
   (preguntat-data)
   (not (preguntat-interior-exterior))
-=>
-  (bind ?r (valida-opcio "Es farà en interior o exterior?" interior exterior))
+  =>
+  (bind ?r (valida-opcio 
+            "Es farà en un espai interior o exterior? (interior/exterior)" 
+            interior exterior))
   (modify ?p (espai ?r))
+  (printout t crlf "Perfecte, serà en espai " ?r "." crlf)
   (assert (preguntat-interior-exterior)))
 
-(defrule PreferenciesMenu::preguntar-num-comensals
-  ?p <- (peticio (num-comensals ?n&nil))
-  (preguntat-interior-exterior)
-  (not (preguntat-num-comensals))
-=>
-  (bind ?r (valida-num-o-indif "Quants comensals assistiran aproximadament?" 1 5000))
-  (modify ?p (num-comensals ?r))
+(defrule PreferenciesMenu::preguntar-num-comensals 
+  ?p <- (peticio (num-comensals ?n&nil)) 
+  (preguntat-interior-exterior) 
+  (not (preguntat-num-comensals)) 
+=> 
+  (bind ?r (valida-num-o-indif "Quants comensals assistiran aproximadament?" 1 5000)) 
+  (modify ?p (num-comensals ?r)) 
+  (printout t crlf "Apuntat, uns " ?r " comensals." crlf)
   (assert (preguntat-num-comensals)))
 
 (defrule PreferenciesMenu::preguntar-pressupost-min
@@ -463,7 +470,7 @@
   (preguntat-num-comensals)
   (not (preguntat-pressupost))
 =>
-  (bind ?min (valida-num-o-indif "Quin és el pressupost mínim per persona?" 1 1000))
+  (bind ?min (valida-num-o-indif "Pel que fa al preu, quin és el pressupost mínim per persona?" 1 1000))
   (modify ?p (pressupost-min ?min))
   (assert (preguntat-pressupost-min)))
 
@@ -473,8 +480,9 @@
   (not (preguntat-pressupost-max))
 =>
   (bind ?lb (if (numberp ?min) then ?min else 5))
-  (bind ?max (valida-num-o-indif "I quin és el pressupost màxim per persona?" ?lb 2000))
+  (bind ?max (valida-num-o-indif "I el màxim?" ?lb 2000))
   (modify ?p (pressupost-max ?max))
+    (printout t crlf "Perfecte, buscarem menús entre " ?min " € i " ?max " € per persona." crlf)
   (assert (preguntat-pressupost-max))
   (assert (preguntat-pressupost)))
 
@@ -483,9 +491,11 @@
   (preguntat-pressupost-max)
   (not (preguntat-formalitat))
 =>
-  (bind ?r (valida-opcio "Quin grau de formalitat vols? (formal/ informal)" 
+  (printout t crlf "Seguim. Parlem ara del to de l’esdeveniment." crlf)
+  (bind ?r (valida-opcio "Quin grau de formalitat busques? (formal/informal)" 
             informal formal))
   (modify ?p (formalitat ?r))
+  (printout t crlf "D’acord, apuntat com a " ?r "." crlf)
   (assert (preguntat-formalitat)))
 
 (defrule PreferenciesMenu::preguntar-beguda-general
@@ -493,8 +503,10 @@
   (preguntat-formalitat)
   (not (preguntat-beguda-general))
 =>
-  (bind ?r (valida-opcio "Beguda per a tot el menú o per a cada plat? (general/per-plat)" general per-plat))
+  (printout t crlf "Perfecte. Seguim amb la beguda." crlf)
+  (bind ?r (valida-opcio "Vols la mateixa beguda per tot el menú o una per a cada plat? (general/per-plat)" general per-plat))
   (modify ?p (beguda-mode ?r))
+  (printout t crlf "Perfecte, beguda " ?r "." crlf)
   (assert (preguntat-beguda-general)))
 
 (defrule PreferenciesMenu::preguntar-alcohol
@@ -504,6 +516,7 @@
 =>
   (bind ?r (valida-boolea "Prefereixes que el menú inclogui begudes alcohòliques?"))
   (modify ?p (alcohol ?r))
+  (printout t crlf "Entesos, begudes alcohòliques: " ?r "." crlf)
   (assert (preguntat-alcohol)))
 
 (defrule PreferenciesMenu::preguntar-alergens-prohibits
@@ -511,6 +524,7 @@
   (preguntat-alcohol)
   (not (preguntat-alergens-prohibits))
 =>
+  (printout t crlf "Per acabar, un tema important." crlf)
   (bind ?r (valida-boolea "Vols definir grups amb dietes o al·lèrgies específiques?"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits))
@@ -1200,7 +1214,7 @@
   (bind ?n (length$ ?menus))
 
   (if (<= ?n 0) then
-    (printout t crlf "*** No hi ha menús vàlids dins del pressupost. ***" crlf)
+    (printout t crlf "*** Ho sentim... no hem trobat menús vàlids dins del pressupost. ***" crlf)
     (assert (menus-presentats))
    else
     (printout t crlf "=== MENÚS DISPONIBLES (" ?n " en total) ===" crlf)
