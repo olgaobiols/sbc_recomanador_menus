@@ -380,7 +380,7 @@
   (declare (auto-focus TRUE))
   (initial-fact)
   =>
-  (focus ComposicioMenus)
+  (focus RefinamentHeuristica)
   (focus RefinamentHeuristica)
   (focus AssociacioHeuristica)
   (focus AbstraccioHeuristica)
@@ -765,12 +765,10 @@
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
-;; Disponibilitat: si data = 'indiferent', accepta totes les temporades del plat
 
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
-(defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
-(defmodule ComposicioMenus (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+(defmodule RefinamentHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 (deffunction menu-apte-per-grup (?mv ?g)
   (bind ?pr (fact-slot-value ?mv primer))
   (bind ?sg (fact-slot-value ?mv segon))
@@ -778,7 +776,7 @@
   (bind $?bgs (fact-slot-value ?mv begudes))
 
   (bind ?ok-pr (> (length$ (find-all-facts ((?f plat-valid-grup))
-                      (and (eq (fact-slot-value ?f grup) ?g)
+                      (and (eq (fact-slot-value ?f grup) ?g) 
                            (eq (fact-slot-value ?f nom)  ?pr)))) 0))
   (bind ?ok-sg (> (length$ (find-all-facts ((?f plat-valid-grup))
                       (and (eq (fact-slot-value ?f grup) ?g)
@@ -1035,7 +1033,7 @@
   TRUE)
 
 ;; ====== GENERADOR DE MENÚS — versió curta, sense helpers nous ======
-(defrule ComposicioMenus::generar-menus-valids
+(defrule RefinamentHeuristica::generar-menus-valids
   (declare (auto-focus TRUE))
   (respostes-completes)
   ?req <- (peticio (beguda-mode ?bm)
@@ -1171,10 +1169,8 @@
   (assert (menus-generats))
 )
 
-
-
 ;; 4) Impressió de 3 menús per cada grup definit
-(defrule ComposicioMenus::mostrar-menus-inicials
+(defrule RefinamentHeuristica::mostrar-menus-inicials
   (declare (auto-focus TRUE))
   (respostes-completes)
   (not (menus-presentats))
@@ -1224,7 +1220,7 @@
   )
 )
 
-(defrule ComposicioMenus::mostrar-menus-per-grup
+(defrule RefinamentHeuristica::mostrar-menus-per-grup
   (declare (auto-focus TRUE))
   (menus-presentats)                       ;; ja hem acabat el general
   (grup (nom ?g))
