@@ -1,0 +1,192 @@
+@prefix : <http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix untitled-ontology-9: <http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#> .
+@base <http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9/> .
+
+<http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9> rdf:type owl:Ontology .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#alcohol
+untitled-ontology-9:alcohol rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdf:type owl:FunctionalProperty ;
+                            rdfs:domain untitled-ontology-9:Beguda .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#alergen
+untitled-ontology-9:alergen rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:domain untitled-ontology-9:Beguda ,
+                                        untitled-ontology-9:Ingredient .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#apte_esdeveniment
+untitled-ontology-9:apte_esdeveniment rdf:type owl:DatatypeProperty ;
+                                      rdfs:subPropertyOf owl:topDataProperty ;
+                                      rdfs:domain untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#categoria
+untitled-ontology-9:categoria rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdf:type owl:FunctionalProperty ;
+                              rdfs:domain untitled-ontology-9:Plat ;
+                              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#complexitat
+untitled-ontology-9:complexitat rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                rdfs:domain untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#dietes
+untitled-ontology-9:dietes rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain untitled-ontology-9:Beguda .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#disponibilitat_plats
+untitled-ontology-9:disponibilitat_plats rdf:type owl:DatatypeProperty ;
+                                         rdfs:subPropertyOf owl:topDataProperty ;
+                                         rdfs:domain untitled-ontology-9:Plat .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#es_general
+untitled-ontology-9:es_general rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf owl:topDataProperty ;
+                               rdfs:domain untitled-ontology-9:Beguda .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#formalitat
+untitled-ontology-9:formalitat rdf:type owl:DatatypeProperty ,
+                                        owl:FunctionalProperty ;
+                               rdfs:domain untitled-ontology-9:Beguda ,
+                                           untitled-ontology-9:Esdeveniment ,
+                                           untitled-ontology-9:Plat ;
+                               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#interior
+untitled-ontology-9:interior rdf:type owl:DatatypeProperty ,
+                                      owl:FunctionalProperty ;
+                             rdfs:domain untitled-ontology-9:Esdeveniment ;
+                             rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#maridatge
+untitled-ontology-9:maridatge rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdf:type owl:FunctionalProperty ;
+                              rdfs:domain untitled-ontology-9:Beguda .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#mida_racio
+untitled-ontology-9:mida_racio rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf owl:topDataProperty ;
+                               rdfs:domain untitled-ontology-9:Plat ;
+                               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#nom
+untitled-ontology-9:nom rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain untitled-ontology-9:Beguda ,
+                                    untitled-ontology-9:Ingredient ,
+                                    untitled-ontology-9:Plat ;
+                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#num_comensals
+untitled-ontology-9:num_comensals rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                  rdf:type owl:FunctionalProperty ;
+                                  rdfs:domain untitled-ontology-9:Esdeveniment ;
+                                  rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#ocasio
+untitled-ontology-9:ocasio rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdf:type owl:FunctionalProperty ;
+                           rdfs:domain untitled-ontology-9:Esdeveniment ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#ordre
+untitled-ontology-9:ordre rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_cost
+untitled-ontology-9:preu_cost rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdf:type owl:FunctionalProperty ;
+                              rdfs:domain untitled-ontology-9:Beguda ,
+                                          untitled-ontology-9:Ingredient ;
+                              rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#procedencia_plat
+untitled-ontology-9:procedencia_plat rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                     rdf:type owl:FunctionalProperty ;
+                                     rdfs:domain untitled-ontology-9:Plat ;
+                                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#te_ingredients_noms
+untitled-ontology-9:te_ingredients_noms rdf:type owl:DatatypeProperty ;
+                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                        rdfs:domain untitled-ontology-9:Plat ;
+                                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#te_ordre
+untitled-ontology-9:te_ordre rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf owl:topDataProperty ;
+                             rdf:type owl:FunctionalProperty ;
+                             rdfs:domain untitled-ontology-9:Plat ;
+                             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#temperatura
+untitled-ontology-9:temperatura rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf owl:topDataProperty ;
+                                rdf:type owl:FunctionalProperty ;
+                                rdfs:domain untitled-ontology-9:Plat ;
+                                rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Beguda
+untitled-ontology-9:Beguda rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Esdeveniment
+untitled-ontology-9:Esdeveniment rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Ingredient
+untitled-ontology-9:Ingredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Menu
+untitled-ontology-9:Menu rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Plat
+untitled-ontology-9:Plat rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
