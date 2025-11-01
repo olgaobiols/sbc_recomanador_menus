@@ -756,6 +756,21 @@
   (assert (plat-valid-final (nom ?nom)))
 )
 
+(defrule AbstraccioHeuristica::validar-pastis-boda
+  (declare (salience 15))
+  (peticio (tipus-esdeveniment casament))
+  ?pl <- (object (is-a Plat)
+                 (nom ?nom)
+                 (te_ordre $?ords)
+                 (apte_esdeveniment $?apte))
+  (test (member$ ordre-postres $?ords))
+  (test (member$ casament_only (create$ $?apte)))
+  =>
+  (if (<= (length$ (find-all-facts ((?f plat-valid-final))
+                                   (eq (fact-slot-value ?f nom) ?nom))) 0)
+      then (assert (plat-valid-final (nom ?nom)))))
+
+
 
 (defrule AbstraccioHeuristica::validar-beguda-basic
   "Marca com a vàlides les begudes que passen alcohol, formalitat i maridatge coherent amb el mode."
@@ -1129,10 +1144,11 @@
   (declare (auto-focus TRUE))
   (respostes-completes)
   ?req <- (peticio (beguda-mode ?bm)
-                   (pressupost-min ?pmin)
-                   (pressupost-max ?pmax)
-                   (formalitat ?form)
-                   (alcohol ?alc))
+                  (pressupost-min ?pmin)
+                  (pressupost-max ?pmax)
+                  (formalitat ?form)
+                  (alcohol ?alc)
+                  (tipus-esdeveniment ?te))
   (not (menus-generats))
 =>
   ;; Normalitza rang pressupost
@@ -1148,10 +1164,21 @@
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
                         (member$ ordre-segon (send ?p get-te_ordre)))))
-  (bind ?postres (find-all-instances ((?p Plat))
-                   (and (> (length$ (find-all-facts ((?f plat-valid-final))
-                                 (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (member$ ordre-postres (send ?p get-te_ordre)))))
+  (bind ?postres
+    (if (eq ?te casament)
+        then
+          ;; NOMÉS pastissos de boda (apte_esdeveniment = casament_only)
+          (find-all-instances ((?p Plat))
+            (and (> (length$ (find-all-facts ((?f plat-valid-final))
+                        (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
+                (member$ ordre-postres (send ?p get-te_ordre))
+                (member$ casament_only (send ?p get-apte_esdeveniment))))
+        else
+          ;; Com abans, qualsevol postres vàlid
+          (find-all-instances ((?p Plat))
+            (and (> (length$ (find-all-facts ((?f plat-valid-final))
+                        (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
+                (member$ ordre-postres (send ?p get-te_ordre))))))
 
   (bind ?primers (subseq$ ?primers 1 (min 30 (length$ ?primers))))
   (bind ?segons  (subseq$ ?segons  1 (min 30 (length$ ?segons))))
