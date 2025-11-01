@@ -252,7 +252,7 @@
     (procedencia_plat "Perú")
   )
   (pate-vega-dhivern of Plat
-    (nom "Paté vegà d'hivern")
+    (nom "Paté vegetal")
     (formalitat "formal")
     (temperatura "fred")
     (complexitat mitjana)
@@ -16096,7 +16096,7 @@
   (ingredient-carn of Ingredient
     (nom "carn")
     (alergen "-")
-    (dietes VG V HALAL_POT KOSHER_POT)
+    (dietes HALAL_POT KOSHER_POT)
   )
 
   (ingredient-xili-sec of Ingredient
@@ -18910,7 +18910,7 @@
   (ingredient-verat of Ingredient
     (nom "verat")
     (alergen "-")
-    (dietes VG V HALAL_POT KOSHER_POT)
+    (dietes HALAL_POT KOSHER_POT)
   )
 
   (ingredient-verdura of Ingredient
