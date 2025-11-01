@@ -12527,7 +12527,7 @@
     (procedencia_plat "Regne Unit")
   )
   (nyoquis-amb-crema-de-maduixa-gratinada of Plat
-    (nom "Nyoquis amb crema de maduixa gratinada")
+    (nom "Pastetes amb crema de maduixa gratinada")
     (formalitat "formal")
     (temperatura "tebi")
     (complexitat alta)
