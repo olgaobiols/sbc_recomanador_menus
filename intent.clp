@@ -899,6 +899,8 @@
   ;; Retorna buit si no hi ha menus
   (if (<= (length$ ?menus) 0) then (return (create$)))
 
+  (if (< (length$ ?menus) 4) then (return $?menus))
+
   ;; Inicialitza seleccionats i llistes de plats/begudes usats
   (bind ?picked (create$))
   (bind ?used-plats (create$))
