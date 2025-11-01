@@ -15336,7 +15336,7 @@
     (apte_esdeveniment casament_only)
     (preu_cost 17.5)
     (disponibilitat_plats primavera estiu)
-    (te_ingredients_noms "farina" "mel" "oli vegetal" "lavanda")
+    (te_ingredients_noms "farina" "mel" "oli vegetal" "lavanda" "farina")
     (categoria pastisseria)
     (procedencia_plat "França")
   )
