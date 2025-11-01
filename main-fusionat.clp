@@ -239,7 +239,9 @@
   (if (eq ?estacio indiferent) then
     (printout t
       "• No s’han aplicat restriccions per estació ni espai." crlf))
-
+  (printout t
+    "• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; "
+    "si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades." crlf)
   ;; Tipus d’esdeveniment
   (if (eq ?tipus casament) then
     (printout t
@@ -269,15 +271,15 @@
       "• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada." crlf))
 
   ;; Nombre de comensals
-  (if (and (numberp ?ncom) (<= ?ncom 50)) then
+  (if (and (numberp ?ncom) (<= ?ncom 150)) then
     (printout t
-      "• Amb menys de 50 comensals, s’han permès totes les complexitats de plats." crlf))
-  (if (and (numberp ?ncom) (> ?ncom 50) (<= ?ncom 150)) then
+      "• Amb menys de 150 comensals, s’han permès totes les complexitats de plats." crlf))
+  (if (and (numberp ?ncom) (> ?ncom 150) (<= ?ncom 500)) then
     (printout t
-      "• Entre 50 i 150 comensals, s’han descartat plats d’alta complexitat per assegurar un servei àgil." crlf))
-  (if (and (numberp ?ncom) (> ?ncom 150)) then
+      "• Entre 150 i 500 comensals, s’han descartat plats d’alta complexitat per assegurar un servei àgil." crlf))
+  (if (and (numberp ?ncom) (> ?ncom 500)) then
     (printout t
-      "• Amb més de 150 comensals, només s’han acceptat plats de complexitat baixa per facilitar la producció i el servei." crlf))
+      "• Amb més de 500 comensals, només s’han acceptat plats de complexitat baixa per facilitar la producció i el servei." crlf))
 
   ;; Maridatge
   (if (and (eq ?bm general) (eq ?alc no)) then
@@ -292,9 +294,6 @@
   (if (eq ?alc indiferent) then
     (printout t
       "• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol." crlf))
-  (printout t
-    "• Begudes seleccionades: " ?bgs-str "." crlf)
-
   ;; Grups amb restriccions
   (bind ?SELGR (find-all-facts ((?g menu-seleccionat-grup)) TRUE))
   (if (> (length$ ?SELGR) 0) then
@@ -303,10 +302,6 @@
   (if (<= (length$ ?SELGR) 0) then
     (printout t
       "• No s’han definit grups amb dietes o al·lèrgies, de manera que no s’han aplicat filtres addicionals." crlf))
-
-  ;; Tancament
-  (printout t crlf
-    "En resum, les propostes finals respecten totes les preferències introduïdes i els criteris de coherència entre plats, estació, pressupost i maridatge." crlf crlf)
 )
 
 ;; VALIDADORS DE RESPOSTES 
@@ -1180,9 +1175,9 @@
                         (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
                 (member$ ordre-postres (send ?p get-te_ordre))))))
 
-  (bind ?primers (subseq$ ?primers 1 (min 30 (length$ ?primers))))
-  (bind ?segons  (subseq$ ?segons  1 (min 30 (length$ ?segons))))
-  (bind ?postres (subseq$ ?postres 1 (min 20 (length$ ?postres))))
+  (bind ?primers (subseq$ ?primers 1 (min 100 (length$ ?primers))))
+  (bind ?segons  (subseq$ ?segons  1 (min 100 (length$ ?segons))))
+  (bind ?postres (subseq$ ?postres 1 (min 80 (length$ ?postres))))
 
   ;; Begudes candidates segons maridatge, només valides finalment
   (bind ?bG (find-all-instances ((?b Beguda))
