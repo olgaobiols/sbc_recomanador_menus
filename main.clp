@@ -1052,6 +1052,43 @@
   (bind ?min (min ?p1 ?p2 ?p3))
   TRUE)
 
+; ==== FEE ADDITIU PER PERSONA (coherent amb esdeveniment) ====
+(deffunction calc-service-fee (?req ?pr ?sg ?bm)
+  ;; Extreu context de la petició
+  (bind ?te   (fact-slot-value ?req tipus-esdeveniment))
+  (bind ?form (fact-slot-value ?req formalitat))
+
+  ;; 1) Fee per tipus d’esdeveniment (€/pax)
+  ;;    casament > empresa > aniversari > comunio > congres > altres/indiferent
+  (bind ?fee-event
+    (if (eq ?te casament)    then 8.0
+    else (if (eq ?te empresa)    then 4.0
+    else (if (eq ?te aniversari) then 2.0
+    else (if (eq ?te comunio)    then 1.0
+    else (if (eq ?te congres)    then 0.0
+    else 1.0))))))  ; 'altres' o 'indiferent' → 1 €
+
+  ;; 2) Fee per formalitat
+  (bind ?fee-form (if (eq ?form formal) then 6.0 else 0.0))
+
+  ;; 3) Fee per mode de beguda
+  ;;    Per-plat implica més servei/vidre → +3; General → +1 (muntatge)
+  (bind ?fee-beg (if (eq ?bm per-plat) then 3.0 else 1.0))
+
+  ;; 4) Fee per “carrega” dels plats (complexitat primer i segon)
+  ;;    alta:+2, mitjana:+1, baixa:+0 per cada plat (max 4 €)
+  (bind ?c1 (send ?pr get-complexitat))
+  (bind ?c2 (send ?sg get-complexitat))
+  (bind ?fee-cx 0.0)
+  (if (eq ?c1 alta)    then (bind ?fee-cx (+ ?fee-cx 2.0))
+   else (if (eq ?c1 mitjana) then (bind ?fee-cx (+ ?fee-cx 1.0))))
+  (if (eq ?c2 alta)    then (bind ?fee-cx (+ ?fee-cx 2.0))
+   else (if (eq ?c2 mitjana) then (bind ?fee-cx (+ ?fee-cx 1.0))))
+
+  ;; Total fee (arrodonit a cèntim)
+  (return (/ (round (* (+ ?fee-event ?fee-form ?fee-beg ?fee-cx) 100)) 100.0))
+)
+
 ;; ====== GENERADOR DE MENÚS — versió curta, sense helpers nous ======
 (defrule ComposicioMenus::generar-menus-valids
   (declare (auto-focus TRUE))
@@ -1144,13 +1181,14 @@
               (bind ?p3 (/ (round (* ?p3 100)) 100.0))
 
               (bind ?base (+ ?p1 ?p2 ?p3))
-
+              (bind ?fee (calc-service-fee ?req ?pr ?sg ?bm))
+              (bind ?base2 (+ ?base ?fee))
 
                 ;; ====== Combinació amb beguda ======
                 (if (eq ?bm general) then
                   ;; Només 1 beguda general per menú
                   (foreach ?GB ?bG
-                    (bind ?total (+ ?base (send ?GB get-preu_cost)))
+                    (bind ?total (+ ?base2 (send ?GB get-preu_cost)))
                     (bind ?total (/ (round (* ?total 100)) 100.0))
                     (if (and (>= ?total ?LO) (<= ?total ?HI)) then
                       (assert (menu-valid
@@ -1164,7 +1202,7 @@
                   (foreach ?bPrC ?bPr
                     (foreach ?bSgC ?bSg
                       (foreach ?bPoC ?bPo
-                        (bind ?total (+ ?base
+                        (bind ?total (+ ?base2
                                         (send ?bPrC get-preu_cost)
                                         (send ?bSgC get-preu_cost)
                                         (send ?bPoC get-preu_cost)))
