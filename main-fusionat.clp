@@ -621,8 +621,7 @@
                  (or (eq ?mida petita) (eq ?mida mitjana))))
   else
   (if (eq ?te congres) then
-    (return (and (eq ?cx baixa)
-                 (eq ?mida petita)))
+    (return (eq ?mida petita))
   else
   (if (eq ?te empresa) then
     (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
@@ -1203,6 +1202,11 @@
   ;; Multiplicador de formalitat
   (bind ?Ffor (if (eq ?form formal) then 1.30 else 1.0))
 
+  ;; Multiplicador segons el tipus d'esdeveniment
+  (bind ?Fev (if (or (eq ?te congres) (eq ?te empresa) (and (eq ?te aniversari) (eq ?form informal)))
+                then 0.45
+                else 1.0))
+
   ;; Generació combinada de plats + begudes
   (foreach ?pr ?primers
     (foreach ?sg ?segons
@@ -1217,7 +1221,8 @@
                            (if (eq (send ?pr get-complexitat) alta) then 1.35 else (if (eq (send ?pr get-complexitat) mitjana) then 1.15 else 1.0))
                            (if (eq (send ?pr get-mida_racio) gran) then 1.10 else (if (eq (send ?pr get-mida_racio) petita) then 0.90 else 1.0))
                            (if (>= (length$ (send ?pr get-disponibilitat_plats)) 4) then 1.0 else (if (eq (length$ (send ?pr get-disponibilitat_plats)) 3) then 1.05 else (if (eq (length$ (send ?pr get-disponibilitat_plats)) 2) then 1.10 else 1.20)))
-                           ?Ffor))
+                           ?Ffor
+                           ?Fev))
               (bind ?p1 (max ?p1 5.50))
               (bind ?p1 (/ (round (* ?p1 100)) 100.0))
 
@@ -1225,7 +1230,8 @@
                            (if (eq (send ?sg get-complexitat) alta) then 1.35 else (if (eq (send ?sg get-complexitat) mitjana) then 1.15 else 1.0))
                            (if (eq (send ?sg get-mida_racio) gran) then 1.10 else (if (eq (send ?sg get-mida_racio) petita) then 0.90 else 1.0))
                            (if (>= (length$ (send ?sg get-disponibilitat_plats)) 4) then 1.0 else (if (eq (length$ (send ?sg get-disponibilitat_plats)) 3) then 1.05 else (if (eq (length$ (send ?sg get-disponibilitat_plats)) 2) then 1.10 else 1.20)))
-                           ?Ffor))
+                           ?Ffor
+                           ?Fev))
               (bind ?p2 (max ?p2 9.00))
               (bind ?p2 (/ (round (* ?p2 100)) 100.0))
 
@@ -1233,7 +1239,8 @@
                            (if (eq (send ?po get-complexitat) alta) then 1.35 else (if (eq (send ?po get-complexitat) mitjana) then 1.15 else 1.0))
                            (if (eq (send ?po get-mida_racio) gran) then 1.10 else (if (eq (send ?po get-mida_racio) petita) then 0.90 else 1.0))
                            (if (>= (length$ (send ?po get-disponibilitat_plats)) 4) then 1.0 else (if (eq (length$ (send ?po get-disponibilitat_plats)) 3) then 1.05 else (if (eq (length$ (send ?po get-disponibilitat_plats)) 2) then 1.10 else 1.20)))
-                           ?Ffor))
+                           ?Ffor
+                           ?Fev))
               (bind ?p3 (max ?p3 3.00))
               (bind ?p3 (/ (round (* ?p3 100)) 100.0))
 
