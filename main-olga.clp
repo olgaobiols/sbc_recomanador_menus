@@ -158,17 +158,29 @@
 (deffunction print-justificacio-global ()
   (bind ?SEL (find-all-facts ((?m menu-seleccionat)) TRUE))
   (if (<= (length$ ?SEL) 0) then (return))
+  (bind ?E (nth$ 1 (find-all-instances ((?x Esdeveniment)) TRUE)))
+  (if ?E then
+    (bind ?tipus   (send ?E get-ocasio))
+    (bind ?estacio (send ?E get-data))
+    (bind ?espai   (send ?E get-interior))
+    (bind ?ncom    (send ?E get-num_comensals))
+    (bind ?lo      (send ?E get-pressupost_min))
+    (bind ?hi      (send ?E get-pressupost_max))
+    (bind ?form    (send ?E get-formalitat))
+    (bind ?bm      (send ?E get-beguda_mode))
+    (bind ?alc     (send ?E get-alcohol))
+   else
+    (bind ?P (nth$ 1 (find-all-facts ((?p peticio)) TRUE)))
+    (bind ?tipus   (fact-slot-value ?P tipus-esdeveniment))
+    (bind ?estacio (fact-slot-value ?P data))
+    (bind ?espai   (fact-slot-value ?P espai))
+    (bind ?ncom    (fact-slot-value ?P num-comensals))
+    (bind ?lo      (fact-slot-value ?P pressupost-min))
+    (bind ?hi      (fact-slot-value ?P pressupost-max))
+    (bind ?form    (fact-slot-value ?P formalitat))
+    (bind ?bm      (fact-slot-value ?P beguda-mode))
+    (bind ?alc     (fact-slot-value ?P alcohol)))
 
-  (bind ?P (nth$ 1 (find-all-facts ((?p peticio)) TRUE)))
-  (bind ?tipus   (fact-slot-value ?P tipus-esdeveniment))
-  (bind ?estacio (fact-slot-value ?P data))
-  (bind ?espai   (fact-slot-value ?P espai))
-  (bind ?ncom    (fact-slot-value ?P num-comensals))
-  (bind ?lo      (fact-slot-value ?P pressupost-min))
-  (bind ?hi      (fact-slot-value ?P pressupost-max))
-  (bind ?form    (fact-slot-value ?P formalitat))
-  (bind ?bm      (fact-slot-value ?P beguda-mode))
-  (bind ?alc     (fact-slot-value ?P alcohol))
 
   ;; Rang de preus reals
   (bind ?preus (create$))
@@ -797,6 +809,26 @@
   =>
   (assert (beguda-valida-grup (grup ?g) (nom ?nom)))
 )
+
+(defrule AbstraccioHeuristica::materialitza-esdeveniment
+  (declare (salience 50))
+  (respostes-completes)
+  (not (exists (object (is-a Esdeveniment))))
+=>
+  (bind ?P  (nth$ 1 (find-all-facts ((?p peticio)) TRUE)))
+  (bind ?n  (fact-slot-value ?P num-comensals))
+  (bind ?mi (fact-slot-value ?P pressupost-min))
+  (bind ?ma (fact-slot-value ?P pressupost-max))
+  (make-instance [esdeveniment-1] of Esdeveniment
+    (ocasio        (fact-slot-value ?P tipus-esdeveniment))
+    (data          (fact-slot-value ?P data))
+    (interior      (fact-slot-value ?P espai))
+    (formalitat    (fact-slot-value ?P formalitat))
+    (num_comensals (if (numberp ?n) then (if (integerp ?n) then ?n else (integer ?n)) else 0))
+    (pressupost_min (if (numberp ?mi) then (float ?mi) else 0.0))
+    (pressupost_max (if (numberp ?ma) then (float ?ma) else 0.0))
+    (beguda_mode   (fact-slot-value ?P beguda-mode))
+    (alcohol       (fact-slot-value ?P alcohol))))
 
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))

@@ -571,35 +571,14 @@
 (deffunction check-dispo (?estacio $?dispo)
   (or (eq ?estacio indiferent) (member$ ?estacio (create$ $?dispo))))
 
-(deffunction check-event (?te ?cx ?mida $?apte)
-  ;; Primer, comprova si el plat és apte per l’esdeveniment
-  (if (not (or (eq ?te indiferent)
-               (member$ tots (create$ $?apte))
-               (member$ ?te (create$ $?apte))))
-    then (return FALSE))
-
-  ;; Si és apte, apliquem les regles segons el tipus d’esdeveniment
-  (if (eq ?te indiferent) then (return TRUE))
-
-  (if (eq ?te casament) then
-    (return (and (or (eq ?cx alta) (eq ?cx mitjana))
-                 (or (eq ?mida gran) (eq ?mida mitjana))))
-  else
-  (if (or (eq ?te aniversari) (eq ?te comunio)) then
-    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
-                 (or (eq ?mida petita) (eq ?mida mitjana))))
-  else
-  (if (eq ?te congres) then
-    (return (and (eq ?cx baixa)
-                 (eq ?mida petita)))
-  else
-  (if (eq ?te empresa) then
-    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
-                 (or (eq ?mida petita) (eq ?mida mitjana))))
-  else
-    ;; Altres o per defecte
-    (return TRUE))))))
-
+(deffunction check-event (?tipus ?ordre $?apte)
+  (if (member$ casament_only $?apte)
+      then
+        (if (eq ?tipus casament)
+            then (return (eq ?ordre ordre-postres))
+            else (return FALSE))
+      else
+        (return TRUE)))
 
 ; FUNCIÓ DE VALIDACIÓ DE BEGUDES SEGONS PREFERÈNCIES
 (deffunction check-beguda (?f ?alc-pet ?beg $?formalitats)
