@@ -861,7 +861,7 @@
 
 (deffunction sort-menus-by-preu ($?menus)
   (bind ?sorted (create$))
-  (bind ?prices (sort < (create$ (foreach ?mv ?menus (fact-slot-value ?mv preu)))))
+  (bind ?prices (sort > (create$ (foreach ?mv ?menus (fact-slot-value ?mv preu)))))
   (foreach ?p ?prices
     (foreach ?mv ?menus
       (if (and (= (fact-slot-value ?mv preu) ?p)
@@ -896,7 +896,7 @@
 ;; 2) Selecció comuna: tria fins a 3 menús ordenats per preu, sense repetir plats
 ;; Tria fins a 3 menús sense repetir CAP plat ni CAP beguda (ordenats per preu)
 (deffunction select-3-unique-menus ($?menus)
-  ;; Si no hi ha candidats, retorna buit
+  ;; Retorna buit si no hi ha menus
   (if (<= (length$ ?menus) 0) then (return (create$)))
 
   ;; Inicialitza seleccionats i llistes de plats/begudes usats
@@ -904,24 +904,15 @@
   (bind ?used-plats (create$))
   (bind ?used-begs (create$))
 
-  ;; Calcula preu mínim i màxim dels candidats
+  ;; --- Troba el menú mínim ---
   (bind ?pmin 1.0e+15)
-  (bind ?pmax -1.0e+15)
   (foreach ?mv $?menus
     (bind ?prc (fact-slot-value ?mv preu))
-    (if (< ?prc ?pmin) then (bind ?pmin ?prc))
-    (if (> ?prc ?pmax) then (bind ?pmax ?prc)))
-
-  ;; Troba el menú mínim i màxim
+    (if (< ?prc ?pmin) then (bind ?pmin ?prc)))
   (bind ?min-menu (create$))
-  (bind ?max-menu (create$))
   (foreach ?mv $?menus
     (if (= (fact-slot-value ?mv preu) ?pmin)
-        then (bind ?min-menu (create$ $?min-menu ?mv)))
-    (if (= (fact-slot-value ?mv preu) ?pmax)
-        then (bind ?max-menu (create$ $?max-menu ?mv))))
-
-  ;; Afegim el mínim a seleccionats i registrem plats/begudes
+        then (bind ?min-menu (create$ $?min-menu ?mv))))
   (if (> (length$ ?min-menu) 0) then
     (bind ?mv (nth$ 1 ?min-menu))
     (bind ?picked (create$ $?picked ?mv))
@@ -930,34 +921,36 @@
     (foreach ?b (fact-slot-value ?mv begudes)
       (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b)))))
 
-  ;; Afegim el màxim a seleccionats i registrem plats/begudes
-  (if (> (length$ ?max-menu) 0) then
-    (bind ?mv (nth$ 1 ?max-menu))
+  ;; --- Menú del mig aleatori ---
+  (bind ?mid-menu (create$))
+  (foreach ?mv $?menus
+    (if (and (not (member$ ?mv ?picked))
+             (menu-fits ?mv ?used-plats ?used-begs))
+        then (bind ?mid-menu (create$ $?mid-menu ?mv))))
+  (bind ?n (length$ ?mid-menu))
+  (if (> ?n 0) then
+    (bind ?rand-index (+ 1 (random 0 (- ?n 1))))
+    (bind ?mv (nth$ ?rand-index ?mid-menu))
     (bind ?picked (create$ $?picked ?mv))
     (foreach ?dish (create$ (fact-slot-value ?mv primer) (fact-slot-value ?mv segon))
       (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
     (foreach ?b (fact-slot-value ?mv begudes)
       (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b)))))
 
-  ;; Selecció del menú del mig: qualsevol que no sigui mínim/màxim i que encaixi amb plats/begudes
-(bind ?mid-menu (create$))
-(foreach ?mv $?menus
-  (if (and (not (member$ ?mv ?picked))
-           (menu-fits ?mv ?used-plats ?used-begs))
-      then (bind ?mid-menu (create$ $?mid-menu ?mv))))
+  ;; --- Menú CAR: prova el més car, si no encaixa prova el següent menys car ---
+  (bind ?sorted-desc (sort-menus-by-preu $?menus)) ;; ordena per preu descendent
+  (foreach ?mv ?sorted-desc
+    (if (and (not (member$ ?mv ?picked))
+             (menu-fits ?mv ?used-plats ?used-begs))
+        then
+          (bind ?picked (create$ $?picked ?mv))
+          (foreach ?dish (create$ (fact-slot-value ?mv primer) (fact-slot-value ?mv segon))
+            (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
+          (foreach ?b (fact-slot-value ?mv begudes)
+            (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b))))
+          (return ?picked))) ;; surt quan troba el primer compatible
 
-;; Triar un menú aleatori del mig si hi ha candidats
-(bind ?n (length$ ?mid-menu))
-(if (> ?n 0) then
-  (bind ?rand-index (+ 1 (random 0 (- ?n 1)))) ;; random index correcte
-  (bind ?mv (nth$ ?rand-index ?mid-menu))       ;; ?mv és un fact-address
-  (bind ?picked (create$ $?picked ?mv))
-  ;; Actualitza plats i begudes usats
-  (foreach ?dish (create$ (fact-slot-value ?mv primer) (fact-slot-value ?mv segon))
-    (if (not (member$ ?dish ?used-plats)) then (bind ?used-plats (create$ $?used-plats ?dish))))
-  (foreach ?b (fact-slot-value ?mv begudes)
-    (if (not (member$ ?b ?used-begs)) then (bind ?used-begs (create$ $?used-begs ?b)))))
-
+  ;; Retorna els menus seleccionats (mínim + mig aleatori + màxim compatible)
   ?picked
 )
 
@@ -1122,9 +1115,9 @@
                         (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
                 (member$ ordre-postres (send ?p get-te_ordre))))))
 
-  (bind ?primers (subseq$ ?primers 1 (min 100 (length$ ?primers))))
-  (bind ?segons  (subseq$ ?segons  1 (min 100 (length$ ?segons))))
-  (bind ?postres (subseq$ ?postres 1 (min 80 (length$ ?postres))))
+  (bind ?primers (subseq$ ?primers 1 (min 50 (length$ ?primers))))
+  (bind ?segons  (subseq$ ?segons  1 (min 50 (length$ ?segons))))
+  (bind ?postres (subseq$ ?postres 1 (min 30 (length$ ?postres))))
 
   ;; Begudes candidates segons maridatge, només valides finalment
   (bind ?bG (find-all-instances ((?b Beguda))
