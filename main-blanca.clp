@@ -34,8 +34,6 @@
   (slot grup)
   (slot nom))
 
-(deftemplate abstraccio-finalitzada)
-
 (deftemplate menu-valid
   (slot primer)
   (slot segon)
@@ -157,7 +155,9 @@
   (slot preu (type FLOAT))
 )
 
+
 (deffunction print-justificacio-global ()
+  ;; Si no hi ha menús seleccionats, no fem res
   (bind ?SEL (find-all-facts ((?m menu-seleccionat)) TRUE))
   (if (<= (length$ ?SEL) 0) then (return))
   (bind ?E (nth$ 1 (find-all-instances ((?x Esdeveniment)) TRUE)))
@@ -183,8 +183,7 @@
     (bind ?bm      (fact-slot-value ?P beguda-mode))
     (bind ?alc     (fact-slot-value ?P alcohol)))
 
-
-  ;; Rang de preus reals
+  ;; Rang de preus real dels menús seleccionats
   (bind ?preus (create$))
   (foreach ?m ?SEL
     (bind ?preu (fact-slot-value ?m preu))
@@ -192,123 +191,101 @@
   (bind ?pmin (nth$ 1 (sort < ?preus)))
   (bind ?pmax (nth$ (length$ ?preus) (sort < ?preus)))
 
-  ;; Begudes
+  ;; Resum de begudes (noms deduplicats)
   (bind ?begudes (create$))
   (foreach ?m ?SEL
     (bind $?bgs (fact-slot-value ?m begudes))
     (foreach ?b $?bgs
       (if (not (member$ ?b ?begudes)) then
-        (bind ?begudes (create$ $?begudes ?b)))))
-  (bind ?bgs-str (if (> (length$ ?begudes) 0)
-                    then (implode$ ?begudes)
-                    else "les begudes seleccionades"))
+        (bind ?begudes (create$ $?begudes ?b)))) )
+  (bind ?bgs-str (if (> (length$ ?begudes) 0) then (implode$ ?begudes) else "les begudes proposades"))
 
-  ;; Etiquetes textuals
+  ;; Etiquetes de mode i alcohol (inline, sense helpers)
   (bind ?modeStr (if (eq ?bm general) then "general" else "per plat"))
   (bind ?alcText
         (if (eq ?alc si) then "amb alcohol"
-         else (if (eq ?alc no) then "sense alcohol"
-               else "amb o sense alcohol segons preferència")))
+         else (if (eq ?alc no) then "sense alcohol" else "amb o sense alcohol segons preferència")))
 
-  ;; --- Introducció general ---
-  (printout t crlf)
-  (printout t
-    "Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. "
-    "L’esdeveniment és de tipus " ?tipus ", amb un nivell de formalitat " ?form
-    ", previst per a " ?estacio " en espai " ?espai ", "
-    "per a un total de " ?ncom " comensals i amb un pressupost per persona entre "
-    ?lo " € i " ?hi " €. "
-    "Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre "
-    ?pmin " € i " ?pmax " €." crlf crlf)
+  ;; Microadaptacions per estació/espai (frases curtes i naturals)
+  (bind ?microEstacio "")
+  (if (and (eq ?estacio hivern) (eq ?espai interior)) then
+    (bind ?microEstacio " amb coccions càlides i bon manteniment de temperatura a sala"))
+  (if (and (eq ?estacio estiu) (eq ?espai exterior)) then
+    (bind ?microEstacio " amb elaboracions lleugeres i to refrescant, idoni a l’aire lliure"))
+  (if (and (eq ?estacio estiu) (eq ?espai interior)) then
+    (bind ?microEstacio " amb plats frescos i coccions curtes"))
+  (if (eq ?estacio primavera) then
+    (bind ?microEstacio " amb producte de temporada i textures amables"))
+  (if (eq ?estacio tardor) then
+    (bind ?microEstacio " amb salses suaus i producte de tardor"))
 
-  ;; --- Condicions aplicades ---
-  (printout t
-    "Les principals condicions aplicades han estat:" crlf crlf)
+  ;; Paràgraf base comú de context (adequació i preu)
+  (printout t crlf
+    "En conjunt, les tres propostes s’ajusten a un " ?tipus " " ?form
+    " en " ?estacio " i " ?espai ?microEstacio
+    ", dimensionades per a " ?ncom " comensals, amb un cost per persona dins del rang sol·licitat ["
+    ?lo "–" ?hi "] € (propostes reals entre " ?pmin " € i " ?pmax " €)." crlf)
 
-  ;; Estació i espai
-  (if (and (or (eq ?estacio primavera) (eq ?estacio estiu))
-           (eq ?espai exterior)) then
-    (printout t
-      "• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants." crlf))
-  (if (and (or (eq ?estacio primavera) (eq ?estacio estiu))
-           (eq ?espai interior)) then
-    (printout t
-      "• En ser un esdeveniment interior en temporada càlida, s’han prioritzat elaboracions fresques o de cocció curta." crlf))
-  (if (or (eq ?estacio tardor) (eq ?estacio hivern)) then
-    (printout t
-      "• En ser una estació freda, s’han seleccionat plats calents o tebis, amb productes de temporada." crlf))
-  (if (eq ?estacio indiferent) then
-    (printout t
-      "• No s’han aplicat restriccions per estació ni espai." crlf))
-
-  ;; Tipus d’esdeveniment
+  ;; Paràgrafs específics per tipus d’esdeveniment
   (if (eq ?tipus casament) then
-    (printout t
-      "• Com que es tracta d’un casament, s’han escollit plats de complexitat mitjana o alta i racions mitjanes o grans, amb un to celebratiu i cuidat." crlf))
+    (progn
+      (printout t
+        "S’ha buscat una seqüència natural de plats, amb equilibri entre intensitats i presentacions netes, evitant repeticions innecessàries i prioritzant la temporada." crlf)
+      (printout t
+        "Pel que fa a begudes, el maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " acompanya el caràcter celebratiu sense sobreposar-se al plat." crlf crlf)))
+
   (if (eq ?tipus aniversari) then
-    (printout t
-      "• En ser un aniversari, s’han prioritzat plats de complexitat mitjana o baixa i racions petites o mitjanes, per afavorir un ambient festiu i distès." crlf))
+    (progn
+      (printout t
+        "Les propostes privilegien sabors amables i formats fàcils de gaudir, pensats per agradar a perfils diversos sense redundàncies." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " manté un to festiu i refrescant." crlf crlf)))
+
   (if (eq ?tipus comunio) then
-    (printout t
-      "• Per a una comunió, s’han seleccionat plats suaus i equilibrats, adequats per a un públic familiar." crlf))
+    (progn
+      (printout t
+        "S’ha prioritzat una cuina suau i equilibrada, amb presentacions netes i ritme regular de servei, adequada a un públic familiar." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " acompanya sense tapar el plat." crlf crlf)))
+
   (if (eq ?tipus congres) then
-    (printout t
-      "• En tractar-se d’un congrés, s’han escollit plats petits i de baixa complexitat per facilitar un servei àgil i còmode." crlf))
+    (progn
+      (printout t
+        "El plantejament afavoreix la fluïdesa de servei en entorns professionals: racions de mida petita i complexitat baixa, pensades per consumir-se còmodament de peu." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " manté la boca neta i s’integra bé en passades successives." crlf crlf)))
+
   (if (eq ?tipus empresa) then
-    (printout t
-      "• Per a un esdeveniment d’empresa, s’han mantingut plats de complexitat mitjana o baixa i racions petites o mitjanes, coherents amb un entorn professional." crlf))
+    (progn
+      (printout t
+        "El disseny culinari combina netedat de sabors i presentacions acurades amb un ritme de sortides estable, adaptable a formats de migdia o vespre." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " aporta tensió aromàtica sense saturar, coherent amb el to corporatiu." crlf crlf)))
+
   (if (eq ?tipus altres) then
-    (printout t
-      "• En no especificar un tipus concret d’esdeveniment, s’han mantingut criteris generals d’equilibri i coherència." crlf))
+    (progn
+      (printout t
+        "S’ha buscat un equilibri clar entre plats, respectant l’estacionalitat i evitant barreges d’orígens massa marcades per mantenir coherència." crlf)
+      (printout t
+        "El maridatge " ?modeStr " " ?alcText " amb " ?bgs-str
+        " s’ajusta al perfil general de l’esdeveniment." crlf crlf)))
 
-  ;; Formalitat
-  (if (eq ?form formal) then
-    (printout t
-      "• En indicar un esdeveniment formal, només s’han inclòs plats i begudes amb presentacions i característiques formals." crlf))
-  (if (eq ?form informal) then
-    (printout t
-      "• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada." crlf))
-
-  ;; Nombre de comensals
-  (if (and (numberp ?ncom) (<= ?ncom 50)) then
-    (printout t
-      "• Amb menys de 50 comensals, s’han permès totes les complexitats de plats." crlf))
-  (if (and (numberp ?ncom) (> ?ncom 50) (<= ?ncom 150)) then
-    (printout t
-      "• Entre 50 i 150 comensals, s’han descartat plats d’alta complexitat per assegurar un servei àgil." crlf))
-  (if (and (numberp ?ncom) (> ?ncom 150)) then
-    (printout t
-      "• Amb més de 150 comensals, només s’han acceptat plats de complexitat baixa per facilitar la producció i el servei." crlf))
-
-  ;; Maridatge
-  (if (and (eq ?bm general) (eq ?alc no)) then
-    (printout t
-      "• S’ha aplicat maridatge general sense alcohol, buscant begudes equilibrades i refrescants." crlf))
-  (if (and (eq ?bm general) (eq ?alc si)) then
-    (printout t
-      "• S’ha aplicat maridatge general amb alcohol, amb begudes que complementen el to festiu." crlf))
-  (if (eq ?bm per-plat) then
-    (printout t
-      "• S’ha aplicat maridatge per plat, amb begudes associades específicament a cada elaboració." crlf))
-  (if (eq ?alc indiferent) then
-    (printout t
-      "• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol." crlf))
-  (printout t
-    "• Begudes seleccionades: " ?bgs-str "." crlf)
-
-  ;; Grups amb restriccions
+  ;; Paràgraf addicional si hi ha menús específics per a grups amb restriccions
   (bind ?SELGR (find-all-facts ((?g menu-seleccionat-grup)) TRUE))
   (if (> (length$ ?SELGR) 0) then
     (printout t
-      "• S’han generat menús específics per a grups amb dietes o al·lèrgies, garantint la compatibilitat dels ingredients i begudes." crlf))
-  (if (<= (length$ ?SELGR) 0) then
-    (printout t
-      "• No s’han definit grups amb dietes o al·lèrgies, de manera que no s’han aplicat filtres addicionals." crlf))
+      "A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei." crlf))
 
-  ;; Tancament
-  (printout t crlf
-    "En resum, les propostes finals respecten totes les preferències introduïdes i els criteris de coherència entre plats, estació, pressupost i maridatge." crlf crlf)
+  (printout t crlf)
 )
+
+
+;;; FI DE LO AFEGIT 
 
 ;; VALIDADORS DE RESPOSTES 
 (deffunction valida-boolea "Valida sí/no/indiferent"
@@ -406,12 +383,15 @@
       (bind ?OUT (create$ $?OUT ?s))))
   ?OUT)
 
+
+
 ;; MÒDULS DE CONTROL I CLASSIFICACIÓ HEURÍSTICA-------------------------------
 (defmodule ControlFlux (import MAIN ?ALL))
 (defrule ControlFlux::arrencada
   (declare (auto-focus TRUE))
   (initial-fact)
   =>
+  (focus ComposicioMenus)
   (focus RefinamentHeuristica)
   (focus AssociacioHeuristica)
   (focus AbstraccioHeuristica)
@@ -423,9 +403,9 @@
   (declare (auto-focus TRUE))
   (not (peticio))
   =>
-  (printout t crlf crlf "Benvingut/da al recomanador de menús RicoRico!" crlf crlf)
-  (printout t "T’ajudaré a trobar el menú ideal per al teu esdeveniment." crlf)
-  (printout t "Et faré algunes preguntes curtes. Si no tens clara la resposta encara, pots respondre 'indiferent'." crlf crlf)
+  (printout t "Benvingut/da al recomanador de menús RicoRico!" crlf)
+  (printout t "Si us plau respon a les preguntes següents per personalitzar les propostes." crlf)
+  (printout t "Per a totes les preguntes tens l'opció de respondre 'indiferent' si encara no ho tens clar." crlf crlf)
   (assert (peticio))
   (focus PreferenciesMenu))
 
@@ -434,12 +414,10 @@
   ?p <- (peticio (tipus-esdeveniment ?te&nil))
   (not (preguntat-tipus))
 =>
-  (printout t crlf "Comencem!" crlf)
   (bind ?res (valida-opcio 
               "Quin tipus d’esdeveniment estàs organitzant? (casament/aniversari/comunio/congres/empresa/altres)"
               casament aniversari comunio congres empresa altres)  )
   (modify ?p (tipus-esdeveniment ?res))
-  (printout t crlf "Perfecte, un " ?res ". Bona tria!" crlf)
   (assert (preguntat-tipus)))
 
 (defrule PreferenciesMenu::preguntar-data
@@ -448,32 +426,27 @@
   (not (preguntat-data))
 =>
   (bind ?r (valida-opcio
-              "En quina època de l’any se celebrarà l’esdeveniment? (primavera/estiu/tardor/hivern)"
+              "Quina època de l’any? (primavera/estiu/tardor/hivern)"
               primavera estiu tardor hivern))
   (modify ?p (data ?r))
-  (printout t crlf "Entès, " ?r "." crlf)
   (assert (preguntat-data)))
 
 (defrule PreferenciesMenu::preguntar-interior-exterior
   ?p <- (peticio (espai ?s&nil))
   (preguntat-data)
   (not (preguntat-interior-exterior))
-  =>
-  (bind ?r (valida-opcio 
-            "Es farà en un espai interior o exterior? (interior/exterior)" 
-            interior exterior))
+=>
+  (bind ?r (valida-opcio "Es farà en interior o exterior?" interior exterior))
   (modify ?p (espai ?r))
-  (printout t crlf "Perfecte, serà en espai " ?r "." crlf)
   (assert (preguntat-interior-exterior)))
 
-(defrule PreferenciesMenu::preguntar-num-comensals 
-  ?p <- (peticio (num-comensals ?n&nil)) 
-  (preguntat-interior-exterior) 
-  (not (preguntat-num-comensals)) 
-=> 
-  (bind ?r (valida-num-o-indif "Quants comensals assistiran aproximadament?" 1 5000)) 
-  (modify ?p (num-comensals ?r)) 
-  (printout t crlf "Apuntat, uns " ?r " comensals." crlf)
+(defrule PreferenciesMenu::preguntar-num-comensals
+  ?p <- (peticio (num-comensals ?n&nil))
+  (preguntat-interior-exterior)
+  (not (preguntat-num-comensals))
+=>
+  (bind ?r (valida-num-o-indif "Quants comensals assistiran aproximadament?" 1 5000))
+  (modify ?p (num-comensals ?r))
   (assert (preguntat-num-comensals)))
 
 (defrule PreferenciesMenu::preguntar-pressupost-min
@@ -481,7 +454,7 @@
   (preguntat-num-comensals)
   (not (preguntat-pressupost))
 =>
-  (bind ?min (valida-num-o-indif "Pel que fa al preu, quin és el pressupost mínim per persona?" 1 1000))
+  (bind ?min (valida-num-o-indif "Quin és el pressupost mínim per persona?" 1 1000))
   (modify ?p (pressupost-min ?min))
   (assert (preguntat-pressupost-min)))
 
@@ -490,10 +463,8 @@
   (preguntat-pressupost-min)
   (not (preguntat-pressupost-max))
 =>
-  (bind ?lb (if (numberp ?min) then ?min else 5))
-  (bind ?max (valida-num-o-indif "I el màxim?" ?lb 2000))
+  (bind ?max (valida-num-o-indif "I quin és el pressupost màxim per persona?" 5 2000))
   (modify ?p (pressupost-max ?max))
-    (printout t crlf "Perfecte, buscarem menús entre " ?min " € i " ?max " € per persona." crlf)
   (assert (preguntat-pressupost-max))
   (assert (preguntat-pressupost)))
 
@@ -502,11 +473,9 @@
   (preguntat-pressupost-max)
   (not (preguntat-formalitat))
 =>
-  (printout t crlf "Seguim. Parlem ara del to de l’esdeveniment." crlf)
-  (bind ?r (valida-opcio "Quin grau de formalitat busques? (formal/informal)" 
+  (bind ?r (valida-opcio "Quin grau de formalitat vols? (formal/ informal)" 
             informal formal))
   (modify ?p (formalitat ?r))
-  (printout t crlf "D’acord, apuntat com a " ?r "." crlf)
   (assert (preguntat-formalitat)))
 
 (defrule PreferenciesMenu::preguntar-beguda-general
@@ -514,10 +483,8 @@
   (preguntat-formalitat)
   (not (preguntat-beguda-general))
 =>
-  (printout t crlf "Perfecte. Seguim amb la beguda." crlf)
-  (bind ?r (valida-opcio "Vols la mateixa beguda per tot el menú o una per a cada plat? (general/per-plat)" general per-plat))
+  (bind ?r (valida-opcio "Beguda per a tot el menú o per a cada plat? (general/per-plat)" general per-plat))
   (modify ?p (beguda-mode ?r))
-  (printout t crlf "Perfecte, beguda " ?r "." crlf)
   (assert (preguntat-beguda-general)))
 
 (defrule PreferenciesMenu::preguntar-alcohol
@@ -527,7 +494,6 @@
 =>
   (bind ?r (valida-boolea "Prefereixes que el menú inclogui begudes alcohòliques?"))
   (modify ?p (alcohol ?r))
-  (printout t crlf "Entesos, begudes alcohòliques: " ?r "." crlf)
   (assert (preguntat-alcohol)))
 
 (defrule PreferenciesMenu::preguntar-alergens-prohibits
@@ -535,7 +501,6 @@
   (preguntat-alcohol)
   (not (preguntat-alergens-prohibits))
 =>
-  (printout t crlf "Per acabar, un tema important." crlf)
   (bind ?r (valida-boolea "Vols definir grups amb dietes o al·lèrgies específiques?"))
   (modify ?p (alergies-si ?r))
   (assert (preguntat-alergens-prohibits))
@@ -580,10 +545,9 @@
 )
 
 
-
 ; fUNCIONS DE VALIDACIÓ DE PLATS SEGONS PREFERÈNCIES
-(deffunction check-temperatura (?estacio ?espai ?temp ?ordres)
-  (if (eq ?ordres ordre-postres) then (return TRUE))
+(deffunction check-temperatura (?estacio ?espai ?temp $?ordres)
+  (if (member$ ordre-postres $?ordres) then (return TRUE))
   (if (or (eq ?estacio indiferent) (eq ?espai indiferent)) then (return TRUE))
   (if (or (eq ?estacio primavera) (eq ?estacio estiu)) then
       (return (or (eq ?temp "fred") (eq ?temp "tebi")
@@ -599,35 +563,42 @@
 
 (deffunction check-complexitat (?n ?cx)
   (if (not (numberp ?n)) then (return TRUE))            ; 'indiferent'
-  (if (<= ?n 50)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (and (> ?n 50) (<= ?n 150)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
-  (if (> ?n 150) then (return (eq ?cx baixa)))
+  (if (<= ?n 150)  then (return (or (eq ?cx alta) (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (and (> ?n 150) (<= ?n 500)) then (return (or (eq ?cx mitjana) (eq ?cx baixa))))
+  (if (> ?n 500) then (return (eq ?cx baixa)))
   FALSE)
 
 (deffunction check-dispo (?estacio $?dispo)
   (or (eq ?estacio indiferent) (member$ ?estacio (create$ $?dispo))))
 
-(deffunction check-event (?te ?cx ?mida ?ordres $?apte)
-  ;; Cas especial: postres de casament
-  (if (and (eq ?te casament)
-           (eq ?ordres ordre-postres))
-    then
-      ;; Només permetre postres amb casament_only
-      (return (member$ casament_only $?apte))
-  )
-
-  ;; En la resta de casos, només cal comprovar que sigui apte per tots
-  (if (not (member$ tots (create$ $?apte)))
+(deffunction check-event (?te ?cx ?mida $?apte)
+  ;; Primer, comprova si el plat és apte per l’esdeveniment
+  (if (not (or (eq ?te indiferent)
+               (member$ tots (create$ $?apte))
+               (member$ ?te (create$ $?apte))))
     then (return FALSE))
 
-  ;; Ara filtrem per tipus d’esdeveniment (només si és casament, la resta = TRUE)
+  ;; Si és apte, apliquem les regles segons el tipus d’esdeveniment
+  (if (eq ?te indiferent) then (return TRUE))
+
   (if (eq ?te casament) then
-      (return (and (or (eq ?cx alta) (eq ?cx mitjana))
-                   (or (eq ?mida gran) (eq ?mida mitjana))))
-  )
-  ;; Altres tipus → no es filtra
-  (return TRUE)
-)
+    (return (and (or (eq ?cx alta) (eq ?cx mitjana))
+                 (or (eq ?mida gran) (eq ?mida mitjana))))
+  else
+  (if (or (eq ?te aniversari) (eq ?te comunio)) then
+    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
+                 (or (eq ?mida petita) (eq ?mida mitjana))))
+  else
+  (if (eq ?te congres) then
+    (return (and (eq ?cx baixa)
+                 (eq ?mida petita)))
+  else
+  (if (eq ?te empresa) then
+    (return (and (or (eq ?cx mitjana) (eq ?cx baixa))
+                 (or (eq ?mida petita) (eq ?mida mitjana))))
+  else
+    ;; Altres o per defecte
+    (return TRUE))))))
 
 
 ; FUNCIÓ DE VALIDACIÓ DE BEGUDES SEGONS PREFERÈNCIES
@@ -737,14 +708,14 @@
                  (formalitat ?form-str)
                  (complexitat ?cx)
                  (mida_racio ?mida)
-                 (te_ordre ?ordres)
+                 (te_ordre $?ordres)
                  (disponibilitat_plats $?dispo)
                  (apte_esdeveniment $?apte))
-  (test (check-temperatura ?estacio ?espai ?temp ?ordres))
+  (test (check-temperatura ?estacio ?espai ?temp $?ordres))
   (test (check-formalitat ?f ?form-str))
   (test (check-complexitat ?n ?cx))
   (test (check-dispo ?estacio $?dispo))
-  (test (check-event ?te ?cx ?mida ?ordres $?apte))
+  (test (check-event ?te ?cx ?mida $?apte))
   =>
   (assert (plat-valid-final (nom ?nom)))
 )
@@ -788,15 +759,7 @@
   (assert (beguda-valida-grup (grup ?g) (nom ?nom)))
 )
 
-(defrule AbstraccioHeuristica::marcar-abstraccio-finalitzada
-  (declare (salience -100))
-  (respostes-completes)
-  (not (abstraccio-finalitzada))
-  =>
-  (assert (abstraccio-finalitzada))
-)
-
-
+;; === Materialitza l'esdeveniment com a instància OO (substitueix el snapshot) ===
 (defrule AbstraccioHeuristica::materialitza-esdeveniment
   (declare (salience 50))
   (respostes-completes)
@@ -817,12 +780,15 @@
     (beguda_mode   (fact-slot-value ?P beguda-mode))
     (alcohol       (fact-slot-value ?P alcohol))))
 
+
 ;; PAS 3: ASSOCIACIÓ HEURÍSTICA -------------------------------
 (defmodule AssociacioHeuristica (import MAIN ?ALL) (import AbstraccioHeuristica ?ALL) (export ?ALL))
+;; Disponibilitat: si data = 'indiferent', accepta totes les temporades del plat
 
 
 ;; PAS 4: REFINAMENT HEURÍSTICA -------------------------------
-(defmodule RefinamentHeuristica (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
+(defmodule RefinamentHeuristica (import MAIN ?ALL) (import AssociacioHeuristica ?ALL))
+(defmodule ComposicioMenus (import MAIN ?ALL) (import PreferenciesMenu ?ALL) (export ?ALL))
 (deffunction menu-apte-per-grup (?mv ?g)
   (bind ?pr (fact-slot-value ?mv primer))
   (bind ?sg (fact-slot-value ?mv segon))
@@ -830,7 +796,7 @@
   (bind $?bgs (fact-slot-value ?mv begudes))
 
   (bind ?ok-pr (> (length$ (find-all-facts ((?f plat-valid-grup))
-                      (and (eq (fact-slot-value ?f grup) ?g) 
+                      (and (eq (fact-slot-value ?f grup) ?g)
                            (eq (fact-slot-value ?f nom)  ?pr)))) 0))
   (bind ?ok-sg (> (length$ (find-all-facts ((?f plat-valid-grup))
                       (and (eq (fact-slot-value ?f grup) ?g)
@@ -1086,8 +1052,45 @@
   (bind ?min (min ?p1 ?p2 ?p3))
   TRUE)
 
+; ==== FEE ADDITIU PER PERSONA (coherent amb esdeveniment) ====
+(deffunction calc-service-fee (?req ?pr ?sg ?bm)
+  ;; Extreu context de la petició
+  (bind ?te   (fact-slot-value ?req tipus-esdeveniment))
+  (bind ?form (fact-slot-value ?req formalitat))
+
+  ;; 1) Fee per tipus d’esdeveniment (€/pax)
+  ;;    casament > empresa > aniversari > comunio > congres > altres/indiferent
+  (bind ?fee-event
+    (if (eq ?te casament)    then 8.0
+    else (if (eq ?te empresa)    then 4.0
+    else (if (eq ?te aniversari) then 2.0
+    else (if (eq ?te comunio)    then 1.0
+    else (if (eq ?te congres)    then 0.0
+    else 1.0))))))  ; 'altres' o 'indiferent' → 1 €
+
+  ;; 2) Fee per formalitat
+  (bind ?fee-form (if (eq ?form formal) then 6.0 else 0.0))
+
+  ;; 3) Fee per mode de beguda
+  ;;    Per-plat implica més servei/vidre → +3; General → +1 (muntatge)
+  (bind ?fee-beg (if (eq ?bm per-plat) then 3.0 else 1.0))
+
+  ;; 4) Fee per “carrega” dels plats (complexitat primer i segon)
+  ;;    alta:+2, mitjana:+1, baixa:+0 per cada plat (max 4 €)
+  (bind ?c1 (send ?pr get-complexitat))
+  (bind ?c2 (send ?sg get-complexitat))
+  (bind ?fee-cx 0.0)
+  (if (eq ?c1 alta)    then (bind ?fee-cx (+ ?fee-cx 2.0))
+   else (if (eq ?c1 mitjana) then (bind ?fee-cx (+ ?fee-cx 1.0))))
+  (if (eq ?c2 alta)    then (bind ?fee-cx (+ ?fee-cx 2.0))
+   else (if (eq ?c2 mitjana) then (bind ?fee-cx (+ ?fee-cx 1.0))))
+
+  ;; Total fee (arrodonit a cèntim)
+  (return (/ (round (* (+ ?fee-event ?fee-form ?fee-beg ?fee-cx) 100)) 100.0))
+)
+
 ;; ====== GENERADOR DE MENÚS — versió curta, sense helpers nous ======
-(defrule RefinamentHeuristica::generar-menus-valids
+(defrule ComposicioMenus::generar-menus-valids
   (declare (auto-focus TRUE))
   (respostes-completes)
   ?req <- (peticio (beguda-mode ?bm)
@@ -1095,7 +1098,6 @@
                    (pressupost-max ?pmax)
                    (formalitat ?form)
                    (alcohol ?alc))
-  (abstraccio-finalitzada)
   (not (menus-generats))
 =>
   ;; Normalitza rang pressupost
@@ -1106,15 +1108,19 @@
   (bind ?primers (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (eq (send ?p get-te_ordre) ordre-primer))))
+                        (member$ ordre-primer (send ?p get-te_ordre)))))
   (bind ?segons  (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (eq (send ?p get-te_ordre) ordre-segon))))
+                        (member$ ordre-segon (send ?p get-te_ordre)))))
   (bind ?postres (find-all-instances ((?p Plat))
                    (and (> (length$ (find-all-facts ((?f plat-valid-final))
                                  (eq (fact-slot-value ?f nom) (send ?p get-nom)))) 0)
-                        (eq (send ?p get-te_ordre) ordre-postres))))
+                        (member$ ordre-postres (send ?p get-te_ordre)))))
+
+  (bind ?primers (subseq$ ?primers 1 (min 30 (length$ ?primers))))
+  (bind ?segons  (subseq$ ?segons  1 (min 30 (length$ ?segons))))
+  (bind ?postres (subseq$ ?postres 1 (min 20 (length$ ?postres))))
 
   ;; Begudes candidates segons maridatge, només valides finalment
   (bind ?bG (find-all-instances ((?b Beguda))
@@ -1175,13 +1181,14 @@
               (bind ?p3 (/ (round (* ?p3 100)) 100.0))
 
               (bind ?base (+ ?p1 ?p2 ?p3))
-
+              (bind ?fee (calc-service-fee ?req ?pr ?sg ?bm))
+              (bind ?base2 (+ ?base ?fee))
 
                 ;; ====== Combinació amb beguda ======
                 (if (eq ?bm general) then
                   ;; Només 1 beguda general per menú
                   (foreach ?GB ?bG
-                    (bind ?total (+ ?base (send ?GB get-preu_cost)))
+                    (bind ?total (+ ?base2 (send ?GB get-preu_cost)))
                     (bind ?total (/ (round (* ?total 100)) 100.0))
                     (if (and (>= ?total ?LO) (<= ?total ?HI)) then
                       (assert (menu-valid
@@ -1195,7 +1202,7 @@
                   (foreach ?bPrC ?bPr
                     (foreach ?bSgC ?bSg
                       (foreach ?bPoC ?bPo
-                        (bind ?total (+ ?base
+                        (bind ?total (+ ?base2
                                         (send ?bPrC get-preu_cost)
                                         (send ?bSgC get-preu_cost)
                                         (send ?bPoC get-preu_cost)))
@@ -1220,18 +1227,19 @@
   (assert (menus-generats))
 )
 
+
+
 ;; 4) Impressió de 3 menús per cada grup definit
-(defrule RefinamentHeuristica::mostrar-menus-inicials
+(defrule ComposicioMenus::mostrar-menus-inicials
   (declare (auto-focus TRUE))
   (respostes-completes)
-  (menus-generats)
   (not (menus-presentats))
   =>
   (bind ?menus (find-all-facts ((?m menu-valid)) TRUE))
   (bind ?n (length$ ?menus))
 
   (if (<= ?n 0) then
-    (printout t crlf "*** Ho sentim... no hem trobat menús vàlids dins del pressupost. ***" crlf)
+    (printout t crlf "*** No hi ha menús vàlids dins del pressupost. ***" crlf)
     (assert (menus-presentats))
    else
     (printout t crlf "=== MENÚS DISPONIBLES (" ?n " en total) ===" crlf)
@@ -1272,7 +1280,7 @@
   )
 )
 
-(defrule RefinamentHeuristica::mostrar-menus-per-grup
+(defrule ComposicioMenus::mostrar-menus-per-grup
   (declare (auto-focus TRUE))
   (menus-presentats)                       ;; ja hem acabat el general
   (grup (nom ?g))
