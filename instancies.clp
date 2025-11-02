@@ -9030,7 +9030,7 @@
     (procedencia_plat "Indonèsia")
   )
   (arros-negre-dolc-amb-llet-de-coco of Plat
-    (nom "Arròs negre dolç amb llet de coco")
+    (nom "Mousse de coco vegana")
     (formalitat "informal")
     (temperatura "fred")
     (complexitat mitjana)
@@ -9940,7 +9940,7 @@
     (procedencia_plat "Nigèria")
   )
   (coco-pops-nigerians of Plat
-    (nom "Coco Pops nigerians")
+    (nom "Mousse lleugera de coco i cereals")
     (formalitat "informal")
     (temperatura "fred")
     (complexitat baixa)
