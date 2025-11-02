@@ -98,7 +98,7 @@
     (procedencia_plat "Mediterrània")
   )
   (amanida-de-pollastre-a-la-graella-amb-rucula-i-parmesa of Plat
-    (nom "Amanida de pollastre a la graella amb rúcula i parmesà")
+    (nom "Amanida de tofu a la graella amb rúcula i parmesà")
     (formalitat "informal")
     (temperatura "fred")
     (complexitat alta)
@@ -107,7 +107,7 @@
     (apte_esdeveniment tots)
     (preu_cost 7.5)
     (disponibilitat_plats estiu hivern primavera tardor)
-    (te_ingredients_noms "pollastre a la graella" "rucula" "llimona" "mostassa" "parmesa")
+    (te_ingredients_noms "tofu" "rucula" "llimona" "mostassa" "parmesa")
     (categoria amanida_fresca)
     (procedencia_plat "Mediterrània")
   )
