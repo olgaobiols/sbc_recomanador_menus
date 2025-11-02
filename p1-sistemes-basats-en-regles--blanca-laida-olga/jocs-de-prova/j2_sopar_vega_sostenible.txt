@@ -3,7 +3,7 @@
 # Context:
 # Una empresa dedicada al reciclatge i a la gestió de residus organitza un sopar 
 # de primavera per celebrar l’èxit d’un projecte de recuperació de plàstics oceànics.
-# Fidels als seus valors, volen un menú totalment vegà i sostenible, servit en un espai 
+# Fidels als seus valors, volen també un menú vegà i sostenible, servit en un espai 
 # exterior amb materials reutilitzables.
 #
 # Característiques de la petició:
@@ -60,3 +60,32 @@ Les principals condicions aplicades han estat:
 • En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
 • Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
 • S’ha aplicat maridatge general sense alcohol, buscant begudes equilibrades i refrescants.
+
+A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei.
+
+
+=== MENÚS PER AL GRUP: vegans ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Entrepà de verdures a la graella
+  Postres:   Bunyols d'arròs dolços indonesis
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.0 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Sayur Asem (sopa agredolça d'Indonèsia)
+  Principal: Arròs amb mongetes a la jamaicana
+  Postres:   Bunyols d'arròs dolços indonesis
+  Begudes:   "Tònica premium"
+  TOTAL:     27.5 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Mousse de coco
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     26.36 €
+  ----------------------------------------
