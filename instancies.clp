@@ -17272,7 +17272,7 @@
   (ingredient-conill of Ingredient
     (nom "conill")
     (alergen "-")
-    (dietes VG V HALAL_POT KOSHER_POT)
+    (dietes HALAL_POT KOSHER_POT)
   )
 
   (ingredient-cervesa of Ingredient
