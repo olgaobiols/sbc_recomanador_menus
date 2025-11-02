@@ -1,0 +1,92 @@
+# JOC DE PROVA 3: Aniversari gluten free informal
+# -------------------------------------------------
+# Context:
+# Trobada d’aniversari en format pícnic/terrassa, amb garlandes de llum, taules altes i ambient
+# totalment desenfadat. Es vol un menú saborós, compartible i pràctic per a menjar dret o en taules
+# informals. Tots els convidats han de poder gaudir dels plats, per això a partir del menú base sense
+# cap mena de restriccions s'han generat diferents menús per aquells convidats celíacs.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: aniversari
+#   Estació: primavera
+#   Espai: exterior (pícnic/terrassa)
+#   Nombre de comensals: 40
+#   Pressupost: 18–32 €
+#   Formalitat: informal
+#   Mode de beguda: general
+#   Alcohol: indiferent
+#   Dietes: sense gluten (gluten free)
+#
+# Objectiu:
+# Comprovar que el sistema pot partir d’un menú base general i generar versions adaptades per a
+# convidats celíacs, mantenint la coherència amb un context informal i pressupost moderat.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Cassola de tonyina cremosa
+  Postres:   Amanida de fruites Ambrosia
+  Begudes:   "Refresc de llimona"
+  TOTAL:     22.0 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida de tonyina amb herbes mediterrànies i feta
+  Principal: Albergínia rostida amb ceba dolça
+  Postres:   Mousse de coco 
+  Begudes:   "Vi negre criança"
+  TOTAL:     25.86 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Amanida de fruites Ambrosia
+  Begudes:   "Aperol Spritz"
+  TOTAL:     26.5 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus aniversari, amb un nivell de formalitat informal, previst per a primavera en espai exterior, per a un total de 40 comensals i amb un pressupost per persona entre 18.0 € i 32.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 26.5 € i 22.0 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• En ser un aniversari, s’han prioritzat plats de complexitat mitjana o baixa i racions petites o mitjanes, per afavorir un ambient festiu i distès.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol.
+
+A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei.
+
+
+=== MENÚS PER AL GRUP: celíacs ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Cassola d'arròs amb tonyina i pèsols
+  Postres:   Amanida de fruites Ambrosia
+  Begudes:   "Refresc de llimona"
+  TOTAL:     22.0 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida de tonyina amb herbes mediterrànies i feta
+  Principal: Ales al romaní i balsàmic
+  Postres:   Mousse de coco 
+  Begudes:   "Tònica premium"
+  TOTAL:     24.86 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de quinoa i verdures amb salsa de cacauet
+  Principal: Albergínia rostida amb ceba dolça
+  Postres:   Arròs amb llet
+  Begudes:   "Aperol Spritz"
+  TOTAL:     26.86 €
+  ----------------------------------------

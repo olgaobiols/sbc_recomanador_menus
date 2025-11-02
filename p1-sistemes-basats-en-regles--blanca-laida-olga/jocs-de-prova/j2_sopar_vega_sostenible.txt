@@ -1,0 +1,62 @@
+# JOC DE PROVA 2: Sopar d’empresa vegà sostenible
+# -------------------------------------------------
+# Context:
+# Una empresa dedicada al reciclatge i a la gestió de residus organitza un sopar 
+# de primavera per celebrar l’èxit d’un projecte de recuperació de plàstics oceànics.
+# Fidels als seus valors, volen un menú totalment vegà i sostenible, servit en un espai 
+# exterior amb materials reutilitzables.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: empresa
+#   Estació: primavera
+#   Espai: exterior
+#   Nombre de comensals: 140
+#   Pressupost: 24–38 €
+#   Formalitat: informal
+#   Mode de beguda: general
+#   Alcohol: no
+#   Dietes: vegà
+#
+# Objectiu:
+# Verificar que el sistema pot generar menús 100 % vegans, sostenibles i sense alcohol,
+# mantenint la coherència amb un entorn empresarial informal a l’aire lliure.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT (Resultat obtingut a l'execució real)
+
+==== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Cassola de tonyina cremosa
+  Postres:   Amanida de fruites Ambrosia
+  Begudes:   "Refresc de llimona"
+  TOTAL:     24.0 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida de tofu a la graella amb rúcula i parmesà
+  Principal: Galetes de patata arrebossades
+  Postres:   Mousse de coco vegana
+  Begudes:   "Refresc de cola"
+  TOTAL:     26.36 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Amanida de fruites Ambrosia
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     26.0 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus empresa, amb un nivell de formalitat informal, previst per a primavera en espai exterior, per a un total de 140 comensals i amb un pressupost per persona entre 20.0 € i 50.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 26.36 € i 24.0 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• Per a un esdeveniment d’empresa, s’han mantingut plats de complexitat mitjana o baixa i racions petites o mitjanes, coherents amb un entorn professional.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• S’ha aplicat maridatge general sense alcohol, buscant begudes equilibrades i refrescants.

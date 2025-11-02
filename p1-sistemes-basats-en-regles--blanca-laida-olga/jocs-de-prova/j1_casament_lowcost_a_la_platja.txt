@@ -1,0 +1,64 @@
+# JOC DE PROVA 1: Casament low-cost a la platja
+# -------------------------------------------------
+# Context:
+# Els nuvis volen celebrar el casament de manera senzilla però especial: una cerimònia a la sorra, 
+# en ple estiu i davant del mar. L’ambient és informal, fresc i desenfadat, amb il·luminació càlida, 
+# peus descalços i brisa marina. L’objectiu no és el luxe, sinó aconseguir una bona relació 
+# qualitat-preu amb plats estètics, lleugers i refrescants que s’integrin amb l’entorn mediterrani.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: casament
+#   Estació: estiu
+#   Espai: exterior (platja)
+#   Nombre de comensals: 80
+#   Pressupost: 45–75 €
+#   Formalitat: informal
+#   Mode de beguda: general
+#   Alcohol: sí
+#   Dietes: cap restricció global
+#
+# Objectiu:
+# Validar la gestió d’un casament informal a l’aire lliure amb pressupost limitat, 
+# comprovant que el sistema aplica correctament les regles nupcials, la coherència gastronòmica 
+# i les adaptacions d’estació i formalitat.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida de pollastre amb sèsam i soja
+  Principal: Arròs fregit clàssic
+  Postres:   Pastís de boda de maduixa i iogurt grec
+  Begudes:   "Vi blanc jove sec"
+  TOTAL:     54.02 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Tomàquets farcits
+  Principal: Arròs al curri amb panses
+  Postres:   Pastís de boda de coco i pinya
+  Begudes:   "Martini blanc"
+  TOTAL:     60.41 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de pollastre a la graella amb rúcula i parmesà
+  Principal: Albergínia al forn amb tomàquet i nous
+  Postres:   Pastís de boda Red Velvet amb crema de formatge
+  Begudes:   "Vi negre criança"
+  TOTAL:     72.73 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus casament, amb un nivell de formalitat informal, previst per a estiu en espai exterior, per a un total de 80 comensals i amb un pressupost per persona entre 45.0 € i 75.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 72.73 € i 54.02 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• Com que es tracta d’un casament, s’han escollit plats de complexitat mitjana o alta i racions mitjanes o grans, amb un to celebratiu i cuidat.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• S’ha aplicat maridatge general amb alcohol, amb begudes que complementen el to festiu.
