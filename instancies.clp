@@ -9043,6 +9043,21 @@
     (categoria lacti_suau)
     (procedencia_plat "Indonèsia")
   )
+
+  (mousse-llet-de-coco of Plat
+    (nom "Mousse de coco")
+    (formalitat "informal")
+    (temperatura "fred")
+    (complexitat mitjana)
+    (mida_racio mitjana)
+    (te_ordre ordre-postres)
+    (apte_esdeveniment tots)
+    (preu_cost 6.5)
+    (disponibilitat_plats estiu hivern primavera tardor)
+    (te_ingredients_noms "aigua" "pandan" "sucre more" "sal" "llet de coco")
+    (categoria lacti_suau)
+    (procedencia_plat "Indonèsia")
+  )
   (bagels-naturals of Plat
     (nom "Bagels naturals")
     (formalitat "informal")
