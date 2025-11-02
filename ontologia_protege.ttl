@@ -13,37 +13,40 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#begudes
-untitled-ontology-9:begudes rdf:type owl:ObjectProperty ;
-                            rdfs:domain [ rdf:type owl:Restriction ;
-                                          owl:onProperty untitled-ontology-9:begudes ;
-                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass untitled-ontology-9:Plat
-                                        ] .
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#compatible_amb
+untitled-ontology-9:compatible_amb rdf:type owl:ObjectProperty ;
+                                   rdfs:domain untitled-ontology-9:Plat ;
+                                   rdfs:range untitled-ontology-9:Plat ;
+                                   rdfs:comment "Relació de compatibilitat entre plats del menu" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#disposa_de
 untitled-ontology-9:disposa_de rdf:type owl:ObjectProperty ;
                                rdfs:domain untitled-ontology-9:Esdeveniment ;
-                               rdfs:range untitled-ontology-9:Menu .
+                               rdfs:range untitled-ontology-9:Menu ;
+                               rdfs:comment "Un esdeveniment disposa de menus" .
 
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#postres
-untitled-ontology-9:postres rdf:type owl:ObjectProperty ;
-                            rdfs:domain untitled-ontology-9:Menu ;
-                            rdfs:range untitled-ontology-9:Plat .
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#marida_amb
+untitled-ontology-9:marida_amb rdf:type owl:ObjectProperty ;
+                               rdfs:domain untitled-ontology-9:Beguda ;
+                               rdfs:range untitled-ontology-9:Plat ;
+                               rdfs:comment "Relació de maridatge beguda amb plat" .
 
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#primer
-untitled-ontology-9:primer rdf:type owl:ObjectProperty ;
-                           rdfs:domain untitled-ontology-9:Menu ;
-                           rdfs:range untitled-ontology-9:Plat .
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#part_de
+untitled-ontology-9:part_de rdf:type owl:ObjectProperty ;
+                            rdfs:domain untitled-ontology-9:Beguda ,
+                                        untitled-ontology-9:Plat ;
+                            rdfs:range untitled-ontology-9:Menu ;
+                            rdfs:comment "Els plats i les begudes son part del menu" .
 
 
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#segon
-untitled-ontology-9:segon rdf:type owl:ObjectProperty ;
-                          rdfs:domain untitled-ontology-9:Menu ;
-                          rdfs:range untitled-ontology-9:Plat .
+###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#te_ingredient
+untitled-ontology-9:te_ingredient rdf:type owl:ObjectProperty ;
+                                  rdfs:domain untitled-ontology-9:Plat ;
+                                  rdfs:range untitled-ontology-9:Ingredient ;
+                                  rdfs:comment "Els ingredients que conformen cada plat" .
 
 
 #################################################################
@@ -55,27 +58,31 @@ untitled-ontology-9:alcohol rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
                             rdf:type owl:FunctionalProperty ;
                             rdfs:domain untitled-ontology-9:Beguda ,
-                                        untitled-ontology-9:Esdeveniment .
+                                        untitled-ontology-9:Esdeveniment ;
+                            rdfs:comment "beguda té alcohol o no, esdeveniment compte amb begudes alcoholiques o no" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#alergen
 untitled-ontology-9:alergen rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
                             rdfs:domain untitled-ontology-9:Beguda ,
-                                        untitled-ontology-9:Ingredient .
+                                        untitled-ontology-9:Ingredient ;
+                            rdfs:comment "els alergens que tenen els ingredients" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#apte_esdeveniment
 untitled-ontology-9:apte_esdeveniment rdf:type owl:DatatypeProperty ;
                                       rdfs:subPropertyOf owl:topDataProperty ;
-                                      rdfs:domain untitled-ontology-9:Plat .
+                                      rdfs:domain untitled-ontology-9:Plat ;
+                                      rdfs:comment "plats que son aptes per cada tipus d'esdeveniment" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#beguda_mode
 untitled-ontology-9:beguda_mode rdf:type owl:DatatypeProperty ;
                                 rdfs:domain untitled-ontology-9:Esdeveniment ,
                                             untitled-ontology-9:Menu ;
-                                rdfs:range xsd:string .
+                                rdfs:range xsd:string ;
+                                rdfs:comment "beguda general o per plat del menu i esdeveniment" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#categoria
@@ -83,37 +90,36 @@ untitled-ontology-9:categoria rdf:type owl:DatatypeProperty ;
                               rdfs:subPropertyOf owl:topDataProperty ;
                               rdf:type owl:FunctionalProperty ;
                               rdfs:domain untitled-ontology-9:Plat ;
-                              rdfs:range xsd:string .
+                              rdfs:range xsd:string ;
+                              rdfs:comment "categoria del plat per poder fer compatibilitat entre plats" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#complexitat
 untitled-ontology-9:complexitat rdf:type owl:DatatypeProperty ,
                                          owl:FunctionalProperty ;
-                                rdfs:domain untitled-ontology-9:Plat .
-
-
-###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#data
-untitled-ontology-9:data rdf:type owl:DatatypeProperty ;
-                         rdfs:domain untitled-ontology-9:Esdeveniment ;
-                         rdfs:range xsd:string .
+                                rdfs:domain untitled-ontology-9:Plat ;
+                                rdfs:comment "si es complexitat alta, mitjana o baixa" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#dietes
 untitled-ontology-9:dietes rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
-                           rdfs:domain untitled-ontology-9:Beguda .
+                           rdfs:domain untitled-ontology-9:Beguda ;
+                           rdfs:comment "dietes corresponents de cada beguda" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#disponibilitat_plats
 untitled-ontology-9:disponibilitat_plats rdf:type owl:DatatypeProperty ;
                                          rdfs:subPropertyOf owl:topDataProperty ;
-                                         rdfs:domain untitled-ontology-9:Plat .
+                                         rdfs:domain untitled-ontology-9:Plat ;
+                                         rdfs:comment "temporada que un plat esta disponible" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#es_general
 untitled-ontology-9:es_general rdf:type owl:DatatypeProperty ;
                                rdfs:subPropertyOf owl:topDataProperty ;
-                               rdfs:domain untitled-ontology-9:Beguda .
+                               rdfs:domain untitled-ontology-9:Beguda ;
+                               rdfs:comment "si una beguda es general per tot el menu o no" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#formalitat
@@ -122,7 +128,8 @@ untitled-ontology-9:formalitat rdf:type owl:DatatypeProperty ,
                                rdfs:domain untitled-ontology-9:Beguda ,
                                            untitled-ontology-9:Esdeveniment ,
                                            untitled-ontology-9:Plat ;
-                               rdfs:range xsd:string .
+                               rdfs:range xsd:string ;
+                               rdfs:comment "beguda, plat, esdeveniment formal o informal" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#interior
@@ -130,21 +137,24 @@ untitled-ontology-9:interior rdf:type owl:DatatypeProperty ,
                                       owl:FunctionalProperty ;
                              rdfs:domain untitled-ontology-9:Esdeveniment ;
                              rdfs:range xsd:boolean ,
-                                        xsd:string .
+                                        xsd:string ;
+                             rdfs:comment "esdeveniment sera interior o exterior o indiferemt" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#maridatge
 untitled-ontology-9:maridatge rdf:type owl:DatatypeProperty ;
                               rdfs:subPropertyOf owl:topDataProperty ;
                               rdf:type owl:FunctionalProperty ;
-                              rdfs:domain untitled-ontology-9:Beguda .
+                              rdfs:domain untitled-ontology-9:Beguda ;
+                              rdfs:comment "maridatge de beguda" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#mida_racio
 untitled-ontology-9:mida_racio rdf:type owl:DatatypeProperty ;
                                rdfs:subPropertyOf owl:topDataProperty ;
                                rdfs:domain untitled-ontology-9:Plat ;
-                               rdfs:range xsd:string .
+                               rdfs:range xsd:string ;
+                               rdfs:comment "si plats seran grans, mitjans o petits" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#nom
@@ -154,7 +164,8 @@ untitled-ontology-9:nom rdf:type owl:DatatypeProperty ;
                         rdfs:domain untitled-ontology-9:Beguda ,
                                     untitled-ontology-9:Ingredient ,
                                     untitled-ontology-9:Plat ;
-                        rdfs:range xsd:string .
+                        rdfs:range xsd:string ;
+                        rdfs:comment "nom del plat, beguda i ingredient" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#num_comensals
@@ -162,7 +173,8 @@ untitled-ontology-9:num_comensals rdf:type owl:DatatypeProperty ;
                                   rdfs:subPropertyOf owl:topDataProperty ;
                                   rdf:type owl:FunctionalProperty ;
                                   rdfs:domain untitled-ontology-9:Esdeveniment ;
-                                  rdfs:range xsd:int .
+                                  rdfs:range xsd:int ;
+                                  rdfs:comment "numero de comensals de l'esdeveniment" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#ocasio
@@ -170,19 +182,22 @@ untitled-ontology-9:ocasio rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdf:type owl:FunctionalProperty ;
                            rdfs:domain untitled-ontology-9:Esdeveniment ;
-                           rdfs:range xsd:string .
+                           rdfs:range xsd:string ;
+                           rdfs:comment "tipus d'esdeveniment" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#pressupost_max
 untitled-ontology-9:pressupost_max rdf:type owl:DatatypeProperty ;
                                    rdfs:domain untitled-ontology-9:Esdeveniment ;
-                                   rdfs:range xsd:float .
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "pressupost màxim per persona del menu" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#pressupost_min
 untitled-ontology-9:pressupost_min rdf:type owl:DatatypeProperty ;
                                    rdfs:domain untitled-ontology-9:Esdeveniment ;
-                                   rdfs:range xsd:float .
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "pressupost minim per persona del menu" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_cost
@@ -191,13 +206,15 @@ untitled-ontology-9:preu_cost rdf:type owl:DatatypeProperty ;
                               rdf:type owl:FunctionalProperty ;
                               rdfs:domain untitled-ontology-9:Beguda ,
                                           untitled-ontology-9:Ingredient ;
-                              rdfs:range xsd:double .
+                              rdfs:range xsd:double ;
+                              rdfs:comment "preu que costa cada plat i beguda" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#preu_total
 untitled-ontology-9:preu_total rdf:type owl:DatatypeProperty ;
                                rdfs:domain untitled-ontology-9:Menu ;
-                               rdfs:range xsd:float .
+                               rdfs:range xsd:float ;
+                               rdfs:comment "preu total del menu" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#procedencia_plat
@@ -205,14 +222,16 @@ untitled-ontology-9:procedencia_plat rdf:type owl:DatatypeProperty ;
                                      rdfs:subPropertyOf owl:topDataProperty ;
                                      rdf:type owl:FunctionalProperty ;
                                      rdfs:domain untitled-ontology-9:Plat ;
-                                     rdfs:range xsd:string .
+                                     rdfs:range xsd:string ;
+                                     rdfs:comment "país d'on és original el plat" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#te_ingredients_noms
 untitled-ontology-9:te_ingredients_noms rdf:type owl:DatatypeProperty ;
                                         rdfs:subPropertyOf owl:topDataProperty ;
                                         rdfs:domain untitled-ontology-9:Plat ;
-                                        rdfs:range xsd:string .
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "quins ingredients te cada plat" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#te_ordre
@@ -220,7 +239,8 @@ untitled-ontology-9:te_ordre rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf owl:topDataProperty ;
                              rdf:type owl:FunctionalProperty ;
                              rdfs:domain untitled-ontology-9:Plat ;
-                             rdfs:range xsd:string .
+                             rdfs:range xsd:string ;
+                             rdfs:comment "si el plat es primer, segon o postre" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#temperatura
@@ -228,7 +248,8 @@ untitled-ontology-9:temperatura rdf:type owl:DatatypeProperty ;
                                 rdfs:subPropertyOf owl:topDataProperty ;
                                 rdf:type owl:FunctionalProperty ;
                                 rdfs:domain untitled-ontology-9:Plat ;
-                                rdfs:range xsd:string .
+                                rdfs:range xsd:string ;
+                                rdfs:comment "indica si el plat es calent, tebi o fred" .
 
 
 ###  http://www.w3.org/2002/07/owl#topDataProperty
@@ -241,48 +262,28 @@ owl:topDataProperty rdfs:domain untitled-ontology-9:Esdeveniment ;
 #################################################################
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Beguda
-untitled-ontology-9:Beguda rdf:type owl:Class .
+untitled-ontology-9:Beguda rdf:type owl:Class ;
+                           rdfs:comment "classe per begudes" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Esdeveniment
 untitled-ontology-9:Esdeveniment rdf:type owl:Class ;
-                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                   owl:onProperty untitled-ontology-9:disposa_de ;
-                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                   owl:onClass untitled-ontology-9:Menu
-                                                 ] .
+                                 rdfs:comment "classe per esdeveniments" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Ingredient
-untitled-ontology-9:Ingredient rdf:type owl:Class .
+untitled-ontology-9:Ingredient rdf:type owl:Class ;
+                               rdfs:comment "classe per ingredients" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Menu
 untitled-ontology-9:Menu rdf:type owl:Class ;
-                         rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                           owl:onProperty untitled-ontology-9:begudes ;
-                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass untitled-ontology-9:Beguda
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty untitled-ontology-9:postres ;
-                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass untitled-ontology-9:Plat
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty untitled-ontology-9:primer ;
-                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass untitled-ontology-9:Plat
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty untitled-ontology-9:segon ;
-                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                           owl:onClass untitled-ontology-9:Plat
-                                         ] .
+                         rdfs:comment "classe per menus" .
 
 
 ###  http://www.semanticweb.org/surfacepro8/ontologies/2025/9/untitled-ontology-9#Plat
-untitled-ontology-9:Plat rdf:type owl:Class .
+untitled-ontology-9:Plat rdf:type owl:Class ;
+                         rdfs:comment "classe per plats" .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
