@@ -1,0 +1,67 @@
+# JOC DE PROVA 6: Congrés low-cost XXL
+# -------------------------------------------------
+# Context:
+# Una associació de joves emprenedors especialitzats en intel·ligència artificial organitza un congrés 
+# d'estiu informal i a l’aire lliure per a 600 persones. L’objectiu és oferir un menú econòmic, accessible 
+# i informal, que s’adapti a un esdeveniment XXL en un espai exterior.
+#
+# Es prioritzen plats molt simples i robustos, fàcils de servir ràpidament i ideals per menjar amb les mans, 
+# per garantir que el volum d’assistents no generi retards ni incomoditat. Les combinacions de plats es 
+# planifiquen amb compatibilitat estricta, evitant combinacions pesades que podrien dificultar l’àgil 
+# desenvolupament de l’esdeveniment. Les begudes són generals, amb opcions amb alcohol, tot mantenint els 
+# costos entre 18 i 25 € per persona.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: congrés
+#   Estació: estiu
+#   Espai: exterior
+#   Nombre de comensals: 600
+#   Pressupost: 18–25 €
+#   Formalitat: informal
+#   Mode de beguda: general
+#   Alcohol: sí
+#
+# Objectiu:
+# Comprovar que el sistema pot generar menús aptes per a un congrés massiu a l’estiu amb pressupost reduït, 
+# mantenint la coherència gastronòmica, la rapidesa de servei i el caràcter informal.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Entrepà de formatge a la planxa
+  Postres:   Boletes de xocolata
+  Begudes:   "Vi blanc jove sec"
+  TOTAL:     22.5 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Onigiri japonès farcit
+  Principal: Vedella amb salsa suya
+  Postres:   Mousse lleugera de coco i cereals
+  Begudes:   "Vi espumos reserva"
+  TOTAL:     22.5 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Marinat de pollastre
+  Postres:   Boletes de xocolata
+  Begudes:   "Vi negre criança"
+  TOTAL:     22.5 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus congres, amb un nivell de formalitat informal, previst per a estiu en espai exterior, per a un total de 600 comensals i amb un pressupost per persona entre 18.0 € i 25.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 22.5 € i 22.5 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment exterior en temporada càlida, s’han prioritzat plats freds o tebis, lleugers i refrescants.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• En tractar-se d’un congrés, s’han escollit plats petits i de baixa complexitat per facilitar un servei àgil i còmode.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb més de 500 comensals, només s’han acceptat plats de complexitat baixa per facilitar la producció i el servei.
+• S’ha aplicat maridatge general amb alcohol, amb begudes que complementen el to festiu.

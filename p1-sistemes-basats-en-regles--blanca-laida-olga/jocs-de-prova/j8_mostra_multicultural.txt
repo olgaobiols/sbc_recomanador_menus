@@ -1,0 +1,175 @@
+# JOC DE PROVA 8: Mostra multicultural — halal, vegà, vegetarià i kosher
+# -------------------------------------------------
+# Context:
+# Aquest esdeveniment reuneix uns 150 assistents en un espai interior durant la primavera, 
+# en un ambient informal i multicultural. L’objectiu és garantir que tothom pugui gaudir del menú 
+# sense excepcions per motius de creença o dieta, respectant les tradicions alimentàries de 
+# col·lectius vegans, vegetarians, halal i kosher.
+#
+# No s’ha definit cap al·lergogen global, però el sistema ha de generar menús aptes per a cada grup, 
+# mantenint coherència gastronòmica, qualitat i presentacions informals. Les begudes es gestionen 
+# amb maridatge general i alcohol indiferent, i el pressupost s’ha de mantenir dins del rang 
+# de 25 a 45 € per persona.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: indiferent
+#   Estació: primavera
+#   Espai: interior
+#   Nombre de comensals: 150
+#   Pressupost: 25–45 €
+#   Formalitat: informal
+#   Mode de beguda: maridatge general
+#   Alcohol: indiferent
+#   Dietes: gestió per grup (vegà, vegetarià, halal, kosher)
+#
+# Objectiu:
+# Comprovar que el sistema pot generar menús diferenciats i coherents per a diversos grups 
+# culturals i dietètics (vegans, vegetarians, halal i kosher), respectant el pressupost i 
+# mantenint l’equilibri gastronòmic en un context informal i primaveral.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.2 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Vichyssoise (crema freda de patata i porro)
+  Principal: Ales BBQ clàssiques
+  Postres:   Brownies de dos ingredients
+  Begudes:   "Refresc de taronja"
+  TOTAL:     36.46 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de pollastre a la graella amb rúcula i parmesà
+  Principal: Arròs fregit vegà
+  Postres:   Barretes de xocolata i cereals
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     38.9 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus indiferent, amb un nivell de formalitat informal, previst per a primavera en espai interior, per a un total de 120 comensals i amb un pressupost per persona entre 25.0 € i 80.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 38.9 € i 25.2 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment interior en temporada càlida, s’han prioritzat elaboracions fresques o de cocció curta.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol.
+
+A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei.
+
+
+=== MENÚS PER AL GRUP: Kosher ===
+
+*** Menú 1 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.2 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Sopa de verdures de temporada
+  Principal: Mejadra (arròs amb llenties i ceba)
+  Postres:   Barretes de granola
+  Begudes:   "Refresc de taronja"
+  TOTAL:     30.0 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de pollastre a la graella amb rúcula i parmesà
+  Principal: Carbassons farcits d'espinacs i bolets
+  Postres:   Brownies de sucre morè
+  Begudes:   "Refresc de cola"
+  TOTAL:     36.4 €
+  ----------------------------------------
+
+=== MENÚS PER AL GRUP: Vegetarians ===
+
+*** Menú 1 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.2 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida d'espàrrecs al grill amb cigrons i menta
+  Principal: Carbassons farcits d'espinacs i bolets
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de cola"
+  TOTAL:     30.67 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de tofu a la graella amb rúcula i parmesà
+  Principal: Arròs fregit vegà
+  Postres:   Barretes de xocolata i cereals
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     38.9 €
+  ----------------------------------------
+
+=== MENÚS PER AL GRUP: Vegans ===
+
+*** Menú 1 ***
+  Entrant:   Amanida japonesa d'algues amb sèsam torrat
+  Principal: Arròs fregit tailandès amb cacauet (vegà)
+  Postres:   Boles d'arròs amb llet de coco dolça (Bua Loi)
+  Begudes:   "Refresc de llimona"
+  TOTAL:     26.83 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Cigrons picants amb mostassa i pebre
+  Principal: Arròs fregit vegà
+  Postres:   Mousse de coco vegana
+  Begudes:   "Refresc de taronja"
+  TOTAL:     35.51 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Ametlles garapinyades
+  Begudes:   "Vi blanc jove sec"
+  TOTAL:     29.75 €
+  ----------------------------------------
+
+=== MENÚS PER AL GRUP: Halal ===
+
+*** Menú 1 ***
+  Entrant:   Amanida de fideus asiàtics amb sèsam
+  Principal: Albergínia a la brasa amb miso i sèsam
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.2 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Tortilla de patata
+  Principal: Paella valenciana 
+  Postres:   Brownies de cirera
+  Begudes:   "Refresc de cola"
+  TOTAL:     52.79 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida de pollastre a la graella amb rúcula i parmesà
+  Principal: Carbassons farcits d'espinacs i bolets
+  Postres:   Brownies de sucre morè
+  Begudes:   "Refresc de taronja"
+  TOTAL:     36.4 €
+  ----------------------------------------

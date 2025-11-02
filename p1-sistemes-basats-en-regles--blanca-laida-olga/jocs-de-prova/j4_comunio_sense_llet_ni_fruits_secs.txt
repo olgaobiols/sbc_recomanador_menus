@@ -1,0 +1,119 @@
+# JOC DE PROVA 4: Comunió sense llet ni fruits secs
+# -------------------------------------------------
+# Context:
+# Una família ha organitzat la celebració d’una primera comunió en un espai interior elegant,
+# durant la primavera. Malgrat ser un esdeveniment familiar, es vol mantenir un estil acurat i 
+# respectuós, amb plats suaus i agradables tant per als infants com per als adults. 
+# No s’ha previst servir alcohol, i el servei segueix un format formal.
+#
+# Per atendre correctament totes les necessitats alimentàries, s’han establert dos col·lectius:
+#   - Infants amb al·lèrgia a la llet i als fruits secs.
+#   - Adults que segueixen una dieta vegetariana.
+#
+# A més, la família ha optat pel maridatge per plat, de manera que cada plat vagi acompanyat 
+# de la seva beguda corresponent, sempre sense alcohol.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: comunió
+#   Estació: primavera
+#   Espai: interior
+#   Nombre de comensals: 60
+#   Pressupost: 55–95 €
+#   Formalitat: formal
+#   Mode de beguda: maridatge per plat
+#   Alcohol: no
+#   Gestió de dietes: per grup de convidats
+#     • Infants: sense llet ni fruits secs
+#     • Adults: dieta vegetariana
+#
+# Objectiu:
+# Comprovar que el sistema gestiona correctament múltiples grups amb restriccions diferents
+# i aplica les normes específiques de les comunions, que limiten la mida i la complexitat dels plats.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Amanida Cèsar amb pa torrat i parmesà
+  Principal: Coliflor gratinada amb formatge
+  Postres:   Mints de formatge cremós
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     55.01 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Portobello farcit amb formatges i herbes
+  Principal: Risotto toscà de bolets
+  Postres:   Bunyols de maduixa
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     66.75 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Xató clàssic amb bacallà i tonyina
+  Principal: Vedella amb salsa de tonyina (Vitello Tonnato)
+  Postres:   Pastís de mascarpone i llima
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     71.52 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus comunio, amb un nivell de formalitat formal, previst per a primavera en espai interior, per a un total de 60 comensals i amb un pressupost per persona entre 55.0 € i 95.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 71.52 € i 55.01 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser un esdeveniment interior en temporada càlida, s’han prioritzat elaboracions fresques o de cocció curta.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• Per a una comunió, s’han seleccionat plats suaus i equilibrats, adequats per a un públic familiar.
+• En indicar un esdeveniment formal, només s’han inclòs plats i begudes amb presentacions i característiques formals.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• S’ha aplicat maridatge per plat, amb begudes associades específicament a cada elaboració.
+
+A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei.
+
+
+=== MENÚS PER AL GRUP: adults vegetarians ===
+
+*** Menú 1 ***
+  Entrant:   Amanida Cèsar amb pa torrat i parmesà
+  Principal: Coliflor gratinada amb formatge
+  Postres:   Mints de formatge cremós
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     55.01 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Paté vegetal
+  Principal: Raviolis a la planxa
+  Postres:   Mousse de llimona àcida
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     77.22 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Agnolotti in brodo
+  Principal: Truita d'espàrrecs
+  Postres:   Pastís de mascarpone i llima
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     66.27 €
+  ----------------------------------------
+
+=== MENÚS PER AL GRUP: infants amb al·lèrgies (llet i fruits secs) ===
+
+*** Menú 1 ***
+  Entrant:   Xató clàssic amb bacallà i tonyina
+  Principal: Ostres rostides simples
+  Postres:   Merenga italiana
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     55.26 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Còctel de cranc i blat de moro amb maionesa lleugera
+  Principal: Salmó amb mel i pebre
+  Postres:   Pastís de mousse de xocolata vegà
+  Begudes:   "Ginger Ale artesanal" "Tònica premium" "Mojito sense alcohol"
+  TOTAL:     66.39 €
+  ----------------------------------------

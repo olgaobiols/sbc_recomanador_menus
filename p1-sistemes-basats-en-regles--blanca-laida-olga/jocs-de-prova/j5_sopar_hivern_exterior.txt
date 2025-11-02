@@ -1,0 +1,65 @@
+# JOC DE PROVA 5: Sopar d’hivern a l’exterior
+# -------------------------------------------------
+# Context:
+# Un grup d’amics organitza una trobada informal a l’aire lliure durant l’hivern, buscant plats que 
+# aportin calor i confort. Els menús es dissenyen per oferir entrants calents o de cullera i plats 
+# principals contundents, amb postres més lleugeres quan els plats anteriors ja són pesats. 
+# La selecció dels ingredients té en compte l’estacionalitat, i les begudes poden ser amb o sense alcohol. 
+# L’objectiu és aconseguir una combinació equilibrada de plats coherent amb la temporada i l’espai, 
+# sense necessitat d’imposar cap tipus de beguda concreta.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: altres
+#   Estació: hivern
+#   Espai: exterior
+#   Nombre de comensals: 40
+#   Pressupost: 15–50 €
+#   Formalitat: informal
+#   Mode de beguda: general
+#   Alcohol: indiferent
+#
+# Objectiu:
+# Validar que el sistema s’adapta correctament a un context hivernal a l’exterior, 
+# prioritzant plats calents o reconfortants, ingredients de temporada i coherència amb 
+# un ambient informal sense restriccions dietètiques específiques.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+
+*** Menú 1 ***
+  Entrant:   Sopa miso tradicional
+  Principal: Carbassons farcits d'espinacs i bolets
+  Postres:   Boletes de xocolata
+  Begudes:   "Refresc de llimona"
+  TOTAL:     25.97 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida de pollastre amb sèsam i soja
+  Principal: Bolets farcits amb bacó i formatge
+  Postres:   Brownies de pastanaga i clara d'ou
+  Begudes:   "Vi negre criança"
+  TOTAL:     40.22 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Amanida d'espàrrecs al grill amb cigrons i menta
+  Principal: Ales al romaní i balsàmic
+  Postres:   Barretes de xocolata i cereals
+  Begudes:   "Tònica premium"
+  TOTAL:     37.94 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus altres, amb un nivell de formalitat informal, previst per a hivern en espai exterior, per a un total de 40 comensals i amb un pressupost per persona entre 15.0 € i 50.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 40.22 € i 25.97 €.
+
+Les principals condicions aplicades han estat:
+
+• En ser una estació freda, s’han seleccionat plats calents o tebis, amb productes de temporada.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• En no especificar un tipus concret d’esdeveniment, s’han mantingut criteris generals d’equilibri i coherència.
+• En indicar un esdeveniment informal, s’han seleccionat propostes més senzilles i de presentació relaxada.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol.

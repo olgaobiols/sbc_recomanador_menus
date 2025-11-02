@@ -1,0 +1,95 @@
+# JOC DE PROVA 7: Inauguració solidària a l’Aquari de Barcelona
+# -------------------------------------------------
+# Context:
+# L’Aquari de Barcelona va acollir un sopar solidari per celebrar la inauguració d’un nou espai 
+# dedicat a la protecció dels ecosistemes marins. L’acte, obert a col·laboradors i donants, tenia 
+# com a objectiu conscienciar sobre l’impacte de la pesca intensiva.
+#
+# La direcció de l’aquari, en col·laboració amb diverses entitats ambientals, va voler que l’acte 
+# fos un punt de trobada entre científics, patrocinadors i amics del projecte. Per cortesia 
+# institucional, es va decidir oferir primer un conjunt de menús generals amb plats de peix i marisc, 
+# mantenint la imatge de cuina mediterrània tradicional que l’aquari utilitza en esdeveniments 
+# corporatius.
+#
+# Tot i això, l’organització va demanar al sistema expert que generés un segon conjunt de menús 
+# completament lliures d’origen marí (sense peix, marisc ni mol·luscs), per oferir una alternativa 
+# plenament coherent amb l’objectiu ambiental de la vetllada.
+#
+# Característiques de la petició:
+#   Tipus d’esdeveniment: congrés
+#   Estació: indiferent
+#   Espai: interior
+#   Nombre de comensals: 150
+#   Pressupost: 18–45 €
+#   Formalitat: formal
+#   Mode de beguda: general
+#   Alcohol: indiferent
+#   Gestió de dietes: per grup
+#     • Grup “Sense Peix & Crustacis & Mol·luscs”: 
+#       sense dietes especials; al·lèrgens prohibits: peix, crustaci i mol·luscs
+#
+# Objectiu:
+# Comprovar que el sistema pot generar dos blocs de menús diferenciats: un amb plats marins 
+# tradicionals i un altre completament lliure d’ingredients d’origen marí, mantenint la coherència 
+# gastronòmica i formal amb el context institucional i el missatge ambiental.
+
+----------------------------------------
+# SORTIDA DEL SISTEMA EXPERT
+# (Resultat obtingut a l'execució real)
+
+=== MENÚS DISPONIBLES ===
+*** Menú 1 ***
+  Entrant:   Amanida Caprese amb mozzarella i alfàbrega
+  Principal: Ostres rostides simples
+  Postres:   Meringata de fruita en copa
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     27.74 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Còctel de cranc i blat de moro amb maionesa lleugera
+  Principal: Ostres en escabetx
+  Postres:   Nyoquis amb crema de maduixa gratinada
+  Begudes:   "Vi espumos gran reserva"
+  TOTAL:     37.35 €
+  ----------------------------------------
+
+*** Menú 3 ***
+  Entrant:   Warak Enab Mahshi (fulles de parra)
+  Principal: Croquetes de vedella meloses
+  Postres:   Galetes de nata
+  Begudes:   "Vi blanc jove sec"
+  TOTAL:     36.68 €
+  ----------------------------------------
+
+Les propostes seleccionades s’ajusten a les preferències indicades per l’usuari. L’esdeveniment és de tipus congres, amb un nivell de formalitat formal, previst per a indiferent en espai interior, per a un total de 150 comensals i amb un pressupost per persona entre 18.0 € i 45.0 €. Els menús seleccionats es troben dins d’aquest marge, amb preus reals entre 37.35 € i 27.74 €.
+
+Les principals condicions aplicades han estat:
+
+• No s’han aplicat restriccions per estació ni espai.
+• S’ha comprovat la disponibilitat d’ingredients segons l’estació escollida; si algun plat contenia productes no disponibles en aquesta època, s’ha descartat o substituït per alternatives adequades.
+• En tractar-se d’un congrés, s’han escollit plats petits i de baixa complexitat per facilitar un servei àgil i còmode.
+• En indicar un esdeveniment formal, només s’han inclòs plats i begudes amb presentacions i característiques formals.
+• Amb menys de 150 comensals, s’han permès totes les complexitats de plats.
+• Com que la preferència d’alcohol és indiferent, s’han considerat opcions amb i sense alcohol.
+
+A més, s’han identificat menús específics per als grups amb restriccions definides, garantint la compatibilitat en plats i begudes sense alterar el ritme del servei.
+
+
+=== MENÚS PER AL GRUP: Sense Peix & Crustacis & Mol·luscs ===
+
+*** Menú 1 ***
+  Entrant:   Amanida Caprese amb mozzarella i alfàbrega
+  Principal: Pasta fresca italiana
+  Postres:   Meringata de fruita en copa
+  Begudes:   "Ginger Ale artesanal"
+  TOTAL:     29.74 €
+  ----------------------------------------
+
+*** Menú 2 ***
+  Entrant:   Amanida Cèsar amb pa torrat i parmesà
+  Principal: Croquetes de vedella meloses
+  Postres:   Flan de crema de formatge
+  Begudes:   "Martini blanc"
+  TOTAL:     34.28 €
+  ----------------------------------------    
