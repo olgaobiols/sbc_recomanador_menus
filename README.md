@@ -54,7 +54,7 @@ The reasoning process is structured into a modular pipeline using **Forward Chai
   ```clips
   (reset)
   (run)
-    ```
+  ```
 4. Follow the interactive prompts in the console.
 
 ## Features & Justification
